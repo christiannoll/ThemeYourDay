@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var themetext = "Theme your day ..."
+    @EnvironmentObject var modelData: ModelData
+    @State private var themetext = "..."
     
     init() {
+        //_themetext = State(initialValue: ModelData().days[0].text)
         UITextView.appearance().backgroundColor = .clear
     }
     
@@ -18,6 +20,9 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
                 .lineSpacing(20)
+                .onAppear {
+                    themetext = modelData.days[0].text
+                }
             Spacer()
         }
         .background(Color.red)
@@ -30,5 +35,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }

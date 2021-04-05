@@ -1,17 +1,13 @@
-//
-//  ThemeYourDayApp.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 04.04.21.
-//
-
 import SwiftUI
 
 @main
 struct ThemeYourDayApp: App {
+    @StateObject private var modelData = ModelData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(modelData)
         }
     }
 }

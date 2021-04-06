@@ -5,21 +5,31 @@ final class ModelData: ObservableObject {
     @Published var days: [Day] = load("DayData.json")
     
     func writeJSON() {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let jsonURL = documentDirectory
-            .appendingPathComponent("DayData")
-            .appendingPathExtension("json")
-        try? JSONEncoder().encode(days).write(to: jsonURL, options: .atomic)
+        let filename = "DayData.json"
+        let file = getDocumentsDirectory().appendingPathComponent(filename)
+        
+        do {
+            //print(days[0].text)
+            try JSONEncoder().encode(days).write(to: file, options: .atomic)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
     }
+}
+
+func getDocumentsDirectory() -> URL {
+    // find all possible documents directories for this user
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+    // just send back the first one, which ought to be the only one
+    return paths[0]
 }
 
 func load<T: Codable>(_ filename: String) -> T {
     let data: Data
-        
-    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-    else {
-        fatalError("Couldn't find \(filename) in main bundle.")
-    }
+    
+    let file = getDocumentsDirectory().appendingPathComponent(filename)
     
     do {
         data = try Data(contentsOf: file)

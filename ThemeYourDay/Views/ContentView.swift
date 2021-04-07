@@ -19,7 +19,7 @@ struct ContentView: View {
             TextEditor(text: $themetext)
                 .font(.largeTitle)
                 .background(Color(red: 153/255, green: 204/255, blue: 255/255))
-                .foregroundColor(.white)
+                .foregroundColor(getTextColor())
                 .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
                 .lineSpacing(20)
@@ -60,6 +60,9 @@ struct ContentView: View {
         modelData.writeJSON()
     }
     
+    private func getTextColor() -> Color {
+        return Color(red:modelData.selectedDay.fgColor.r, green:modelData.selectedDay.fgColor.g, blue:modelData.selectedDay.fgColor.b, opacity:modelData.selectedDay.fgColor.a)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

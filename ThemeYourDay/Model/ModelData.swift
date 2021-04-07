@@ -40,7 +40,7 @@ final class ModelData: ObservableObject {
                 return day
             }
         }
-        let newDay = Day(id: date, text: "Tomorrow")
+        let newDay = Day(id: date, text: "Tomorrow", fgColor: DayColor())
         days.append(newDay)
         return newDay
     }
@@ -51,7 +51,7 @@ final class ModelData: ObservableObject {
                 return day
             }
         }
-        let newDay = Day(id: date, text: "Yesterday")
+        let newDay = Day(id: date, text: "Yesterday", fgColor: DayColor())
         days.insert(newDay, at: 0)
         return newDay
     }
@@ -70,7 +70,7 @@ func load<T: Codable>(_ filename: String) -> T {
     
     let file = getDocumentsDirectory().appendingPathComponent(filename)
     
-    //print(file.absoluteURL)
+    print(file.absoluteURL)
     
     do {
         data = try Data(contentsOf: file)
@@ -82,7 +82,7 @@ func load<T: Codable>(_ filename: String) -> T {
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     } catch {
-        let days = [Day(id: Date(), text: "Today")]
+        let days = [Day(id: Date(), text: "Today", fgColor: DayColor())]
         let jsonEncoder = JSONEncoder()
         let jsonResultData = try? jsonEncoder.encode(days)
         let decoder = JSONDecoder()
@@ -98,6 +98,7 @@ struct MyData {
         let today = Date().noon
         for day in days {
             if day.id.hasSame(.day, as: today) {
+                //print(day.fgColor)
                 return day
             }
         }

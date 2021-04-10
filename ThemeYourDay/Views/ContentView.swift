@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var bgColor = Color(red: 153/255, green: 204/255, blue: 1)
     @State private var showingBgColor = false
     @State private var showingFgColor = false
+    @State private var editMode = false
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -30,10 +31,14 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                         .disableAutocorrection(true)
                         .lineSpacing(20)
+                        .disabled(!editMode)
                         .onAppear {
                             themetext = modelData.selectedDay.text
                             fgColor = getTextColor()
                             bgColor = getBackgroundColor()
+                        }
+                        .onTapGesture {
+                            editMode = true
                         }
                         .onChange(of: themetext, perform: saveText)
                         .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
@@ -78,6 +83,10 @@ struct ContentView: View {
                         .opacity(showingBgColor ? 1 : 0)
                         .padding()
                     }
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                editMode = false
             }
             
             .toolbar {

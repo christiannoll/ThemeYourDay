@@ -24,6 +24,11 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func saveFgColor(r: Double, g: Double, b: Double, a: Double) {
+        let color = DayColor(r: r, g: g, b: b, a: a)
+        selectedDay.fgColor = color
+    }
+    
     func selectNextDay() {
         let tomorrow = selectedDay.id.dayAfter
         selectedDay = findDayAfter(tomorrow)

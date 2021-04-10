@@ -4,10 +4,11 @@ struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var themetext = "..."
     @State private var fgColor = Color.white
-    @State private var showingColor = false
+    @State private var bgColor = Color(red: 153/255, green: 204/255, blue: 1)
+    @State private var showingBgColor = false
+    @State private var showingFgColor = false
     
     init() {
-        //_themetext = State(initialValue: ModelData().days[0].text)
         UITextView.appearance().backgroundColor = .clear
     }
     
@@ -24,7 +25,7 @@ struct ContentView: View {
                         
                     TextEditor(text: $themetext)
                         .font(.largeTitle)
-                        .background(Color(red: 153/255, green: 204/255, blue: 255/255))
+                        .background(bgColor)
                         .foregroundColor(fgColor)
                         .multilineTextAlignment(.center)
                         .disableAutocorrection(true)
@@ -32,6 +33,7 @@ struct ContentView: View {
                         .onAppear {
                             themetext = modelData.selectedDay.text
                             fgColor = getTextColor()
+                            bgColor = getBackgroundColor()
                         }
                         .onChange(of: themetext, perform: saveText)
                         .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
@@ -48,6 +50,7 @@ struct ContentView: View {
                                 modelData.writeJSON()
                                 themetext = modelData.selectedDay.text
                                 fgColor = getTextColor()
+                                bgColor = getBackgroundColor()
                             }))
                 }
                 .background(Color.gray)
@@ -57,13 +60,24 @@ struct ContentView: View {
             
                 Spacer()
                 
-                ColorPicker("Color", selection: $fgColor)
-                    .labelsHidden()
-                    .onChange(of: fgColor) {newValue in
-                        saveFgColor(newValue)
+                if showingFgColor {
+                    ColorPicker("Select Text Color", selection: $fgColor)
+                        .labelsHidden()
+                        .onChange(of: fgColor) {newValue in
+                            saveFgColor(newValue)
+                        }
+                        .opacity(showingFgColor ? 1 : 0)
+                        .padding()
                     }
-                    .opacity(showingColor ? 1 : 0)
-                    .padding()
+                else {
+                    ColorPicker("Select Background Color", selection: $bgColor)
+                        .labelsHidden()
+                        .onChange(of: bgColor) {newValue in
+                            saveBgColor(newValue)
+                        }
+                        .opacity(showingBgColor ? 1 : 0)
+                        .padding()
+                    }
             }
             
             .toolbar {
@@ -71,7 +85,9 @@ struct ContentView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: { showingColor.toggle() }) {
+                    Button(action: { showingFgColor.toggle()
+                        showingBgColor = false
+                    }) {
                         Image(systemName: "textformat")
                     }
                 }
@@ -79,7 +95,9 @@ struct ContentView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: { }) {
+                    Button(action: { showingBgColor.toggle()
+                        showingFgColor = false
+                    }) {
                         Image(systemName: "note")
                     }
                 }
@@ -115,8 +133,25 @@ struct ContentView: View {
         modelData.writeJSON()
     }
     
+    private func saveBgColor(_ bgColor: Color) {
+        let uiColor = UIColor(bgColor)
+        
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        modelData.saveBgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha))
+        modelData.writeJSON()
+    }
+    
     private func getTextColor() -> Color {
         return Color(red:modelData.selectedDay.fgColor.r, green:modelData.selectedDay.fgColor.g, blue:modelData.selectedDay.fgColor.b, opacity:modelData.selectedDay.fgColor.a)
+    }
+    
+    private func getBackgroundColor() -> Color {
+        return Color(red:modelData.selectedDay.bgColor.r, green:modelData.selectedDay.bgColor.g, blue:modelData.selectedDay.bgColor.b, opacity:modelData.selectedDay.bgColor.a)
     }
 }
 

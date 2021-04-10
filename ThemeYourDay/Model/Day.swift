@@ -4,6 +4,7 @@ struct Day: Hashable, Codable, Identifiable {
     var id: Date
     var text: String
     var fgColor: DayColor
+    var bgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
 }
 
 struct DayColor: Codable, Hashable {

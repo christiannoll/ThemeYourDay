@@ -1,5 +1,45 @@
 import SwiftUI
 
+class Tools: ObservableObject {
+    @Published var fgColorVisible = false
+    @Published var bgColorVisible = false
+}
+
+struct BarView: View {
+    @EnvironmentObject var tools: Tools
+    
+    var body: some View {
+        NavigationView {
+            Spacer()
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Spacer()
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: { tools.fgColorVisible.toggle()
+                        tools.bgColorVisible = false
+                    }) {
+                        Image(systemName: "textformat")
+                    }
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Spacer()
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: { tools.bgColorVisible.toggle()
+                        tools.fgColorVisible = false
+                    }) {
+                        Image(systemName: "note")
+                    }
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var themetext = "..."
@@ -8,6 +48,8 @@ struct ContentView: View {
     @State private var showingBgColor = false
     @State private var showingFgColor = false
     @State private var editMode = false
+    @State private var showingDayList = false
+    @StateObject private var tools = Tools()
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -16,9 +58,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                NavigationLink(
+                    destination: DayList(),
+                    isActive: $showingDayList) { EmptyView() }
                 Spacer()
                 
-                VStack(alignment: .center) {
+                VStack(/*alignment: .center*/) {
                     Spacer()
                     Text(getDate())
                         .background(Color.gray)
@@ -65,13 +110,13 @@ struct ContentView: View {
             
                 Spacer()
                 
-                if showingFgColor {
+                if tools.fgColorVisible {
                     ColorPicker("Select Text Color", selection: $fgColor)
                         .labelsHidden()
                         .onChange(of: fgColor) {newValue in
                             saveFgColor(newValue)
                         }
-                        .opacity(showingFgColor ? 1 : 0)
+                        .opacity(tools.fgColorVisible ? 1 : 0)
                         .padding()
                     }
                 else {
@@ -80,41 +125,34 @@ struct ContentView: View {
                         .onChange(of: bgColor) {newValue in
                             saveBgColor(newValue)
                         }
-                        .opacity(showingBgColor ? 1 : 0)
+                        .opacity(tools.bgColorVisible ? 1 : 0)
                         .padding()
                     }
+                Spacer()
+                BarView()//.border(Color.green)
+                    .ignoresSafeArea()
+                    .frame(height: 50)
+                    
             }
-            .contentShape(Rectangle())
+            /*.contentShape(Rectangle())
             .onTapGesture {
                 editMode = false
-            }
+            }*/
             
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Button(action: { showingFgColor.toggle()
-                        showingBgColor = false
-                    }) {
-                        Image(systemName: "textformat")
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Button(action: { showingBgColor.toggle()
-                        showingFgColor = false
-                    }) {
-                        Image(systemName: "note")
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-            }
+            .navigationBarItems(
+                leading:
+                    Button(action: { showingDayList.toggle() }) {
+                        Image(systemName: "list.bullet")
+                    }.padding(),
+                
+                trailing:
+                    Button(action: {}) {
+                        Image(systemName: "calendar")
+                    }.padding()
+            )
         }
+        .environmentObject(tools)
+        
     }
     
     private func getDate() -> String {

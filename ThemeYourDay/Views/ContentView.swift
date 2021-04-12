@@ -5,40 +5,6 @@ class Tools: ObservableObject {
     @Published var bgColorVisible = false
 }
 
-struct BarView: View {
-    @EnvironmentObject var tools: Tools
-    
-    var body: some View {
-        NavigationView {
-            Spacer()
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Button(action: { tools.fgColorVisible.toggle()
-                        tools.bgColorVisible = false
-                    }) {
-                        Image(systemName: "textformat")
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Button(action: { tools.bgColorVisible.toggle()
-                        tools.fgColorVisible = false
-                    }) {
-                        Image(systemName: "note")
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-            }
-        }
-    }
-}
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
@@ -129,7 +95,7 @@ struct ContentView: View {
                         .padding()
                     }
                 Spacer()
-                BarView()//.border(Color.green)
+                ToolBarView()//.border(Color.green)
                     .ignoresSafeArea()
                     .frame(height: 50)
                     

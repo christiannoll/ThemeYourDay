@@ -85,20 +85,26 @@ func load<T: Codable>(_ filename: String) -> T {
     do {
         data = try Data(contentsOf: file)
     } catch {
-        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+        //fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+        data = createData()!
     }
     
     do {
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     } catch {
-        let days = [Day(id: Date(), text: "Today", fgColor: DayColor())]
-        let jsonEncoder = JSONEncoder()
-        let jsonResultData = try? jsonEncoder.encode(days)
+        let jsonResultData = createData()
         let decoder = JSONDecoder()
         return try! decoder.decode(T.self, from: jsonResultData!)
         //fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
+}
+
+func createData() -> Data? {
+    let days = [Day(id: Date(), text: "Today", fgColor: DayColor())]
+    let jsonEncoder = JSONEncoder()
+    let jsonResultData = try? jsonEncoder.encode(days)
+    return jsonResultData
 }
 
 struct MyData {

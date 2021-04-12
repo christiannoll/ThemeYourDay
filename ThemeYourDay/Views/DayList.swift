@@ -1,13 +1,33 @@
 import SwiftUI
 
 struct DayList: View {
+    @EnvironmentObject var modelData: ModelData
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     var body: some View {
         VStack {
-        List {
-            Text("Item 1")
-            Text("Item 2")
+            List {
+                ForEach(modelData.days) { day in
+                    HStack {
+                        Text(getDate(day))
+                        Text(day.text)
+                        Spacer()
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        modelData.selectedDay = day
+                        self.mode.wrappedValue.dismiss()
+                    }
+                }
+            }
         }
-        }
+    }
+    
+    private func getDate(_ day: Day) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        let dateString = formatter.string(from: day.id)
+        return dateString
     }
 }
 

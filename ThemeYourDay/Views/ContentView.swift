@@ -11,8 +11,6 @@ struct ContentView: View {
     @State private var themetext = "..."
     @State private var fgColor = Color.white
     @State private var bgColor = Color(red: 153/255, green: 204/255, blue: 1)
-    @State private var showingBgColor = false
-    @State private var showingFgColor = false
     @State private var editMode = false
     @State private var showingDayList = false
     @StateObject private var tools = Tools()
@@ -98,6 +96,7 @@ struct ContentView: View {
                 ToolBarView()//.border(Color.green)
                     .ignoresSafeArea()
                     .frame(height: 50)
+                    .environmentObject(tools)
                     
             }
             /*.contentShape(Rectangle())
@@ -117,7 +116,7 @@ struct ContentView: View {
                     }.padding()
             )
         }
-        .environmentObject(tools)
+        .environmentObject(modelData)
         
     }
     

@@ -27,7 +27,7 @@ struct ContentView: View {
                     isActive: $showingDayList) { EmptyView() }
                 Spacer()
                 
-                VStack(/*alignment: .center*/) {
+                VStack {
                     Spacer()
                     Text(getDate())
                         .background(Color.gray)

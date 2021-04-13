@@ -163,7 +163,7 @@ struct ContentView: View {
     }
     
     private func getBackgroundColor() -> Color {
-        return Color(red:modelData.selectedDay.bgColor.r, green:modelData.selectedDay.bgColor.g, blue:modelData.selectedDay.bgColor.b, opacity:modelData.selectedDay.bgColor.a)
+        return modelData.selectedDay.bgColor.color
     }
 }
 

@@ -11,6 +11,7 @@ struct DayList: View {
                     HStack {
                         Text(getDate(day))
                         Text(day.text)
+                            .foregroundColor(day.fgColor.color)
                         Spacer()
                     }
                     .contentShape(Rectangle())
@@ -18,6 +19,8 @@ struct DayList: View {
                         modelData.selectedDay = day
                         self.mode.wrappedValue.dismiss()
                     }
+                    .listRowBackground(day.bgColor.color)
+                    .padding(0)
                 }
             }
         }

@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 struct Day: Hashable, Codable, Identifiable {
     var id: Date
@@ -12,6 +13,10 @@ struct DayColor: Codable, Hashable {
     var g: Double = 1.0
     var b: Double = 1.0
     var a: Double = 1.0
+    
+    var color: Color {
+        Color(red:r, green:g, blue:b, opacity:a)
+    }
 }
 
 extension DayColor: Equatable {

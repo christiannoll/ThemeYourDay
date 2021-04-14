@@ -7,14 +7,13 @@ struct DayList: View {
     var body: some View {
         VStack {
             List {
-                ForEach(modelData.days) { day in
+                ForEach(modelData.days.reversed()) { day in
                     DayListCell(day: day)
-                        .frame(height: 50)
-                    .onTapGesture {
-                        modelData.selectedDay = day
-                        self.mode.wrappedValue.dismiss()
-                    }
-                    .padding(.vertical, 8)
+                        .onTapGesture {
+                            modelData.selectedDay = day
+                            self.mode.wrappedValue.dismiss()
+                        }
+                        .padding(.vertical, 8)
                 }
             }
         }

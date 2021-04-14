@@ -11,11 +11,13 @@ struct DayListCell: View {
                 .padding(.horizontal, 4)
                 .shadow(color: Color.black, radius: 3, x: 3, y: 3)
 
-            HStack {
-                Text(getDate(day))
+            VStack {
                 Text(day.text)
                     .foregroundColor(day.fgColor.color)
-                Spacer()
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .lineLimit(1)
+                Text(getDate(day))
+                    .foregroundColor(day.bgColor.invert())
             }
             .padding()
         }
@@ -23,7 +25,8 @@ struct DayListCell: View {
     
     private func getDate(_ day: Day) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .long
+        //formatter.setLocalizedDateFormatFromTemplate("dd MM yyyy")
         let dateString = formatter.string(from: day.id)
         return dateString
     }

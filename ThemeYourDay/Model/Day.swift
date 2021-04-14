@@ -28,3 +28,12 @@ extension DayColor: Equatable {
             lhs.a == rhs.a
     }
 }
+
+extension DayColor {
+    func invert() -> Color {
+        let _red  =  255.0 - (r * 255.0)
+        let _green =  255.0 - (g * 255.0)
+        let _blue  =  255.0 - (b * 255.0)
+        return Color(red: _red / 255.0, green: _green / 255.0, blue: _blue / 255.0, opacity: self.a)
+    }
+}

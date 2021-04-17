@@ -16,7 +16,7 @@ struct DayList: View {
                         .padding(.vertical, 8)
                 }
             }
-        }
+        }.navigationTitle("Days")
     }
 }
 

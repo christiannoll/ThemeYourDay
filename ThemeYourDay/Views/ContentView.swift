@@ -8,12 +8,17 @@ class Tools: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
+    @Environment(\.calendar) var calendar
     @State private var themetext = "..."
     @State private var fgColor = Color.white
     @State private var bgColor = Color(red: 153/255, green: 204/255, blue: 1)
     @State private var editMode = false
-    @State private var showingDayList = false
+    @State private var selection: String? = nil
     @StateObject private var tools = Tools()
+    
+    private var year: DateInterval {
+        calendar.dateInterval(of: .year, for: Date())!
+    }
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -24,7 +29,20 @@ struct ContentView: View {
             VStack {
                 NavigationLink(
                     destination: DayList(),
-                    isActive: $showingDayList) { EmptyView() }
+                    tag: "DayList", selection: $selection) { EmptyView() }
+                NavigationLink(
+                    destination: CalendarView(interval: year) { date in
+                        Text("30")
+                            .hidden()
+                            .padding(8)
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                            .padding(.vertical, 4)
+                            .overlay(
+                                Text(String(self.calendar.component(.day, from: date)))
+                            )
+                    },
+                    tag: "Calendar", selection: $selection) { EmptyView() }
                 Spacer()
                 
                 VStack {
@@ -106,12 +124,12 @@ struct ContentView: View {
             
             .navigationBarItems(
                 leading:
-                    Button(action: { showingDayList.toggle() }) {
+                    Button(action: { selection = "DayList" }) {
                         Image(systemName: "list.bullet")
                     }.padding(),
                 
                 trailing:
-                    Button(action: {}) {
+                    Button(action: { selection = "Calendar" }) {
                         Image(systemName: "calendar")
                     }.padding()
             )
@@ -122,7 +140,7 @@ struct ContentView: View {
     
     private func getDate() -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .long
         let dateString = formatter.string(from: modelData.selectedDay.id)
         return dateString
     }

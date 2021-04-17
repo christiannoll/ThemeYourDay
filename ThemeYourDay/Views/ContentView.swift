@@ -35,7 +35,7 @@ struct ContentView: View {
                         Text("30")
                             .hidden()
                             .padding(8)
-                            .background(Color.blue)
+                            .background(modelData.findDay(date) == nil ? Color.blue : modelData.findDay(date)!.bgColor.color)
                             .clipShape(Circle())
                             .padding(.vertical, 4)
                             .overlay(

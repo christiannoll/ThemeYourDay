@@ -42,6 +42,7 @@ fileprivate extension Calendar {
 
 struct WeekView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
+    @EnvironmentObject var modelData: ModelData
 
     let week: Date
     let content: (Date) -> DateView
@@ -78,6 +79,7 @@ struct WeekView<DateView>: View where DateView: View {
 
 struct MonthView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
+    @EnvironmentObject var modelData: ModelData
 
     let month: Date
     let showHeader: Bool
@@ -126,6 +128,7 @@ struct MonthView<DateView>: View where DateView: View {
 
 struct CalendarView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
+    @EnvironmentObject var modelData: ModelData
 
     let interval: DateInterval
     let content: (Date) -> DateView
@@ -161,6 +164,7 @@ struct CalendarView_Previews: PreviewProvider {
                 .background(Color.blue)
                 .cornerRadius(8)
         }
+        .environmentObject(ModelData())
     }
 }
 

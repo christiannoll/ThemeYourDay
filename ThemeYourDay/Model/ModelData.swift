@@ -65,6 +65,15 @@ final class ModelData: ObservableObject {
         days.insert(newDay, at: 0)
         return newDay
     }
+    
+    func findDay(_ date: Date) -> Day? {
+        for day in days {
+            if day.id.hasSame(.day, as: date) {
+                return day
+            }
+        }
+        return nil
+    }
 }
 
 func getDocumentsDirectory() -> URL {

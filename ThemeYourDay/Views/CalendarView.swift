@@ -43,6 +43,7 @@ fileprivate extension Calendar {
 struct WeekView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
     @EnvironmentObject var modelData: ModelData
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     let week: Date
     let content: (Date) -> DateView
@@ -71,6 +72,11 @@ struct WeekView<DateView>: View where DateView: View {
                     } else {
                         self.content(date).hidden()
                     }
+                }
+                .onTapGesture {
+                    modelData.selectDay(date)
+                    //modelData.selectedDay = modelData.findDay(date)!
+                    self.mode.wrappedValue.dismiss()
                 }
             }
         }

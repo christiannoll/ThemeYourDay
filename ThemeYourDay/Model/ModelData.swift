@@ -44,6 +44,22 @@ final class ModelData: ObservableObject {
         selectedDay = findDayBefore(yesterday)
     }
     
+    func selectDay(_ date: Date) {
+        var found = false
+        for day in days {
+            if day.id.hasSame(.day, as: date) {
+                selectedDay = day
+                found = true
+                break
+            }
+        }
+        if !found {
+            let newDay = Day(id: date, text: "Theme your day", fgColor: DayColor())
+            days.append(newDay)
+            selectedDay = newDay
+        }
+    }
+    
     private func findDayAfter(_ date: Date) -> Day {
         for day in days {
             if day.id.hasSame(.day, as: date) {
@@ -67,6 +83,7 @@ final class ModelData: ObservableObject {
     }
     
     func findDay(_ date: Date) -> Day? {
+        print(date)
         for day in days {
             if day.id.hasSame(.day, as: date) {
                 return day
@@ -155,7 +172,7 @@ extension Date {
     }
 
     func hasSame(_ component: Calendar.Component, as date: Date) -> Bool {
-        distance(from: date, only: component) == 0
+        fullDistance(from: date, resultIn: component) == 0
     }
 }
 

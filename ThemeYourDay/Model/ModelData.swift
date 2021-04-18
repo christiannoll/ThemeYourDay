@@ -2,7 +2,9 @@ import Foundation
 import Combine
 
 final class ModelData: ObservableObject {
-    @Published var days: [Day] = MyData.days
+    @Published var days: [Day] = MyData.days.sorted {
+        $0.id < $1.id
+    }
     @Published var selectedDay = MyData.currentDay()
     
     func writeJSON() {
@@ -68,6 +70,7 @@ final class ModelData: ObservableObject {
         }
         let newDay = Day(id: date, text: "Tomorrow", fgColor: DayColor())
         days.append(newDay)
+        sortDays()
         return newDay
     }
     
@@ -79,7 +82,14 @@ final class ModelData: ObservableObject {
         }
         let newDay = Day(id: date, text: "Yesterday", fgColor: DayColor())
         days.insert(newDay, at: 0)
+        sortDays()
         return newDay
+    }
+    
+    private func sortDays() {
+        days.sort {
+            $0.id < $1.id
+        }
     }
     
     func findDay(_ date: Date) -> Day? {

@@ -35,11 +35,12 @@ struct ContentView: View {
                         Text("30")
                             .hidden()
                             .padding(8)
-                            .background(modelData.findDay(date) == nil ? Color.blue : modelData.findDay(date)!.bgColor.color)
+                            .background(getCalendarBackgroundColor(date))
                             .clipShape(Circle())
                             .padding(.vertical, 4)
                             .overlay(
                                 Text(String(self.calendar.component(.day, from: date)))
+                                    .foregroundColor(getCalendarForegroundColor(date))
                             )
                     },
                     tag: "Calendar", selection: $selection) { EmptyView() }
@@ -136,6 +137,20 @@ struct ContentView: View {
         }
         .environmentObject(modelData)
         
+    }
+    
+    private func getCalendarBackgroundColor(_ date: Date) -> Color {
+        guard let day = modelData.findDay(date) else {
+            return Color.blue
+        }
+        return day.bgColor.color
+    }
+    
+    private func getCalendarForegroundColor(_ date: Date) -> Color {
+        guard let day = modelData.findDay(date) else {
+            return Color.black
+        }
+        return day.fgColor.color
     }
     
     private func getDate() -> String {

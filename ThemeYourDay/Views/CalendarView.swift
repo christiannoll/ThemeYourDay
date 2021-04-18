@@ -75,7 +75,6 @@ struct WeekView<DateView>: View where DateView: View {
                 }
                 .onTapGesture {
                     modelData.selectDay(date)
-                    //modelData.selectedDay = modelData.findDay(date)!
                     self.mode.wrappedValue.dismiss()
                 }
             }
@@ -174,24 +173,3 @@ struct CalendarView_Previews: PreviewProvider {
     }
 }
 
-/*struct RootView: View {
-    @Environment(\.calendar) var calendar
-
-    private var year: DateInterval {
-        calendar.dateInterval(of: .year, for: Date())!
-    }
-
-    var body: some View {
-        CalendarView(interval: year) { date in
-            Text("30")
-                .hidden()
-                .padding(8)
-                .background(Color.blue)
-                .clipShape(Circle())
-                .padding(.vertical, 4)
-                .overlay(
-                    Text(String(self.calendar.component(.day, from: date)))
-                )
-        }
-    }
-}*/

@@ -16,7 +16,15 @@ struct DayList: View {
                         .padding(.vertical, 8)
                 }
             }
-        }.navigationTitle("Days")
+        }
+        .navigationTitle("Days")
+        .navigationBarItems(trailing: Button(action: { removeAllDays() }) {
+            Image(systemName: "trash")
+        }.padding())
+    }
+    
+    private func removeAllDays() {
+        modelData.removeAllDays()
     }
 }
 

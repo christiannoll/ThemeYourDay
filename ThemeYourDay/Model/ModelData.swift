@@ -26,6 +26,11 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func removeAllDays() {
+        days.removeAll()
+        writeJSON()
+    }
+    
     func saveFgColor(r: Double, g: Double, b: Double, a: Double) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         selectedDay.fgColor = color
@@ -49,7 +54,7 @@ final class ModelData: ObservableObject {
     func selectDay(_ date: Date) {
         var found = false
         for day in days {
-            if day.id.hasSame(.day, as: date) {
+            if day.id.hasSame(.day, as: date.noon) {
                 selectedDay = day
                 found = true
                 break
@@ -59,6 +64,7 @@ final class ModelData: ObservableObject {
             let newDay = Day(id: date, text: "Theme your day", fgColor: DayColor())
             days.append(newDay)
             selectedDay = newDay
+            sortDays()
         }
     }
     
@@ -95,7 +101,7 @@ final class ModelData: ObservableObject {
     func findDay(_ date: Date) -> Day? {
         print(date)
         for day in days {
-            if day.id.hasSame(.day, as: date) {
+            if day.id.hasSame(.day, as: date.noon) {
                 return day
             }
         }

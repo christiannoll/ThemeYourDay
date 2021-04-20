@@ -99,7 +99,7 @@ final class ModelData: ObservableObject {
     }
     
     func findDay(_ date: Date) -> Day? {
-        print(date)
+        //print(date)
         for day in days {
             if day.id.hasSame(.day, as: date.noon) {
                 return day
@@ -178,17 +178,17 @@ extension Date {
     }
     
     func fullDistance(from date: Date, resultIn component: Calendar.Component, calendar: Calendar = .current) -> Int? {
-        calendar.dateComponents([component], from: self, to: date).value(for: component)
+        calendar.dateComponents([component], from: self.noon, to: date).value(for: component)
     }
 
     func distance(from date: Date, only component: Calendar.Component, calendar: Calendar = .current) -> Int {
-        let days1 = calendar.component(component, from: self)
+        let days1 = calendar.component(component, from: self.noon)
         let days2 = calendar.component(component, from: date)
         return days1 - days2
     }
 
     func hasSame(_ component: Calendar.Component, as date: Date) -> Bool {
-        fullDistance(from: date, resultIn: component) == 0
+        fullDistance(from: date.noon, resultIn: component) == 0
     }
 }
 

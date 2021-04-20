@@ -3,6 +3,7 @@ import SwiftUI
 struct DayList: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var showDeleteAlert = false
     
     var body: some View {
         VStack {
@@ -18,9 +19,12 @@ struct DayList: View {
             }
         }
         .navigationTitle("Days")
-        .navigationBarItems(trailing: Button(action: { removeAllDays() }) {
+        .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
             Image(systemName: "trash")
         }.padding())
+        .alert(isPresented: $showDeleteAlert) {
+            Alert(title: Text("Remove All Themes?"), message: Text("This will remove all themes and can't be undone."), primaryButton: .default(Text("Remove"), action: { removeAllDays() }), secondaryButton: .default(Text("Cancel")))
+        }
     }
     
     private func removeAllDays() {
@@ -31,5 +35,6 @@ struct DayList: View {
 struct DayList_Previews: PreviewProvider {
     static var previews: some View {
         DayList()
+            .environmentObject(ModelData())
     }
 }

@@ -23,7 +23,7 @@ struct DayList: View {
             Image(systemName: "trash")
         }.padding())
         .alert(isPresented: $showDeleteAlert) {
-            Alert(title: Text("Remove All Themes?"), message: Text("This will remove all themes and can't be undone."), primaryButton: .default(Text("Remove"), action: { removeAllDays() }), secondaryButton: .default(Text("Cancel")))
+            Alert(title: Text("Remove All Themes?"), message: Text("This will remove all themes and can't be undone."), primaryButton: .destructive(Text("Remove"), action: { removeAllDays() }), secondaryButton: .cancel(Text("Cancel")))
         }
     }
     

@@ -152,9 +152,17 @@ struct CalendarView<DateView>: View where DateView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                ForEach(months, id: \.self) { month in
-                    MonthView(month: month, content: self.content)
+            ScrollViewReader { value in
+                VStack {
+                    ForEach(months, id: \.self) { month in
+                        MonthView(month: month, content: self.content)
+                            .id(calendar.component(.month, from: month))
+                    }
+                }
+                .onAppear {
+                    withAnimation {
+                        value.scrollTo(calendar.component(.month, from: Date()))
+                    }
                 }
             }
         }

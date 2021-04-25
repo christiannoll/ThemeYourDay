@@ -30,6 +30,16 @@ struct ToolBarView: View {
                 ToolbarItem(placement: .bottomBar) {
                     Spacer()
                 }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: { tools.fontPickerVisible.toggle()
+                        tools.fgColorVisible = false
+                    }) {
+                        Image(systemName: "textformat.size")
+                    }
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Spacer()
+                }
             }
         }
     }

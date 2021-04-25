@@ -3,6 +3,7 @@ import SwiftUI
 class Tools: ObservableObject {
     @Published var fgColorVisible = false
     @Published var bgColorVisible = false
+    @Published var fontPickerVisible = false
 }
 
 
@@ -14,6 +15,7 @@ struct ContentView: View {
     @State private var bgColor = Color(red: 153/255, green: 204/255, blue: 1)
     @State private var editMode = false
     @State private var selection: String? = nil
+    @State private var font = ""
     @StateObject private var tools = Tools()
     
     private var year: DateInterval {
@@ -53,7 +55,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         
                     TextEditor(text: $themetext)
-                        .font(.largeTitle)
+                        .font(font == "" ? .largeTitle : .custom(font, size: 25))
                         .background(bgColor)
                         .foregroundColor(fgColor)
                         .multilineTextAlignment(.center)
@@ -102,6 +104,9 @@ struct ContentView: View {
                         .opacity(tools.fgColorVisible ? 1 : 0)
                         .padding()
                     }
+                else if tools.fontPickerVisible {
+                    FontPickerView(font: $font, isShow: $tools.fontPickerVisible)
+                }
                 else {
                     ColorPicker("Select Background Color", selection: $bgColor)
                         .labelsHidden()

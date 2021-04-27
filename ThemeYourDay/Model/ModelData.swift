@@ -41,6 +41,10 @@ final class ModelData: ObservableObject {
         selectedDay.bgColor = color
     }
     
+    func saveFontname(_ font: String) {
+        selectedDay.fontname = font
+    }
+    
     func selectNextDay() {
         let tomorrow = selectedDay.id.dayAfter
         selectedDay = findDayAfter(tomorrow)

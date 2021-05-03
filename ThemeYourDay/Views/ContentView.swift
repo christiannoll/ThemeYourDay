@@ -67,6 +67,7 @@ struct ContentView: View {
                             fgColor = getTextColor()
                             bgColor = getBackgroundColor()
                             fontname = modelData.selectedDay.fontname
+                            //modelData.printJson()
                         }
                         .onTapGesture {
                             editMode = true

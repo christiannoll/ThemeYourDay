@@ -26,6 +26,17 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func printJson() {
+        let filename = "DayData.json"
+        let file = getDocumentsDirectory().appendingPathComponent(filename)
+        do {
+            let input = try String(contentsOf: file)
+            print(input)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func removeAllDays() {
         days.removeAll()
         writeJSON()

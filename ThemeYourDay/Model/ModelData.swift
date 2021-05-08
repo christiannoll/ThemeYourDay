@@ -175,7 +175,12 @@ struct MyData {
                 return day
             }
         }
-        return days[0]
+        let newDay = Day(id: today, text: "Today", fgColor: DayColor())
+        days.insert(newDay, at: 0)
+        days.sort {
+            $0.id < $1.id
+        }
+        return newDay
     }
 }
 

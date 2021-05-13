@@ -6,8 +6,8 @@ struct DayList: View {
     @State var showDeleteAlert = false
     
     var body: some View {
-        VStack {
-            List {
+        ScrollView {
+            LazyVStack {
                 ForEach(modelData.days.reversed()) { day in
                     DayListCell(day: day)
                         .onTapGesture {
@@ -15,6 +15,7 @@ struct DayList: View {
                             self.mode.wrappedValue.dismiss()
                         }
                         .padding(.vertical, 8)
+                        .padding(.horizontal)
                 }
             }
         }

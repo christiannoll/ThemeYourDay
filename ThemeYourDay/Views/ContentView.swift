@@ -48,7 +48,7 @@ struct ContentView: View {
                     tag: "Calendar", selection: $selection) { EmptyView() }
                 Spacer()
                 
-                VStack {
+                LazyVStack {
                     Spacer()
                     Text(getDate())
                         .background(Color.gray)
@@ -58,6 +58,7 @@ struct ContentView: View {
                         .font(modelData.selectedDay.fontname == "" ? .largeTitle : .custom(modelData.selectedDay.fontname, size: 25))
                         .background(bgColor)
                         .foregroundColor(fgColor)
+                        .frame(height: 300)
                         .multilineTextAlignment(.center)
                         .disableAutocorrection(true)
                         .lineSpacing(20)
@@ -92,7 +93,6 @@ struct ContentView: View {
                 }
                 .background(Color.gray)
                 .cornerRadius(25.0)
-                .frame(height: 400)
                 .padding()
             
                 Spacer()

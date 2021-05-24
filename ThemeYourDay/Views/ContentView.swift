@@ -18,8 +18,8 @@ struct ContentView: View {
     @State private var fontname = ""
     @StateObject private var tools = Tools()
     
-    private var year: DateInterval {
-        calendar.dateInterval(of: .year, for: Date())!
+    private var quarter: DateInterval {
+        calendar.dateInterval(of: .quarter, for: Date())!
     }
     
     init() {
@@ -33,7 +33,7 @@ struct ContentView: View {
                     destination: DayList(),
                     tag: "DayList", selection: $selection) { EmptyView() }
                 NavigationLink(
-                    destination: CalendarView(interval: year) { date in
+                    destination: CalendarView(interval: quarter) { date in
                         Text("30")
                             .hidden()
                             .padding(8)

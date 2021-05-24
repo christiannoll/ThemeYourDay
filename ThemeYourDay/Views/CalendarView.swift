@@ -153,19 +153,20 @@ struct CalendarView<DateView>: View where DateView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             ScrollViewReader { value in
-                VStack {
+                LazyVStack {
                     ForEach(months, id: \.self) { month in
                         MonthView(month: month, content: self.content)
                             .id(calendar.component(.month, from: month))
                     }
                 }
-                .onAppear {
+                /*.onAppear {
                     withAnimation {
-                        value.scrollTo(calendar.component(.month, from: Date()))
+                        value.scrollTo(calendar.component(.month, from: Date())+1)
                     }
-                }
+                }*/
             }
         }
+        .padding(.top, -10)
     }
 }
 

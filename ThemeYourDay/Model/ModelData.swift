@@ -39,6 +39,7 @@ final class ModelData: ObservableObject {
     
     func removeAllDays() {
         days.removeAll()
+        selectDay(Date())
         writeJSON()
     }
     
@@ -165,7 +166,28 @@ func createData() -> Data? {
 }
 
 struct MyData {
-    static var days: [Day] = load("DayData.json")
+    static var days: [Day] = loadDays()
+    
+    static func loadDays() -> [Day] {
+        var loadedDays: [Day] = load("DayData.json")
+        let today = Date().noon
+        var found = false
+        for day in loadedDays {
+            if day.id.hasSame(.day, as: today) {
+                //print(day.fgColor)
+                found = true
+                break
+            }
+        }
+        if (!found) {
+            let newDay = Day(id: today, text: "Today", fgColor: DayColor())
+            loadedDays.insert(newDay, at: 0)
+            loadedDays.sort {
+                $0.id < $1.id
+            }
+        }
+        return loadedDays
+    }
     
     static func currentDay() -> Day {
         let today = Date().noon
@@ -175,11 +197,7 @@ struct MyData {
                 return day
             }
         }
-        let newDay = Day(id: today, text: "Today", fgColor: DayColor())
-        days.insert(newDay, at: 0)
-        days.sort {
-            $0.id < $1.id
-        }
+        let newDay = Day(id: today, text: "Error", fgColor: DayColor())
         return newDay
     }
 }

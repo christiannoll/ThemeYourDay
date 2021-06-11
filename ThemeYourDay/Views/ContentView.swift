@@ -6,6 +6,16 @@ class Tools: ObservableObject {
     @Published var fontPickerVisible = false
 }
 
+extension Date {
+    func getNextMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: 1, to: self)
+    }
+
+    func getPreviousMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: -1, to: self)
+    }
+}
+
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
@@ -18,8 +28,11 @@ struct ContentView: View {
     @State private var fontname = ""
     @StateObject private var tools = Tools()
     
-    private var quarter: DateInterval {
-        calendar.dateInterval(of: .quarter, for: Date())!
+    
+    private var monthly: DateInterval {
+        let endDate = Date().getNextMonth()
+        let startDate = Date().getPreviousMonth()
+        return DateInterval(start: startDate!, end: endDate!)
     }
     
     init() {
@@ -33,7 +46,7 @@ struct ContentView: View {
                     destination: DayList(),
                     tag: "DayList", selection: $selection) { EmptyView() }
                 NavigationLink(
-                    destination: CalendarView(interval: quarter) { date in
+                    destination: CalendarView(interval: monthly) { date in
                         Text("30")
                             .hidden()
                             .padding(8)

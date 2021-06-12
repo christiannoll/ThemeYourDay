@@ -110,31 +110,31 @@ struct ContentView: View {
             
                 Spacer()
                 
-                if tools.fgColorVisible {
-                    ColorPicker("Select Text Color", selection: $fgColor)
-                        .labelsHidden()
+                ZStack {
+                    ColorStripView(color: $fgColor)
+                        .opacity(tools.fgColorVisible ? 1 : 0)
+                        .padding()
                         .onChange(of: fgColor) {newValue in
                             saveFgColor(newValue)
                         }
-                        .opacity(tools.fgColorVisible ? 1 : 0)
+                
+                    ColorStripView(color: $bgColor)
+                        .opacity(tools.bgColorVisible ? 1 : 0)
                         .padding()
-                    }
-                else if tools.fontPickerVisible {
-                    FontPickerView(font: $fontname, isShow: $tools.fontPickerVisible)
-                        .onDisappear(){
-                            modelData.saveFontname(fontname)
-                            modelData.writeJSON()
-                        }
-                }
-                else {
-                    ColorPicker("Select Background Color", selection: $bgColor)
-                        .labelsHidden()
                         .onChange(of: bgColor) {newValue in
                             saveBgColor(newValue)
                         }
-                        .opacity(tools.bgColorVisible ? 1 : 0)
-                        .padding()
+                }
+                
+                FontPickerView(font: $fontname, isShow: $tools.fontPickerVisible)
+                    .onChange(of: tools.fontPickerVisible) { newValue in
+                        if !newValue {
+                            modelData.saveFontname(fontname)
+                            modelData.writeJSON()
+                        }
                     }
+                    .frame(width: 0, height: 0)
+                
                 Spacer()
                 ToolBarView()//.border(Color.green)
                     .ignoresSafeArea()

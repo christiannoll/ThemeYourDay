@@ -20,6 +20,7 @@
 		D6DDD27C261A19C900FD1AA5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DDD27B261A19C900FD1AA5 /* Preview Assets.xcassets */; };
 		D6DDD287261A19C900FD1AA5 /* ThemeYourDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DDD286261A19C900FD1AA5 /* ThemeYourDayTests.swift */; };
 		D6DDD292261A19C900FD1AA5 /* ThemeYourDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DDD291261A19C900FD1AA5 /* ThemeYourDayUITests.swift */; };
+		D6DF86442674FAB600FA8D31 /* ColorStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DF86432674FAB600FA8D31 /* ColorStripView.swift */; };
 		D6E0BC812624AE170063E86A /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E0BC802624AE170063E86A /* ToolBarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		D6DDD28D261A19C900FD1AA5 /* ThemeYourDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThemeYourDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6DDD291261A19C900FD1AA5 /* ThemeYourDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeYourDayUITests.swift; sourceTree = "<group>"; };
 		D6DDD293261A19C900FD1AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6DF86432674FAB600FA8D31 /* ColorStripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStripView.swift; sourceTree = "<group>"; };
 		D6E0BC802624AE170063E86A /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				D62979512626256800163ACF /* DayListCell.swift */,
 				D63EE6F9262B05DB008699DF /* CalendarView.swift */,
 				D6B55A222635A49300BC5556 /* FontPickerView.swift */,
+				D6DF86432674FAB600FA8D31 /* ColorStripView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */,
 				D62979522626256800163ACF /* DayListCell.swift in Sources */,
 				D691CF30261B3728005FAAC5 /* Day.swift in Sources */,
+				D6DF86442674FAB600FA8D31 /* ColorStripView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

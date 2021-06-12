@@ -110,6 +110,17 @@ struct ContentView: View {
             
                 Spacer()
                 
+                FontPickerView(font: $fontname, isShow: $tools.fontPickerVisible)
+                    .onChange(of: tools.fontPickerVisible) { newValue in
+                        if !newValue {
+                            modelData.saveFontname(fontname)
+                            modelData.writeJSON()
+                        }
+                    }
+                    .frame(width: 0, height: 0)
+                
+                Spacer()
+                
                 ZStack {
                     ColorStripView(color: $fgColor)
                         .opacity(tools.fgColorVisible ? 1 : 0)
@@ -126,16 +137,6 @@ struct ContentView: View {
                         }
                 }
                 
-                FontPickerView(font: $fontname, isShow: $tools.fontPickerVisible)
-                    .onChange(of: tools.fontPickerVisible) { newValue in
-                        if !newValue {
-                            modelData.saveFontname(fontname)
-                            modelData.writeJSON()
-                        }
-                    }
-                    .frame(width: 0, height: 0)
-                
-                Spacer()
                 ToolBarView()//.border(Color.green)
                     .ignoresSafeArea()
                     .frame(height: 50)

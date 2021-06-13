@@ -123,14 +123,14 @@ struct ContentView: View {
                 Spacer()
                 
                 ZStack {
-                    ColorStripView(color: $fgColor)
+                    ColorStripView(color: $fgColor, colors: modelData.settings.fgColors)
                         .opacity(tools.fgColorVisible ? 1 : 0)
                         .padding()
                         .onChange(of: fgColor) {newValue in
                             colorStripMV.saveFgColor(newValue, modelData)
                         }
                 
-                    ColorStripView(color: $bgColor)
+                    ColorStripView(color: $bgColor, colors: modelData.settings.bgColors)
                         .opacity(tools.bgColorVisible ? 1 : 0)
                         .padding()
                         .onChange(of: bgColor) {newValue in

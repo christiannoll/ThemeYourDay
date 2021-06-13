@@ -20,13 +20,20 @@ struct DayColor: Codable, Hashable {
     }
 }
 
+extension Double {
+    func precised(_ value: Int = 1) -> Double {
+        let offset = pow(10, Double(value))
+        return (self * offset).rounded() / offset
+    }
+}
+
 extension DayColor: Equatable {
     static func == (lhs: DayColor, rhs: DayColor) -> Bool {
         return
-            lhs.r == rhs.r &&
-            lhs.g == rhs.g &&
-            lhs.b == rhs.b &&
-            lhs.a == rhs.a
+            lhs.r.precised(5) == rhs.r.precised(5) &&
+            lhs.g.precised(5) == rhs.g.precised(5) &&
+            lhs.b.precised(5) == rhs.b.precised(5) &&
+            lhs.a.precised(5) == rhs.a.precised(5)
     }
 }
 

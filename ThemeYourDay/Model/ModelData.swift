@@ -6,8 +6,14 @@ final class ModelData: ObservableObject {
         $0.id < $1.id
     }
     @Published var selectedDay = MyData.currentDay()
+    @Published var settings = MyData.settings
     
     func writeJSON() {
+        writeDayData()
+        writeSettingsData()
+    }
+    
+    private func writeDayData() {
         let filename = "DayData.json"
         let file = getDocumentsDirectory().appendingPathComponent(filename)
         
@@ -21,6 +27,17 @@ final class ModelData: ObservableObject {
         
         do {
             try JSONEncoder().encode(days).write(to: file, options: .atomic)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func writeSettingsData() {
+        let filename = "SettingsData.json"
+        let file = getDocumentsDirectory().appendingPathComponent(filename)
+        
+        do {
+            try JSONEncoder().encode(settings).write(to: file, options: .atomic)
         } catch {
             print(error.localizedDescription)
         }
@@ -46,11 +63,25 @@ final class ModelData: ObservableObject {
     func saveFgColor(r: Double, g: Double, b: Double, a: Double) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         selectedDay.fgColor = color
+
+        if !settings.fgColors.contains(color) {
+            settings.fgColors.insert(color, at: 0)
+            if settings.fgColors.count > 5 {
+                settings.fgColors = settings.fgColors.dropLast()
+            }
+        }
     }
     
     func saveBgColor(r: Double, g: Double, b: Double, a: Double) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         selectedDay.bgColor = color
+        
+        if !settings.bgColors.contains(color) {
+            settings.bgColors.insert(color, at: 0)
+            if settings.bgColors.count > 5 {
+                settings.bgColors = settings.bgColors.dropLast()
+            }
+        }
     }
     
     func saveFontname(_ font: String) {
@@ -135,7 +166,7 @@ func getDocumentsDirectory() -> URL {
 
 func load<T: Codable>(_ filename: String) -> T {
     let data: Data
-    
+    let isSettings = filename.contains("Settings")
     let file = getDocumentsDirectory().appendingPathComponent(filename)
     
     print(file.absoluteURL)
@@ -144,14 +175,14 @@ func load<T: Codable>(_ filename: String) -> T {
         data = try Data(contentsOf: file)
     } catch {
         //fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-        data = createData()!
+        data = isSettings ? createSettings()! : createData()!
     }
     
     do {
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     } catch {
-        let jsonResultData = createData()
+        let jsonResultData = isSettings ? createSettings() : createData()
         let decoder = JSONDecoder()
         return try! decoder.decode(T.self, from: jsonResultData!)
         //fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
@@ -165,8 +196,17 @@ func createData() -> Data? {
     return jsonResultData
 }
 
+func createSettings() -> Data? {
+    let settings = Settings(fgColors: [DayColor()], bgColors: [DayColor()])
+    let jsonEncoder = JSONEncoder()
+    let jsonResultData = try? jsonEncoder.encode(settings)
+    return jsonResultData
+}
+
+
 struct MyData {
     static var days: [Day] = loadDays()
+    static var settings: Settings = loadSettings()
     
     static func loadDays() -> [Day] {
         var loadedDays: [Day] = load("DayData.json")
@@ -187,6 +227,11 @@ struct MyData {
             }
         }
         return loadedDays
+    }
+    
+    static func loadSettings() -> Settings {
+        let loadedSettings: Settings = load("SettingsData.json")
+        return loadedSettings
     }
     
     static func currentDay() -> Day {

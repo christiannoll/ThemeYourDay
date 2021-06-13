@@ -27,6 +27,7 @@ struct ContentView: View {
     @State private var selection: String? = nil
     @State private var fontname = ""
     @StateObject private var tools = Tools()
+    private var colorStripMV =  ColorStripModelView()
     
     
     private var monthly: DateInterval {
@@ -126,14 +127,14 @@ struct ContentView: View {
                         .opacity(tools.fgColorVisible ? 1 : 0)
                         .padding()
                         .onChange(of: fgColor) {newValue in
-                            saveFgColor(newValue)
+                            colorStripMV.saveFgColor(newValue, modelData)
                         }
                 
                     ColorStripView(color: $bgColor)
                         .opacity(tools.bgColorVisible ? 1 : 0)
                         .padding()
                         .onChange(of: bgColor) {newValue in
-                            saveBgColor(newValue)
+                            colorStripMV.saveBgColor(newValue, modelData)
                         }
                 }
                 
@@ -187,32 +188,6 @@ struct ContentView: View {
     
     private func saveText(_ text: String) {
         modelData.selectedDay.text = text
-        modelData.writeJSON()
-    }
-    
-    private func saveFgColor(_ fgColor: Color) {
-        let uiColor = UIColor(fgColor)
-        
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        modelData.saveFgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha))
-        modelData.writeJSON()
-    }
-    
-    private func saveBgColor(_ bgColor: Color) {
-        let uiColor = UIColor(bgColor)
-        
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        modelData.saveBgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha))
         modelData.writeJSON()
     }
     

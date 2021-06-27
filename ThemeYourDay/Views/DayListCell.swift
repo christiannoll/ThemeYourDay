@@ -12,7 +12,7 @@ struct DayListCell: View {
                 .shadow(color: Color.black, radius: 3, x: 3, y: 3)
 
             VStack {
-                Text(day.text)
+                Text(day.text.trimmingCharacters(in: .whitespacesAndNewlines))
                     .foregroundColor(day.fgColor.color)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .lineLimit(1)

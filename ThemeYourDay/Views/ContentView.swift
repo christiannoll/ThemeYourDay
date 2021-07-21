@@ -69,7 +69,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         
                     TextEditor(text: $themetext)
-                        .font(modelData.selectedDay.fontname == "" ? .largeTitle : .custom(modelData.selectedDay.fontname, size: 25))
+                        .font(modelData.selectedDay.fontname == "" ? .largeTitle : .custom(modelData.selectedDay.fontname, size: 34))
                         .background(bgColor)
                         .foregroundColor(fgColor)
                         .frame(height: 300)

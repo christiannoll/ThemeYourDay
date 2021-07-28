@@ -19,7 +19,7 @@ struct DayList: View {
                 }
             }
         }
-        .navigationTitle("Days")
+        .navigationBarTitle("Days", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
             Image(systemName: "trash")
         }.padding())

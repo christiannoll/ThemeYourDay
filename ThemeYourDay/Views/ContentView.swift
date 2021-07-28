@@ -85,7 +85,7 @@ struct ContentView: View {
                             //modelData.printJson()
                         }
                         .onTapGesture {
-                            editMode = true
+                            editMode = !editMode
                         }
                         .onChange(of: themetext, perform: saveText)
                         .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
@@ -103,6 +103,7 @@ struct ContentView: View {
                                 themetext = modelData.selectedDay.text
                                 fgColor = getTextColor()
                                 bgColor = getBackgroundColor()
+                                editMode = false
                             }))
                 }
                 .background(Color.gray)

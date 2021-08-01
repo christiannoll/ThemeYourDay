@@ -23,7 +23,6 @@ struct ColorStripView: View {
 }
 
 struct ColorStripView_Previews: PreviewProvider {
-    var _color = Color.white
     static var previews: some View {
         ColorStripView(color: .constant(Color.white), colors: [DayColor]())
             .environmentObject(ModelData())

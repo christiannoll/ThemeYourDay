@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D62979522626256800163ACF /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62979512626256800163ACF /* DayListCell.swift */; };
 		D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EE6F9262B05DB008699DF /* CalendarView.swift */; };
+		D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D643E1C926B6EE8D0056908E /* DayView.swift */; };
 		D65CFD4C262354A700C75F56 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65CFD4B262354A700C75F56 /* DayList.swift */; };
 		D691CF30261B3728005FAAC5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
 		D691CF35261B37D8005FAAC5 /* DayData.json in Resources */ = {isa = PBXBuildFile; fileRef = D691CF34261B37D8005FAAC5 /* DayData.json */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		D62979512626256800163ACF /* DayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		D63EE6F9262B05DB008699DF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		D643E1C926B6EE8D0056908E /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		D65CFD4B262354A700C75F56 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		D691CF2F261B3728005FAAC5 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		D691CF34261B37D8005FAAC5 /* DayData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DayData.json; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				D6B55A222635A49300BC5556 /* FontPickerView.swift */,
 				D6DF86432674FAB600FA8D31 /* ColorStripView.swift */,
 				D6B3792226761B4C009D0790 /* ColorStripModelView.swift */,
+				D643E1C926B6EE8D0056908E /* DayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */,
 				D6E0BC812624AE170063E86A /* ToolBarView.swift in Sources */,
+				D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */,
 				D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */,
 				D65CFD4C262354A700C75F56 /* DayList.swift in Sources */,
 				D6DDD277261A19C800FD1AA5 /* ContentView.swift in Sources */,

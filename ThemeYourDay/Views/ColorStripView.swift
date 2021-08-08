@@ -2,12 +2,13 @@ import SwiftUI
 
 struct ColorStripView: View {
     @EnvironmentObject var modelData: ModelData
-    @Binding var color: Color
+    @Binding var dayColor: DayColor
     var colors: [DayColor]
+    var saveColorAction: (Color, ModelData) -> Void
     
     var body: some View {
         HStack {
-            ColorPicker("Select Text Color", selection: $color)
+            ColorPicker("Select Text Color", selection: $dayColor.color)
                 .labelsHidden()
                 .padding()
             ForEach(colors, id: \.self) { col in
@@ -15,16 +16,22 @@ struct ColorStripView: View {
                     .fill(col.color)
                     .frame(width: 50, height: 50)
                     .onTapGesture {
-                        color = col.color
+                        dayColor = col
                     }
             }
+        }
+        .onChange(of: dayColor) {newValue in
+            saveColorAction(newValue.color, modelData)
         }
     }
 }
 
 struct ColorStripView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorStripView(color: .constant(Color.white), colors: [DayColor]())
+        ColorStripView(dayColor: .constant(DayColor()), colors: [DayColor](), saveColorAction:saveColor(_:_:))
             .environmentObject(ModelData())
+    }
+    
+    static func saveColor(_ color: Color, _ modelData: ModelData) {
     }
 }

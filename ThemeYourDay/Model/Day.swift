@@ -16,7 +16,15 @@ struct DayColor: Codable, Hashable {
     var a: Double = 1.0
     
     var color: Color {
-        Color(red:r, green:g, blue:b, opacity:a)
+        get {
+            Color(red:r, green:g, blue:b, opacity:a)
+        }
+        set (newColor) {
+            r = Double(newColor.components.red)
+            g = Double(newColor.components.green)
+            b = Double(newColor.components.blue)
+            a = Double(newColor.components.opacity)
+        }
     }
 }
 
@@ -43,5 +51,28 @@ extension DayColor {
         let _green =  255.0 - (g * 255.0)
         let _blue  =  255.0 - (b * 255.0)
         return Color(red: _red / 255.0, green: _green / 255.0, blue: _blue / 255.0, opacity: self.a)
+    }
+}
+
+extension Color {
+    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
+
+        #if canImport(UIKit)
+        typealias NativeColor = UIColor
+        #elseif canImport(AppKit)
+        typealias NativeColor = NSColor
+        #endif
+
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var o: CGFloat = 0
+
+        guard NativeColor(self).getRed(&r, green: &g, blue: &b, alpha: &o) else {
+            // You can handle the failure here as you want
+            return (0, 0, 0, 0)
+        }
+
+        return (r, g, b, o)
     }
 }

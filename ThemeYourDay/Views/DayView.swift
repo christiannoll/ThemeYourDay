@@ -3,12 +3,8 @@ import SwiftUI
 struct DayView: View {
     
     @EnvironmentObject var modelData: ModelData
-    @Binding var themetext: String
     @State private var editMode = false
-    
-    @Binding var fgColor: Color
-    @Binding var bgColor: Color
-    @Binding var fontname: String
+    @Binding var day: Day
     
     var body: some View {
         LazyVStack {
@@ -17,26 +13,19 @@ struct DayView: View {
                 .background(Color.gray)
                 .foregroundColor(.white)
                 
-            TextEditor(text: $themetext)
-                .font(modelData.selectedDay.fontname == "" ? .largeTitle : .custom(modelData.selectedDay.fontname, size: 34))
-                .background(bgColor)
-                .foregroundColor(fgColor)
+            TextEditor(text: $day.text)
+                .font(day.fontname == "" ? .largeTitle : .custom(day.fontname, size: 34))
+                .background(day.bgColor.color)
+                .foregroundColor(day.fgColor.color)
                 .frame(height: 300)
                 .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
                 .lineSpacing(20)
                 .disabled(!editMode)
-                .onAppear {
-                    themetext = modelData.selectedDay.text
-                    fgColor = getTextColor()
-                    bgColor = getBackgroundColor()
-                    fontname = modelData.selectedDay.fontname
-                    //modelData.printJson()
-                }
                 .onTapGesture {
                     editMode = !editMode
                 }
-                .onChange(of: themetext, perform: saveText)
+                .onChange(of: day.text, perform: saveText)
                 .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
                     .onEnded({ value in
                         if value.translation.width < 0 {
@@ -49,9 +38,6 @@ struct DayView: View {
                             modelData.selectDayBefore()
                         }
                         modelData.writeJSON()
-                        themetext = modelData.selectedDay.text
-                        fgColor = getTextColor()
-                        bgColor = getBackgroundColor()
                         editMode = false
                     }))
         }
@@ -63,7 +49,7 @@ struct DayView: View {
     private func getDate() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        let dateString = formatter.string(from: modelData.selectedDay.id)
+        let dateString = formatter.string(from: day.id)
         return dateString
     }
     
@@ -71,19 +57,11 @@ struct DayView: View {
         modelData.selectedDay.text = text
         modelData.writeJSON()
     }
-    
-    private func getTextColor() -> Color {
-        return Color(red:modelData.selectedDay.fgColor.r, green:modelData.selectedDay.fgColor.g, blue:modelData.selectedDay.fgColor.b, opacity:modelData.selectedDay.fgColor.a)
-    }
-    
-    private func getBackgroundColor() -> Color {
-        return modelData.selectedDay.bgColor.color
-    }
 }
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(themetext: .constant("..."), fgColor: .constant(Color.white), bgColor: .constant(Color.blue), fontname: .constant(""))
+        DayView(day:.constant(Day(id: Date().noon, text: "Today", fgColor: DayColor())))
             .environmentObject(ModelData())
     }
 }

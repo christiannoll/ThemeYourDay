@@ -20,9 +20,6 @@ extension Date {
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar
-    @State private var themetext = "..."
-    @State private var fgColor = Color.white
-    @State private var bgColor = Color(red: 153/255, green: 204/255, blue: 1)
     @State private var fontname = ""
     @State private var selection: String? = nil
     @StateObject private var tools = Tools()
@@ -61,7 +58,7 @@ struct ContentView: View {
                     tag: "Calendar", selection: $selection) { EmptyView() }
                 Spacer()
                 
-                DayView(themetext: $themetext, fgColor: $fgColor, bgColor: $bgColor, fontname: $fontname)
+                DayView(day: $modelData.selectedDay)
             
                 Spacer()
                 
@@ -77,19 +74,13 @@ struct ContentView: View {
                 Spacer()
                 
                 ZStack {
-                    ColorStripView(color: $fgColor, colors: modelData.settings.fgColors)
+                    ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
                         .opacity(tools.fgColorVisible ? 1 : 0)
                         .padding()
-                        .onChange(of: fgColor) {newValue in
-                            colorStripMV.saveFgColor(newValue, modelData)
-                        }
                 
-                    ColorStripView(color: $bgColor, colors: modelData.settings.bgColors)
+                    ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)
                         .opacity(tools.bgColorVisible ? 1 : 0)
                         .padding()
-                        .onChange(of: bgColor) {newValue in
-                            colorStripMV.saveBgColor(newValue, modelData)
-                        }
                 }
                 
                 ToolBarView()//.border(Color.green)

@@ -6,6 +6,8 @@ final class ModelData: ObservableObject {
         $0.id < $1.id
     }
     @Published var selectedDay = MyData.currentDay()
+    @Published var dayAfter = MyData.dayAfter()
+    @Published var dayBefore = MyData.dayBefore()
     @Published var settings = MyData.settings
     
     func writeJSON() {
@@ -90,12 +92,18 @@ final class ModelData: ObservableObject {
     
     func selectNextDay() {
         let tomorrow = selectedDay.id.dayAfter
+        dayBefore = selectedDay
         selectedDay = findDayAfter(tomorrow)
+        dayAfter = findDayAfter(selectedDay.id.dayAfter)
+        writeJSON()
     }
     
     func selectDayBefore() {
         let yesterday = selectedDay.id.dayBefore
+        dayAfter = selectedDay
         selectedDay = findDayBefore(yesterday)
+        dayBefore = findDayBefore(selectedDay.id.dayBefore)
+        writeJSON()
     }
     
     func selectDay(_ date: Date) {
@@ -211,21 +219,38 @@ struct MyData {
     static func loadDays() -> [Day] {
         var loadedDays: [Day] = load("DayData.json")
         let today = Date().noon
-        var found = false
+        let yesterday = today.dayBefore.noon
+        let tomorrow = today.dayAfter.noon
+        var foundToday = false
+        var foundYesterday = false
+        var foundTomorrow = false
         for day in loadedDays {
             if day.id.hasSame(.day, as: today) {
-                //print(day.fgColor)
-                found = true
-                break
+                foundToday = true
+            }
+            else if day.id.hasSame(.day, as: yesterday) {
+                foundYesterday = true
+            }
+            else if day.id.hasSame(.day, as: tomorrow) {
+                foundTomorrow = true
+            }
+            if foundToday && foundTomorrow && foundYesterday {
+                break;
             }
         }
-        if (!found) {
+        if (!foundToday) {
             let newDay = Day(id: today, text: "Today", fgColor: DayColor())
             loadedDays.insert(newDay, at: 0)
-            loadedDays.sort {
-                $0.id < $1.id
-            }
         }
+        if (!foundYesterday) {
+            let newDay = Day(id: yesterday, text: "Yesterday", fgColor: DayColor())
+            loadedDays.insert(newDay, at: 0)
+        }
+        if (!foundTomorrow) {
+            let newDay = Day(id: tomorrow, text: "Tomorrow", fgColor: DayColor())
+            loadedDays.insert(newDay, at: 0)
+        }
+        loadedDays.sort { $0.id < $1.id }
         return loadedDays
     }
     
@@ -238,11 +263,32 @@ struct MyData {
         let today = Date().noon
         for day in days {
             if day.id.hasSame(.day, as: today) {
-                //print(day.fgColor)
                 return day
             }
         }
-        let newDay = Day(id: today, text: "Error", fgColor: DayColor())
+        let newDay = Day(id: today, text: "Could not find Today!", fgColor: DayColor())
+        return newDay
+    }
+    
+    static func dayBefore() -> Day {
+        let yesterday = Date().noon.dayBefore.noon
+        for day in days {
+            if day.id.hasSame(.day, as: yesterday) {
+                return day
+            }
+        }
+        let newDay = Day(id: yesterday, text: "Could not find Yesterday!", fgColor: DayColor())
+        return newDay
+    }
+    
+    static func dayAfter() -> Day {
+        let tomorrow = Date().noon.dayAfter.noon
+        for day in days {
+            if day.id.hasSame(.day, as: tomorrow) {
+                return day
+            }
+        }
+        let newDay = Day(id: tomorrow, text: "Could not find Tomorrow!", fgColor: DayColor())
         return newDay
     }
 }

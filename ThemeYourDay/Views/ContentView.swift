@@ -25,6 +25,9 @@ struct ContentView: View {
     @StateObject private var tools = Tools()
     private var colorStripMV =  ColorStripModelView()
     
+    @GestureState private var dragState = DragState.inactive
+    @State private var isMovedLeft: Bool = false
+    
     
     private var monthly: DateInterval {
         let endDate = Date().getNextMonth()
@@ -56,9 +59,38 @@ struct ContentView: View {
                             )
                     },
                     tag: "Calendar", selection: $selection) { EmptyView() }
+                
                 Spacer()
                 
-                DayView(day: $modelData.selectedDay)
+                GeometryReader { geometry in
+                    ZStack {
+                        DayView(day: $modelData.dayBefore, isSelectedDay: false)
+                            .offset(x: cellOffset(-1, geometry.size, true))
+                            .scaleEffect(0.9)
+                            .animation(.easeInOut(duration: 0.1))
+                        DayView(day: $modelData.selectedDay, isSelectedDay: true)
+                            .offset(x: cellOffset(0, geometry.size, false))
+                            .animation(.easeInOut(duration: 0.1))
+                        DayView(day: $modelData.dayAfter, isSelectedDay: false)
+                            .offset(x: cellOffset(1, geometry.size, true))
+                            .scaleEffect(0.9)
+                            .animation(.easeInOut(duration: 0.1))
+                    }
+                    .gesture(
+                        DragGesture()
+                            .updating($dragState) { drag, state, transaction in
+                                state = .dragging(translation: drag.translation)
+                            }
+                            .onChanged({ gesture in
+                                dragHappening(drag: gesture)
+                            })
+                            .onEnded({ gesture in
+                                onDragEnded(drag: gesture, geometry.size)
+                            })
+                    )
+                }
+                .aspectRatio(contentMode: .fit)
+                
             
                 Spacer()
                 
@@ -71,7 +103,7 @@ struct ContentView: View {
                     }
                     .frame(width: 0, height: 0)
                 
-                Spacer()
+                //Spacer()
                 
                 ZStack {
                     ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
@@ -123,11 +155,66 @@ struct ContentView: View {
         }
         return day.fgColor.color
     }
+    
+    private func cellOffset(_ cellPosition: Int, _ size: CGSize, _ isScalable: Bool) -> CGFloat {
+        
+        let cellDistance: CGFloat = (size.width / (isScalable ? 0.87 : 1))// + 20
+        
+        if cellPosition == 0 {
+            // selected day
+            return self.dragState.translation.width
+        } else if cellPosition < 0 {
+            // Offset on the left
+            let offset = self.dragState.translation.width - (cellDistance * CGFloat(cellPosition * -1))
+            //print(offset)
+            return offset
+        } else {
+            // Offset on the right
+            let offset = self.dragState.translation.width + (cellDistance * CGFloat(cellPosition))
+            //print(offset)
+            return offset
+        }
+    }
+    
+    private func onDragEnded(drag: DragGesture.Value, _ size: CGSize) {
+        
+        // The minimum dragging distance needed for changing between the cells
+        let dragThreshold: CGFloat = size.width * 0.6
+        
+        if drag.predictedEndTranslation.width > dragThreshold || drag.translation.width > dragThreshold {
+            modelData.selectDayBefore()
+        }
+        else if (drag.predictedEndTranslation.width) < (-1 * dragThreshold) || (drag.translation.width) < (-1 * dragThreshold) {
+            modelData.selectNextDay()
+        }
+    }
+    
+    private func dragHappening(drag: DragGesture.Value) {
+        if drag.startLocation.x > drag.location.x {
+            isMovedLeft = true
+        } else {
+            isMovedLeft = false
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(ModelData())
+    }
+}
+
+enum DragState {
+    
+    case inactive
+    case dragging(translation: CGSize)
+    
+    var translation: CGSize {
+        
+        if case let .dragging(translation) = self {
+            return translation
+        }
+        return .zero
     }
 }

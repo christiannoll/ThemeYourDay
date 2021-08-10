@@ -5,6 +5,7 @@ struct DayView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var editMode = false
     @Binding var day: Day
+    var isSelectedDay: Bool
     
     var body: some View {
         LazyVStack {
@@ -26,7 +27,7 @@ struct DayView: View {
                     editMode = !editMode
                 }
                 .onChange(of: day.text, perform: saveText)
-                .gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
+                /*.gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
                     .onEnded({ value in
                         if value.translation.width < 0 {
                             // left
@@ -39,7 +40,7 @@ struct DayView: View {
                         }
                         modelData.writeJSON()
                         editMode = false
-                    }))
+                    }))*/
         }
         .background(Color.gray)
         .cornerRadius(25.0)
@@ -54,14 +55,17 @@ struct DayView: View {
     }
     
     private func saveText(_ text: String) {
-        modelData.selectedDay.text = text
-        modelData.writeJSON()
+        if isSelectedDay {
+            modelData.selectedDay.text = text
+            //print(text)
+            modelData.writeJSON()
+        }
     }
 }
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(day:.constant(Day(id: Date().noon, text: "Today", fgColor: DayColor())))
+        DayView(day:.constant(Day(id: Date().noon, text: "Today", fgColor: DayColor())), isSelectedDay: false)
             .environmentObject(ModelData())
     }
 }

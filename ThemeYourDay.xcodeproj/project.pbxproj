@@ -11,6 +11,7 @@
 		D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EE6F9262B05DB008699DF /* CalendarView.swift */; };
 		D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D643E1C926B6EE8D0056908E /* DayView.swift */; };
 		D65CFD4C262354A700C75F56 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65CFD4B262354A700C75F56 /* DayList.swift */; };
+		D686FE5726C5904A0070D238 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686FE5626C5904A0070D238 /* CarouselView.swift */; };
 		D691CF30261B3728005FAAC5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
 		D691CF35261B37D8005FAAC5 /* DayData.json in Resources */ = {isa = PBXBuildFile; fileRef = D691CF34261B37D8005FAAC5 /* DayData.json */; };
 		D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF39261B399D005FAAC5 /* ModelData.swift */; };
@@ -50,6 +51,7 @@
 		D63EE6F9262B05DB008699DF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D643E1C926B6EE8D0056908E /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		D65CFD4B262354A700C75F56 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
+		D686FE5626C5904A0070D238 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		D691CF2F261B3728005FAAC5 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		D691CF34261B37D8005FAAC5 /* DayData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DayData.json; sourceTree = "<group>"; };
 		D691CF39261B399D005FAAC5 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				D6DF86432674FAB600FA8D31 /* ColorStripView.swift */,
 				D6B3792226761B4C009D0790 /* ColorStripModelView.swift */,
 				D643E1C926B6EE8D0056908E /* DayView.swift */,
+				D686FE5626C5904A0070D238 /* CarouselView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				D6E0BC812624AE170063E86A /* ToolBarView.swift in Sources */,
 				D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */,
 				D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */,
+				D686FE5726C5904A0070D238 /* CarouselView.swift in Sources */,
 				D65CFD4C262354A700C75F56 /* DayList.swift in Sources */,
 				D6DDD277261A19C800FD1AA5 /* ContentView.swift in Sources */,
 				D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */,

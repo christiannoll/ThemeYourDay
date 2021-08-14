@@ -12,15 +12,15 @@ struct CarouselView: View {
             ZStack {
                 DayView(day: $modelData.dayBefore, isSelectedDay: false)
                     .offset(x: cellOffset(-1, geometry.size, true))
-                    .scaleEffect(0.9)
-                    .animation(.easeInOut(duration: 0.1))
+                    //.scaleEffect(0.9)
+                    //.animation(.easeInOut(duration: 0.1))
                 DayView(day: $modelData.selectedDay, isSelectedDay: true)
                     .offset(x: cellOffset(0, geometry.size, false))
-                    .animation(.easeInOut(duration: 0.1))
+                    //.animation(.easeInOut(duration: 0.1))
                 DayView(day: $modelData.dayAfter, isSelectedDay: false)
                     .offset(x: cellOffset(1, geometry.size, true))
-                    .scaleEffect(0.9)
-                    .animation(.easeInOut(duration: 0.1))
+                    //.scaleEffect(0.9)
+                    //.animation(.easeInOut(duration: 0.1))
             }
             .gesture(
                 DragGesture()
@@ -77,6 +77,20 @@ struct CarouselView: View {
         } else {
             isMovedLeft = false
         }
+    }
+}
+
+enum DragState {
+    
+    case inactive
+    case dragging(translation: CGSize)
+    
+    var translation: CGSize {
+        
+        if case let .dragging(translation) = self {
+            return translation
+        }
+        return .zero
     }
 }
 

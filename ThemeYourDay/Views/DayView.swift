@@ -51,7 +51,9 @@ struct DayView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         let dateString = formatter.string(from: day.id)
-        return dateString
+        let weekday = formatter.weekdaySymbols[Calendar.current.component(.weekday, from: day.id) - 1]
+
+        return weekday + " " + dateString
     }
     
     private func saveText(_ text: String) {

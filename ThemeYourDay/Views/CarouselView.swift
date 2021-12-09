@@ -10,7 +10,7 @@ struct CarouselView: View {
         
         GeometryReader { geometry in
             ZStack {
-                DayView(day: $modelData.dayBefore, isSelectedDay: false)
+                /*DayView(day: $modelData.dayBefore, isSelectedDay: false)
                     .offset(x: cellOffset(-1, geometry.size, true))
                     //.scaleEffect(0.9)
                     //.animation(.easeInOut(duration: 0.1))
@@ -20,7 +20,13 @@ struct CarouselView: View {
                 DayView(day: $modelData.dayAfter, isSelectedDay: false)
                     .offset(x: cellOffset(1, geometry.size, true))
                     //.scaleEffect(0.9)
-                    //.animation(.easeInOut(duration: 0.1))
+                    //.animation(.easeInOut(duration: 0.1))*/
+                ForEach(0..<modelData.days.count) { (idx) in
+                    DayView(day: $modelData.days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
+                        .offset(x: cellOffset(cellLocation(idx), geometry.size, true))
+                        .scaleEffect(0.9)
+                        .animation(.easeInOut(duration: 0.1), value: 200)
+                }
             }
             .gesture(
                 DragGesture()
@@ -47,14 +53,28 @@ struct CarouselView: View {
             return self.dragState.translation.width
         } else if cellPosition < 0 {
             // Offset on the left
-            let offset = self.dragState.translation.width - (cellDistance * CGFloat(cellPosition * -1))
+            let offset = self.dragState.translation.width - (cellDistance * CGFloat(modelData.selectedIndex - cellPosition))
             //print(offset)
             return offset
         } else {
             // Offset on the right
-            let offset = self.dragState.translation.width + (cellDistance * CGFloat(cellPosition))
+            let offset = self.dragState.translation.width + (cellDistance * CGFloat(cellPosition - modelData.selectedIndex))
             //print(offset)
             return offset
+        }
+    }
+    
+    private func cellLocation(_ idx: Int) -> Int {
+        
+        if (modelData.selectedIndex == 0) && (idx + 1 == modelData.days.count) {
+            // The cell is on the left side
+            return -1
+        } else if (modelData.selectedIndex == modelData.days.count - 1) && (idx == 0) {
+            // The cell is on the right side
+            return modelData.days.count
+        } else {
+            // The main cell
+            return idx
         }
     }
     
@@ -65,9 +85,11 @@ struct CarouselView: View {
         
         if drag.predictedEndTranslation.width > dragThreshold || drag.translation.width > dragThreshold {
             modelData.selectDayBefore()
+            //modelData.selectedIndex -= 1
         }
         else if (drag.predictedEndTranslation.width) < (-1 * dragThreshold) || (drag.translation.width) < (-1 * dragThreshold) {
             modelData.selectNextDay()
+            //modelData.selectedIndex += 1
         }
     }
     

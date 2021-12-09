@@ -57,7 +57,7 @@ struct DayView: View {
     }
     
     private func saveText(_ text: String) {
-        if isSelectedDay {
+        if modelData.days[modelData.selectedIndex] == day {
             modelData.selectedDay.text = text
             //print(text)
             modelData.writeJSON()

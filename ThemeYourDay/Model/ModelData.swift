@@ -6,6 +6,7 @@ final class ModelData: ObservableObject {
         $0.id < $1.id
     }
     @Published var selectedDay = MyData.currentDay()
+    @Published var selectedIndex = MyData.currentIndex()
     @Published var dayAfter = MyData.dayAfter()
     @Published var dayBefore = MyData.dayBefore()
     @Published var settings = MyData.settings
@@ -95,6 +96,7 @@ final class ModelData: ObservableObject {
         dayBefore = selectedDay
         selectedDay = findDayAfter(tomorrow)
         dayAfter = findDayAfter(selectedDay.id.dayAfter)
+        selectedIndex += 1
         writeJSON()
     }
     
@@ -103,6 +105,7 @@ final class ModelData: ObservableObject {
         dayAfter = selectedDay
         selectedDay = findDayBefore(yesterday)
         dayBefore = findDayBefore(selectedDay.id.dayBefore)
+        selectedIndex -= 1
         writeJSON()
     }
     
@@ -268,6 +271,18 @@ struct MyData {
         }
         let newDay = Day(id: today, text: "Could not find Today!", fgColor: DayColor())
         return newDay
+    }
+    
+    static func currentIndex() -> Int {
+        let today = Date().noon
+        var index = -1
+        for day in days {
+            index += 1
+            if day.id.hasSame(.day, as: today) {
+                break
+            }
+        }
+        return index
     }
     
     static func dayBefore() -> Day {

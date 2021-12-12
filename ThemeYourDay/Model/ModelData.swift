@@ -92,19 +92,19 @@ final class ModelData: ObservableObject {
     }
     
     func selectNextDay() {
-        let tomorrow = selectedDay.id.dayAfter
+        /*let tomorrow = selectedDay.id.dayAfter
         dayBefore = selectedDay
         selectedDay = findDayAfter(tomorrow)
-        dayAfter = findDayAfter(selectedDay.id.dayAfter)
+        dayAfter = findDayAfter(selectedDay.id.dayAfter)*/
         selectedIndex += 1
         writeJSON()
     }
     
     func selectDayBefore() {
-        let yesterday = selectedDay.id.dayBefore
+        /*let yesterday = selectedDay.id.dayBefore
         dayAfter = selectedDay
         selectedDay = findDayBefore(yesterday)
-        dayBefore = findDayBefore(selectedDay.id.dayBefore)
+        dayBefore = findDayBefore(selectedDay.id.dayBefore)*/
         selectedIndex -= 1
         writeJSON()
     }

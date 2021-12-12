@@ -23,9 +23,9 @@ struct CarouselView: View {
                     //.animation(.easeInOut(duration: 0.1))*/
                 ForEach(0..<modelData.days.count) { (idx) in
                     DayView(day: $modelData.days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
-                        .offset(x: cellOffset(cellLocation(idx), geometry.size, true))
-                        .scaleEffect(0.9)
-                        .animation(.easeInOut(duration: 0.1), value: 200)
+                        .offset(x: cellOffset(cellLocation(idx), geometry.size, idx == modelData.selectedIndex))
+                        .scaleEffect(idx == modelData.selectedIndex ? 1.0 : 0.9)
+                        .animation(.easeInOut(duration: 0.2), value: idx == modelData.selectedIndex ? 1.0 : 0.9)
                 }
             }
             .gesture(
@@ -46,12 +46,12 @@ struct CarouselView: View {
     
     private func cellOffset(_ cellPosition: Int, _ size: CGSize, _ isScalable: Bool) -> CGFloat {
         
-        let cellDistance: CGFloat = (size.width / (isScalable ? 0.87 : 1))// + 20
+        let cellDistance: CGFloat = (size.width / (isScalable ? 0.87 : 1)) + 20
         
-        if cellPosition == 0 {
+        if cellPosition == modelData.selectedIndex {
             // selected day
             return self.dragState.translation.width
-        } else if cellPosition < 0 {
+        } else if cellPosition < modelData.selectedIndex {
             // Offset on the left
             let offset = self.dragState.translation.width - (cellDistance * CGFloat(modelData.selectedIndex - cellPosition))
             //print(offset)

@@ -22,7 +22,7 @@ struct DayView: View {
                 .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
                 .lineSpacing(20)
-                .disabled(!editMode)
+                //.disabled(!editMode)
                 .onTapGesture {
                     editMode = !editMode
                 }

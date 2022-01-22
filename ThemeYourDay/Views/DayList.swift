@@ -11,7 +11,7 @@ struct DayList: View {
                 ForEach(modelData.days.reversed()) { day in
                     DayListCell(day: day)
                         .onTapGesture {
-                            modelData.selectedDay = day
+                            modelData.selectDay(day)
                             self.mode.wrappedValue.dismiss()
                         }
                         .padding(.vertical, 8)

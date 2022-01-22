@@ -97,6 +97,7 @@ final class ModelData: ObservableObject {
         selectedDay = findDayAfter(tomorrow)
         dayAfter = findDayAfter(selectedDay.id.dayAfter)*/
         selectedIndex += 1
+        selectedDay = days[selectedIndex]
         writeJSON()
     }
     
@@ -106,24 +107,43 @@ final class ModelData: ObservableObject {
         selectedDay = findDayBefore(yesterday)
         dayBefore = findDayBefore(selectedDay.id.dayBefore)*/
         selectedIndex -= 1
+        selectedDay = days[selectedIndex]
         writeJSON()
     }
     
     func selectDay(_ date: Date) {
-        var found = false
+        var index = -1
         for day in days {
+            index += 1
             if day.id.hasSame(.day, as: date.noon) {
+                selectedIndex = index
                 selectedDay = day
-                found = true
                 break
             }
         }
-        if !found {
+        /*if !found {
             let newDay = Day(id: date, text: "Theme your day", fgColor: DayColor())
             days.append(newDay)
             selectedDay = newDay
             sortDays()
+        }*/
+    }
+    
+    func selectDay(_ day: Day) {
+        let index = getSelectedIndex(day)
+        selectedIndex = index
+        selectedDay = day
+    }
+    
+    private func getSelectedIndex(_ searchedDay: Day) -> Int {
+        var index = -1
+        for day in days {
+            index += 1
+            if day.id.hasSame(.day, as: searchedDay.id) {
+                break
+            }
         }
+        return index
     }
     
     private func findDayAfter(_ date: Date) -> Day {

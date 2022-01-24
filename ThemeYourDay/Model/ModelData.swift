@@ -59,7 +59,7 @@ final class ModelData: ObservableObject {
     
     func removeAllDays() {
         days.removeAll()
-        selectDay(Date())
+        //selectDay(Date())
         writeJSON()
     }
     
@@ -92,20 +92,12 @@ final class ModelData: ObservableObject {
     }
     
     func selectNextDay() {
-        /*let tomorrow = selectedDay.id.dayAfter
-        dayBefore = selectedDay
-        selectedDay = findDayAfter(tomorrow)
-        dayAfter = findDayAfter(selectedDay.id.dayAfter)*/
         selectedIndex += 1
         selectedDay = days[selectedIndex]
         writeJSON()
     }
     
     func selectDayBefore() {
-        /*let yesterday = selectedDay.id.dayBefore
-        dayAfter = selectedDay
-        selectedDay = findDayBefore(yesterday)
-        dayBefore = findDayBefore(selectedDay.id.dayBefore)*/
         selectedIndex -= 1
         selectedDay = days[selectedIndex]
         writeJSON()
@@ -121,12 +113,6 @@ final class ModelData: ObservableObject {
                 break
             }
         }
-        /*if !found {
-            let newDay = Day(id: date, text: "Theme your day", fgColor: DayColor())
-            days.append(newDay)
-            selectedDay = newDay
-            sortDays()
-        }*/
     }
     
     func selectDay(_ day: Day) {
@@ -241,38 +227,27 @@ struct MyData {
     
     static func loadDays() -> [Day] {
         var loadedDays: [Day] = load("DayData.json")
-        let today = Date().noon
-        let yesterday = today.dayBefore.noon
-        let tomorrow = today.dayAfter.noon
-        var foundToday = false
-        var foundYesterday = false
-        var foundTomorrow = false
-        for day in loadedDays {
-            if day.id.hasSame(.day, as: today) {
-                foundToday = true
+    
+        let endDate = Date().getNextMonth()?.noon
+        var day = Date().getPreviousMonth()?.noon
+        
+        while day != endDate {
+            var loaded = false
+            for loadedDay in loadedDays {
+                if loadedDay.id.hasSame(.day, as: day!) {
+                    loaded = true
+                    break
+                }
             }
-            else if day.id.hasSame(.day, as: yesterday) {
-                foundYesterday = true
+            
+            if !loaded {
+                let newDay = Day(id: day!, text: "New Day", fgColor: DayColor())
+                loadedDays.insert(newDay, at: 0)
             }
-            else if day.id.hasSame(.day, as: tomorrow) {
-                foundTomorrow = true
-            }
-            if foundToday && foundTomorrow && foundYesterday {
-                break;
-            }
+            
+            day = day!.dayAfter.noon
         }
-        if (!foundToday) {
-            let newDay = Day(id: today, text: "Today", fgColor: DayColor())
-            loadedDays.insert(newDay, at: 0)
-        }
-        if (!foundYesterday) {
-            let newDay = Day(id: yesterday, text: "Yesterday", fgColor: DayColor())
-            loadedDays.insert(newDay, at: 0)
-        }
-        if (!foundTomorrow) {
-            let newDay = Day(id: tomorrow, text: "Tomorrow", fgColor: DayColor())
-            loadedDays.insert(newDay, at: 0)
-        }
+        
         loadedDays.sort { $0.id < $1.id }
         return loadedDays
     }

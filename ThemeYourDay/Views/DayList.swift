@@ -7,15 +7,19 @@ struct DayList: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack {
-                ForEach(modelData.days.reversed()) { day in
-                    DayListCell(day: day)
-                        .onTapGesture {
-                            modelData.selectDay(day)
-                            self.mode.wrappedValue.dismiss()
-                        }
-                        .padding(.vertical, 8)
-                        .padding(.horizontal)
+            ScrollViewReader { proxy in
+                LazyVStack {
+                    ForEach(modelData.days, id: \.self) { day in
+                        DayListCell(day: day)
+                            .onTapGesture {
+                                modelData.selectDay(day)
+                                self.mode.wrappedValue.dismiss()
+                            }
+                            .padding(.vertical, 8)
+                            .padding(.horizontal)
+                    }
+                }.onAppear {
+                    proxy.scrollTo(modelData.selectedDay, anchor: .top)
                 }
             }
         }

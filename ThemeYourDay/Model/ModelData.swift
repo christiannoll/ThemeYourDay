@@ -164,14 +164,8 @@ final class ModelData: ObservableObject {
     
     func findDay(_ date: Date) -> Day? {
         //print(date)
-        /*for day in days {
-            if day.id.hasSame(.day, as: date.noon) {
-                return day
-            }
-        }
-        return nil*/
-        if let day = days.first(where: { $0.id.hasSame(.day, as: date.noon) }) {
-            return day
+        if let index = MyData.indexCache[date.noon] {
+            return days[index]
         }
         return nil
     }
@@ -228,6 +222,7 @@ func createSettings() -> Data? {
 struct MyData {
     static var days: [Day] = loadDays()
     static var settings: Settings = loadSettings()
+    static var indexCache : [Date:Int] = [:]
     
     static func loadDays() -> [Day] {
         var loadedDays: [Day] = load("DayData.json")
@@ -253,6 +248,11 @@ struct MyData {
         }
         
         loadedDays.sort { $0.id < $1.id }
+        
+        for (index, day) in loadedDays.enumerated() {
+            indexCache[day.id] = index
+        }
+        
         return loadedDays
     }
     

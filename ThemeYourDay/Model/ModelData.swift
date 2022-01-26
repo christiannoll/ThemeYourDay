@@ -164,10 +164,14 @@ final class ModelData: ObservableObject {
     
     func findDay(_ date: Date) -> Day? {
         //print(date)
-        for day in days {
+        /*for day in days {
             if day.id.hasSame(.day, as: date.noon) {
                 return day
             }
+        }
+        return nil*/
+        if let day = days.first(where: { $0.id.hasSame(.day, as: date.noon) }) {
+            return day
         }
         return nil
     }

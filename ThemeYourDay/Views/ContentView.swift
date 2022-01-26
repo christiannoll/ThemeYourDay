@@ -43,15 +43,16 @@ struct ContentView: View {
                     tag: "DayList", selection: $selection) { EmptyView() }
                 NavigationLink(
                     destination: CalendarView(interval: monthly) { date in
+                        let day = modelData.findDay(date)
                         Text("30")
                             .hidden()
                             .padding(8)
-                            .background(getCalendarBackgroundColor(date))
+                            .background(getCalendarBackgroundColor(day))
                             .clipShape(Circle())
                             .padding(.vertical, 4)
                             .overlay(
                                 Text(String(self.calendar.component(.day, from: date)))
-                                    .foregroundColor(getCalendarForegroundColor(date))
+                                    .foregroundColor(getCalendarForegroundColor(day))
                             )
                     },
                     tag: "Calendar", selection: $selection) { EmptyView() }
@@ -110,18 +111,12 @@ struct ContentView: View {
         
     }
     
-    private func getCalendarBackgroundColor(_ date: Date) -> Color {
-        guard let day = modelData.findDay(date) else {
-            return Color.blue
-        }
-        return day.bgColor.color
+    private func getCalendarBackgroundColor(_ day: Day?) -> Color {
+        day != nil ? day!.bgColor.color : Color.blue
     }
     
-    private func getCalendarForegroundColor(_ date: Date) -> Color {
-        guard let day = modelData.findDay(date) else {
-            return Color.black
-        }
-        return day.fgColor.color
+    private func getCalendarForegroundColor(_ day: Day?) -> Color {
+        day != nil ? day!.fgColor.color : Color.white
     }
 }
 

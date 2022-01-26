@@ -166,7 +166,6 @@ struct CalendarView<DateView>: View where DateView: View {
                 }*/
             }
         }
-        .padding(.top, -10)
     }
 }
 

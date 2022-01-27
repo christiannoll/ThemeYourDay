@@ -7,8 +7,6 @@ final class ModelData: ObservableObject {
     }
     @Published var selectedDay = MyData.currentDay()
     @Published var selectedIndex = MyData.currentIndex()
-    @Published var dayAfter = MyData.dayAfter()
-    @Published var dayBefore = MyData.dayBefore()
     @Published var settings = MyData.settings
     
     func writeJSON() {
@@ -59,7 +57,10 @@ final class ModelData: ObservableObject {
     
     func removeAllDays() {
         days.removeAll()
-        //selectDay(Date())
+        
+        let newDay = Day(id: Date().noon, text: "New Day", fgColor: DayColor())
+        days.insert(newDay, at: 0)
+        
         writeJSON()
     }
     
@@ -130,36 +131,6 @@ final class ModelData: ObservableObject {
             }
         }
         return index
-    }
-    
-    private func findDayAfter(_ date: Date) -> Day {
-        for day in days {
-            if day.id.hasSame(.day, as: date) {
-                return day
-            }
-        }
-        let newDay = Day(id: date, text: "Tomorrow", fgColor: DayColor())
-        days.append(newDay)
-        sortDays()
-        return newDay
-    }
-    
-    private func findDayBefore(_ date: Date) -> Day {
-        for day in days {
-            if day.id.hasSame(.day, as: date) {
-                return day
-            }
-        }
-        let newDay = Day(id: date, text: "Yesterday", fgColor: DayColor())
-        days.insert(newDay, at: 0)
-        sortDays()
-        return newDay
-    }
-    
-    private func sortDays() {
-        days.sort {
-            $0.id < $1.id
-        }
     }
     
     func findDay(_ date: Date) -> Day? {
@@ -282,28 +253,6 @@ struct MyData {
             }
         }
         return index
-    }
-    
-    static func dayBefore() -> Day {
-        let yesterday = Date().noon.dayBefore.noon
-        for day in days {
-            if day.id.hasSame(.day, as: yesterday) {
-                return day
-            }
-        }
-        let newDay = Day(id: yesterday, text: "Could not find Yesterday!", fgColor: DayColor())
-        return newDay
-    }
-    
-    static func dayAfter() -> Day {
-        let tomorrow = Date().noon.dayAfter.noon
-        for day in days {
-            if day.id.hasSame(.day, as: tomorrow) {
-                return day
-            }
-        }
-        let newDay = Day(id: tomorrow, text: "Could not find Tomorrow!", fgColor: DayColor())
-        return newDay
     }
 }
 

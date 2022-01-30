@@ -20,7 +20,7 @@ extension Date {
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar
-    @State private var fontname = ""
+    //@State private var fontname = ""
     @State private var selection: String? = nil
     @StateObject private var tools = Tools()
     private var colorStripMV =  ColorStripModelView()
@@ -63,17 +63,6 @@ struct ContentView: View {
             
                 Spacer()
                 
-                FontPickerView(font: $fontname, isShow: $tools.fontPickerVisible)
-                    .onChange(of: tools.fontPickerVisible) { newValue in
-                        if !newValue {
-                            modelData.saveFontname(fontname)
-                            modelData.writeJSON()
-                        }
-                    }
-                    .frame(width: 0, height: 0)
-                
-                //Spacer()
-                
                 ZStack {
                     ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
                         .opacity(tools.fgColorVisible ? 1 : 0)
@@ -89,6 +78,13 @@ struct ContentView: View {
                     .frame(height: 50)
                     .environmentObject(tools)
                     
+            }
+            .sheet(isPresented: $tools.fontPickerVisible) {
+                FontPickerView { fontDescriptor in
+                    let customFont = UIFont(descriptor: fontDescriptor, size: 18.0)
+                    modelData.saveFontname(customFont.fontName)
+                    modelData.writeJSON()
+                }
             }
             /*.contentShape(Rectangle())
             .onTapGesture {

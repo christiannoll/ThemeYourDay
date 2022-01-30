@@ -1,57 +1,54 @@
 import UIKit
 import SwiftUI
 
-struct FontPickerView: UIViewControllerRepresentable {
+public struct FontPickerView: UIViewControllerRepresentable {
 
-    @Binding var font: String
-    @Binding var isShow: Bool
+    @Environment(\.presentationMode) var presentationMode
+    private let onFontPick: (UIFontDescriptor) -> Void
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<FontPickerView>) -> UIViewController {
-        return UIViewController()
+    public init(onFontPick: @escaping (UIFontDescriptor) -> Void) {
+        self.onFontPick = onFontPick
     }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self, font: font)
+
+    public func makeUIViewController(context: UIViewControllerRepresentableContext<FontPickerView>) -> UIFontPickerViewController {
+        let configuration = UIFontPickerViewController.Configuration()
+        configuration.includeFaces = true
+        configuration.displayUsingSystemFont = true
+
+        let vc = UIFontPickerViewController(configuration: configuration)
+        vc.delegate = context.coordinator
+        vc.title = "Select Font"
+        return vc
     }
-    
-    func updateUIViewController(_ uiViewController: UIViewController,
-                                           context: UIViewControllerRepresentableContext<FontPickerView>) {
-        if isShow {
-            let picker = UIFontPickerViewController()
-            picker.delegate = context.coordinator
-            picker.title = "Select Font"
-            
-            uiViewController.present(picker, animated: true)
+
+    public func makeCoordinator() -> FontPickerView.Coordinator {
+        return Coordinator(self, onFontPick: self.onFontPick)
+    }
+
+    public class Coordinator: NSObject, UIFontPickerViewControllerDelegate {
+
+        var parent: FontPickerView
+        private let onFontPick: (UIFontDescriptor) -> Void
+
+
+        init(_ parent: FontPickerView, onFontPick: @escaping (UIFontDescriptor) -> Void) {
+            self.parent = parent
+            self.onFontPick = onFontPick
+        }
+
+        public func fontPickerViewControllerDidPickFont(_ viewController: UIFontPickerViewController) {
+            guard let descriptor = viewController.selectedFontDescriptor else { return }
+            onFontPick(descriptor)
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+
+        public func fontPickerViewControllerDidCancel(_ viewController: UIFontPickerViewController) {
+            parent.presentationMode.wrappedValue.dismiss()
         }
     }
-    
-    func toogleVisibility() {
-        isShow.toggle()
+
+    public func updateUIViewController(_ uiViewController: UIFontPickerViewController,
+                                       context: UIViewControllerRepresentableContext<FontPickerView>) {
+
     }
 }
-    
-class Coordinator: NSObject, UIFontPickerViewControllerDelegate {
-
-    var fontView: FontPickerView
-    var font: String
-
-
-    init(_ control: FontPickerView, font: String) {
-        self.fontView = control
-        self.font = font
-    }
-
-    func fontPickerViewControllerDidPickFont(_ viewController: UIFontPickerViewController) {
-        guard let descriptor = viewController.selectedFontDescriptor else {
-            return
-        }
-        let selectedFont = UIFont(descriptor: descriptor, size: 30)
-        fontView.font = selectedFont.fontName
-        fontView.toogleVisibility()
-    }
-    
-    func fontPickerViewControllerDidCancel(_ viewController: UIFontPickerViewController) {
-        fontView.toogleVisibility()
-    }
-}
-

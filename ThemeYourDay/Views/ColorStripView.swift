@@ -14,7 +14,12 @@ struct ColorStripView: View {
             ForEach(colors, id: \.self) { col in
                 RoundedRectangle(cornerRadius: 10)
                     .fill(col.color)
-                    .frame(width: 50, height: 50)
+                    .frame(width: 46, height: 46)
+                    .padding(3)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(getColor(col), lineWidth: 2)
+                    )
                     .onTapGesture {
                         dayColor = col
                     }
@@ -23,6 +28,13 @@ struct ColorStripView: View {
         .onChange(of: dayColor) {newValue in
             saveColorAction(newValue.color, modelData)
         }
+    }
+    
+    private func getColor( _ color: DayColor) -> Color {
+        if color.color == .white {
+            return .gray
+        }
+        return color.color
     }
 }
 

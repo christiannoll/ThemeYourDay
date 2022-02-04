@@ -24,8 +24,8 @@ struct CarouselView: View {
                 ForEach(0..<modelData.days.count) { (idx) in
                     DayView(day: $modelData.days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
                         .offset(x: cellOffset(cellLocation(idx), geometry.size, idx == modelData.selectedIndex))
-                        .scaleEffect(idx == modelData.selectedIndex ? 1.0 : 0.9)
-                        .animation(.easeInOut(duration: 0.2), value: idx == modelData.selectedIndex ? 1.0 : 0.9)
+                        //.scaleEffect(idx == modelData.selectedIndex ? 1.0 : 0.9)
+                        .animation(.easeInOut(duration: 0.4), value: dragState.translation)
                 }
             }
             .gesture(

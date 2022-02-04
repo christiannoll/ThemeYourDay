@@ -60,6 +60,7 @@ struct ContentView: View {
                 Spacer()
                 
                 CarouselView()
+                    .frame(height: 376)
             
                 Spacer()
                 

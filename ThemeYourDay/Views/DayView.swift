@@ -3,16 +3,17 @@ import SwiftUI
 struct DayView: View {
     
     @EnvironmentObject var modelData: ModelData
-    @State private var editMode = false
+    @FocusState private var focusMode: Bool
     @Binding var day: Day
     var isSelectedDay: Bool
     
     var body: some View {
-        LazyVStack {
+        VStack {
             Spacer()
             Text(getDate())
                 .background(Color.gray)
                 .foregroundColor(.white)
+            Spacer()
                 
             TextEditor(text: $day.text)
                 .font(day.fontname == "" ? .largeTitle : .custom(day.fontname, size: 34))
@@ -22,10 +23,10 @@ struct DayView: View {
                 .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
                 .lineSpacing(20)
-                //.disabled(!editMode)
                 .onTapGesture {
-                    editMode = !editMode
+                    focusMode = !focusMode
                 }
+                .focused($focusMode)
                 .onChange(of: day.text, perform: saveText)
                 /*.gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
                     .onEnded({ value in
@@ -42,7 +43,7 @@ struct DayView: View {
                         editMode = false
                     }))*/
         }
-        .background(Color.gray)
+        .background(.gray)
         .cornerRadius(25.0)
         .padding()
     }

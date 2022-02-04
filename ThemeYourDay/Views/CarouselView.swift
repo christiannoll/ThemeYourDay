@@ -7,7 +7,6 @@ struct CarouselView: View {
     @State private var isMovedLeft: Bool = false
     
     var body: some View {
-        
         GeometryReader { geometry in
             ZStack {
                 /*DayView(day: $modelData.dayBefore, isSelectedDay: false)
@@ -25,7 +24,7 @@ struct CarouselView: View {
                     DayView(day: $modelData.days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
                         .offset(x: cellOffset(cellLocation(idx), geometry.size, idx == modelData.selectedIndex))
                         //.scaleEffect(idx == modelData.selectedIndex ? 1.0 : 0.9)
-                        .animation(.easeInOut(duration: 0.4), value: dragState.translation)
+                        .animation(.easeInOut(duration: 1.0), value: dragState.translation)
                 }
             }
             .gesture(
@@ -41,7 +40,7 @@ struct CarouselView: View {
                     })
             )
         }
-        .aspectRatio(contentMode: .fit)
+        //.aspectRatio(contentMode: .fit)
     }
     
     private func cellOffset(_ cellPosition: Int, _ size: CGSize, _ isScalable: Bool) -> CGFloat {

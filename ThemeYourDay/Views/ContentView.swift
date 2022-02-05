@@ -81,10 +81,15 @@ struct ContentView: View {
                     
             }
             .sheet(isPresented: $tools.fontPickerVisible) {
-                FontPickerView { fontDescriptor in
-                    let customFont = UIFont(descriptor: fontDescriptor, size: 18.0)
-                    modelData.saveFontname(customFont.fontName)
-                    modelData.writeJSON()
+                VStack {
+                    Button(action: { tools.fontPickerVisible.toggle() }) {
+                        Image(systemName: "chevron.down")
+                    }.padding()
+                    FontPickerView { fontDescriptor in
+                        let customFont = UIFont(descriptor: fontDescriptor, size: 18.0)
+                        modelData.saveFontname(customFont.fontName)
+                        modelData.writeJSON()
+                    }
                 }
             }
             /*.contentShape(Rectangle())

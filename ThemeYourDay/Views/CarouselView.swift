@@ -4,28 +4,19 @@ struct CarouselView: View {
     
     @EnvironmentObject var modelData: ModelData
     @GestureState private var dragState = DragState.inactive
-    @State private var isMovedLeft: Bool = false
+    //@State private var isMovedLeft: Bool = false
+    @State private var indices:[Int] = []
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                /*DayView(day: $modelData.dayBefore, isSelectedDay: false)
-                    .offset(x: cellOffset(-1, geometry.size, true))
-                    //.scaleEffect(0.9)
-                    //.animation(.easeInOut(duration: 0.1))
-                DayView(day: $modelData.selectedDay, isSelectedDay: true)
-                    .offset(x: cellOffset(0, geometry.size, false))
-                    //.animation(.easeInOut(duration: 0.1))
-                DayView(day: $modelData.dayAfter, isSelectedDay: false)
-                    .offset(x: cellOffset(1, geometry.size, true))
-                    //.scaleEffect(0.9)
-                    //.animation(.easeInOut(duration: 0.1))*/
-                ForEach(0..<modelData.days.count) { (idx) in
+                ForEach(indices, id: \.self) { (idx) in
                     DayView(day: $modelData.days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
-                        .offset(x: cellOffset(cellLocation(idx), geometry.size, idx == modelData.selectedIndex))
-                        //.scaleEffect(idx == modelData.selectedIndex ? 1.0 : 0.9)
+                        .offset(x: cellOffset(cellLocation(idx), geometry.size, false))
                         .animation(.easeInOut(duration: 1.0), value: dragState.translation)
                 }
+            }.onAppear {
+                updateIndices()
             }
             .gesture(
                 DragGesture()
@@ -33,7 +24,7 @@ struct CarouselView: View {
                         state = .dragging(translation: drag.translation)
                     }
                     .onChanged({ gesture in
-                        dragHappening(drag: gesture)
+                        //dragHappening(drag: gesture)
                     })
                     .onEnded({ gesture in
                         onDragEnded(drag: gesture, geometry.size)
@@ -84,20 +75,26 @@ struct CarouselView: View {
         
         if drag.predictedEndTranslation.width > dragThreshold || drag.translation.width > dragThreshold {
             modelData.selectDayBefore()
+            updateIndices()
             //modelData.selectedIndex -= 1
         }
         else if (drag.predictedEndTranslation.width) < (-1 * dragThreshold) || (drag.translation.width) < (-1 * dragThreshold) {
             modelData.selectNextDay()
+            updateIndices()
             //modelData.selectedIndex += 1
         }
     }
     
-    private func dragHappening(drag: DragGesture.Value) {
+    /*private func dragHappening(drag: DragGesture.Value) {
         if drag.startLocation.x > drag.location.x {
             isMovedLeft = true
         } else {
             isMovedLeft = false
         }
+    }*/
+    
+    private func updateIndices() {
+        indices = Array(modelData.selectedIndex-2...modelData.selectedIndex+2)
     }
 }
 

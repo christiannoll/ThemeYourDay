@@ -4,31 +4,56 @@ struct DayList: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var showDeleteAlert = false
+    @State private var query = ""
+    @State private var searching = false
+    @State private var isShowingSearchBar = false
+    
+    private var filteredDays: [Day] {
+        let result = modelData.days.filter { $0.text.contains(self.query) }
+        if result.isEmpty {
+            return modelData.days
+        } else {
+            return result
+        }
+    }
     
     var body: some View {
-        ScrollView {
-            ScrollViewReader { proxy in
-                LazyVStack {
-                    ForEach(modelData.days, id: \.self) { day in
-                        DayListCell(day: day)
-                            .onTapGesture {
-                                modelData.selectDay(day)
-                                self.mode.wrappedValue.dismiss()
-                            }
-                            .padding(.vertical, 8)
-                            .padding(.horizontal)
+        VStack {
+            if isShowingSearchBar {
+                SearchBar(searchText: $query, searching: $searching)
+            }
+            ScrollView {
+                ScrollViewReader { proxy in
+                    LazyVStack {
+                        ForEach(filteredDays, id: \.self) { day in
+                            DayListCell(day: day)
+                                .onTapGesture {
+                                    modelData.selectDay(day)
+                                    self.mode.wrappedValue.dismiss()
+                                }
+                                .padding(.vertical, 8)
+                                .padding(.horizontal)
+                        }
+                    }.onAppear {
+                        proxy.scrollTo(modelData.selectedDay, anchor: .top)
                     }
-                }.onAppear {
-                    proxy.scrollTo(modelData.selectedDay, anchor: .top)
+                    .onChange(of: query) {newQuery in
+                        if newQuery.isEmpty {
+                            proxy.scrollTo(modelData.selectedDay, anchor: .top)
+                        }
+                    }
                 }
             }
-        }
-        .navigationBarTitle("Days", displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
-            Image(systemName: "trash")
-        }.padding())
-        .alert(isPresented: $showDeleteAlert) {
-            Alert(title: Text("Remove All Themes?"), message: Text("This will remove all themes and can't be undone."), primaryButton: .destructive(Text("Remove"), action: { removeAllDays() }), secondaryButton: .cancel(Text("Cancel")))
+            .navigationBarTitle("Days", displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
+                Image(systemName: "trash")
+            }.padding())
+            .navigationBarItems(trailing: Button(action: { isShowingSearchBar.toggle() }) {
+                Image(systemName: "magnifyingglass")
+            })
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(title: Text("Remove All Themes?"), message: Text("This will remove all themes and can't be undone."), primaryButton: .destructive(Text("Remove"), action: { removeAllDays() }), secondaryButton: .cancel(Text("Cancel")))
+            }
         }
     }
     

@@ -9,12 +9,10 @@ struct DayList: View {
     @State private var isShowingSearchBar = false
     
     private var filteredDays: [Day] {
-        let result = modelData.days.filter { $0.text.contains(self.query) }
-        if result.isEmpty {
-            return modelData.days
-        } else {
-            return result
+        let result = modelData.days.filter {
+            $0.text.range(of: query, options: .caseInsensitive) != nil
         }
+        return query.isEmpty ? modelData.days : result
     }
     
     var body: some View {
@@ -24,7 +22,7 @@ struct DayList: View {
             }
             ScrollView {
                 ScrollViewReader { proxy in
-                    LazyVStack {
+                    VStack {
                         ForEach(filteredDays, id: \.self) { day in
                             DayListCell(day: day)
                                 .onTapGesture {

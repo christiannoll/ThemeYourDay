@@ -6,7 +6,6 @@ struct DayList: View {
     @State var showDeleteAlert = false
     @State private var query = ""
     @State private var searching = false
-    @State private var isShowingSearchBar = false
     
     private var filteredDays: [Day] {
         let result = modelData.days.filter {
@@ -17,7 +16,7 @@ struct DayList: View {
     
     var body: some View {
         VStack {
-            if isShowingSearchBar {
+            if searching {
                 SearchBar(searchText: $query, searching: $searching)
             }
             ScrollView {
@@ -46,7 +45,7 @@ struct DayList: View {
             .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
                 Image(systemName: "trash")
             }.padding())
-            .navigationBarItems(trailing: Button(action: { isShowingSearchBar.toggle() }) {
+            .navigationBarItems(trailing: Button(action: { searching.toggle() }) {
                 Image(systemName: "magnifyingglass")
             })
             .alert(isPresented: $showDeleteAlert) {

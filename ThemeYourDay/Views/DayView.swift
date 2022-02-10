@@ -28,20 +28,6 @@ struct DayView: View {
                 }
                 .focused($focusMode)
                 .onChange(of: day.text, perform: saveText)
-                /*.gesture(DragGesture(minimumDistance: 10, coordinateSpace: .local)
-                    .onEnded({ value in
-                        if value.translation.width < 0 {
-                            // left
-                            modelData.selectNextDay()
-                        }
-
-                        if value.translation.width > 0 {
-                            // right
-                            modelData.selectDayBefore()
-                        }
-                        modelData.writeJSON()
-                        editMode = false
-                    }))*/
         }
         .background(.gray)
         .cornerRadius(25.0)

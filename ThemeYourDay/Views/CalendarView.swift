@@ -159,11 +159,6 @@ struct CalendarView<DateView>: View where DateView: View {
                             .id(calendar.component(.month, from: month))
                     }
                 }
-                /*.onAppear {
-                    withAnimation {
-                        value.scrollTo(calendar.component(.month, from: Date())+1)
-                    }
-                }*/
             }
         }
     }

@@ -26,7 +26,6 @@ struct DayListCell: View {
     private func getDate(_ day: Day) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        //formatter.setLocalizedDateFormatFromTemplate("dd MM yyyy")
         let dateString = formatter.string(from: day.id)
         return dateString
     }

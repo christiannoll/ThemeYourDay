@@ -4,7 +4,6 @@ struct CarouselView: View {
     
     @EnvironmentObject var modelData: ModelData
     @GestureState private var dragState = DragState.inactive
-    //@State private var isMovedLeft: Bool = false
     @State private var indices:[Int] = []
     
     var body: some View {
@@ -23,15 +22,11 @@ struct CarouselView: View {
                     .updating($dragState) { drag, state, transaction in
                         state = .dragging(translation: drag.translation)
                     }
-                    .onChanged({ gesture in
-                        //dragHappening(drag: gesture)
-                    })
                     .onEnded({ gesture in
                         onDragEnded(drag: gesture, geometry.size)
                     })
             )
         }
-        //.aspectRatio(contentMode: .fit)
     }
     
     private func cellOffset(_ cellPosition: Int, _ size: CGSize, _ isScalable: Bool) -> CGFloat {
@@ -76,22 +71,12 @@ struct CarouselView: View {
         if drag.predictedEndTranslation.width > dragThreshold || drag.translation.width > dragThreshold {
             modelData.selectDayBefore()
             updateIndices()
-            //modelData.selectedIndex -= 1
         }
         else if (drag.predictedEndTranslation.width) < (-1 * dragThreshold) || (drag.translation.width) < (-1 * dragThreshold) {
             modelData.selectNextDay()
             updateIndices()
-            //modelData.selectedIndex += 1
         }
     }
-    
-    /*private func dragHappening(drag: DragGesture.Value) {
-        if drag.startLocation.x > drag.location.x {
-            isMovedLeft = true
-        } else {
-            isMovedLeft = false
-        }
-    }*/
     
     private func updateIndices() {
         indices = Array(modelData.selectedIndex-2...modelData.selectedIndex+2)

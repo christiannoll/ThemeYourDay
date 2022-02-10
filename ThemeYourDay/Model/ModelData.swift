@@ -1,5 +1,4 @@
 import Foundation
-import Combine
 
 final class ModelData: ObservableObject {
     @Published var days: [Day] = MyData.days.sorted {
@@ -143,10 +142,8 @@ final class ModelData: ObservableObject {
 }
 
 func getDocumentsDirectory() -> URL {
-    // find all possible documents directories for this user
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 
-    // just send back the first one, which ought to be the only one
     return paths[0]
 }
 
@@ -160,7 +157,6 @@ func load<T: Codable>(_ filename: String) -> T {
     do {
         data = try Data(contentsOf: file)
     } catch {
-        //fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
         data = isSettings ? createSettings()! : createData()!
     }
     
@@ -171,7 +167,6 @@ func load<T: Codable>(_ filename: String) -> T {
         let jsonResultData = isSettings ? createSettings() : createData()
         let decoder = JSONDecoder()
         return try! decoder.decode(T.self, from: jsonResultData!)
-        //fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
 }
 

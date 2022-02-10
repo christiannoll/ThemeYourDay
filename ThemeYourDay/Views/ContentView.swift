@@ -20,7 +20,6 @@ extension Date {
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar
-    //@State private var fontname = ""
     @State private var selection: String? = nil
     @StateObject private var tools = Tools()
     private var colorStripMV =  ColorStripModelView()
@@ -74,7 +73,7 @@ struct ContentView: View {
                         .padding()
                 }
                 
-                ToolBarView()//.border(Color.green)
+                ToolBarView()
                     .ignoresSafeArea()
                     .frame(height: 50)
                     .environmentObject(tools)
@@ -92,10 +91,6 @@ struct ContentView: View {
                     }
                 }
             }
-            /*.contentShape(Rectangle())
-            .onTapGesture {
-                editMode = false
-            }*/
             
             .navigationBarItems(
                 leading:

@@ -16,10 +16,18 @@
 		D691CF30261B3728005FAAC5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
 		D691CF35261B37D8005FAAC5 /* DayData.json in Resources */ = {isa = PBXBuildFile; fileRef = D691CF34261B37D8005FAAC5 /* DayData.json */; };
 		D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF39261B399D005FAAC5 /* ModelData.swift */; };
+		D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7036027B68450008B0F7B /* DayWidgetView.swift */; };
+		D6A7036227B68450008B0F7B /* DayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7036027B68450008B0F7B /* DayWidgetView.swift */; };
+		D6A7036327B687A0008B0F7B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
 		D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3792226761B4C009D0790 /* ColorStripModelView.swift */; };
 		D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B55A222635A49300BC5556 /* FontPickerView.swift */; };
 		D6D48FF02676424800101EC3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D48FEF2676424800101EC3 /* Settings.swift */; };
 		D6D48FF22676434800101EC3 /* SettingsData.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D48FF12676434800101EC3 /* SettingsData.json */; };
+		D6D58B4327B671A700473B81 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D58B4227B671A700473B81 /* WidgetKit.framework */; };
+		D6D58B4527B671A700473B81 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D58B4427B671A700473B81 /* SwiftUI.framework */; };
+		D6D58B4827B671A700473B81 /* DayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D58B4727B671A700473B81 /* DayWidget.swift */; };
+		D6D58B4A27B671A800473B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6D58B4927B671A800473B81 /* Assets.xcassets */; };
+		D6D58B4E27B671A800473B81 /* DayWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DDD274261A19C800FD1AA5 /* ThemeYourDayApp.swift */; };
 		D6DDD277261A19C800FD1AA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DDD276261A19C800FD1AA5 /* ContentView.swift */; };
 		D6DDD279261A19C900FD1AA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DDD278261A19C900FD1AA5 /* Assets.xcassets */; };
@@ -31,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D6D58B4C27B671A800473B81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6DDD269261A19C800FD1AA5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6D58B3F27B671A700473B81;
+			remoteInfo = DayWidgetExtension;
+		};
 		D6DDD283261A19C900FD1AA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6DDD269261A19C800FD1AA5 /* Project object */;
@@ -47,6 +62,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D6D58B4F27B671A800473B81 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D6D58B4E27B671A800473B81 /* DayWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D62979512626256800163ACF /* DayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		D63EE6F9262B05DB008699DF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -57,10 +86,17 @@
 		D691CF2F261B3728005FAAC5 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		D691CF34261B37D8005FAAC5 /* DayData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DayData.json; sourceTree = "<group>"; };
 		D691CF39261B399D005FAAC5 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		D6A7036027B68450008B0F7B /* DayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWidgetView.swift; sourceTree = "<group>"; };
 		D6B3792226761B4C009D0790 /* ColorStripModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStripModelView.swift; sourceTree = "<group>"; };
 		D6B55A222635A49300BC5556 /* FontPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPickerView.swift; sourceTree = "<group>"; };
 		D6D48FEF2676424800101EC3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D6D48FF12676434800101EC3 /* SettingsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SettingsData.json; sourceTree = "<group>"; };
+		D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DayWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6D58B4227B671A700473B81 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D6D58B4427B671A700473B81 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D6D58B4727B671A700473B81 /* DayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWidget.swift; sourceTree = "<group>"; };
+		D6D58B4927B671A800473B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D6D58B4B27B671A800473B81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6DDD271261A19C800FD1AA5 /* ThemeYourDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThemeYourDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6DDD274261A19C800FD1AA5 /* ThemeYourDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeYourDayApp.swift; sourceTree = "<group>"; };
 		D6DDD276261A19C800FD1AA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +114,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D6D58B3D27B671A700473B81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6D58B4527B671A700473B81 /* SwiftUI.framework in Frameworks */,
+				D6D58B4327B671A700473B81 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6DDD26E261A19C800FD1AA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,12 +184,34 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D6D58B4127B671A700473B81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6D58B4227B671A700473B81 /* WidgetKit.framework */,
+				D6D58B4427B671A700473B81 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6D58B4627B671A700473B81 /* DayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D6D58B4927B671A800473B81 /* Assets.xcassets */,
+				D6D58B4727B671A700473B81 /* DayWidget.swift */,
+				D6A7036027B68450008B0F7B /* DayWidgetView.swift */,
+				D6D58B4B27B671A800473B81 /* Info.plist */,
+			);
+			path = DayWidget;
+			sourceTree = "<group>";
+		};
 		D6DDD268261A19C800FD1AA5 = {
 			isa = PBXGroup;
 			children = (
 				D6DDD273261A19C800FD1AA5 /* ThemeYourDay */,
 				D6DDD285261A19C900FD1AA5 /* ThemeYourDayTests */,
 				D6DDD290261A19C900FD1AA5 /* ThemeYourDayUITests */,
+				D6D58B4627B671A700473B81 /* DayWidget */,
+				D6D58B4127B671A700473B81 /* Frameworks */,
 				D6DDD272261A19C800FD1AA5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,6 +222,7 @@
 				D6DDD271261A19C800FD1AA5 /* ThemeYourDay.app */,
 				D6DDD282261A19C900FD1AA5 /* ThemeYourDayTests.xctest */,
 				D6DDD28D261A19C900FD1AA5 /* ThemeYourDayUITests.xctest */,
+				D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,6 +270,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D6D58B3F27B671A700473B81 /* DayWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6D58B5227B671A800473B81 /* Build configuration list for PBXNativeTarget "DayWidgetExtension" */;
+			buildPhases = (
+				D6D58B3C27B671A700473B81 /* Sources */,
+				D6D58B3D27B671A700473B81 /* Frameworks */,
+				D6D58B3E27B671A700473B81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DayWidgetExtension;
+			productName = DayWidgetExtension;
+			productReference = D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D6DDD270261A19C800FD1AA5 /* ThemeYourDay */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6DDD296261A19C900FD1AA5 /* Build configuration list for PBXNativeTarget "ThemeYourDay" */;
@@ -209,10 +294,12 @@
 				D6DDD26D261A19C800FD1AA5 /* Sources */,
 				D6DDD26E261A19C800FD1AA5 /* Frameworks */,
 				D6DDD26F261A19C800FD1AA5 /* Resources */,
+				D6D58B4F27B671A800473B81 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D6D58B4D27B671A800473B81 /* PBXTargetDependency */,
 			);
 			name = ThemeYourDay;
 			productName = ThemeYourDay;
@@ -261,9 +348,12 @@
 		D6DDD269261A19C800FD1AA5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					D6D58B3F27B671A700473B81 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					D6DDD270261A19C800FD1AA5 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -294,11 +384,20 @@
 				D6DDD270261A19C800FD1AA5 /* ThemeYourDay */,
 				D6DDD281261A19C900FD1AA5 /* ThemeYourDayTests */,
 				D6DDD28C261A19C900FD1AA5 /* ThemeYourDayUITests */,
+				D6D58B3F27B671A700473B81 /* DayWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D6D58B3E27B671A700473B81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6D58B4A27B671A800473B81 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6DDD26F261A19C800FD1AA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,6 +426,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D6D58B3C27B671A700473B81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6D58B4827B671A700473B81 /* DayWidget.swift in Sources */,
+				D6A7036227B68450008B0F7B /* DayWidgetView.swift in Sources */,
+				D6A7036327B687A0008B0F7B /* Day.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6DDD26D261A19C800FD1AA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,6 +451,7 @@
 				D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */,
 				D6D48FF02676424800101EC3 /* Settings.swift in Sources */,
 				D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */,
+				D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */,
 				D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */,
 				D62979522626256800163ACF /* DayListCell.swift in Sources */,
 				D691CF30261B3728005FAAC5 /* Day.swift in Sources */,
@@ -368,6 +478,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D6D58B4D27B671A800473B81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6D58B3F27B671A700473B81 /* DayWidgetExtension */;
+			targetProxy = D6D58B4C27B671A800473B81 /* PBXContainerItemProxy */;
+		};
 		D6DDD284261A19C900FD1AA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D6DDD270261A19C800FD1AA5 /* ThemeYourDay */;
@@ -381,6 +496,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D6D58B5027B671A800473B81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ELG2TXRCNZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DayWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DayWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay.DayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D6D58B5127B671A800473B81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ELG2TXRCNZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DayWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DayWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay.DayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D6DDD294261A19C900FD1AA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -502,6 +675,7 @@
 		D6DDD297261A19C900FD1AA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -524,6 +698,7 @@
 		D6DDD298261A19C900FD1AA5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -630,6 +805,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D6D58B5227B671A800473B81 /* Build configuration list for PBXNativeTarget "DayWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6D58B5027B671A800473B81 /* Debug */,
+				D6D58B5127B671A800473B81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D6DDD26C261A19C800FD1AA5 /* Build configuration list for PBXProject "ThemeYourDay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

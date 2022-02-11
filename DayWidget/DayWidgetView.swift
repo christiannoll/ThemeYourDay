@@ -4,28 +4,59 @@ struct DayWidgetView: View {
     
     let day: Day
     
+    var padding: CGFloat = 5
+    
     var body: some View {
         VStack {
-            Spacer()
-            Text(Date().formatted())
-                .background(Color.gray)
-                .foregroundColor(.white)
+            Rectangle()
+                .fill(Color.gray)
+                .overlay(
+                    Text(formattedDate())
+                        .foregroundColor(.white)
+                )
+                .frame(height:30)
+                .cornerRadius(50, corners: [.topLeft, .topRight])
+                
             Spacer()
                 
             Text(day.text)
-                .font(day.fontname == "" ? .largeTitle : .custom(day.fontname, size: 34))
+                .font(day.fontname == "" ? .title2 : .custom(day.fontname, size: 20))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
-                .frame(height: 100)
                 .multilineTextAlignment(.center)
-                .disableAutocorrection(true)
                 .lineSpacing(20)
+            Spacer()
         }
-        .background(.gray)
-        .cornerRadius(25.0)
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(ContainerRelativeShape().fill(day.bgColor.color))
+        .padding(padding)
+    }
+    
+    private func formattedDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d. MMM y"
+        
+        return dateFormatter.string(from: day.id)
     }
 }
+
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
 
 struct DayWidgetView_Previews: PreviewProvider {
     static var previews: some View {

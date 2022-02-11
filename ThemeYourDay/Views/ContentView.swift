@@ -6,17 +6,6 @@ class Tools: ObservableObject {
     @Published var fontPickerVisible = false
 }
 
-extension Date {
-    func getNextMonth() -> Date? {
-        return Calendar.current.date(byAdding: .month, value: 1, to: self)
-    }
-
-    func getPreviousMonth() -> Date? {
-        return Calendar.current.date(byAdding: .month, value: -1, to: self)
-    }
-}
-
-
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar

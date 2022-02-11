@@ -15,7 +15,7 @@ final class ModelData: ObservableObject {
     
     private func writeDayData() {
         let filename = "DayData.json"
-        let file = getDocumentsDirectory().appendingPathComponent(filename)
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         
         for index in 0..<days.count {
             if days[index].id == selectedDay.id {
@@ -34,7 +34,7 @@ final class ModelData: ObservableObject {
     
     private func writeSettingsData() {
         let filename = "SettingsData.json"
-        let file = getDocumentsDirectory().appendingPathComponent(filename)
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         
         do {
             try JSONEncoder().encode(settings).write(to: file, options: .atomic)
@@ -45,7 +45,7 @@ final class ModelData: ObservableObject {
     
     func printJson() {
         let filename = "DayData.json"
-        let file = getDocumentsDirectory().appendingPathComponent(filename)
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         do {
             let input = try String(contentsOf: file)
             print(input)
@@ -141,16 +141,10 @@ final class ModelData: ObservableObject {
     }
 }
 
-func getDocumentsDirectory() -> URL {
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-    return paths[0]
-}
-
 func load<T: Codable>(_ filename: String) -> T {
     let data: Data
     let isSettings = filename.contains("Settings")
-    let file = getDocumentsDirectory().appendingPathComponent(filename)
+    let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
     
     print(file.absoluteURL)
     
@@ -278,5 +272,24 @@ extension Date {
         fullDistance(from: date.noon, resultIn: component) == 0
     }
 }
+
+extension Date {
+    func getNextMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: 1, to: self)
+    }
+
+    func getPreviousMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: -1, to: self)
+    }
+}
+
+extension FileManager {
+  static func sharedContainerURL() -> URL {
+    return FileManager.default.containerURL(
+      forSecurityApplicationGroupIdentifier: "group.de.vnzn.ThemeYourDay"
+    )!
+  }
+}
+
 
 

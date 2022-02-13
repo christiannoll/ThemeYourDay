@@ -45,7 +45,7 @@ struct DayList: View {
             .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
                 Image(systemName: "trash")
             }.padding())
-            .navigationBarItems(trailing: Button(action: { searching.toggle() }) {
+            .navigationBarItems(trailing: Button(action: { withAnimation {searching.toggle() }} ) {
                 Image(systemName: "magnifyingglass")
             })
             .alert(isPresented: $showDeleteAlert) {

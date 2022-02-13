@@ -2,9 +2,7 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-    
-    static var loadedDays: [Day] = load("DayData.json")
-    
+        
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor()))
     }
@@ -21,7 +19,7 @@ struct Provider: TimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, currentDay: getCurrentDay())
+            let entry = SimpleEntry(date: entryDate, currentDay: today())
             entries.append(entry)
         }
 
@@ -29,35 +27,10 @@ struct Provider: TimelineProvider {
         completion(timeline)
     }
     
-    private func getCurrentDay() -> Day {
-        return Provider.currentDay()
-    }
-    
-    static func load<T: Codable>(_ filename: String) -> T {
-        let data: Data
-        let isSettings = filename.contains("Settings")
-        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
-        
-        print(file.absoluteURL)
-        
-        do {
-            data = try Data(contentsOf: file)
-        } catch {
-            data = isSettings ? createSettings()! : createData()!
-        }
-        
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode(T.self, from: data)
-        } catch {
-            let jsonResultData = isSettings ? createSettings() : createData()
-            let decoder = JSONDecoder()
-            return try! decoder.decode(T.self, from: jsonResultData!)
-        }
-    }
-    
-    static func currentDay() -> Day {
+    private func today() -> Day {
+        let loadedDays: [Day] = load("DayData.json")
         let today = Date().noon
+        
         for day in loadedDays {
             if day.id.hasSame(.day, as: today) {
                 return day
@@ -83,14 +56,14 @@ struct DayWidgetEntryView : View {
 
 @main
 struct DayWidget: Widget {
-    let kind: String = "DayWidget"
+    let kind: String = "de.vnzn.ThemeYourDay.DayWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             DayWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Day Widget")
-        .description("This is an example widget.")
+        .description("This is a ThemeYourDay widget.")
     }
 }
 

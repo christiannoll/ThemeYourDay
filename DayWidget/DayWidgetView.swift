@@ -17,8 +17,6 @@ struct DayWidgetView: View {
                 .frame(height:30)
                 .cornerRadius(50, corners: [.topLeft, .topRight])
                 
-            Spacer()
-                
             Text(day.text)
                 .font(day.fontname == "" ? .title2 : .custom(day.fontname, size: 20))
                 .background(day.bgColor.color)

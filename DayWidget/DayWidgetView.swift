@@ -3,8 +3,7 @@ import SwiftUI
 struct DayWidgetView: View {
     
     let day: Day
-    
-    var padding: CGFloat = 5
+    let padding: CGFloat = 5
     
     var body: some View {
         VStack {
@@ -13,12 +12,13 @@ struct DayWidgetView: View {
                 .overlay(
                     Text(formattedDate())
                         .foregroundColor(.white)
+                        .font(.caption)
                 )
-                .frame(height:30)
+                .frame(height:26)
                 .cornerRadius(50, corners: [.topLeft, .topRight])
                 
             Text(day.text)
-                .font(day.fontname == "" ? .title2 : .custom(day.fontname, size: 20))
+                .font(day.fontname == "" ? .title3 : .custom(day.fontname, size: 20))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .multilineTextAlignment(.center)

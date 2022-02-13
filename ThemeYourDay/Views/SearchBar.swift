@@ -16,7 +16,7 @@ struct SearchBar: View {
                 Button(action: { withAnimation { searching = false }
                     searchText = ""
                 } ) {
-                    Text("Cancel")
+                    Image(systemName: "xmark.circle.fill")
                 }.padding()
             }
             .foregroundColor(.gray)

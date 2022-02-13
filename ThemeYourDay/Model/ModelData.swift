@@ -1,4 +1,5 @@
 import Foundation
+import WidgetKit
 
 final class ModelData: ObservableObject {
     @Published var days: [Day] = MyData.days.sorted {
@@ -11,6 +12,11 @@ final class ModelData: ObservableObject {
     func writeJSON() {
         writeDayData()
         writeSettingsData()
+        informWidget()
+    }
+    
+    private func informWidget() {
+        WidgetCenter.shared.reloadTimelines(ofKind: "de.vnzn.ThemeYourDay.DayWidget")
     }
     
     private func writeDayData() {
@@ -146,7 +152,7 @@ func load<T: Codable>(_ filename: String) -> T {
     let isSettings = filename.contains("Settings")
     let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
     
-    print(file.absoluteURL)
+    //print(file.absoluteURL)
     
     do {
         data = try Data(contentsOf: file)

@@ -5,13 +5,14 @@ struct DayView: View {
     @EnvironmentObject var modelData: ModelData
     @FocusState private var focusMode: Bool
     @Binding var day: Day
+    @State private var isStarred = false
     var isSelectedDay: Bool
     
     var body: some View {
         VStack {
             Spacer()
             Text(getDate())
-                .background(Color.gray)
+                .background(.gray)
                 .foregroundColor(.white)
             Spacer()
                 
@@ -32,6 +33,17 @@ struct DayView: View {
         .background(.gray)
         .cornerRadius(25.0)
         .padding()
+        .overlay(starOverlay, alignment: .topTrailing)
+        
+    }
+    
+    private var starOverlay: some View {
+        Image(systemName: isStarred ? "star.fill" : "star")
+            .foregroundColor(.white)
+            .padding([.top, .trailing], 28)
+            .onTapGesture {
+                isStarred.toggle()
+            }
     }
     
     private func getDate() -> String {

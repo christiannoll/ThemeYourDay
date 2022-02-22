@@ -7,6 +7,7 @@ struct Day: Hashable, Codable, Identifiable {
     var fgColor: DayColor
     var bgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
     var fontname = ""
+    var starred = false
 }
 
 struct DayColor: Codable, Hashable {

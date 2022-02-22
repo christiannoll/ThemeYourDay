@@ -5,7 +5,6 @@ struct DayView: View {
     @EnvironmentObject var modelData: ModelData
     @FocusState private var focusMode: Bool
     @Binding var day: Day
-    @State private var isStarred = false
     var isSelectedDay: Bool
     
     var body: some View {
@@ -38,11 +37,12 @@ struct DayView: View {
     }
     
     private var starOverlay: some View {
-        Image(systemName: isStarred ? "star.fill" : "star")
+        Image(systemName: day.starred ? "star.fill" : "star")
             .foregroundColor(.white)
             .padding([.top, .trailing], 28)
             .onTapGesture {
-                isStarred.toggle()
+                modelData.selectedDay.starred = !day.starred
+                modelData.writeJSON()
             }
     }
     

@@ -61,11 +61,10 @@ final class ModelData: ObservableObject {
     }
     
     func removeAllDays() {
-        days.removeAll()
-        
-        let newDay = Day(id: Date().noon, text: "New Day", fgColor: DayColor())
-        days.insert(newDay, at: 0)
-        
+        for index in 0..<days.count {
+            let newDay = Day(id: days[index].id, text: "New Day", fgColor: DayColor())
+            days[index] = newDay
+        }
         writeJSON()
     }
     

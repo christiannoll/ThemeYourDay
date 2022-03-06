@@ -3,7 +3,6 @@ import SwiftUI
 struct DayWidgetView: View {
     
     let day: Day
-    let padding: CGFloat = 5
     
     var body: some View {
         VStack {
@@ -27,7 +26,6 @@ struct DayWidgetView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(ContainerRelativeShape().fill(day.bgColor.color))
-        .padding(padding)
     }
     
     private func formattedDate() -> String {

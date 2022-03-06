@@ -221,7 +221,7 @@ struct MyData {
         loadedDays.sort { $0.id < $1.id }
         
         for (index, day) in loadedDays.enumerated() {
-            indexCache[day.id] = index
+            indexCache[day.id.noon] = index
         }
         
         return loadedDays
@@ -268,19 +268,9 @@ extension Date {
     var noon: Date {
         return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
     }
-    
-    func fullDistance(from date: Date, resultIn component: Calendar.Component, calendar: Calendar = .current) -> Int? {
-        calendar.dateComponents([component], from: self.noon, to: date).value(for: component)
-    }
-
-    func distance(from date: Date, only component: Calendar.Component, calendar: Calendar = .current) -> Int {
-        let days1 = calendar.component(component, from: self.noon)
-        let days2 = calendar.component(component, from: date)
-        return days1 - days2
-    }
 
     func hasSame(_ component: Calendar.Component, as date: Date) -> Bool {
-        fullDistance(from: date.noon, resultIn: component) == 0
+        Calendar.current.isDate(self.noon, inSameDayAs: date.noon)
     }
 }
 

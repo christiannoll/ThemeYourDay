@@ -44,7 +44,10 @@ struct DayList: View {
             .navigationBarTitle("Days", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
                 Image(systemName: "trash")
-            }.padding())
+            })
+            .navigationBarItems(trailing: Button(action: { shareSheet() }) {
+                Image(systemName: "square.and.arrow.up")
+            })
             .navigationBarItems(trailing: Button(action: { withAnimation {searching.toggle() }} ) {
                 Image(systemName: "magnifyingglass")
             })
@@ -56,6 +59,18 @@ struct DayList: View {
     
     private func removeAllDays() {
         modelData.removeAllDays()
+    }
+    
+    private func shareSheet() {
+        guard let urlShare = URL(string: "https://www.vnzn.de/en/") else { return }
+        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+        let keyWindow = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+        keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }
 }
 

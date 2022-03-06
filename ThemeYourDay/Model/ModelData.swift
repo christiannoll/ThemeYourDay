@@ -9,27 +9,32 @@ final class ModelData: ObservableObject {
     @Published var selectedIndex = MyData.currentIndex()
     @Published var settings = MyData.settings
     
-    func writeJSON() {
+    func save() {
+        syncSelectedDay()
+        writeJson()
+        informWidget()
+    }
+    
+    private func writeJson() {
         writeDayData()
         writeSettingsData()
-        informWidget()
     }
     
     private func informWidget() {
         WidgetCenter.shared.reloadTimelines(ofKind: "de.vnzn.ThemeYourDay.DayWidget")
     }
     
-    private func writeDayData() {
-        let filename = "DayData.json"
-        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
-        
+    private func syncSelectedDay() {
         for index in 0..<days.count {
             if days[index].id == selectedDay.id {
                 days[index] = selectedDay
             }
         }
-        
-        //print(days)
+    }
+    
+    private func writeDayData() {
+        let filename = "DayData.json"
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         
         do {
             try JSONEncoder().encode(days).write(to: file, options: .atomic)
@@ -65,7 +70,8 @@ final class ModelData: ObservableObject {
             let newDay = Day(id: days[index].id, text: "New Day", fgColor: DayColor())
             days[index] = newDay
         }
-        writeJSON()
+        writeJson()
+        informWidget()
     }
     
     func saveFgColor(r: Double, g: Double, b: Double, a: Double) {
@@ -99,13 +105,13 @@ final class ModelData: ObservableObject {
     func selectNextDay() {
         selectedIndex += 1
         selectedDay = days[selectedIndex]
-        writeJSON()
+        save()
     }
     
     func selectDayBefore() {
         selectedIndex -= 1
         selectedDay = days[selectedIndex]
-        writeJSON()
+        save()
     }
     
     func selectDay(_ date: Date) {

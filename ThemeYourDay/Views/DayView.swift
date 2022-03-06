@@ -42,7 +42,7 @@ struct DayView: View {
             .padding([.top, .trailing], 28)
             .onTapGesture {
                 modelData.selectedDay.starred = !day.starred
-                modelData.writeJSON()
+                modelData.save()
             }
     }
     
@@ -59,7 +59,7 @@ struct DayView: View {
         if modelData.days[modelData.selectedIndex] == day {
             modelData.selectedDay.text = text
             //print(text)
-            modelData.writeJSON()
+            modelData.save()
         }
     }
 }

@@ -76,7 +76,7 @@ struct ContentView: View {
                     FontPickerView { fontDescriptor in
                         let customFont = UIFont(descriptor: fontDescriptor, size: 18.0)
                         modelData.saveFontname(customFont.fontName)
-                        modelData.writeJSON()
+                        modelData.save()
                     }
                 }
             }

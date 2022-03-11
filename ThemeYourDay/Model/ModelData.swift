@@ -9,6 +9,8 @@ final class ModelData: ObservableObject {
     @Published var selectedIndex = MyData.currentIndex()
     @Published var settings = MyData.settings
     
+    static let DEFAULT_TEXT = "New Day"
+    
     func save() {
         syncSelectedDay()
         writeJson()
@@ -67,7 +69,7 @@ final class ModelData: ObservableObject {
     
     func removeAllDays() {
         for index in 0..<days.count {
-            let newDay = Day(id: days[index].id, text: "New Day", fgColor: DayColor())
+            let newDay = Day(id: days[index].id, text: ModelData.DEFAULT_TEXT, fgColor: DayColor())
             days[index] = newDay
         }
         writeJson()
@@ -176,7 +178,7 @@ func load<T: Codable>(_ filename: String) -> T {
 }
 
 func createData() -> Data? {
-    let days = [Day(id: Date(), text: "Today", fgColor: DayColor())]
+    let days = [Day(id: Date().noon, text: ModelData.DEFAULT_TEXT, fgColor: DayColor())]
     let jsonEncoder = JSONEncoder()
     let jsonResultData = try? jsonEncoder.encode(days)
     return jsonResultData
@@ -211,7 +213,7 @@ struct MyData {
             }
             
             if !loaded {
-                let newDay = Day(id: day!, text: "New Day", fgColor: DayColor())
+                let newDay = Day(id: day!, text: ModelData.DEFAULT_TEXT, fgColor: DayColor())
                 loadedDays.insert(newDay, at: 0)
             }
             

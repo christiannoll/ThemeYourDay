@@ -62,8 +62,9 @@ struct DayList: View {
     }
     
     private func shareSheet() {
-        guard let urlShare = URL(string: "https://www.vnzn.de/en/") else { return }
-        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
+        let file = FileManager.sharedContainerURL().appendingPathComponent("DayData.json")
+        let url = NSURL.fileURL(withPath: file.path)
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         let keyWindow = UIApplication.shared.connectedScenes
                 .filter({$0.activationState == .foregroundActive})
                 .map({$0 as? UIWindowScene})

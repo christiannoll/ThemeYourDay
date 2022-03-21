@@ -62,7 +62,9 @@ struct DayList: View {
     }
     
     private func shareSheet() {
-        let file = FileManager.sharedContainerURL().appendingPathComponent("DayData.json")
+        modelData.exportAsCsvFile()
+        
+        let file = FileManager.sharedContainerURL().appendingPathComponent("ExortedDays.csv")
         let url = NSURL.fileURL(withPath: file.path)
         let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         let keyWindow = UIApplication.shared.connectedScenes

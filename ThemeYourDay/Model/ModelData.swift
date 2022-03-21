@@ -152,6 +152,28 @@ final class ModelData: ObservableObject {
         }
         return nil
     }
+    
+    func exportAsCsvFile() {
+        var csvString = "date,text\n"
+        for day in days {
+            if day.text != ModelData.DEFAULT_TEXT {
+                let dataString = "\(day.id.description),\(day.text)\n"
+                csvString = csvString.appending(dataString)
+            }
+        }
+        writeCsvFile(csvString)
+    }
+    
+    private func writeCsvFile(_ csvString: String) {
+        let filename = "ExortedDays.csv"
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
+        
+        do {
+            try csvString.write(to: file, atomically: true, encoding: .utf8)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
 
 func load<T: Codable>(_ filename: String) -> T {

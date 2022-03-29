@@ -42,12 +42,14 @@ struct DayList: View {
                 }
             }
             .navigationBarTitle("Days", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: { showDeleteAlert.toggle() }) {
-                Image(systemName: "trash")
-            })
-            .navigationBarItems(trailing: Button(action: { shareSheet() }) {
-                Image(systemName: "square.and.arrow.up")
-            })
+            .navigationBarItems(trailing: Menu {
+                Button(action: { showDeleteAlert.toggle()}) {
+                    Label("Remove themes", systemImage: "trash")
+                }
+                Button(action: { shareSheet()}) {
+                    Label("Share themes", systemImage: "square.and.arrow.up")
+                }
+            } label: { Image(systemName: "ellipsis.circle") })
             .navigationBarItems(trailing: Button(action: { withAnimation {searching.toggle() }} ) {
                 Image(systemName: "magnifyingglass")
             })

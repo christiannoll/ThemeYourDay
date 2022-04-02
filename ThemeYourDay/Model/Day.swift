@@ -8,6 +8,22 @@ struct Day: Hashable, Codable, Identifiable {
     var bgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
     var fontname = ""
     var starred = false
+    var textStyle = TextStyle.largeTitle
+}
+
+extension Day {
+    func font() -> Font {
+        switch textStyle {
+        case .largeTitle:
+            return .largeTitle
+        case .title:
+            return .title
+        case .title2:
+            return .title2
+        case .title3:
+            return .title3
+        }
+    }
 }
 
 struct DayColor: Codable, Hashable {
@@ -27,6 +43,13 @@ struct DayColor: Codable, Hashable {
             a = Double(newColor.components.opacity)
         }
     }
+}
+
+enum TextStyle : Int, Codable, CodingKey {
+    case largeTitle
+    case title
+    case title2
+    case title3
 }
 
 extension Double {

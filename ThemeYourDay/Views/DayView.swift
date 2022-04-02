@@ -16,7 +16,7 @@ struct DayView: View {
             Spacer()
                 
             TextEditor(text: $day.text)
-                .font(day.fontname == "" ? .largeTitle : .custom(day.fontname, size: 34))
+                .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .frame(height: 300)

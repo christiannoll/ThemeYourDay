@@ -53,9 +53,13 @@ struct ContentView: View {
                 Spacer()
                 
                 ZStack {
-                    ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
-                        .opacity(tools.fgColorVisible ? 1 : 0)
-                        .padding()
+                    VStack {
+                        FontSizeView()
+                            .padding([.leading, .trailing], 20)
+                        ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
+                            .padding()
+                    }
+                    .opacity(tools.fgColorVisible ? 1 : 0)
                 
                     ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)
                         .opacity(tools.bgColorVisible ? 1 : 0)

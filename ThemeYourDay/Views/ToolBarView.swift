@@ -31,10 +31,10 @@ struct ToolBarView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: { tools.fontPickerVisible.toggle()
+                    Button(action: { tools.canvasVisible.toggle()
                         tools.fgColorVisible = false
                     }) {
-                        Image(systemName: "textformat.size")
+                        Image(systemName: "square.and.pencil")
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {

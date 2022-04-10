@@ -3,7 +3,7 @@ import SwiftUI
 class Tools: ObservableObject {
     @Published var fgColorVisible = false
     @Published var bgColorVisible = false
-    @Published var fontPickerVisible = false
+    @Published var canvasVisible = false
 }
 
 struct ContentView: View {
@@ -47,23 +47,33 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                CarouselView()
-                    .frame(height: 376)
+                ZStack {
+                    if tools.canvasVisible {
+                        CanvasView(toolPickerIsActive: $tools.canvasVisible)
+                    }
+                    else {
+                        CarouselView()
+                    }
+                }
+                .frame(height: 376)
             
+                Spacer()
                 Spacer()
                 
                 ZStack {
                     VStack {
+                        if tools.fgColorVisible {
                         FontSizeView()
                             .padding([.leading, .trailing], 20)
                         ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
                             .padding()
+                        }
                     }
-                    .opacity(tools.fgColorVisible ? 1 : 0)
                 
-                    ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)
-                        .opacity(tools.bgColorVisible ? 1 : 0)
-                        .padding()
+                    if tools.bgColorVisible {
+                        ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)
+                            .padding()
+                    }
                 }
                 
                 ToolBarView()
@@ -72,7 +82,7 @@ struct ContentView: View {
                     .environmentObject(tools)
                     
             }
-            .sheet(isPresented: $tools.fontPickerVisible) {
+            /*.sheet(isPresented: $tools.fontPickerVisible) {
                 VStack {
                     Button(action: { tools.fontPickerVisible.toggle() }) {
                         Image(systemName: "chevron.down")
@@ -83,7 +93,7 @@ struct ContentView: View {
                         modelData.save()
                     }
                 }
-            }
+            }*/
             
             .navigationBarItems(
                 leading:

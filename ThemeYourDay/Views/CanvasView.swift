@@ -3,6 +3,7 @@ import PencilKit
 
 struct CanvasView: View {
     @Environment(\.undoManager) private var undoManager
+    @EnvironmentObject var modelData: ModelData
     @State private var canvasView = PKCanvasView()
     @Binding var toolPickerIsActive: Bool
 
@@ -11,12 +12,14 @@ struct CanvasView: View {
             Spacer()
             HStack() {
                 Button("Done") {
+                    saveImage()
                     toolPickerIsActive.toggle()
                 }
                 .foregroundColor(.white)
                 .padding(.leading, 30)
                 Spacer()
                 Button("Clear") {
+                    deleteImage()
                     canvasView.drawing = PKDrawing()
                 }
                 .foregroundColor(.white)
@@ -33,6 +36,7 @@ struct CanvasView: View {
             MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive)
                 .frame(height: 300)
         }
+        .onAppear { loadImage() }
         .background(.gray)
         .cornerRadius(25)
         .overlay(
@@ -40,6 +44,28 @@ struct CanvasView: View {
                 .stroke(.gray, lineWidth: 1)
         )
         .padding()
+    }
+    
+    private func saveImage() {
+        if canvasView.drawing.bounds.isEmpty == false {
+            modelData.saveImageOfSelectedDay(imageData: canvasView.drawing.dataRepresentation())
+        }
+    }
+    
+    private func loadImage() {
+        if let imageData = modelData.loadImageOfSelectedDay() {
+            do {
+                try canvasView.drawing = PKDrawing(data: imageData)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func deleteImage() {
+        if canvasView.drawing.bounds.isEmpty == false {
+            modelData.deleteImageOfSelectedDay()
+        }
     }
 }
 

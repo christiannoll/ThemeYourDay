@@ -17,6 +17,34 @@ final class ModelData: ObservableObject {
         informWidget()
     }
     
+    func saveImageOfSelectedDay(imageData: Data) {
+        let file = getImageFilenameOfSelectedDay()
+        
+        do {
+            try imageData.write(to: file, options: .atomic)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func loadImageOfSelectedDay() -> Data? {
+        let file = getImageFilenameOfSelectedDay()
+        
+        do {
+            let imageData = try Data(contentsOf: file)
+            return imageData
+        } catch {}
+        return nil
+    }
+    
+    func deleteImageOfSelectedDay() {
+        let file = getImageFilenameOfSelectedDay()
+        
+        do {
+            try FileManager.default.removeItem(at: file)
+        } catch {}
+    }
+    
     private func writeJson() {
         writeDayData()
         writeSettingsData()
@@ -173,6 +201,12 @@ final class ModelData: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    private func getImageFilenameOfSelectedDay() -> URL {
+        let filename = selectedDay.id.formatted() + ".img"
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
+        return file
     }
 }
 

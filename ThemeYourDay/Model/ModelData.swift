@@ -49,9 +49,11 @@ final class ModelData: ObservableObject {
     
     func deleteImageOfSelectedDay() {
         let file = getImageFilenameOfSelectedDay()
+        let pngFile = getPngImageFilenameOfSelectedDay()
         
         do {
             try FileManager.default.removeItem(at: file)
+            try FileManager.default.removeItem(at: pngFile)
         } catch {}
     }
     
@@ -219,8 +221,14 @@ final class ModelData: ObservableObject {
         return file
     }
     
-    func getPngImageFilenameOfSelectedDay() -> URL {
+    private func getPngImageFilenameOfSelectedDay() -> URL {
         let filename = selectedDay.id.formatted() + ".png"
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
+        return file
+    }
+    
+    func getPngImageFilename(date: Date) -> URL {
+        let filename = date.formatted() + ".png"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }

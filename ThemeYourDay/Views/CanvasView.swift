@@ -59,6 +59,8 @@ struct CanvasView: View {
             let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
             if let data = image.pngData() {
                 modelData.savePngImageOfSelectedDay(data: data)
+                modelData.selectedDay.hasImage = true
+                modelData.save()
             }
         }
     }
@@ -76,6 +78,8 @@ struct CanvasView: View {
     private func deleteImage() {
         if canvasView.drawing.bounds.isEmpty == false {
             modelData.deleteImageOfSelectedDay()
+            modelData.selectedDay.hasImage = false
+            modelData.save()
         }
     }
 }

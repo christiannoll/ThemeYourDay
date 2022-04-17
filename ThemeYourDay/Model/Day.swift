@@ -9,6 +9,7 @@ struct Day: Hashable, Codable, Identifiable {
     var fontname = ""
     var starred = false
     var textStyle = TextStyle.largeTitle
+    var hasImage = false
 }
 
 extension Day {

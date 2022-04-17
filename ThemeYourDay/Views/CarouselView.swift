@@ -5,6 +5,8 @@ struct CarouselView: View {
     @EnvironmentObject var modelData: ModelData
     @GestureState private var dragState = DragState.inactive
     @State private var indices:[Int] = []
+    @State private var dragAmount = DragState.inactive
+    
     
     var body: some View {
         GeometryReader { geometry in

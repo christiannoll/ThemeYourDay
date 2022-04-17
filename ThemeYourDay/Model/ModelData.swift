@@ -27,6 +27,16 @@ final class ModelData: ObservableObject {
         }
     }
     
+    func savePngImageOfSelectedDay(data: Data) {
+        let file = getPngImageFilenameOfSelectedDay()
+        
+        do {
+            try data.write(to: file, options: .atomic)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func loadImageOfSelectedDay() -> Data? {
         let file = getImageFilenameOfSelectedDay()
         
@@ -205,6 +215,12 @@ final class ModelData: ObservableObject {
     
     private func getImageFilenameOfSelectedDay() -> URL {
         let filename = selectedDay.id.formatted() + ".img"
+        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
+        return file
+    }
+    
+    func getPngImageFilenameOfSelectedDay() -> URL {
+        let filename = selectedDay.id.formatted() + ".png"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }

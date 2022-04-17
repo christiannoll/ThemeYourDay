@@ -17,7 +17,10 @@ struct DayView: View {
                 
             TextEditor(text: $day.text)
                 .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
-                .background(day.bgColor.color)
+                .if (getPngImage() != nil) { view in
+                    view.background(getPngImage() == nil ? Image(uiImage: UIImage()) : Image(uiImage: getPngImage()!))
+                }
+                .background(getPngImage() == nil ? day.bgColor.color : .white)
                 .foregroundColor(day.fgColor.color)
                 .frame(height: 300)
                 .multilineTextAlignment(.center)
@@ -31,6 +34,12 @@ struct DayView: View {
         }
         .background(.gray)
         .cornerRadius(25.0)
+        .if (getPngImage() != nil) { view in
+            view .overlay(
+                RoundedRectangle(cornerRadius: 25)
+                    .stroke(.gray, lineWidth: 1)
+            )
+        }
         .padding()
         .overlay(starOverlay, alignment: .topTrailing)
         
@@ -60,6 +69,26 @@ struct DayView: View {
             modelData.selectedDay.text = text
             //print(text)
             modelData.save()
+        }
+    }
+    
+    private func getPngImage() -> UIImage? {
+        do {
+            let data = try Data(contentsOf: modelData.getPngImageFilenameOfSelectedDay(), options: [.mappedIfSafe, .uncached])
+            let drawing = UIImage(data: data)
+            return drawing
+        } catch {
+            return nil
+        }
+    }
+}
+
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
         }
     }
 }

@@ -13,6 +13,7 @@ struct CanvasView: View {
             HStack() {
                 Button("Done") {
                     saveImage()
+                    savePngImage()
                     toolPickerIsActive.toggle()
                 }
                 .foregroundColor(.white)
@@ -49,6 +50,16 @@ struct CanvasView: View {
     private func saveImage() {
         if canvasView.drawing.bounds.isEmpty == false {
             modelData.saveImageOfSelectedDay(imageData: canvasView.drawing.dataRepresentation())
+        }
+    }
+    
+    private func savePngImage() {
+        if canvasView.drawing.bounds.isEmpty == false {
+            let imgRect = CGRect(x: 0, y: 0, width: canvasView.drawing.bounds.width, height: canvasView.drawing.bounds.height)
+            let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
+            if let data = image.pngData() {
+                modelData.savePngImageOfSelectedDay(data: data)
+            }
         }
     }
     

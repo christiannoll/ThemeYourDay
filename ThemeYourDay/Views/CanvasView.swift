@@ -55,7 +55,7 @@ struct CanvasView: View {
     
     private func savePngImage() {
         if canvasView.drawing.bounds.isEmpty == false {
-            let imgRect = CGRect(x: 0, y: 0, width: canvasView.drawing.bounds.width, height: canvasView.drawing.bounds.height)
+            let imgRect = CGRect(x: 0, y: 0, width: canvasView.bounds.height, height: canvasView.bounds.height)
             let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
             if let data = image.pngData() {
                 modelData.savePngImageOfSelectedDay(data: data)

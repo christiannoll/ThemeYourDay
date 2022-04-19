@@ -34,7 +34,7 @@ struct ToolBarView: View {
                     Button(action: { tools.canvasVisible.toggle()
                         tools.fgColorVisible = false
                     }) {
-                        Image(systemName: "square.and.pencil")
+                        Image(systemName: "pencil.tip.crop.circle")
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {

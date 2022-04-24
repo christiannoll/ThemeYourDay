@@ -21,6 +21,11 @@ struct DayListCell: View {
             }
             .padding()
         }
+        .if (day.starred) { view in
+            view .overlay (
+                starOverlay, alignment: .topTrailing
+            )
+        }
     }
     
     private func getDate(_ day: Day) -> String {
@@ -32,6 +37,12 @@ struct DayListCell: View {
     
     private func getTrimmedText(_ day: Day) -> String {
         day.text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .newlines).joined()
+    }
+    
+    private var starOverlay: some View {
+        Image(systemName: day.starred ? "star.fill" : "star")
+            .foregroundColor(.white)
+            .padding([.top, .trailing], 28)
     }
 }
 

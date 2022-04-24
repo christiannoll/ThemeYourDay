@@ -40,7 +40,7 @@ struct DayListCell: View {
     }
     
     private var starOverlay: some View {
-        Image(systemName: day.starred ? "star.fill" : "star")
+        Image(systemName: "star.fill")
             .foregroundColor(.white)
             .padding([.top, .trailing], 28)
     }

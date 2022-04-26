@@ -58,23 +58,26 @@ struct ContentView: View {
                 .frame(height: 376)
             
                 Spacer()
-                Spacer()
                 
                 ZStack {
                     VStack {
                         if tools.fgColorVisible {
-                        FontSizeView()
-                            .padding([.leading, .trailing], 20)
-                        ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
-                            .padding()
+                            FontSizeView()
+                                .padding([.leading, .trailing], 20)
+                            ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
+                                .padding()
                         }
                     }
                 
                     if tools.bgColorVisible {
-                        ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)
-                            .padding()
+                        VStack {
+                            Spacer()
+                            ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)
+                                .padding()
+                        }
                     }
                 }
+                .frame(height:120)
                 
                 ToolBarView()
                     .ignoresSafeArea()
@@ -82,18 +85,6 @@ struct ContentView: View {
                     .environmentObject(tools)
                     
             }
-            /*.sheet(isPresented: $tools.fontPickerVisible) {
-                VStack {
-                    Button(action: { tools.fontPickerVisible.toggle() }) {
-                        Image(systemName: "chevron.down")
-                    }.padding()
-                    FontPickerView { fontDescriptor in
-                        let customFont = UIFont(descriptor: fontDescriptor, size: 18.0)
-                        modelData.saveFontname(customFont.fontName)
-                        modelData.save()
-                    }
-                }
-            }*/
             
             .navigationBarItems(
                 leading:

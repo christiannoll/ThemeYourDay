@@ -47,7 +47,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                ZStack {
+                VStack {
                     if tools.canvasVisible {
                         CanvasView(toolPickerIsActive: $tools.canvasVisible)
                     }
@@ -59,7 +59,7 @@ struct ContentView: View {
             
                 Spacer()
                 
-                ZStack {
+                VStack {
                     VStack {
                         if tools.fgColorVisible {
                             FontSizeView()
@@ -85,6 +85,7 @@ struct ContentView: View {
                     .environmentObject(tools)
                     
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             
             .navigationBarItems(
                 leading:

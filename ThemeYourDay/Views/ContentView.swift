@@ -45,16 +45,18 @@ struct ContentView: View {
                     },
                     tag: "Calendar", selection: $selection) { EmptyView() }
                 
-                Spacer()
+                //Spacer()
                 
                 VStack {
                     if tools.canvasVisible {
                         CanvasView(toolPickerIsActive: $tools.canvasVisible)
+                            .padding(.top, 100)
                     }
                     else {
                         CarouselView()
                     }
                 }
+                .padding(.top, 100)
                 .frame(height: 376)
             
                 Spacer()
@@ -77,7 +79,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .frame(height:120)
+                //.frame(height:120)
                 
                 ToolBarView()
                     .ignoresSafeArea()

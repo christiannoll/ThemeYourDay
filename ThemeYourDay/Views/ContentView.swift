@@ -50,7 +50,7 @@ struct ContentView: View {
                 VStack {
                     if tools.canvasVisible {
                         CanvasView(toolPickerIsActive: $tools.canvasVisible)
-                            .padding(.top, 100)
+                            .padding(.top, 90)
                     }
                     else {
                         CarouselView()

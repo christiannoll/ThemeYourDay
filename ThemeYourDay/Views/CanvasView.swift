@@ -34,7 +34,7 @@ struct CanvasView: View {
                 .foregroundColor(.white)
                 .padding(.trailing, 30)
             }
-            MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive)
+            MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: modelData.selectedDay.bgColor.color)
                 .frame(height: 300)
         }
         .onAppear { loadImage() }
@@ -89,6 +89,7 @@ struct MyCanvas: UIViewRepresentable {
     @Binding var toolPickerIsActive: Bool
     
     @State var toolPicker = PKToolPicker()
+    var backgroundColor: Color
 
     func makeUIView(context: Context) -> PKCanvasView {
         canvasView.drawingPolicy = .anyInput
@@ -107,6 +108,8 @@ private extension MyCanvas {
         toolPicker.setVisible(true, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         canvasView.becomeFirstResponder()
+        canvasView.backgroundColor = UIColor(backgroundColor)
+        canvasView.isOpaque = false
     }
 }
 

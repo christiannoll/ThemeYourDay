@@ -20,8 +20,8 @@ struct DayView: View {
                 .if (day.hasImage) { view in
                     view.background(day.hasImage ? Image(uiImage: loadPngImage()!) : Image(uiImage: UIImage()))
                 }
-                .background(day.hasImage ? .white : day.bgColor.color)
-                .foregroundColor(foregroundColor)
+                .background(day.bgColor.color)
+                .foregroundColor(day.fgColor.color)
                 .frame(height: 300)
                 .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
@@ -54,12 +54,6 @@ struct DayView: View {
                 modelData.selectedDay.starred = !day.starred
                 modelData.save()
             }
-    }
-    
-    private var foregroundColor: Color {
-        get {
-            return (day.hasImage && day.fgColor.color == .white) ? .accentColor : day.fgColor.color
-        }
     }
     
     private func getDate() -> String {

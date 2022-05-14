@@ -177,19 +177,19 @@
 		D691CF2B261B3521005FAAC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D63EE6F9262B05DB008699DF /* CalendarView.swift */,
+				D6104844280206840020D7BA /* CanvasView.swift */,
+				D686FE5626C5904A0070D238 /* CarouselView.swift */,
+				D6B3792226761B4C009D0790 /* ColorStripModelView.swift */,
+				D6DF86432674FAB600FA8D31 /* ColorStripView.swift */,
 				D6DDD276261A19C800FD1AA5 /* ContentView.swift */,
 				D65CFD4B262354A700C75F56 /* DayList.swift */,
-				D6E0BC802624AE170063E86A /* ToolBarView.swift */,
 				D62979512626256800163ACF /* DayListCell.swift */,
-				D63EE6F9262B05DB008699DF /* CalendarView.swift */,
-				D6B55A222635A49300BC5556 /* FontPickerView.swift */,
-				D6DF86432674FAB600FA8D31 /* ColorStripView.swift */,
-				D6B3792226761B4C009D0790 /* ColorStripModelView.swift */,
 				D643E1C926B6EE8D0056908E /* DayView.swift */,
-				D686FE5626C5904A0070D238 /* CarouselView.swift */,
-				D6858E5427B29DBB008372AC /* SearchBar.swift */,
+				D6B55A222635A49300BC5556 /* FontPickerView.swift */,
 				D602C66127F88E70005A1E11 /* FontSizeView.swift */,
-				D6104844280206840020D7BA /* CanvasView.swift */,
+				D6858E5427B29DBB008372AC /* SearchBar.swift */,
+				D6E0BC802624AE170063E86A /* ToolBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

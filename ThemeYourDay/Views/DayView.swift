@@ -17,9 +17,7 @@ struct DayView: View {
                 
             TextEditor(text: $day.text)
                 .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
-                .if (day.hasImage) { view in
-                    view.background(day.hasImage ? Image(uiImage: loadPngImage()!) : Image(uiImage: UIImage()))
-                }
+                .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .frame(height: 300)
@@ -73,13 +71,13 @@ struct DayView: View {
         }
     }
     
-    private func loadPngImage() -> UIImage? {
+    private func loadPngImage() -> UIImage {
         do {
             let data = try Data(contentsOf: modelData.getPngImageFilename(date: day.id), options: [.mappedIfSafe, .uncached])
             let drawing = UIImage(data: data)
-            return drawing
+            return drawing!
         } catch {
-            return nil
+            return UIImage()
         }
     }
 }

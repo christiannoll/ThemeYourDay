@@ -216,22 +216,26 @@ final class ModelData: ObservableObject {
     }
     
     private func getImageFilenameOfSelectedDay() -> URL {
-        let filename = selectedDay.id.formatted() + ".img"
+        let filename = selectedDay.id.formatted(.iso8601) + ".img"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }
     
     private func getPngImageFilenameOfSelectedDay() -> URL {
-        let filename = selectedDay.id.formatted() + ".png"
+        let filename = selectedDay.id.formatted(.iso8601) + ".png"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }
     
     func getPngImageFilename(date: Date) -> URL {
-        let filename = date.formatted() + ".png"
-        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
-        return file
+        return getPngImageFileUrl(date: date)
     }
+}
+
+func getPngImageFileUrl(date: Date) -> URL {
+    let filename = date.formatted(.iso8601) + ".png"
+    let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
+    return file
 }
 
 func load<T: Codable>(_ filename: String) -> T {

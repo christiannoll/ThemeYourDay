@@ -19,10 +19,14 @@ struct DayWidgetView: View {
                     .foregroundColor(.white)
                     .padding(.trailing, 8)
                     .padding(.top, 3), alignment: .topTrailing)
-                
-                
+            
             Text(day.text)
                 .font(day.fontname == "" ? .title3 : .custom(day.fontname, size: 20))
+                .background(backgroundImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 170, height: 130)
+                    .offset(x: 0, y: 52))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .multilineTextAlignment(.center)
@@ -42,6 +46,20 @@ struct DayWidgetView: View {
     
     private var starOverlay: some View {
         day.starred ? Image(systemName: "star.fill") : Image(uiImage: UIImage())
+    }
+    
+    private var backgroundImage: Image {
+        day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage())
+    }
+    
+    private func loadPngImage() -> UIImage {
+        do {
+            let data = try Data(contentsOf: getPngImageFileUrl(date: day.id), options: [.mappedIfSafe, .uncached])
+            let drawing = UIImage(data: data)
+            return drawing!
+        } catch {
+            return UIImage()
+        }
     }
 }
 

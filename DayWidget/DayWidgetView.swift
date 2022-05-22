@@ -20,7 +20,7 @@ struct DayWidgetView: View {
                     .padding(.trailing, 8)
                     .padding(.top, 3), alignment: .topTrailing)
             
-            Text(day.text)
+            Text(day.text.trimmingCharacters(in: .whitespacesAndNewlines))
                 .font(day.fontname == "" ? .title3 : .custom(day.fontname, size: 20))
                 .background(backgroundImage
                     .resizable()

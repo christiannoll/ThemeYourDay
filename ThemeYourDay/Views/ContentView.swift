@@ -42,7 +42,9 @@ struct ContentView: View {
                                 Text(String(self.calendar.component(.day, from: date)))
                                     .foregroundColor(getCalendarForegroundColor(day))
                             )
-                    },
+                            .overlay(
+                                Circle().stroke(.white, lineWidth: modelData.isToday(day: day) ? 1 : 0).padding(3)
+                            )                    },
                     tag: "Calendar", selection: $selection) { EmptyView() }
                 
                 //Spacer()

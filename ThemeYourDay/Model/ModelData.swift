@@ -204,6 +204,13 @@ final class ModelData: ObservableObject {
         writeCsvFile(csvString)
     }
     
+    func isToday(day: Day?) -> Bool {
+        guard let day = day else {
+            return false
+        }
+        return day.id == Date().noon
+    }
+    
     private func writeCsvFile(_ csvString: String) {
         let filename = "ExortedDays.csv"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)

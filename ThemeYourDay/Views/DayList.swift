@@ -23,7 +23,7 @@ struct DayList: View {
                 ScrollViewReader { proxy in
                     VStack {
                         ForEach(filteredDays, id: \.self) { day in
-                            DayListCell(day: day)
+                            DayListCell(day: day, isToday: modelData.isToday(day: day))
                                 .onTapGesture {
                                     modelData.selectDay(day)
                                     self.mode.wrappedValue.dismiss()

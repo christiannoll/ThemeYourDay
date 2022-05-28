@@ -2,14 +2,17 @@ import SwiftUI
 
 struct DayListCell: View {
     var day: Day
+    var isToday: Bool
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(day.bgColor.color)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.horizontal, 4)
-                .shadow(color: Color.black, radius: 3, x: 3, y: 3)
+                .shadow(color: Color.black, radius: 2, x: 2, y: 2)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 9).stroke(.white, lineWidth: isToday ? 1 : 0).padding(.horizontal, 4).padding(6)
+                )
 
             VStack {
                 Text(getTrimmedText(day))
@@ -48,6 +51,6 @@ struct DayListCell: View {
 
 struct DayListCell_Previews: PreviewProvider {
     static var previews: some View {
-        DayListCell(day: Day(id: Date(), text: "Today", fgColor: DayColor()))
+        DayListCell(day: Day(id: Date(), text: "Today", fgColor: DayColor()), isToday: false)
     }
 }

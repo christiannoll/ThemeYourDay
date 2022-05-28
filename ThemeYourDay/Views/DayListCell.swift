@@ -39,13 +39,14 @@ struct DayListCell: View {
     }
     
     private func getTrimmedText(_ day: Day) -> String {
-        day.text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .newlines).joined()
+        day.text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .newlines).joined(separator: " ")
     }
     
     private var starOverlay: some View {
         Image(systemName: "star.fill")
             .foregroundColor(.white)
-            .padding([.top, .trailing], 28)
+            .padding(.top, 6)
+            .padding(.trailing, 10)
     }
 }
 

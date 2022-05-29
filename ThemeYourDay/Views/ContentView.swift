@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var selection: String? = nil
     @StateObject private var tools = Tools()
     private var colorStripMV =  ColorStripModelView()
+    @State private var offset: CGSize = .zero
     
     private var monthly: DateInterval {
         let endDate = Date().getNextMonth()
@@ -81,6 +82,27 @@ struct ContentView: View {
                         }
                     }
                 }
+                .offset(y: offset.height)
+                .animation(.interactiveSpring(), value: offset)
+                .simultaneousGesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            if gesture.translation.width < 50 {
+                                offset = gesture.translation
+                            }
+                        }
+                        .onEnded { _ in
+                            if abs(offset.height) > 100 {
+                                if tools.bgColorVisible {
+                                    tools.bgColorVisible.toggle()
+                                }
+                                else {
+                                    tools.fgColorVisible.toggle()
+                                }
+                            }
+                            offset = .zero
+                        }
+                )
                 //.frame(height:120)
                 
                 ToolBarView()

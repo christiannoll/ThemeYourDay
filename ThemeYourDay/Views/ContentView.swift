@@ -25,6 +25,25 @@ struct ContentView: View {
     }
     
     var body: some View {
+        
+        let dragGesture = DragGesture()
+            .onChanged { gesture in
+                if gesture.translation.width < 50 {
+                    offset = gesture.translation
+                }
+            }
+            .onEnded { _ in
+                if abs(offset.height) > 100 {
+                    if tools.bgColorVisible {
+                        tools.bgColorVisible.toggle()
+                    }
+                    else {
+                        tools.fgColorVisible.toggle()
+                    }
+                }
+                offset = .zero
+            }
+        
         NavigationView {
             VStack {
                 NavigationLink(
@@ -84,25 +103,7 @@ struct ContentView: View {
                 }
                 .offset(y: offset.height)
                 .animation(.interactiveSpring(), value: offset)
-                .simultaneousGesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            if gesture.translation.width < 50 {
-                                offset = gesture.translation
-                            }
-                        }
-                        .onEnded { _ in
-                            if abs(offset.height) > 100 {
-                                if tools.bgColorVisible {
-                                    tools.bgColorVisible.toggle()
-                                }
-                                else {
-                                    tools.fgColorVisible.toggle()
-                                }
-                            }
-                            offset = .zero
-                        }
-                )
+                .simultaneousGesture(dragGesture)
                 //.frame(height:120)
                 
                 ToolBarView()

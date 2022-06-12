@@ -9,6 +9,7 @@ struct Day: Hashable, Codable, Identifiable {
     var fontname = ""
     var starred = false
     var textStyle = TextStyle.largeTitle
+    var textAlignment = MyTextAlignment.center
     var hasImage = false
 }
 
@@ -23,6 +24,19 @@ extension Day {
             return .title2
         case .title3:
             return .title3
+        }
+    }
+}
+
+extension Day {
+    func getTextAlignment() -> TextAlignment {
+        switch textAlignment {
+        case .center:
+            return .center
+        case .leading:
+            return .leading
+        case .trailing:
+            return.trailing
         }
     }
 }
@@ -51,6 +65,12 @@ enum TextStyle : Int, Codable, CodingKey {
     case title
     case title2
     case title3
+}
+
+enum MyTextAlignment : Int, Codable, CodingKey {
+    case center
+    case leading
+    case trailing
 }
 
 extension Double {

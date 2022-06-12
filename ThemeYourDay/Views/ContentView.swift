@@ -3,7 +3,7 @@ import SwiftUI
 class Tools: ObservableObject {
     
     enum ToolType {
-        case None, Foreground, Background
+        case None, Foreground, Background, Textformat
     }
     
     @Published var visibleTool = ToolType.None
@@ -83,10 +83,17 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack {
-                    VStack {
-                        if tools.visibleTool == .Foreground {
+                    if tools.visibleTool == .Textformat {
+                        VStack {
+                            Spacer()
                             FontSizeView()
-                                .padding([.leading, .trailing], 20)
+                                .padding()
+                        }
+                    }
+                    
+                    if tools.visibleTool == .Foreground {
+                        VStack {
+                            Spacer()
                             ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
                                 .padding()
                         }

@@ -12,7 +12,7 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
-                        tools.visibleTool = .Foreground
+                        tools.visibleTool = tools.visibleTool == .Textformat ? .None : .Textformat
                     }) {
                         Image(systemName: "textformat")
                     }
@@ -22,7 +22,17 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
-                        tools.visibleTool = .Background
+                        tools.visibleTool = tools.visibleTool == .Foreground ? .None : .Foreground
+                    }) {
+                        Image(systemName: "note.text")
+                    }
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Spacer()
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Button(action: {
+                        tools.visibleTool = tools.visibleTool == .Background ? .None : .Background
                     }) {
                         Image(systemName: "note")
                     }

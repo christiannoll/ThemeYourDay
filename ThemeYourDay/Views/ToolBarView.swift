@@ -11,8 +11,8 @@ struct ToolBarView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: { tools.fgColorVisible.toggle()
-                        tools.bgColorVisible = false
+                    Button(action: {
+                        tools.visibleTool = .Foreground
                     }) {
                         Image(systemName: "textformat")
                     }
@@ -21,8 +21,8 @@ struct ToolBarView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: { tools.bgColorVisible.toggle()
-                        tools.fgColorVisible = false
+                    Button(action: {
+                        tools.visibleTool = .Background
                     }) {
                         Image(systemName: "note")
                     }
@@ -32,7 +32,7 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: { tools.canvasVisible.toggle()
-                        tools.fgColorVisible = false
+                        tools.visibleTool = .None
                     }) {
                         Image(systemName: "pencil.tip.crop.circle")
                     }

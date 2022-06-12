@@ -1,8 +1,12 @@
 import SwiftUI
 
 class Tools: ObservableObject {
-    @Published var fgColorVisible = false
-    @Published var bgColorVisible = false
+    
+    enum ToolType {
+        case None, Foreground, Background
+    }
+    
+    @Published var visibleTool = ToolType.None
     @Published var canvasVisible = false
 }
 
@@ -34,12 +38,7 @@ struct ContentView: View {
             }
             .onEnded { _ in
                 if abs(offset.height) > 100 {
-                    if tools.bgColorVisible {
-                        tools.bgColorVisible.toggle()
-                    }
-                    else {
-                        tools.fgColorVisible.toggle()
-                    }
+                    tools.visibleTool = .None
                 }
                 offset = .zero
             }
@@ -85,7 +84,7 @@ struct ContentView: View {
                 
                 VStack {
                     VStack {
-                        if tools.fgColorVisible {
+                        if tools.visibleTool == .Foreground {
                             FontSizeView()
                                 .padding([.leading, .trailing], 20)
                             ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
@@ -93,7 +92,7 @@ struct ContentView: View {
                         }
                     }
                 
-                    if tools.bgColorVisible {
+                    if tools.visibleTool == .Background {
                         VStack {
                             Spacer()
                             ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)

@@ -5,9 +5,9 @@ struct FontSizeView: View {
     
     var body: some View {
         HStack {
-            Label("Size:", systemImage: "textformat.size")
+            /*Label("Size:", systemImage: "textformat.size")
                 .labelStyle(.titleOnly)
-                .font(.subheadline)
+                .font(.subheadline)*/
             Picker("Font size", selection: $modelData.selectedDay.textStyle) {
                 Text("Large").tag(TextStyle.largeTitle)
                 Text("Medium").tag(TextStyle.title)

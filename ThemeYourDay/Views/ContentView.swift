@@ -86,8 +86,12 @@ struct ContentView: View {
                     if tools.visibleTool == .Textformat {
                         VStack {
                             Spacer()
+                            TextAlignmentView()
+                                .padding([.leading, .trailing], 30)
+                                .padding(.bottom, 15)
                             FontSizeView()
-                                .padding()
+                                .padding([.leading, .trailing], 30)
+                                .padding(.bottom, 15)
                         }
                     }
                     

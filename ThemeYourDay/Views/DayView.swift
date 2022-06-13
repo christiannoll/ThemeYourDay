@@ -18,6 +18,7 @@ struct DayView: View {
             TextEditor(text: $day.text)
                 .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
                 .multilineTextAlignment(day.getTextAlignment())
+                .padding()
                 .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)

@@ -21,16 +21,16 @@ struct DayWidgetView: View {
                     .padding(.top, 3), alignment: .topTrailing)
             
             Text(day.text.trimmingCharacters(in: .whitespacesAndNewlines))
-                .font(day.fontname == "" ? .title3 : .custom(day.fontname, size: 20))
+                .font(day.fontname == "" ? .callout : .custom(day.fontname, size: 16))
                 .background(backgroundImage
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 170, height: 130)
-                    .offset(x: 0, y: 52))
+                    .frame(width: 190, height: 190)
+                    .offset(x: 0, y: 6))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .multilineTextAlignment(.center)
-                .lineSpacing(20)
+                .lineSpacing(10)
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

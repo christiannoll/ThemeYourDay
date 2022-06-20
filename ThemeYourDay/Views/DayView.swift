@@ -34,12 +34,6 @@ struct DayView: View {
         }
         .background(.gray)
         .cornerRadius(25.0)
-        .if (day.hasImage) { view in
-            view .overlay(
-                RoundedRectangle(cornerRadius: 25)
-                    .stroke(.gray, lineWidth: 1)
-            )
-        }
         .padding()
         .overlay(starOverlay, alignment: .topTrailing)
         

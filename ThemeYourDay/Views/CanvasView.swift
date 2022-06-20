@@ -40,11 +40,7 @@ struct CanvasView: View {
         }
         .onAppear { loadImage() }
         .background(.gray)
-        .cornerRadius(25)
-        .overlay(
-            RoundedRectangle(cornerRadius: 25)
-                .stroke(.gray, lineWidth: 1)
-        )
+        .cornerRadius(25) 
         .padding()
     }
     

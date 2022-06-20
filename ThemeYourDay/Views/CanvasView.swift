@@ -37,11 +37,23 @@ struct CanvasView: View {
             Spacer()
             MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: modelData.selectedDay.bgColor.color)
                 .frame(height: 300)
+                .overlay(textOverlay)
         }
         .onAppear { loadImage() }
         .background(.gray)
         .cornerRadius(25) 
         .padding()
+    }
+    
+    private var textOverlay: some View {
+        let day = modelData.selectedDay
+        return Text(day.text)
+            .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
+            .foregroundColor(day.fgColor.color)
+            .multilineTextAlignment(day.getTextAlignment())
+            .padding()
+            .frame(height: 280, alignment: .top)
+            .lineSpacing(20)
     }
     
     private func saveImage() {

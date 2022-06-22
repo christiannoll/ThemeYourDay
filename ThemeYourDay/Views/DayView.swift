@@ -23,9 +23,8 @@ struct DayView: View {
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .frame(height: 300)
-                .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
-                .lineSpacing(20)
+                .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
                 .onTapGesture {
                     focusMode = !focusMode
                 }

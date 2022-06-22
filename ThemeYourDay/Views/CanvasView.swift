@@ -53,7 +53,7 @@ struct CanvasView: View {
             .multilineTextAlignment(day.getTextAlignment())
             .padding()
             .frame(height: 280, alignment: .top)
-            .lineSpacing(20)
+            .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
     }
     
     private func saveImage() {

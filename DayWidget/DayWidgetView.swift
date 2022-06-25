@@ -23,7 +23,7 @@ struct DayWidgetView: View {
             Text(day.text.trimmingCharacters(in: .whitespacesAndNewlines))
                 .padding(.horizontal, 6)
                 .frame(width: 170, height: 130, alignment: day.getAlignment())
-                .font(day.fontname == "" ? .callout : .custom(day.fontname, size: 16))
+                .font(day.fontname == "" ? .caption : .custom(day.fontname, size: 16))
                 .background(backgroundImage
                     .resizable()
                     .frame(width: 170, height: 148))

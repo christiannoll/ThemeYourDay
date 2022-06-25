@@ -51,8 +51,9 @@ struct CanvasView: View {
             .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
             .foregroundColor(day.fgColor.color)
             .multilineTextAlignment(day.getTextAlignment())
-            .padding()
-            .frame(height: 280, alignment: .top)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 24)
+            .frame(width: 392, height: 300, alignment: day.getAlignment())
             .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
     }
     

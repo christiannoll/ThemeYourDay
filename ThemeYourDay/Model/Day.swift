@@ -41,6 +41,19 @@ extension Day {
     }
 }
 
+extension Day {
+    func getAlignment() -> Alignment {
+        switch textAlignment {
+        case .center:
+            return .top
+        case .leading:
+            return .topLeading
+        case .trailing:
+            return .topTrailing
+        }
+    }
+}
+
 struct DayColor: Codable, Hashable {
     var r: Double = 1.0
     var g: Double = 1.0

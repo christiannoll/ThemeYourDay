@@ -21,14 +21,14 @@ struct DayWidgetView: View {
                     .padding(.top, 3), alignment: .topTrailing)
             
             Text(day.text.trimmingCharacters(in: .whitespacesAndNewlines))
-                .frame(width: 170, height: 130, alignment: .top)
+                .padding(.horizontal, 6)
+                .frame(width: 170, height: 130, alignment: day.getAlignment())
                 .font(day.fontname == "" ? .callout : .custom(day.fontname, size: 16))
                 .background(backgroundImage
                     .resizable()
                     .frame(width: 170, height: 148))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
-                .multilineTextAlignment(.center)
                 .lineSpacing(10)
             Spacer()
         }

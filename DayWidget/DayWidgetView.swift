@@ -20,7 +20,7 @@ struct DayWidgetView: View {
                     .padding(.trailing, 8)
                     .padding(.top, 3), alignment: .topTrailing)
             
-            Text(day.text.trimmingCharacters(in: .whitespacesAndNewlines))
+            Text(day.text)
                 .padding(.horizontal, 6)
                 .frame(width: 170, height: 130, alignment: day.getAlignment())
                 .font(day.fontname == "" ? .caption : .custom(day.fontname, size: 16))
@@ -29,7 +29,7 @@ struct DayWidgetView: View {
                     .frame(width: 170, height: 148))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
-                .lineSpacing(10)
+                .lineSpacing(15)
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

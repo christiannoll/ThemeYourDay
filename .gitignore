@@ -1,0 +1,11 @@
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+ThemeYourDay.xcodeproj/project.xcworkspace/xcuserdata
+ThemeYourDay.xcodeproj/xcuserdata
+xcshareddata
+DerivedData
+.idea
+.build

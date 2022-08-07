@@ -5,12 +5,14 @@ struct Day: Hashable, Codable, Identifiable {
     var id: Date
     var text: String
     var fgColor: DayColor
-    var bgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
+    var bgColor = defaultBgColor
     var fontname = ""
     var starred = false
     var textStyle = TextStyle.largeTitle
     var textAlignment = MyTextAlignment.center
     var hasImage = false
+    
+    static let defaultBgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
 }
 
 extension Day {

@@ -8,6 +8,13 @@ struct ToolBarView: View {
             Spacer()
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
+                    Button(action: { tools.canvasVisible.toggle()
+                        tools.visibleTool = .None
+                    }) {
+                        Image(systemName: "pencil.tip.crop.circle")
+                    }
+                }
+                ToolbarItem(placement: .bottomBar) {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
@@ -41,14 +48,14 @@ struct ToolBarView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: { tools.canvasVisible.toggle()
-                        tools.visibleTool = .None
-                    }) {
-                        Image(systemName: "pencil.tip.crop.circle")
-                    }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
+                    Menu {
+                        Button(action: { }) {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                        Button(action: { }) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                    } label: { Image(systemName: "ellipsis.circle") }
                 }
             }
         }

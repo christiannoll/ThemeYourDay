@@ -8,6 +8,7 @@ class Tools: ObservableObject {
     
     @Published var visibleTool = ToolType.None
     @Published var canvasVisible = false
+    @Published var settingsVisible = false
 }
 
 struct ContentView: View {
@@ -114,6 +115,9 @@ struct ContentView: View {
                 .offset(y: offset.height)
                 .animation(.interactiveSpring(), value: offset)
                 .simultaneousGesture(dragGesture)
+                .sheet(isPresented: $tools.settingsVisible,
+                               onDismiss: {  },
+                               content: { SettingsView() })
                 //.frame(height:120)
                 
                 ToolBarView()

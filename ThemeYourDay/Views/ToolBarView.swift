@@ -49,7 +49,7 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Menu {
-                        Button(action: { }) {
+                        Button(action: { tools.settingsVisible.toggle() }) {
                             Label("Settings", systemImage: "gearshape")
                         }
                         Button(action: { }) {

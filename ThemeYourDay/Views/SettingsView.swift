@@ -5,7 +5,7 @@ struct SettingsView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.presentationMode) var presentationMode
     
-    private let weekIndices = Array(0...6)
+    private let weekIndices = [1, 2, 3, 4, 5, 6, 0]
     
     var body: some View {
         NavigationView {

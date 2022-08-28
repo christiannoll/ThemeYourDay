@@ -57,6 +57,10 @@ final class ModelData: ObservableObject {
         } catch {}
     }
     
+    func writeSettings() {
+        writeSettingsData()
+    }
+    
     private func writeJson() {
         writeDayData()
         writeSettingsData()

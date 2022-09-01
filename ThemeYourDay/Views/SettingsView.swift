@@ -5,8 +5,6 @@ struct SettingsView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.presentationMode) var presentationMode
     
-    private let weekIndices = [1, 2, 3, 4, 5, 6, 0]
-    
     var body: some View {
         NavigationView {
             Form {
@@ -14,9 +12,7 @@ struct SettingsView: View {
                     Toggle(isOn: .constant(true),
                            label: { Text("Use default") }
                     )
-                    ForEach(weekIndices, id: \.self) { idx in
-                        DayColorView(dayColor: $modelData.settings.weekdaysBgColor[idx], weekday: weekdaySymbol(dayIndex: idx))
-                    }
+                    NavigationLink("Background Colors", destination: WeekColorView())
                 }
             }
             .navigationBarTitle("Settings", displayMode: .automatic)
@@ -29,10 +25,6 @@ struct SettingsView: View {
                 }
             )
         }
-    }
-    
-    private func weekdaySymbol(dayIndex: Int) -> String {
-        Calendar.current.weekdaySymbols[dayIndex]
     }
 }
 

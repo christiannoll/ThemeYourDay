@@ -12,7 +12,8 @@ struct SettingsView: View {
                     Toggle(isOn: .constant(true),
                            label: { Text("Use default") }
                     )
-                    NavigationLink("Background Colors", destination: WeekColorView())
+                    NavigationLink("Background Colors", destination: WeekColorView(colorKind: .background))
+                    NavigationLink("Foreground Colors", destination: WeekColorView(colorKind: .foreground))
                 }
             }
             .navigationBarTitle("Settings", displayMode: .automatic)

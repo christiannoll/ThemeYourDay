@@ -11,12 +11,23 @@ struct DayColorView: View {
                 .fill(dayColor.color)
                 .frame(width: 46, height: 46)
                 .padding(3)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(getColor(dayColor), lineWidth: 2)
+                )
             Text(weekday)
             Spacer()
             ColorPicker("Select Text Color", selection: $dayColor.color)
                 .labelsHidden()
                 .padding()
         }
+    }
+    
+    private func getColor( _ color: DayColor) -> Color {
+        if color.color == .white {
+            return .gray
+        }
+        return color.color
     }
 }
 

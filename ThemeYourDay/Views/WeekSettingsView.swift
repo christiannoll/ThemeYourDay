@@ -6,25 +6,28 @@
 //
 import SwiftUI
 
-struct WeekColorView: View {
+struct WeekSettingsView: View {
     
     @EnvironmentObject var modelData: ModelData
     private let weekIndices = [1, 2, 3, 4, 5, 6, 0]
-    let colorKind: ColorKind
+    let weekSettingsType: WeekSettingsType
     
-    enum ColorKind {
-        case foreground
-        case background
+    enum WeekSettingsType {
+        case fgcolor
+        case bgcolor
+        case text
     }
     
     var body: some View {
         Form {
             ForEach(weekIndices, id: \.self) { idx in
-                switch colorKind {
-                case .foreground:
+                switch weekSettingsType {
+                case .fgcolor:
                     DayColorView(dayColor: $modelData.settings.weekdaysFgColor[idx], weekday: weekdaySymbol(dayIndex: idx))
-                case .background:
+                case .bgcolor:
                     DayColorView(dayColor: $modelData.settings.weekdaysBgColor[idx], weekday: weekdaySymbol(dayIndex: idx))
+                case .text:
+                    DayTextView(dayText: $modelData.settings.weekdaysText[idx], weekday: weekdaySymbol(dayIndex: idx))
                 }
             }
         }
@@ -36,17 +39,19 @@ struct WeekColorView: View {
     }
     
     private func title() -> String {
-        switch colorKind {
-        case .foreground:
+        switch weekSettingsType {
+        case .fgcolor:
             return "Foreground Colors"
-        case .background:
+        case .bgcolor:
             return "Background Colors"
+        case .text:
+            return "Texts"
         }
     }
 }
 
 struct WeekColorView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekColorView(colorKind: .background)
+        WeekSettingsView(weekSettingsType: .bgcolor)
     }
 }

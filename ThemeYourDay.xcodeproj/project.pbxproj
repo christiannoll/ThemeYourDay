@@ -10,7 +10,7 @@
 		D602C66227F88E70005A1E11 /* FontSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602C66127F88E70005A1E11 /* FontSizeView.swift */; };
 		D6104845280206840020D7BA /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6104844280206840020D7BA /* CanvasView.swift */; };
 		D62979522626256800163ACF /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62979512626256800163ACF /* DayListCell.swift */; };
-		D62A813728C139FB00B5B2B9 /* WeekColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A813628C139FB00B5B2B9 /* WeekColorView.swift */; };
+		D62A813728C139FB00B5B2B9 /* WeekSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */; };
 		D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EE6F9262B05DB008699DF /* CalendarView.swift */; };
 		D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D643E1C926B6EE8D0056908E /* DayView.swift */; };
 		D65CFD4C262354A700C75F56 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65CFD4B262354A700C75F56 /* DayList.swift */; };
@@ -27,6 +27,7 @@
 		D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3792226761B4C009D0790 /* ColorStripModelView.swift */; };
 		D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B55A222635A49300BC5556 /* FontPickerView.swift */; };
 		D6BF90C928561A5D00B9300E /* TextAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */; };
+		D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D3146328C5178700F765A5 /* DayTextView.swift */; };
 		D6D48FF02676424800101EC3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D48FEF2676424800101EC3 /* Settings.swift */; };
 		D6D48FF22676434800101EC3 /* SettingsData.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D48FF12676434800101EC3 /* SettingsData.json */; };
 		D6D58B4327B671A700473B81 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D58B4227B671A700473B81 /* WidgetKit.framework */; };
@@ -88,7 +89,7 @@
 		D602C66127F88E70005A1E11 /* FontSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeView.swift; sourceTree = "<group>"; };
 		D6104844280206840020D7BA /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D62979512626256800163ACF /* DayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
-		D62A813628C139FB00B5B2B9 /* WeekColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekColorView.swift; sourceTree = "<group>"; };
+		D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSettingsView.swift; sourceTree = "<group>"; };
 		D63EE6F9262B05DB008699DF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D643E1C926B6EE8D0056908E /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		D65CFD4B262354A700C75F56 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		D6B3792226761B4C009D0790 /* ColorStripModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStripModelView.swift; sourceTree = "<group>"; };
 		D6B55A222635A49300BC5556 /* FontPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPickerView.swift; sourceTree = "<group>"; };
 		D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignmentView.swift; sourceTree = "<group>"; };
+		D6D3146328C5178700F765A5 /* DayTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTextView.swift; sourceTree = "<group>"; };
 		D6D48FEF2676424800101EC3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D6D48FF12676434800101EC3 /* SettingsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SettingsData.json; sourceTree = "<group>"; };
 		D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DayWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +196,7 @@
 				D65D7A6028BB4FC600717980 /* DayColorView.swift */,
 				D65CFD4B262354A700C75F56 /* DayList.swift */,
 				D62979512626256800163ACF /* DayListCell.swift */,
+				D6D3146328C5178700F765A5 /* DayTextView.swift */,
 				D643E1C926B6EE8D0056908E /* DayView.swift */,
 				D6B55A222635A49300BC5556 /* FontPickerView.swift */,
 				D602C66127F88E70005A1E11 /* FontSizeView.swift */,
@@ -201,7 +204,7 @@
 				D678ABC628AECBC5003F27B4 /* SettingsView.swift */,
 				D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */,
 				D6E0BC802624AE170063E86A /* ToolBarView.swift */,
-				D62A813628C139FB00B5B2B9 /* WeekColorView.swift */,
+				D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -466,7 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D62A813728C139FB00B5B2B9 /* WeekColorView.swift in Sources */,
+				D62A813728C139FB00B5B2B9 /* WeekSettingsView.swift in Sources */,
 				D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */,
 				D6E0BC812624AE170063E86A /* ToolBarView.swift in Sources */,
 				D602C66227F88E70005A1E11 /* FontSizeView.swift in Sources */,
@@ -483,6 +486,7 @@
 				D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */,
 				D6D48FF02676424800101EC3 /* Settings.swift in Sources */,
 				D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */,
+				D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */,
 				D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */,
 				D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */,
 				D62979522626256800163ACF /* DayListCell.swift in Sources */,

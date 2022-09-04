@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct ToolBarView: View {
+    
     @EnvironmentObject var tools: Tools
+    @EnvironmentObject var modelData: ModelData
     
     var body: some View {
         NavigationView {
@@ -54,6 +56,9 @@ struct ToolBarView: View {
                         }
                         Button(action: { }) {
                             Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                        Button(action: { modelData.applyToToday(modelData.selectedDay) }) {
+                            Label("Apply to today", systemImage: "square.and.arrow.up.on.square")
                         }
                     } label: { Image(systemName: "ellipsis.circle") }
                 }

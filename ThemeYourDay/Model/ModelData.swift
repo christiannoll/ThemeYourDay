@@ -178,6 +178,17 @@ final class ModelData: ObservableObject {
         selectedDay = day
     }
     
+    func applyToToday(_ day: Day) {
+        if let today = findDay(Date().noon) {
+            selectDay(today)
+            selectedDay.text = day.text
+            selectedDay.fgColor = day.fgColor
+            selectedDay.bgColor = day.bgColor
+            save()
+            selectDay(day)
+        }
+    }
+    
     private func getSelectedIndex(_ searchedDay: Day) -> Int {
         var index = -1
         for day in days {

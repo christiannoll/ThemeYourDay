@@ -14,6 +14,7 @@ struct SettingsView: View {
                     )
                     NavigationLink("Background Colors", destination: WeekColorView(colorKind: .background))
                     NavigationLink("Foreground Colors", destination: WeekColorView(colorKind: .foreground))
+                    NavigationLink("Texts", destination: EmptyView())
                 }
             }
             .navigationBarTitle("Settings", displayMode: .automatic)

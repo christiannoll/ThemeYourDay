@@ -7,4 +7,5 @@ struct Settings: Hashable, Codable {
     
     var weekdaysBgColor = Array(repeating: Day.defaultBgColor, count: 7)
     var weekdaysFgColor = Array(repeating: DayColor(), count: 7)
+    var weekdaysText = Array(repeating: ModelData.DEFAULT_TEXT, count: 7)
 }

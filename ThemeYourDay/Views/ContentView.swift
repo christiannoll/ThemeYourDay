@@ -72,13 +72,13 @@ struct ContentView: View {
                 VStack {
                     if tools.canvasVisible {
                         CanvasView(toolPickerIsActive: $tools.canvasVisible)
-                            .padding(.top, 90)
+                            .padding(.top, 150)
                     }
                     else {
                         CarouselView()
                     }
                 }
-                .padding(.top, 100)
+                .padding(.top, 160)
                 .frame(height: 376)
             
                 Spacer()

@@ -12,9 +12,15 @@ class Tools: ObservableObject {
 }
 
 struct ContentView: View {
+    
+    private enum Selection {
+        case dayList
+        case calendar
+    }
+    
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar
-    @State private var selection: String? = nil
+    @State private var path: [Selection] = []
     @StateObject private var tools = Tools()
     private var colorStripMV =  ColorStripModelView()
     @State private var offset: CGSize = .zero
@@ -44,41 +50,23 @@ struct ContentView: View {
                 offset = .zero
             }
         
-        NavigationView {
+        NavigationStack(path: $path) {
             VStack {
-                NavigationLink(
-                    destination: DayList(),
-                    tag: "DayList", selection: $selection) { EmptyView() }
-                NavigationLink(
-                    destination: CalendarView(interval: monthly) { date in
-                        let day = modelData.findDay(date)
-                        Text("30")
-                            .hidden()
-                            .padding(8)
-                            .background(getCalendarBackgroundColor(day))
-                            .clipShape(Circle())
-                            .padding(.vertical, 4)
-                            .overlay(
-                                Text(String(self.calendar.component(.day, from: date)))
-                                    .foregroundColor(getCalendarForegroundColor(day))
-                            )
-                            .overlay(
-                                Circle().stroke(.white, lineWidth: modelData.isToday(day: day) ? 1 : 0).padding(4)
-                            )                    },
-                    tag: "Calendar", selection: $selection) { EmptyView() }
+                NavigationLink("", value: Selection.dayList)
+                NavigationLink("", value: Selection.calendar)
                 
                 //Spacer()
                 
                 VStack {
                     if tools.canvasVisible {
                         CanvasView(toolPickerIsActive: $tools.canvasVisible)
-                            .padding(.top, 150)
+                            .padding(.top, 130)
                     }
                     else {
                         CarouselView()
                     }
                 }
-                .padding(.top, 160)
+                .padding(.top, 140)
                 .frame(height: 376)
             
                 Spacer()
@@ -127,18 +115,43 @@ struct ContentView: View {
                     
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
-            
-            .navigationBarItems(
-                leading:
-                    Button(action: { selection = "DayList" }) {
+            .navigationDestination(for: Selection.self) { selection in
+                switch selection {
+                case .dayList:
+                    DayList()
+                case .calendar:
+                    CalendarView(interval: monthly) { date in
+                        let day = modelData.findDay(date)
+                        Text("30")
+                            .hidden()
+                            .padding(8)
+                            .background(getCalendarBackgroundColor(day))
+                            .clipShape(Circle())
+                            .padding(.vertical, 4)
+                            .overlay(
+                                Text(String(self.calendar.component(.day, from: date)))
+                                    .foregroundColor(getCalendarForegroundColor(day))
+                            )
+                            .overlay(
+                                Circle().stroke(.white, lineWidth: modelData.isToday(day: day) ? 1 : 0).padding(4)
+                            )
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { path.append(.dayList) }) {
                         Image(systemName: "list.bullet")
-                    }.padding(),
-                
-                trailing:
-                    Button(action: { selection = "Calendar" }) {
+                    }.padding()
+                    
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { path.append(.calendar) }) {
                         Image(systemName: "calendar")
                     }.padding()
-            )
+                    
+                }
+            }
         }
         .environmentObject(modelData)
         

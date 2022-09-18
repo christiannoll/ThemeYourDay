@@ -60,6 +60,9 @@ struct ToolBarView: View {
                         Button(action: { modelData.applyToToday(modelData.selectedDay) }) {
                             Label("Apply to today", systemImage: "square.and.arrow.up.on.square")
                         }
+                        Button(action: { tools.saveThemeAsImage() }) {
+                            Label("Save theme", systemImage: "square.and.arrow.down")
+                        }
                     } label: { Image(systemName: "ellipsis.circle") }
                 }
             }

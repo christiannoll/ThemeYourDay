@@ -9,6 +9,12 @@ class Tools: ObservableObject {
     @Published var visibleTool = ToolType.None
     @Published var canvasVisible = false
     @Published var settingsVisible = false
+    
+    var saveThemeAsImage: () -> Void
+    
+    init(saveTheme: @escaping () -> Void) {
+        saveThemeAsImage = saveTheme
+    }
 }
 
 struct ContentView: View {
@@ -21,7 +27,7 @@ struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar
     @State private var path: [Selection] = []
-    @StateObject private var tools = Tools()
+    @StateObject private var tools = Tools(saveTheme: {})
     private var colorStripMV =  ColorStripModelView()
     @State private var offset: CGSize = .zero
     
@@ -154,7 +160,19 @@ struct ContentView: View {
             }
         }
         .environmentObject(modelData)
+        .onAppear { tools.saveThemeAsImage = saveThemeAsImage }
         
+    }
+    
+    func saveThemeAsImage() -> Void {
+        let dayView = DayView(day: $modelData.selectedDay, isSelectedDay: true)
+            .environmentObject(modelData)
+        let renderer = ImageRenderer(content: dayView)
+        renderer.scale = 3
+         
+        if let image = renderer.uiImage {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
     }
     
     private func getCalendarBackgroundColor(_ day: Day?) -> Color {

@@ -299,31 +299,34 @@ func createSettings() -> Data? {
 
 
 struct MyData {
-    static var days: [Day] = loadDays()
     static var settings: Settings = loadSettings()
+    static var days: [Day] = loadDays()
     static var indexCache : [Date:Int] = [:]
     
     static func loadDays() -> [Day] {
         var loadedDays: [Day] = load("DayData.json")
     
         let endDate = Date().getNextMonth()?.noon
-        var day = Date().getPreviousMonth()?.noon
+        guard var day = Date().getPreviousMonth()?.noon else {
+            return loadedDays
+        }
+        
         
         while day != endDate {
             var loaded = false
             for loadedDay in loadedDays {
-                if loadedDay.id.hasSame(.day, as: day!) {
+                if loadedDay.id.hasSame(.day, as: day) {
                     loaded = true
                     break
                 }
             }
             
             if !loaded {
-                let newDay = Day(id: day!, text: ModelData.DEFAULT_TEXT, fgColor: DayColor())
+                let newDay = Day(id: day, text: ModelData.DEFAULT_TEXT, fgColor: DayColor(), bgColor: settings.weekdaysBgColor[day.weekday - 1])
                 loadedDays.insert(newDay, at: 0)
             }
             
-            day = day!.dayAfter.noon
+            day = day.dayAfter.noon
         }
         
         loadedDays.sort { $0.id < $1.id }
@@ -379,6 +382,9 @@ extension Date {
 
     func hasSame(_ component: Calendar.Component, as date: Date) -> Bool {
         Calendar.current.isDate(self.noon, inSameDayAs: date.noon)
+    }
+    var weekday: Int {
+        return Calendar.current.component(.weekday, from: self)
     }
 }
 

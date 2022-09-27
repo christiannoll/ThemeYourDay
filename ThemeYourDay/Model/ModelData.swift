@@ -322,7 +322,9 @@ struct MyData {
             }
             
             if !loaded {
-                let newDay = Day(id: day, text: ModelData.DEFAULT_TEXT, fgColor: DayColor(), bgColor: settings.weekdaysBgColor[day.weekday - 1])
+                let newDay = Day(id: day, text: ModelData.DEFAULT_TEXT,
+                                 fgColor: settings.weekdaysFgColor[day.weekday - 1],
+                                 bgColor: settings.weekdaysBgColor[day.weekday - 1])
                 loadedDays.insert(newDay, at: 0)
             }
             

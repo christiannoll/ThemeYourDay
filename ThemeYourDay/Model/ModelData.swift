@@ -291,7 +291,7 @@ func createData() -> Data? {
 }
 
 func createSettings() -> Data? {
-    let settings = Settings(fgColors: [DayColor()], bgColors: [DayColor()])
+    let settings = Settings()
     let jsonEncoder = JSONEncoder()
     let jsonResultData = try? jsonEncoder.encode(settings)
     return jsonResultData

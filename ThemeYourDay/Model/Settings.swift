@@ -1,8 +1,8 @@
 import Foundation
 
 struct Settings: Hashable, Codable {
-    var fgColors: [DayColor]
-    var bgColors: [DayColor]
+    var fgColors = [DayColor()]
+    var bgColors = [Day.defaultBgColor]
     var textLineSpacing = 10
     
     var weekdaysBgColor = Array(repeating: Day.defaultBgColor, count: 7)

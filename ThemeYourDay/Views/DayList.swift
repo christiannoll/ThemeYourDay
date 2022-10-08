@@ -19,25 +19,26 @@ struct DayList: View {
             if searching {
                 SearchBar(searchText: $query, searching: $searching)
             }
-            ScrollView {
-                ScrollViewReader { proxy in
-                    VStack {
-                        ForEach(filteredDays, id: \.self) { day in
-                            DayListCell(day: day, isToday: modelData.isToday(day: day))
-                                .onTapGesture {
-                                    modelData.selectDay(day)
-                                    self.mode.wrappedValue.dismiss()
-                                }
-                                .padding(.vertical, 8)
-                                .padding(.horizontal)
+            ScrollViewReader { proxy in
+                List(filteredDays) {
+                    let day = $0
+                    DayListCell(day: day, isToday: modelData.isToday(day: day))
+                        .onTapGesture {
+                            modelData.selectDay(day)
+                            self.mode.wrappedValue.dismiss()
                         }
-                    }.onAppear {
+                        .padding(.vertical, 8)
+                        .id(day)
+                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .listRowSeparator(.hidden)
+                }
+                .scrollContentBackground(.hidden)
+                .onAppear {
+                    proxy.scrollTo(modelData.selectedDay, anchor: .center)
+                }
+                .onChange(of: query) {newQuery in
+                    if newQuery.isEmpty {
                         proxy.scrollTo(modelData.selectedDay, anchor: .center)
-                    }
-                    .onChange(of: query) {newQuery in
-                        if newQuery.isEmpty {
-                            proxy.scrollTo(modelData.selectedDay, anchor: .top)
-                        }
                     }
                 }
             }

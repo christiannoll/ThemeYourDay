@@ -8,9 +8,7 @@ final class ModelData: ObservableObject {
     @Published var selectedDay = MyData.currentDay()
     @Published var selectedIndex = MyData.currentIndex()
     @Published var settings = MyData.settings
-    
-    static let DEFAULT_TEXT = "New Day"
-    
+        
     func save() {
         syncSelectedDay()
         writeJson()
@@ -113,7 +111,7 @@ final class ModelData: ObservableObject {
     
     func removeAllDays() {
         for index in 0..<days.count {
-            let newDay = Day(id: days[index].id, text: ModelData.DEFAULT_TEXT, fgColor: DayColor())
+            let newDay = Day(id: days[index].id, text: defaultWeekdayText(days[index].id), fgColor: DayColor())
             days[index] = newDay
         }
         writeJson()
@@ -211,7 +209,7 @@ final class ModelData: ObservableObject {
     func exportAsCsvFile() {
         var csvString = "date,text\n"
         for day in days {
-            if day.text != ModelData.DEFAULT_TEXT {
+            if day.text != defaultWeekdayText(day.id) {
                 let dataString = "\(day.id.description),\(day.text)\n"
                 csvString = csvString.appending(dataString)
             }
@@ -224,6 +222,10 @@ final class ModelData: ObservableObject {
             return false
         }
         return day.id == Date().noon
+    }
+    
+    private func defaultWeekdayText(_ date: Date) -> String {
+        settings.weekdaysText[date.weekday - 1]
     }
     
     private func writeCsvFile(_ csvString: String) {
@@ -284,7 +286,7 @@ func load<T: Codable>(_ filename: String) -> T {
 }
 
 func createData() -> Data? {
-    let days = [Day(id: Date().noon, text: ModelData.DEFAULT_TEXT, fgColor: DayColor())]
+    let days = [Day(id: Date().noon, text: Settings.WeekdaysText[Date().weekday - 1], fgColor: DayColor())]
     let jsonEncoder = JSONEncoder()
     let jsonResultData = try? jsonEncoder.encode(days)
     return jsonResultData

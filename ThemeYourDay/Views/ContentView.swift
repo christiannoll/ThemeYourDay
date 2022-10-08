@@ -61,19 +61,17 @@ struct ContentView: View {
                 NavigationLink("", value: Selection.dayList)
                 NavigationLink("", value: Selection.calendar)
                 
-                //Spacer()
+                Spacer()
                 
                 VStack {
                     if tools.canvasVisible {
                         CanvasView(toolPickerIsActive: $tools.canvasVisible)
-                            .padding(.top, 130)
                     }
                     else {
                         CarouselView()
                     }
                 }
-                .padding(.top, 140)
-                .frame(height: 376)
+                .frame(maxHeight: 376)
             
                 Spacer()
                 
@@ -112,7 +110,7 @@ struct ContentView: View {
                 .sheet(isPresented: $tools.settingsVisible,
                                onDismiss: {  },
                                content: { SettingsView() })
-                //.frame(height:120)
+                .frame(maxHeight: 80)
                 
                 ToolBarView()
                     .ignoresSafeArea()

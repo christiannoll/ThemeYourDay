@@ -42,7 +42,7 @@ struct DayView: View {
     private var starOverlay: some View {
         Image(systemName: day.starred ? "star.fill" : "star")
             .foregroundColor(.white)
-            .padding(.top, 24)
+            .padding(.top, 28)
             .padding(.trailing, 32)
             .onTapGesture {
                 modelData.selectedDay.starred = !day.starred

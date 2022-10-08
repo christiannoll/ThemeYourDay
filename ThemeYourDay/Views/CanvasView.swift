@@ -34,6 +34,7 @@ struct CanvasView: View {
                 .foregroundColor(.white)
                 .padding(.trailing, 30)
             }
+            .frame(height: 28)
             Spacer()
             MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: modelData.selectedDay.bgColor.color)
                 .frame(height: 300)

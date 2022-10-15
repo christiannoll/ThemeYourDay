@@ -6,6 +6,7 @@ struct DayView: View {
     @FocusState private var focusMode: Bool
     @Binding var day: Day
     var isSelectedDay: Bool
+    var readOnly = false
     
     var body: some View {
         VStack {
@@ -14,23 +15,23 @@ struct DayView: View {
                 .background(.gray)
                 .foregroundColor(.white)
             Spacer()
-                
-            TextEditor(text: $day.text)
-                .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
-                .multilineTextAlignment(day.getTextAlignment())
-                .padding()
-                .scrollContentBackground(.hidden)
-                .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
-                .background(day.bgColor.color)
-                .foregroundColor(day.fgColor.color)
-                .frame(height: 300)
-                .disableAutocorrection(true)
-                .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
-                .onTapGesture {
-                    focusMode = !focusMode
-                }
-                .focused($focusMode)
-                .onChange(of: day.text, perform: saveText)
+            
+            if readOnly {
+                Text(day.text)
+                    .padding()
+                    .frame(width: 392, height: 300, alignment: .top)
+                    .modifier(DayViewTextStyle(day: day))
+            } else {
+                TextEditor(text: $day.text)
+                    .padding()
+                    .frame(height: 300)
+                    .modifier(DayViewTextStyle(day: day))
+                    .onTapGesture {
+                        focusMode = !focusMode
+                    }
+                    .focused($focusMode)
+                    .onChange(of: day.text, perform: saveText)
+            }
         }
         .background(.gray)
         .cornerRadius(25.0)
@@ -42,7 +43,7 @@ struct DayView: View {
     private var starOverlay: some View {
         Image(systemName: day.starred ? "star.fill" : "star")
             .foregroundColor(.white)
-            .padding(.top, 28)
+            .padding(.top, readOnly ? 24 : 28)
             .padding(.trailing, 32)
             .onTapGesture {
                 modelData.selectedDay.starred = !day.starred
@@ -66,16 +67,6 @@ struct DayView: View {
             modelData.save()
         }
     }
-    
-    private func loadPngImage() -> UIImage {
-        do {
-            let data = try Data(contentsOf: modelData.getPngImageFilename(date: day.id), options: [.mappedIfSafe, .uncached])
-            let drawing = UIImage(data: data)
-            return drawing!
-        } catch {
-            return UIImage()
-        }
-    }
 }
 
 extension View {
@@ -84,6 +75,35 @@ extension View {
             transform(self)
         } else {
             self
+        }
+    }
+}
+
+struct DayViewTextStyle: ViewModifier {
+    
+    @EnvironmentObject var modelData: ModelData
+    var day: Day
+    
+    @ViewBuilder
+    public func body(content: Content) -> some View {
+        content
+            .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
+            .multilineTextAlignment(day.getTextAlignment())
+            .scrollContentBackground(.hidden)
+            .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
+            .background(day.bgColor.color)
+            .foregroundColor(day.fgColor.color)
+            .disableAutocorrection(true)
+            .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
+    }
+    
+    private func loadPngImage() -> UIImage {
+        do {
+            let data = try Data(contentsOf: modelData.getPngImageFilename(date: day.id), options: [.mappedIfSafe, .uncached])
+            let drawing = UIImage(data: data)
+            return drawing!
+        } catch {
+            return UIImage()
         }
     }
 }

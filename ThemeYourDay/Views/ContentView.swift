@@ -163,7 +163,7 @@ struct ContentView: View {
     }
     
     func saveThemeAsImage() -> Void {
-        let dayView = DayView(day: $modelData.selectedDay, isSelectedDay: true)
+        let dayView = DayView(day: $modelData.selectedDay, isSelectedDay: true, readOnly: true)
             .environmentObject(modelData)
         let renderer = ImageRenderer(content: dayView)
         renderer.scale = 3

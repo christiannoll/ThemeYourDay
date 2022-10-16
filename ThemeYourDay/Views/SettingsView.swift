@@ -8,10 +8,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Card template")) {
-                    Toggle(isOn: .constant(true),
-                           label: { Text("Use default") }
-                    )
+                Section(header: Text("Theme template")) {
                     NavigationLink("Background Colors", destination: WeekSettingsView(weekSettingsType: .bgcolor))
                     NavigationLink("Foreground Colors", destination: WeekSettingsView(weekSettingsType: .fgcolor))
                     NavigationLink("Texts", destination: WeekSettingsView(weekSettingsType: .text))

@@ -1,7 +1,11 @@
 import Foundation
 
 struct Settings: Hashable, Codable {
-    var fgColors = [DayColor()]
+    var fgColors = [DayColor(),
+                    DayColor(r: 55/255, g: 26/255, b: 148/255, a: 1.0),
+                    DayColor(r: 249/255, g: 226/255, b: 49/255, a: 1.0),
+                    DayColor(r: 78/255, g: 122/255, b: 39/255, a: 1.0),
+                    DayColor(r: 152/255, g: 42/255, b: 188/255, a: 1.0)]
     var bgColors = [Day.defaultBgColor,
                     DayColor(r: 249/255, g: 226/255, b: 49/255, a: 1.0),
                     DayColor(r: 237/255, g: 35/255, b: 13/255, a: 1.0),

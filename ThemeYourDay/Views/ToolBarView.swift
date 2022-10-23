@@ -54,7 +54,7 @@ struct ToolBarView: View {
                         Button(action: { tools.settingsVisible.toggle() }) {
                             Label("Settings", systemImage: "gearshape")
                         }
-                        Button(action: { }) {
+                        Button(action: { tools.shareThemeAsImage() }) {
                             Label("Share", systemImage: "square.and.arrow.up")
                         }
                         Button(action: { modelData.applyToToday(modelData.selectedDay) }) {

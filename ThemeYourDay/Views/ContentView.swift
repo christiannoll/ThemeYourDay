@@ -11,9 +11,24 @@ class Tools: ObservableObject {
     @Published var settingsVisible = false
     
     var saveThemeAsImage: () -> Void
+    var shareThemeAsImage: () -> Void
     
-    init(saveTheme: @escaping () -> Void) {
+    init(saveTheme: @escaping () -> Void, shareTheme: @escaping () -> Void) {
         saveThemeAsImage = saveTheme
+        shareThemeAsImage = shareTheme
+    }
+    
+    static func showShareSheet(fileName: String) {
+        let file = FileManager.sharedContainerURL().appendingPathComponent(fileName)
+        let url = NSURL.fileURL(withPath: file.path)
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        let keyWindow = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+        keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }
 }
 
@@ -27,7 +42,7 @@ struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar
     @State private var path: [Selection] = []
-    @StateObject private var tools = Tools(saveTheme: {})
+    @StateObject private var tools = Tools(saveTheme: {}, shareTheme: {})
     private var colorStripMV =  ColorStripModelView()
     @State private var offset: CGSize = .zero
     
@@ -158,18 +173,38 @@ struct ContentView: View {
             }
         }
         .environmentObject(modelData)
-        .onAppear { tools.saveThemeAsImage = saveThemeAsImage }
+        .onAppear {
+            tools.saveThemeAsImage = saveThemeInAlbum
+            tools.shareThemeAsImage = shareTheme
+        }
         
     }
     
-    func saveThemeAsImage() -> Void {
+    func saveThemeInAlbum() {
+        saveThemeAsImage(inAlbum: true)
+    }
+    
+    func shareTheme() {
+        saveThemeAsImage(inAlbum: false)
+        Tools.showShareSheet(fileName: "theme.png")
+    }
+    
+    private func saveThemeAsImage(inAlbum: Bool) {
         let dayView = DayView(day: $modelData.selectedDay, isSelectedDay: true, readOnly: true)
             .environmentObject(modelData)
         let renderer = ImageRenderer(content: dayView)
         renderer.scale = 3
          
         if let image = renderer.uiImage {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            if inAlbum {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            }
+            else {
+                if let data = image.pngData() {
+                    let filename = FileManager.sharedContainerURL().appendingPathComponent("theme.png")
+                    try? data.write(to: filename)
+                }
+            }
         }
     }
     

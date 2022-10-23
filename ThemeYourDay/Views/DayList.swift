@@ -47,7 +47,7 @@ struct DayList: View {
                 Button(action: { showDeleteAlert.toggle()}) {
                     Label("Remove themes", systemImage: "trash")
                 }
-                Button(action: { shareSheet()}) {
+                Button(action: { shareCsvFile()}) {
                     Label("Share themes", systemImage: "square.and.arrow.up")
                 }
             } label: { Image(systemName: "ellipsis.circle") })
@@ -64,19 +64,9 @@ struct DayList: View {
         modelData.removeAllDays()
     }
     
-    private func shareSheet() {
+    private func shareCsvFile() {
         modelData.exportAsCsvFile()
-        
-        let file = FileManager.sharedContainerURL().appendingPathComponent("ExortedDays.csv")
-        let url = NSURL.fileURL(withPath: file.path)
-        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        let keyWindow = UIApplication.shared.connectedScenes
-                .filter({$0.activationState == .foregroundActive})
-                .map({$0 as? UIWindowScene})
-                .compactMap({$0})
-                .first?.windows
-                .filter({$0.isKeyWindow}).first
-        keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+        Tools.showShareSheet(fileName: "ExortedDays.csv")
     }
 }
 

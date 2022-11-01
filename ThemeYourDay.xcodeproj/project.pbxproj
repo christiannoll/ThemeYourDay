@@ -34,7 +34,7 @@
 		D6D58B4527B671A700473B81 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D58B4427B671A700473B81 /* SwiftUI.framework */; };
 		D6D58B4827B671A700473B81 /* DayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D58B4727B671A700473B81 /* DayWidget.swift */; };
 		D6D58B4A27B671A800473B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6D58B4927B671A800473B81 /* Assets.xcassets */; };
-		D6D58B4E27B671A800473B81 /* DayWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D6D58B4E27B671A800473B81 /* DayWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DDD274261A19C800FD1AA5 /* ThemeYourDayApp.swift */; };
 		D6DDD277261A19C800FD1AA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DDD276261A19C800FD1AA5 /* ContentView.swift */; };
 		D6DDD279261A19C900FD1AA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DDD278261A19C900FD1AA5 /* Assets.xcassets */; };
@@ -72,15 +72,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D6D58B4F27B671A800473B81 /* Embed App Extensions */ = {
+		D6D58B4F27B671A800473B81 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D6D58B4E27B671A800473B81 /* DayWidgetExtension.appex in Embed App Extensions */,
+				D6D58B4E27B671A800473B81 /* DayWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -321,7 +321,7 @@
 				D6DDD26D261A19C800FD1AA5 /* Sources */,
 				D6DDD26E261A19C800FD1AA5 /* Frameworks */,
 				D6DDD26F261A19C800FD1AA5 /* Resources */,
-				D6D58B4F27B671A800473B81 /* Embed App Extensions */,
+				D6D58B4F27B671A800473B81 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -376,7 +376,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					D6D58B3F27B671A700473B81 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -717,6 +717,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ThemeYourDay/ThemeYourDay.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ThemeYourDay/Preview Content\"";
 				DEVELOPMENT_TEAM = ELG2TXRCNZ;
@@ -729,6 +730,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -741,6 +743,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ThemeYourDay/ThemeYourDay.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ThemeYourDay/Preview Content\"";
 				DEVELOPMENT_TEAM = ELG2TXRCNZ;
@@ -753,6 +756,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -224,6 +224,12 @@ final class ModelData: ObservableObject {
         return day.id == Date().noon
     }
     
+    func getSharedThemeFileName() -> String {
+        let dateStr = selectedDay.id.formatted(.iso8601.day().month().year())
+        let fileName = dateStr + "-Day.png"
+        return fileName
+    }
+    
     private func defaultWeekdayText(_ date: Date) -> String {
         settings.weekdaysText[date.weekday - 1]
     }

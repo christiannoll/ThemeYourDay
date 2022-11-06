@@ -186,7 +186,7 @@ struct ContentView: View {
     
     func shareTheme() {
         saveThemeAsImage(inAlbum: false)
-        Tools.showShareSheet(fileName: "theme.png")
+        Tools.showShareSheet(fileName: modelData.getSharedThemeFileName())
     }
     
     private func saveThemeAsImage(inAlbum: Bool) {
@@ -201,7 +201,7 @@ struct ContentView: View {
             }
             else {
                 if let data = image.pngData() {
-                    let filename = FileManager.sharedContainerURL().appendingPathComponent("theme.png")
+                    let filename = FileManager.sharedContainerURL().appendingPathComponent(modelData.getSharedThemeFileName())
                     try? data.write(to: filename)
                 }
             }

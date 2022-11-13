@@ -6,7 +6,7 @@ struct ToolBarView: View {
     @EnvironmentObject var modelData: ModelData
     
     var body: some View {
-        NavigationView {
+        HStack {
             Spacer()
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {

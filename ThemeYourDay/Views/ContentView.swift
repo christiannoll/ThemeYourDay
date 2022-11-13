@@ -129,7 +129,6 @@ struct ContentView: View {
                 
                 ToolBarView()
                     .ignoresSafeArea()
-                    .frame(height: 50)
                     .environmentObject(tools)
                     
             }

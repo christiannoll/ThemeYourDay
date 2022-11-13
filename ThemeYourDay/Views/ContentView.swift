@@ -46,6 +46,9 @@ struct ContentView: View {
     private var colorStripMV =  ColorStripModelView()
     @State private var offset: CGSize = .zero
     
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
     private var monthly: DateInterval {
         let endDate = Date().getNextMonth()
         let startDate = Date().getPreviousMonth()
@@ -86,7 +89,7 @@ struct ContentView: View {
                         CarouselView()
                     }
                 }
-                .frame(maxHeight: 376)
+                .frame(maxHeight: getHeight())
             
                 Spacer()
                 
@@ -186,6 +189,18 @@ struct ContentView: View {
     func shareTheme() {
         saveThemeAsImage(inAlbum: false)
         Tools.showShareSheet(fileName: modelData.getSharedThemeFileName())
+    }
+    
+    static func getHeight(_ horizontalSizeClass: UserInterfaceSizeClass?,
+                          _ verticalSizeClass: UserInterfaceSizeClass?) -> CGFloat {
+        if verticalSizeClass == .regular && horizontalSizeClass == .regular {
+            return 500
+        }
+        return 300
+    }
+    
+    private func getHeight() -> CGFloat {
+        ContentView.getHeight(horizontalSizeClass, verticalSizeClass) + 76
     }
     
     private func saveThemeAsImage(inAlbum: Bool) {

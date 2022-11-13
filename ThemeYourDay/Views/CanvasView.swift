@@ -6,6 +6,9 @@ struct CanvasView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var canvasView = PKCanvasView()
     @Binding var toolPickerIsActive: Bool
+    
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     var body: some View {
         VStack {
@@ -37,13 +40,17 @@ struct CanvasView: View {
             .frame(height: 28)
             Spacer()
             MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: modelData.selectedDay.bgColor.color)
-                .frame(height: 300)
+                .frame(height: getHeight())
                 .overlay(textOverlay)
         }
         .onAppear { loadImage() }
         .background(.gray)
         .cornerRadius(25) 
         .padding()
+    }
+    
+    private func getHeight() -> CGFloat {
+        ContentView.getHeight(horizontalSizeClass, verticalSizeClass)
     }
     
     private var textOverlay: some View {
@@ -54,7 +61,7 @@ struct CanvasView: View {
             .multilineTextAlignment(day.getTextAlignment())
             .padding(.horizontal, 20)
             .padding(.vertical, 24)
-            .frame(width: 392, height: 300, alignment: day.getAlignment())
+            .frame(width: 392, height: getHeight(), alignment: day.getAlignment())
             .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
     }
     

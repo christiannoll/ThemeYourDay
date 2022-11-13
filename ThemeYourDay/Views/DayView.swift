@@ -8,6 +8,9 @@ struct DayView: View {
     var isSelectedDay: Bool
     var readOnly = false
     
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
     var body: some View {
         VStack {
             Spacer()
@@ -19,12 +22,12 @@ struct DayView: View {
             if readOnly {
                 Text(day.text)
                     .padding()
-                    .frame(width: 392, height: 300, alignment: .top)
+                    .frame(width: 392, height: getHeight(), alignment: .top)
                     .modifier(DayViewTextStyle(day: day))
             } else {
                 TextEditor(text: $day.text)
                     .padding()
-                    .frame(height: 300)
+                    .frame(height: getHeight())
                     .modifier(DayViewTextStyle(day: day))
                     .onTapGesture {
                         focusMode = !focusMode
@@ -66,6 +69,10 @@ struct DayView: View {
             //print(text)
             modelData.save()
         }
+    }
+    
+    private func getHeight() -> CGFloat {
+        ContentView.getHeight(horizontalSizeClass, verticalSizeClass)
     }
 }
 

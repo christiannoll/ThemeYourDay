@@ -14,7 +14,7 @@ struct CarouselView: View {
                 ForEach(indices, id: \.self) { (idx) in
                     DayView(day: $modelData.days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
                         .offset(x: cellOffset(cellLocation(idx), geometry.size, false))
-                        .animation(.easeInOut(duration: 1.0), value: dragState.translation)
+                        .animation(.easeInOut(duration: 0.7), value: dragState.translation)
                         .onTapGesture() {
                             withAnimation {
                                 modelData.selectDay(Date().noon)

@@ -23,11 +23,13 @@ struct DayView: View {
                 Text(day.text)
                     .padding()
                     .frame(width: 392, height: getHeight(), alignment: .top)
+                    .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                     .modifier(DayViewTextStyle(day: day))
             } else {
                 TextEditor(text: $day.text)
                     .padding()
                     .frame(height: getHeight())
+                    .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                     .modifier(DayViewTextStyle(day: day))
                     .onTapGesture {
                         focusMode = !focusMode
@@ -41,6 +43,16 @@ struct DayView: View {
         .padding()
         .overlay(starOverlay, alignment: .topTrailing)
         
+    }
+    
+    private func loadPngImage() -> UIImage {
+        do {
+            let data = try Data(contentsOf: modelData.getPngImageFilename(date: day.id), options: [.mappedIfSafe, .uncached])
+            let drawing = UIImage(data: data)
+            return drawing!
+        } catch {
+            return UIImage()
+        }
     }
     
     private var starOverlay: some View {
@@ -97,21 +109,10 @@ struct DayViewTextStyle: ViewModifier {
             .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
             .multilineTextAlignment(day.getTextAlignment())
             .scrollContentBackground(.hidden)
-            .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
             .background(day.bgColor.color)
             .foregroundColor(day.fgColor.color)
             .disableAutocorrection(true)
             .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
-    }
-    
-    private func loadPngImage() -> UIImage {
-        do {
-            let data = try Data(contentsOf: modelData.getPngImageFilename(date: day.id), options: [.mappedIfSafe, .uncached])
-            let drawing = UIImage(data: data)
-            return drawing!
-        } catch {
-            return UIImage()
-        }
     }
 }
 

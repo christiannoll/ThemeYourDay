@@ -41,7 +41,7 @@ struct CanvasView: View {
             Spacer()
             MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: modelData.selectedDay.bgColor.color)
                 .frame(height: getHeight())
-                .overlay(textOverlay)
+                .overlay(textOverlay.allowsHitTesting(false))
         }
         .onAppear { loadImage() }
         .background(.gray)

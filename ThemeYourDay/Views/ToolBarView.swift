@@ -5,6 +5,18 @@ struct ToolBarView: View {
     @EnvironmentObject var tools: Tools
     @EnvironmentObject var modelData: ModelData
     
+    private var textToolVisible: Bool {
+        tools.visibleTool == .Textformat
+    }
+    
+    private var foregroundToolVisible: Bool {
+        tools.visibleTool == .Foreground
+    }
+    
+    private var backgroundToolVisible: Bool {
+        tools.visibleTool == .Background
+    }
+    
     var body: some View {
         HStack {
             Spacer()
@@ -14,6 +26,7 @@ struct ToolBarView: View {
                         tools.visibleTool = .None
                     }) {
                         Image(systemName: "pencil.tip.crop.circle")
+                            .foregroundColor(.secondary)
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {
@@ -21,9 +34,12 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
-                        tools.visibleTool = tools.visibleTool == .Textformat ? .None : .Textformat
+                        withAnimation {
+                            tools.visibleTool = textToolVisible ? .None : .Textformat
+                        }
                     }) {
                         Image(systemName: "textformat")
+                            .foregroundColor(textToolVisible ? .accentColor : .secondary)
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {
@@ -31,9 +47,12 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
-                        tools.visibleTool = tools.visibleTool == .Foreground ? .None : .Foreground
+                        withAnimation {
+                            tools.visibleTool = foregroundToolVisible ? .None : .Foreground
+                        }
                     }) {
                         Image(systemName: "note.text")
+                            .foregroundColor(foregroundToolVisible ? .accentColor : .secondary)
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {
@@ -41,9 +60,12 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button(action: {
-                        tools.visibleTool = tools.visibleTool == .Background ? .None : .Background
+                        withAnimation {
+                            tools.visibleTool = backgroundToolVisible ? .None : .Background
+                        }
                     }) {
                         Image(systemName: "note")
+                            .foregroundColor(backgroundToolVisible ? .accentColor : .secondary)
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {
@@ -63,7 +85,7 @@ struct ToolBarView: View {
                         Button(action: { tools.saveThemeAsImage() }) {
                             Label("Save theme", systemImage: "square.and.arrow.down")
                         }
-                    } label: { Image(systemName: "ellipsis.circle") }
+                    } label: { Image(systemName: "ellipsis.circle").foregroundColor(.secondary) }
                 }
             }
         }

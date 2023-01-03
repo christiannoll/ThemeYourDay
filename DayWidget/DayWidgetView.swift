@@ -12,13 +12,16 @@ struct DayWidgetView: View {
                     Text(formattedDate())
                         .foregroundColor(.white)
                         .font(.caption)
+                        .padding(.top, 12)
                 )
-                .frame(height:26)
+                .frame(height:36)
                 .cornerRadius(50, corners: [.topLeft, .topRight])
                 .overlay (starOverlay
+                    .resizable()
                     .foregroundColor(.white)
-                    .padding(.trailing, 8)
-                    .padding(.top, 3), alignment: .topTrailing)
+                    .frame(width: 12, height: 12)
+                    .padding(.trailing, 18)
+                    .padding(.top, 18), alignment: .topTrailing)
             
             Text(day.text)
                 .padding(.horizontal, 6)
@@ -43,7 +46,7 @@ struct DayWidgetView: View {
         return dateFormatter.string(from: day.id)
     }
     
-    private var starOverlay: some View {
+    private var starOverlay: Image {
         day.starred ? Image(systemName: "star.fill") : Image(uiImage: UIImage())
     }
     

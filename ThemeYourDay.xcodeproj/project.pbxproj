@@ -12,6 +12,8 @@
 		D62979522626256800163ACF /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62979512626256800163ACF /* DayListCell.swift */; };
 		D62A813728C139FB00B5B2B9 /* WeekSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */; };
 		D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63EE6F9262B05DB008699DF /* CalendarView.swift */; };
+		D6410ED1297411A900862C9A /* VibrantDayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */; };
+		D6410ED2297411A900862C9A /* VibrantDayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */; };
 		D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D643E1C926B6EE8D0056908E /* DayView.swift */; };
 		D65CFD4C262354A700C75F56 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65CFD4B262354A700C75F56 /* DayList.swift */; };
 		D65D7A6128BB4FC600717980 /* DayColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D7A6028BB4FC600717980 /* DayColorView.swift */; };
@@ -91,6 +93,7 @@
 		D62979512626256800163ACF /* DayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSettingsView.swift; sourceTree = "<group>"; };
 		D63EE6F9262B05DB008699DF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantDayWidgetView.swift; sourceTree = "<group>"; };
 		D643E1C926B6EE8D0056908E /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		D65CFD4B262354A700C75F56 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		D65D7A6028BB4FC600717980 /* DayColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayColorView.swift; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 				D6D58B4727B671A700473B81 /* DayWidget.swift */,
 				D6A7036027B68450008B0F7B /* DayWidgetView.swift */,
 				D6D58B4B27B671A800473B81 /* Info.plist */,
+				D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */,
 			);
 			path = DayWidget;
 			sourceTree = "<group>";
@@ -457,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6410ED2297411A900862C9A /* VibrantDayWidgetView.swift in Sources */,
 				D6D58B4827B671A700473B81 /* DayWidget.swift in Sources */,
 				D6F6EA6427B6D447009D89E9 /* ModelData.swift in Sources */,
 				D6A7036227B68450008B0F7B /* DayWidgetView.swift in Sources */,
@@ -487,6 +492,7 @@
 				D6D48FF02676424800101EC3 /* Settings.swift in Sources */,
 				D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */,
 				D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */,
+				D6410ED1297411A900862C9A /* VibrantDayWidgetView.swift in Sources */,
 				D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */,
 				D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */,
 				D62979522626256800163ACF /* DayListCell.swift in Sources */,

@@ -48,9 +48,18 @@ struct SimpleEntry: TimelineEntry {
 
 struct DayWidgetEntryView : View {
     var entry: Provider.Entry
+    
+    @Environment(\.widgetRenderingMode) private var renderingMode
 
     var body: some View {
-        DayWidgetView(day: entry.currentDay)
+        switch renderingMode {
+        case .vibrant:
+            VibrantDayWidgetView(day: entry.currentDay)
+        case .fullColor:
+            DayWidgetView(day: entry.currentDay)
+        default:
+            EmptyView()
+        }
     }
 }
 
@@ -64,12 +73,23 @@ struct DayWidget: Widget {
         }
         .configurationDisplayName("Day Widget")
         .description("This is a ThemeYourDay widget.")
+        .supportedFamilies(
+            [
+                .systemSmall,
+                .systemMedium,
+                .systemLarge,
+                .systemExtraLarge,
+                //.accessoryInline,
+                //.accessoryCircular,
+                .accessoryRectangular
+            ]
+        )
     }
 }
 
 struct DayWidget_Previews: PreviewProvider {
     static var previews: some View {
-        DayWidgetEntryView(entry: SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor())))
+        DayWidgetEntryView(entry: SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Theme your day", fgColor: DayColor())))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

@@ -17,6 +17,8 @@
 		D6410ED1297411A900862C9A /* VibrantDayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */; };
 		D6410ED2297411A900862C9A /* VibrantDayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */; };
 		D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D643E1C926B6EE8D0056908E /* DayView.swift */; };
+		D65B03F4298FF831009E6DEB /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65B03F3298FF831009E6DEB /* AuthorizationManager.swift */; };
+		D65B03F6299001A4009E6DEB /* SystemSettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65B03F5299001A4009E6DEB /* SystemSettingsOpener.swift */; };
 		D65CFD4C262354A700C75F56 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65CFD4B262354A700C75F56 /* DayList.swift */; };
 		D65D7A6128BB4FC600717980 /* DayColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D7A6028BB4FC600717980 /* DayColorView.swift */; };
 		D678ABC728AECBC5003F27B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678ABC628AECBC5003F27B4 /* SettingsView.swift */; };
@@ -99,6 +101,8 @@
 		D63EE6F9262B05DB008699DF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantDayWidgetView.swift; sourceTree = "<group>"; };
 		D643E1C926B6EE8D0056908E /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		D65B03F3298FF831009E6DEB /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		D65B03F5299001A4009E6DEB /* SystemSettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsOpener.swift; sourceTree = "<group>"; };
 		D65CFD4B262354A700C75F56 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		D65D7A6028BB4FC600717980 /* DayColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayColorView.swift; sourceTree = "<group>"; };
 		D678ABC628AECBC5003F27B4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				D678ABC628AECBC5003F27B4 /* SettingsView.swift */,
 				D602FE0E298FBDD800B34277 /* NotificationSettingsView.swift */,
 				D602FE10298FC01B00B34277 /* NotificationSettingsViewModel.swift */,
+				D65B03F5299001A4009E6DEB /* SystemSettingsOpener.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				D691CF2F261B3728005FAAC5 /* Day.swift */,
 				D691CF39261B399D005FAAC5 /* ModelData.swift */,
 				D6D48FEF2676424800101EC3 /* Settings.swift */,
+				D65B03F3298FF831009E6DEB /* AuthorizationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65B03F6299001A4009E6DEB /* SystemSettingsOpener.swift in Sources */,
 				D62A813728C139FB00B5B2B9 /* WeekSettingsView.swift in Sources */,
 				D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */,
 				D6E0BC812624AE170063E86A /* ToolBarView.swift in Sources */,
@@ -508,6 +515,7 @@
 				D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */,
 				D6410ED1297411A900862C9A /* VibrantDayWidgetView.swift in Sources */,
 				D602FE0F298FBDD800B34277 /* NotificationSettingsView.swift in Sources */,
+				D65B03F4298FF831009E6DEB /* AuthorizationManager.swift in Sources */,
 				D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */,
 				D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */,
 				D602FE11298FC01B00B34277 /* NotificationSettingsViewModel.swift in Sources */,

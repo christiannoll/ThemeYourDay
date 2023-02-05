@@ -14,9 +14,37 @@ struct NotificationSettingsView: View {
     
     var body: some View {
         Section(header: Text("Notification")) {
+            HStack {
+                Text("Notification Status:")
+                Text(viewModel.currentStatus)
+                    .font(.headline)
+            }
+            if viewModel.isAskPermissionButtonVisible {
+                Button {
+                    viewModel.askPermissions()
+                } label: {
+                    Text("Ask user permissions")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            }
+            if viewModel.isOpenSettingsButtonVisible {
+                Button {
+                    viewModel.openSettings()
+                } label: {
+                    Text("Open system settings")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            }
+        }
+        Section {
             Toggle("Notification Enabled:",
                    isOn: $modelData.settings.notificationSettings.notificationEnabledByUser)
-            .disabled(viewModel.isEnableNotificationToggleEnabled)
+            .disabled(!viewModel.isEnableNotificationToggleEnabled)
+            .onChange(of: modelData.settings.notificationSettings.notificationEnabledByUser) { enabled in
+                if !enabled {
+                    viewModel.cancelNotificationRequest()
+                }
+            }
          
             if modelData.settings.notificationSettings.notificationEnabledByUser {
                 DatePicker(
@@ -24,7 +52,10 @@ struct NotificationSettingsView: View {
                     selection: $modelData.settings.notificationSettings.remindAt,
                     displayedComponents: .hourAndMinute
                 )
-                .disabled(viewModel.isEnableNotificationToggleEnabled)
+                .disabled(!viewModel.isEnableNotificationToggleEnabled)
+                .onChange(of: modelData.settings.notificationSettings.remindAt) { _ in
+                    viewModel.registerNotificationRequest(modelData: modelData)
+                }
             }
         }
     }

@@ -17,5 +17,12 @@ struct Settings: Hashable, Codable {
     var weekdaysFgColor = Array(repeating: DayColor(), count: 7)
     var weekdaysText = WeekdaysText
     
+    var notificationSettings = NotificationSettings(notificationEnabledByUser: false, remindAt: Date())
+    
     static let WeekdaysText = Array(["Theme your Sunday", "Theme your Monday", "Theme your Tuesday", "Theme your Wednesday", "Theme your Thursday", "Theme your Friday", "Theme your Saturday"])
+}
+
+struct NotificationSettings: Hashable, Codable {
+    var notificationEnabledByUser: Bool
+    var remindAt: Date
 }

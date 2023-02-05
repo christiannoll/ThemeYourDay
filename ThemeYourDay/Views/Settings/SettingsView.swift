@@ -13,6 +13,7 @@ struct SettingsView: View {
                     NavigationLink("Foreground Colors", destination: WeekSettingsView(weekSettingsType: .fgcolor))
                     NavigationLink("Texts", destination: WeekSettingsView(weekSettingsType: .text))
                 }
+                NotificationSettingsView()
             }
             .navigationBarTitle("Settings", displayMode: .automatic)
             .navigationBarItems(

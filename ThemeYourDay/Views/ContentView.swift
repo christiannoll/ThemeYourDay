@@ -45,6 +45,7 @@ struct ContentView: View {
     @StateObject private var tools = Tools(saveTheme: {}, shareTheme: {})
     private var colorStripMV =  ColorStripModelView()
     @State private var offset: CGSize = .zero
+    @State private var stickerViewShown = false
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
@@ -172,6 +173,15 @@ struct ContentView: View {
                     }.padding()
                     
                 }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Button(action: { stickerViewShown = true }) {
+                        Image(systemName: "eyes")
+                    }
+//                    Button("Sticker") {
+//                        stickerViewShown = true
+//                    }
+                    Spacer()
+                }
             }
         }
         .environmentObject(modelData)
@@ -179,7 +189,10 @@ struct ContentView: View {
             tools.saveThemeAsImage = saveThemeInAlbum
             tools.shareThemeAsImage = shareTheme
         }
-        
+        .sheet(isPresented: $stickerViewShown) {
+            StickerView()
+                .presentationDetents([.fraction(0.3), .medium])
+        }
     }
     
     func saveThemeInAlbum() {

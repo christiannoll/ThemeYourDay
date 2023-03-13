@@ -11,6 +11,7 @@ struct Day: Hashable, Codable, Identifiable {
     var textStyle = TextStyle.largeTitle
     var textAlignment = MyTextAlignment.center
     var hasImage = false
+    var sticker = Sticker()
     
     static let defaultBgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
 }
@@ -54,6 +55,10 @@ extension Day {
             return .topTrailing
         }
     }
+}
+
+struct Sticker: Codable, Hashable {
+    var stickerName:String = ""
 }
 
 struct DayColor: Codable, Hashable {

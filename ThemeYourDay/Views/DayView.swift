@@ -25,6 +25,7 @@ struct DayView: View {
                     .frame(width: 392, height: getHeight(), alignment: .top)
                     .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                     .modifier(DayViewTextStyle(day: day))
+                    .modifier(StickerOverlay(day: day))
             } else {
                 TextEditor(text: $day.text)
                     .padding()
@@ -36,6 +37,7 @@ struct DayView: View {
                     }
                     .focused($focusMode)
                     .onChange(of: day.text, perform: saveText)
+                    .modifier(StickerOverlay(day: day))
             }
         }
         .background(.gray)
@@ -83,18 +85,15 @@ struct DayView: View {
         }
     }
     
+    private func removeSticker() {
+        if modelData.days[modelData.selectedIndex] == day {
+            modelData.selectedDay.sticker.stickerName = ""
+            modelData.save()
+        }
+    }
+    
     private func getHeight() -> CGFloat {
         ContentView.getHeight(horizontalSizeClass, verticalSizeClass)
-    }
-}
-
-extension View {
-    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
-        if condition {
-            transform(self)
-        } else {
-            self
-        }
     }
 }
 
@@ -113,6 +112,36 @@ struct DayViewTextStyle: ViewModifier {
             .foregroundColor(day.fgColor.color)
             .disableAutocorrection(true)
             .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
+    }
+}
+
+struct StickerOverlay: ViewModifier {
+    
+    @EnvironmentObject var modelData: ModelData
+    var day: Day
+    
+    public func body(content: Content) -> some View {
+        content
+            .if (!day.sticker.stickerName.isEmpty) { view in
+                view.overlay(
+                    Image(day.sticker.stickerName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 60, height: 80)
+                        .padding(.bottom, 40)
+                        .onLongPressGesture(minimumDuration: 1) {
+                            removeSticker()
+                        },
+                    alignment: .bottom
+                )
+            }
+    }
+    
+    private func removeSticker() {
+        if modelData.days[modelData.selectedIndex] == day {
+            modelData.selectedDay.sticker.stickerName = ""
+            modelData.save()
+        }
     }
 }
 

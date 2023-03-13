@@ -33,6 +33,16 @@ struct DayWidgetView: View {
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .lineSpacing(15)
+                .if (!day.sticker.stickerName.isEmpty) { view in
+                    view.overlay(
+                        Image(day.sticker.stickerName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 50)
+                            .padding(.bottom, 10),
+                        alignment: .bottom
+                    )
+                }
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -82,6 +92,15 @@ extension View {
     }
 }
 
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
 
 struct DayWidgetView_Previews: PreviewProvider {
     static var previews: some View {

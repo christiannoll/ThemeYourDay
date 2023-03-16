@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Android",
+        "category": "General"
+    },
+    {
+        "name": "BoxingKangaroo",
+        "category": "Animal"
+    },
+    {
+        "name": "CuteElephant",
+        "category": "Animal"
+    },
+    {
+        "name": "HappyBaby",
+        "category": "General"
+    },
+    {
+        "name": "HappyPanda",
+        "category": "Animal"
+    },
+    {
+        "name": "LazyBear",
+        "category": "Animal"
+    },
+    {
+        "name": "LazyBear2",
+        "category": "Animal"
+    },
+    {
+        "name": "LazyBear3",
+        "category": "Animal"
+    },
+    {
+        "name": "PandaFace",
+        "category": "Animal"
+    },
+    {
+        "name": "PinkElephant",
+        "category": "Animal"
+    },
+    {
+        "name": "SmilingAlien",
+        "category": "General"
+    }
+]

@@ -11,20 +11,20 @@ struct StickerView: View {
     
     @EnvironmentObject var modelData: ModelData
     
-    private let stickers = ["Android", "BoxingKangaroo", "CuteElephant", "HappyBaby", "HappyPanda", "LazyBear", "LazyBear2", "LazyBear3", "PandaFace", "PinkElephant", "SmilingAlien"]
-    private var gridItemLayout = [GridItem(.adaptive(minimum: 50))]//[GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    private var gridItemLayout = [GridItem(.adaptive(minimum: 50))]
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: gridItemLayout, spacing: 20) {
-                ForEach(stickers, id: \.self) {
-                    let sticker: String = $0
-                    Image(sticker)
+                ForEach(modelData.stickers, id: \.self) {
+                    let sticker = $0
+                    Image(sticker.name)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 40, height: 50)
                         .onTapGesture {
-                            modelData.selectedDay.sticker.stickerName = sticker
+                            modelData.selectedDay.sticker.name = sticker.name
+                            modelData.selectedDay.sticker.category = sticker.category
                             modelData.save()
                         }
                 }

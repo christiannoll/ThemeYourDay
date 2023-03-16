@@ -58,7 +58,8 @@ extension Day {
 }
 
 struct Sticker: Codable, Hashable {
-    var stickerName:String = ""
+    var name: String = ""
+    var category: Category = .general
 }
 
 struct DayColor: Codable, Hashable {
@@ -78,6 +79,11 @@ struct DayColor: Codable, Hashable {
             a = Double(newColor.components.opacity)
         }
     }
+}
+
+enum Category: String, Codable, CodingKey {
+    case general = "General"
+    case animal = "Animal"
 }
 
 enum TextStyle : Int, Codable, CodingKey {

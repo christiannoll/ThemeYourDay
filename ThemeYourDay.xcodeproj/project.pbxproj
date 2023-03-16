@@ -17,6 +17,7 @@
 		D6410ED1297411A900862C9A /* VibrantDayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */; };
 		D6410ED2297411A900862C9A /* VibrantDayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */; };
 		D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D643E1C926B6EE8D0056908E /* DayView.swift */; };
+		D646EFAF29C248260058A103 /* StickerData.json in Resources */ = {isa = PBXBuildFile; fileRef = D646EFAE29C248260058A103 /* StickerData.json */; };
 		D65B03F4298FF831009E6DEB /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65B03F3298FF831009E6DEB /* AuthorizationManager.swift */; };
 		D65B03F6299001A4009E6DEB /* SystemSettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65B03F5299001A4009E6DEB /* SystemSettingsOpener.swift */; };
 		D65CFD4C262354A700C75F56 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65CFD4B262354A700C75F56 /* DayList.swift */; };
@@ -103,6 +104,7 @@
 		D63EE6F9262B05DB008699DF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantDayWidgetView.swift; sourceTree = "<group>"; };
 		D643E1C926B6EE8D0056908E /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		D646EFAE29C248260058A103 /* StickerData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StickerData.json; sourceTree = "<group>"; };
 		D65B03F3298FF831009E6DEB /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 		D65B03F5299001A4009E6DEB /* SystemSettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsOpener.swift; sourceTree = "<group>"; };
 		D65CFD4B262354A700C75F56 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				D691CF34261B37D8005FAAC5 /* DayData.json */,
 				D6D48FF12676434800101EC3 /* SettingsData.json */,
+				D646EFAE29C248260058A103 /* StickerData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				D6D48FF22676434800101EC3 /* SettingsData.json in Resources */,
 				D691CF35261B37D8005FAAC5 /* DayData.json in Resources */,
 				D6DDD27C261A19C900FD1AA5 /* Preview Assets.xcassets in Resources */,
+				D646EFAF29C248260058A103 /* StickerData.json in Resources */,
 				D6DDD279261A19C900FD1AA5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

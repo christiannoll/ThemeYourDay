@@ -8,6 +8,7 @@ final class ModelData: ObservableObject {
     @Published var selectedDay = MyData.currentDay()
     @Published var selectedIndex = MyData.currentIndex()
     @Published var settings = MyData.settings
+    @Published var stickers = MyData.stickers
         
     func save() {
         syncSelectedDay()
@@ -268,26 +269,29 @@ func getPngImageFileUrl(date: Date) -> URL {
     return file
 }
 
-func load<T: Codable>(_ filename: String) -> T {
+enum DataType {
+    case days
+    case settings
+    case stickers
+}
+
+func load<T: Codable>(_ filename: String, type: DataType, createData: () -> Data?) -> T {
     let data: Data
-    let isSettings = filename.contains("Settings")
-    let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
-    
-    //print(file.absoluteURL)
+    let file = type == .stickers ? Bundle.main.url(forResource: "StickerData", withExtension: "json") : FileManager.sharedContainerURL().appendingPathComponent(filename)
     
     do {
-        data = try Data(contentsOf: file)
+        data = try Data(contentsOf: file!)
     } catch {
-        data = isSettings ? createSettings()! : createData()!
+        data = createData()!
     }
     
     do {
         let decoder = JSONDecoder()
         return try decoder.decode(T.self, from: data)
     } catch {
-        let jsonResultData = isSettings ? createSettings() : createData()
+        let jsonResultData = createData()!
         let decoder = JSONDecoder()
-        return try! decoder.decode(T.self, from: jsonResultData!)
+        return try! decoder.decode(T.self, from: jsonResultData)
     }
 }
 
@@ -305,14 +309,21 @@ func createSettings() -> Data? {
     return jsonResultData
 }
 
+func createStickers() -> Data? {
+    let stickers = [Sticker()]
+    let jsonEncoder = JSONEncoder()
+    let jsonResultData = try? jsonEncoder.encode(stickers)
+    return jsonResultData
+}
 
 struct MyData {
     static var settings: Settings = loadSettings()
     static var days: [Day] = loadDays()
+    static let stickers: [Sticker] = loadStickers()
     static var indexCache : [Date:Int] = [:]
     
     static func loadDays() -> [Day] {
-        var loadedDays: [Day] = load("DayData.json")
+        var loadedDays: [Day] = load("DayData.json", type: .days, createData: createData)
     
         let endDate = Date().getNextMonth()?.noon
         guard var day = Date().getPreviousMonth()?.noon else {
@@ -349,8 +360,13 @@ struct MyData {
     }
     
     static func loadSettings() -> Settings {
-        let loadedSettings: Settings = load("SettingsData.json")
+        let loadedSettings: Settings = load("SettingsData.json", type: .settings, createData: createSettings)
         return loadedSettings
+    }
+    
+    static func loadStickers() -> [Sticker] {
+        let stickers: [Sticker] = load("", type: .stickers, createData: createStickers)
+        return stickers
     }
     
     static func currentDay() -> Day {

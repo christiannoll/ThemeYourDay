@@ -87,7 +87,7 @@ struct DayView: View {
     
     private func removeSticker() {
         if modelData.days[modelData.selectedIndex] == day {
-            modelData.selectedDay.sticker.stickerName = ""
+            modelData.selectedDay.sticker.name = ""
             modelData.save()
         }
     }
@@ -122,9 +122,9 @@ struct StickerOverlay: ViewModifier {
     
     public func body(content: Content) -> some View {
         content
-            .if (!day.sticker.stickerName.isEmpty) { view in
+            .if (!day.sticker.name.isEmpty) { view in
                 view.overlay(
-                    Image(day.sticker.stickerName)
+                    Image(day.sticker.name)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 80)
@@ -139,7 +139,7 @@ struct StickerOverlay: ViewModifier {
     
     private func removeSticker() {
         if modelData.days[modelData.selectedIndex] == day {
-            modelData.selectedDay.sticker.stickerName = ""
+            modelData.selectedDay.sticker.name = ""
             modelData.save()
         }
     }

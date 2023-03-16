@@ -33,9 +33,9 @@ struct DayWidgetView: View {
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
                 .lineSpacing(15)
-                .if (!day.sticker.stickerName.isEmpty) { view in
+                .if (!day.sticker.name.isEmpty) { view in
                     view.overlay(
-                        Image(day.sticker.stickerName)
+                        Image(day.sticker.name)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 30, height: 50)

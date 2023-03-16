@@ -28,7 +28,7 @@ struct Provider: TimelineProvider {
     }
     
     private func today() -> Day {
-        let loadedDays: [Day] = load("DayData.json")
+        let loadedDays: [Day] = load("DayData.json", type: .days, createData: createData)
         let today = Date().noon
         
         for day in loadedDays {

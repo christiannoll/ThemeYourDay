@@ -46,6 +46,7 @@ struct ContentView: View {
     private var colorStripMV =  ColorStripModelView()
     @State private var offset: CGSize = .zero
     @State private var stickerViewShown = false
+    @State private var snippetViewShown = false
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
@@ -177,9 +178,9 @@ struct ContentView: View {
                     Button(action: { stickerViewShown = true }) {
                         Image(systemName: "eyes")
                     }
-//                    Button("Sticker") {
-//                        stickerViewShown = true
-//                    }
+                    Button(action: { snippetViewShown = true }) {
+                        Image(systemName: "text.quote")
+                    }
                     Spacer()
                 }
             }
@@ -191,6 +192,10 @@ struct ContentView: View {
         }
         .sheet(isPresented: $stickerViewShown) {
             StickerView()
+                .presentationDetents([.fraction(0.3), .medium])
+        }
+        .sheet(isPresented: $snippetViewShown) {
+            SnippetView()
                 .presentationDetents([.fraction(0.3), .medium])
         }
     }

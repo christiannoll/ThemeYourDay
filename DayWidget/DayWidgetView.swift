@@ -25,14 +25,15 @@ struct DayWidgetView: View {
             
             Text(day.text)
                 .padding(.horizontal, 6)
-                .frame(width: 170, height: 130, alignment: day.getAlignment())
+                .frame(width: 170, height: 130, alignment: .top)
                 .font(day.fontname == "" ? .caption : .custom(day.fontname, size: 16))
                 .background(backgroundImage
                     .resizable()
                     .frame(width: 170, height: 148))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
-                .lineSpacing(15)
+                .multilineTextAlignment(day.getTextAlignment())
+                .lineSpacing(4)
                 .if (!day.sticker.name.isEmpty) { view in
                     view.overlay(
                         Image(day.sticker.name)

@@ -35,6 +35,7 @@
 		D6A7036327B687A0008B0F7B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
 		D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3792226761B4C009D0790 /* ColorStripModelView.swift */; };
 		D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B55A222635A49300BC5556 /* FontPickerView.swift */; };
+		D6BE420629C3A80C00B32C80 /* SnippetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE420529C3A80C00B32C80 /* SnippetView.swift */; };
 		D6BE7CBB29C365B000FB113E /* SnippetData.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BE7CBA29C365B000FB113E /* SnippetData.json */; };
 		D6BF90C928561A5D00B9300E /* TextAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */; };
 		D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D3146328C5178700F765A5 /* DayTextView.swift */; };
@@ -120,6 +121,7 @@
 		D6A7036027B68450008B0F7B /* DayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWidgetView.swift; sourceTree = "<group>"; };
 		D6B3792226761B4C009D0790 /* ColorStripModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStripModelView.swift; sourceTree = "<group>"; };
 		D6B55A222635A49300BC5556 /* FontPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPickerView.swift; sourceTree = "<group>"; };
+		D6BE420529C3A80C00B32C80 /* SnippetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetView.swift; sourceTree = "<group>"; };
 		D6BE7CBA29C365B000FB113E /* SnippetData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SnippetData.json; sourceTree = "<group>"; };
 		D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignmentView.swift; sourceTree = "<group>"; };
 		D6D3146328C5178700F765A5 /* DayTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTextView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				D6E0BC802624AE170063E86A /* ToolBarView.swift */,
 				D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */,
 				D6811DA129BBC5D8009A90D4 /* StickerView.swift */,
+				D6BE420529C3A80C00B32C80 /* SnippetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */,
 				D678ABC728AECBC5003F27B4 /* SettingsView.swift in Sources */,
 				D6811DA229BBC5D8009A90D4 /* StickerView.swift in Sources */,
+				D6BE420629C3A80C00B32C80 /* SnippetView.swift in Sources */,
 				D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */,
 				D686FE5726C5904A0070D238 /* CarouselView.swift in Sources */,
 				D65CFD4C262354A700C75F56 /* DayList.swift in Sources */,

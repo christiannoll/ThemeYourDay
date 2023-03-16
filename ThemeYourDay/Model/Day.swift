@@ -62,6 +62,12 @@ struct Sticker: Codable, Hashable {
     var category: Category = .general
 }
 
+struct Snippet: Codable, Hashable {
+    var text: String = ""
+    var author: String = ""
+    var category: Category = .general
+}
+
 struct DayColor: Codable, Hashable {
     var r: Double = 1.0
     var g: Double = 1.0
@@ -84,6 +90,7 @@ struct DayColor: Codable, Hashable {
 enum Category: String, Codable, CodingKey {
     case general = "General"
     case animal = "Animal"
+    case philosophy = "Philosophy"
 }
 
 enum TextStyle : Int, Codable, CodingKey {

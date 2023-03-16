@@ -35,6 +35,7 @@
 		D6A7036327B687A0008B0F7B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
 		D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3792226761B4C009D0790 /* ColorStripModelView.swift */; };
 		D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B55A222635A49300BC5556 /* FontPickerView.swift */; };
+		D6BE7CBB29C365B000FB113E /* SnippetData.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BE7CBA29C365B000FB113E /* SnippetData.json */; };
 		D6BF90C928561A5D00B9300E /* TextAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */; };
 		D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D3146328C5178700F765A5 /* DayTextView.swift */; };
 		D6D48FF02676424800101EC3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D48FEF2676424800101EC3 /* Settings.swift */; };
@@ -119,6 +120,7 @@
 		D6A7036027B68450008B0F7B /* DayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWidgetView.swift; sourceTree = "<group>"; };
 		D6B3792226761B4C009D0790 /* ColorStripModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStripModelView.swift; sourceTree = "<group>"; };
 		D6B55A222635A49300BC5556 /* FontPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPickerView.swift; sourceTree = "<group>"; };
+		D6BE7CBA29C365B000FB113E /* SnippetData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SnippetData.json; sourceTree = "<group>"; };
 		D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignmentView.swift; sourceTree = "<group>"; };
 		D6D3146328C5178700F765A5 /* DayTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTextView.swift; sourceTree = "<group>"; };
 		D6D48FEF2676424800101EC3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				D691CF34261B37D8005FAAC5 /* DayData.json */,
 				D6D48FF12676434800101EC3 /* SettingsData.json */,
 				D646EFAE29C248260058A103 /* StickerData.json */,
+				D6BE7CBA29C365B000FB113E /* SnippetData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				D6D48FF22676434800101EC3 /* SettingsData.json in Resources */,
 				D691CF35261B37D8005FAAC5 /* DayData.json in Resources */,
 				D6DDD27C261A19C900FD1AA5 /* Preview Assets.xcassets in Resources */,
+				D6BE7CBB29C365B000FB113E /* SnippetData.json in Resources */,
 				D646EFAF29C248260058A103 /* StickerData.json in Resources */,
 				D6DDD279261A19C900FD1AA5 /* Assets.xcassets in Resources */,
 			);

@@ -197,6 +197,11 @@ struct ContentView: View {
         .sheet(isPresented: $snippetViewShown) {
             SnippetView()
                 .presentationDetents([.fraction(0.3), .medium])
+//                .safeAreaInset(edge: .bottom, alignment: .center, spacing: 0) {
+//                    Color.clear
+//                        .frame(height: 10)
+//                        .background(.background)
+//                }
         }
     }
     

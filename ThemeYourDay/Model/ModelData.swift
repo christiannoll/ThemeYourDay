@@ -185,6 +185,9 @@ final class ModelData: ObservableObject {
             selectedDay.fgColor = day.fgColor
             selectedDay.bgColor = day.bgColor
             selectedDay.sticker = day.sticker
+            selectedDay.textAlignment = day.textAlignment
+            selectedDay.textStyle = day.textStyle
+            selectedDay.fontname = day.fontname
             save()
             selectDay(day)
         }

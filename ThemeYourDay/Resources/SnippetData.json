@@ -2,42 +2,50 @@
     {
         "text": "Das Glück deines Lebens hängt von der Beschaffenheit deiner Gedanken ab.",
         "author": "Marcus Aurelius",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Small"
     },
     {
         "text": "Nur wer sein Ziel kennt, findet den Weg.",
         "author": "Laotse",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Medium"
     },
     {
         "text": "Das Schwerste im Leben ist es, nicht zu kämpfen, wenn alles gegen einen kämpft.",
         "author": "Franz Kafka",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Small"
     },
     {
         "text": "Nichts auf der Welt ist so mächtig wie eine Idee, deren Zeit gekommen ist.",
         "author": "Victor Hugo",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Small"
     },
     {
         "text": "Es ist nicht genug, zu wissen, man muss auch anwenden; es ist nicht genug, zu wollen, man muss auch tun.",
         "author": "Johann Wolfgang von Goethe",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Small"
     },
     {
         "text": "Der Mensch ist das Maß aller Dinge.",
         "author": "Protagoras",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Small"
     },
     {
         "text": "Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.",
         "author": "Ludwig Wittgenstein",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Small"
     },
     {
         "text": "Der Zweck des Lebens ist es, glücklich zu sein.",
         "author": "Dalai Lama",
-        "category": "Philosophy"
+        "category": "Philosophy",
+        "textStyle": "Small"
     }
 ]
 

@@ -66,6 +66,18 @@ struct Snippet: Codable, Hashable {
     var text: String = ""
     var author: String = ""
     var category: Category = .general
+    var textStyle: String = "Medium"
+    
+    func textSytle() -> TextStyle {
+        if textStyle == "Large" {
+            return .largeTitle
+        } else if textStyle == "Small" {
+            return .title2
+        } else if textStyle == "Tiny" {
+            return .title3
+        }
+        return .title
+    }
 }
 
 struct DayColor: Codable, Hashable {

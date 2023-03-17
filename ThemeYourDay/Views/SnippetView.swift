@@ -33,6 +33,7 @@ struct SnippetView: View {
                     .padding(.horizontal, 10)
                     .onTapGesture {
                         modelData.selectedDay.text = snippet.text
+                        modelData.selectedDay.textStyle = snippet.textSytle()
                         modelData.save()
                     }
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))

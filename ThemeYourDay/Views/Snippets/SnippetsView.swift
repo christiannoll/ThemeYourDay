@@ -1,5 +1,5 @@
 //
-//  SnippetView.swift
+//  SnippetsView.swift
 //  ThemeYourDay
 //
 //  Created by Christian on 16.03.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SnippetView: View {
+struct SnippetsView: View {
     
     @EnvironmentObject var modelData: ModelData
     
@@ -25,6 +25,6 @@ struct SnippetView: View {
 
 struct SnippetView_Previews: PreviewProvider {
     static var previews: some View {
-        SnippetView()
+        SnippetsView()
     }
 }

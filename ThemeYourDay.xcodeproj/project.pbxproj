@@ -34,6 +34,7 @@
 		D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7036027B68450008B0F7B /* DayWidgetView.swift */; };
 		D6A7036227B68450008B0F7B /* DayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7036027B68450008B0F7B /* DayWidgetView.swift */; };
 		D6A7036327B687A0008B0F7B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
+		D6A7470F29C61DC2008DFD7A /* SnippetsOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7470E29C61DC2008DFD7A /* SnippetsOverview.swift */; };
 		D6B3792326761B4C009D0790 /* ColorStripModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3792226761B4C009D0790 /* ColorStripModelView.swift */; };
 		D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B55A222635A49300BC5556 /* FontPickerView.swift */; };
 		D6BE420629C3A80C00B32C80 /* SnippetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE420529C3A80C00B32C80 /* SnippetsView.swift */; };
@@ -121,6 +122,7 @@
 		D691CF34261B37D8005FAAC5 /* DayData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DayData.json; sourceTree = "<group>"; };
 		D691CF39261B399D005FAAC5 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		D6A7036027B68450008B0F7B /* DayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWidgetView.swift; sourceTree = "<group>"; };
+		D6A7470E29C61DC2008DFD7A /* SnippetsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetsOverview.swift; sourceTree = "<group>"; };
 		D6B3792226761B4C009D0790 /* ColorStripModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStripModelView.swift; sourceTree = "<group>"; };
 		D6B55A222635A49300BC5556 /* FontPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPickerView.swift; sourceTree = "<group>"; };
 		D6BE420529C3A80C00B32C80 /* SnippetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetsView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				D6BE420529C3A80C00B32C80 /* SnippetsView.swift */,
 				D61B2D7C29C5A58F009AA4ED /* SnippetsItemView.swift */,
+				D6A7470E29C61DC2008DFD7A /* SnippetsOverview.swift */,
 			);
 			path = Snippets;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				D602FE11298FC01B00B34277 /* NotificationSettingsViewModel.swift in Sources */,
 				D62979522626256800163ACF /* DayListCell.swift in Sources */,
 				D691CF30261B3728005FAAC5 /* Day.swift in Sources */,
+				D6A7470F29C61DC2008DFD7A /* SnippetsOverview.swift in Sources */,
 				D6DF86442674FAB600FA8D31 /* ColorStripView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,7 +28,7 @@ struct SnippetsItemView: View {
             Divider()
                 .padding(.vertical, 4)
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 30)
         .onTapGesture {
             modelData.selectedDay.text = snippet.text
             modelData.selectedDay.textStyle = snippet.textSytle()

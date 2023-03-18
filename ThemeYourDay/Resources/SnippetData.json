@@ -46,6 +46,30 @@
         "author": "Dalai Lama",
         "category": "Philosophy",
         "textStyle": "Small"
+    },
+    {
+        "text": "Carpe Diem - Nutze den Tag",
+        "author": "Horaz",
+        "category": "Latin",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Tempus fugit - Die Zeit flieht",
+        "author": "",
+        "category": "Latin",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Lebe jeden Tag, als wäre es dein letzter.",
+        "author": "Steve Jobs",
+        "category": "LifeWisdom",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Sei du selbst; alle anderen sind bereits vergeben.",
+        "author": "Oscar Wilde",
+        "category": "LifeWisdom",
+        "textStyle": "Medium"
     }
 ]
 

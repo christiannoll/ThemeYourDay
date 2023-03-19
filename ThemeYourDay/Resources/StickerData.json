@@ -42,5 +42,21 @@
     {
         "name": "SmilingAlien",
         "category": "General"
+    },
+    {
+        "name": "HappyDog1",
+        "category": "Animal"
+    },
+    {
+        "name": "HappyDog2",
+        "category": "Animal"
+    },
+    {
+        "name": "CuteCat",
+        "category": "Animal"
+    },
+    {
+        "name": "BirdWithHat",
+        "category": "Animal"
     }
 ]

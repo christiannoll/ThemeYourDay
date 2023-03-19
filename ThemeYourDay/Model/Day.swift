@@ -105,6 +105,8 @@ enum Category: String, Codable, CodingKey {
     case philosophy = "Philosophy"
     case latin = "Latin"
     case lifewisdom = "LifeWisdom"
+    case flower = "Flower"
+    case beach = "Beach"
 }
 
 enum TextStyle : Int, Codable, CodingKey {

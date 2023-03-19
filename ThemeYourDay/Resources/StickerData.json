@@ -58,5 +58,17 @@
     {
         "name": "BirdWithHat",
         "category": "Animal"
+    },
+    {
+        "name": "RoundBeach",
+        "category": "Beach"
+    },
+    {
+        "name": "Flowers",
+        "category": "Flower"
+    },
+    {
+        "name": "Halloween",
+        "category": "General"
     }
 ]

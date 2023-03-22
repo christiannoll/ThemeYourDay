@@ -13,6 +13,16 @@ struct DayListCell: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 9).stroke(.white, lineWidth: isToday ? 1 : 0).padding(.horizontal, 4).padding(6)
                 )
+                .if (!day.sticker.name.isEmpty) { view in
+                    view.overlay(
+                        Image(day.sticker.name)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 40)
+                            .padding(.trailing, 12),
+                        alignment: .bottomTrailing
+                    )
+                }
 
             VStack {
                 Text(getTrimmedText(day))

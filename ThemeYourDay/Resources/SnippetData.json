@@ -60,10 +60,100 @@
         "textStyle": "Medium"
     },
     {
+        "text": "Tempus fugit - Die Zeit flieht!",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Ars longa, vita brevis - Die Kunst ist lang, das Leben kurz.",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Memento mori - Bedenke, dass du sterblich bist.",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Per aspera ad astra - Durch das Raue zu den Sternen.",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Ad astra per aspera - Zu den Sternen durch Schwierigkeiten.",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Dum spiro, spero - Solange ich atme, hoffe ich.",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "In vino veritas - Im Wein liegt die Wahrheit.",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Sic transit gloria mundi - So vergeht der Ruhm der Welt.",
+        "author": "Unknown",
+        "category": "Latin",
+        "textStyle": "Small"
+    },
+    {
         "text": "Lebe jeden Tag, als wäre es dein letzter.",
         "author": "Steve Jobs",
         "category": "LifeWisdom",
         "textStyle": "Medium"
+    },
+    {
+        "text": "Glück entsteht oft durch Aufmerksamkeit in kleinen Dingen, Unglück oft durch Vernachlässigung kleiner Dinge.",
+        "author": "Wilhelm Busch",
+        "category": "LifeWisdom",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Der Weg ist das Ziel.",
+        "author": "Konfuzius",
+        "category": "LifeWisdom",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Sei die Veränderung, die du in der Welt sehen möchtest.",
+        "author": "Mahatma Gandhi",
+        "category": "LifeWisdom",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Das Geheimnis des Erfolgs liegt darin, dass man dort arbeitet, wo andere aufhören zu träumen.",
+        "author": "Thomas A. Edison",
+        "category": "LifeWisdom",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Alles, was du in deinem Leben erreichen willst, beginnt mit dem Mut, es zu versuchen.",
+        "author": "Mary Kay Ash",
+        "category": "LifeWisdom",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Zufriedenheit ist der Stein der Weisen, der alles in Gold verwandelt, was er berührt.",
+        "author": "Benjamin Franklin",
+        "category": "LifeWisdom",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Das Leben besteht nicht darin, gute Karten zu haben, sondern das Beste aus den schlechten Karten zu machen.",
+        "author": "Robert Louis Stevenson",
+        "category": "LifeWisdom",
+        "textStyle": "Small"
     },
     {
         "text": "Sei du selbst; alle anderen sind bereits vergeben.",

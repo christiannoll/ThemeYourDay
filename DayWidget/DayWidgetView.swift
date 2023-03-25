@@ -3,6 +3,7 @@ import SwiftUI
 struct DayWidgetView: View {
     
     let day: Day
+    @Environment(\.widgetFamily) private var widgetFamily
     
     var body: some View {
         VStack {
@@ -25,8 +26,8 @@ struct DayWidgetView: View {
             
             Text(day.text)
                 .padding(.horizontal, 6)
-                .frame(width: 170, height: 130, alignment: .top)
-                .font(day.fontname == "" ? .caption : .custom(day.fontname, size: 16))
+                .frame(width: getTextFrameWidth(), height: 130, alignment: .top)
+                .font(getFont())
                 .background(backgroundImage
                     .resizable()
                     .frame(width: 170, height: 148))
@@ -72,6 +73,22 @@ struct DayWidgetView: View {
             return drawing!
         } catch {
             return UIImage()
+        }
+    }
+    
+    private func getFont() -> Font {
+        if widgetFamily == .systemMedium {
+            return day.fontname == "" ? Font.headline : .custom(day.fontname, size: 16)
+        } else {
+            return day.fontname == "" ? Font.caption : .custom(day.fontname, size: 16)
+        }
+    }
+    
+    private func getTextFrameWidth() -> CGFloat {
+        if widgetFamily == .systemMedium {
+            return 300
+        } else {
+            return 160
         }
     }
 }

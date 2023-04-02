@@ -26,7 +26,7 @@ struct DayWidgetView: View {
             
             Text(day.text)
                 .padding(.horizontal, 6)
-                .frame(width: getTextFrameWidth(), height: 130, alignment: .top)
+                .frame(width: getTextFrameWidth(), height: getTextFrameHeight(), alignment: .top)
                 .font(getFont())
                 .background(backgroundImage
                     .resizable()
@@ -35,6 +35,7 @@ struct DayWidgetView: View {
                 .foregroundColor(day.fgColor.color)
                 .multilineTextAlignment(day.getTextAlignment())
                 .lineSpacing(4)
+                .lineLimit(day.sticker.name.isEmpty ? 6  : 4)
                 .if (!day.sticker.name.isEmpty) { view in
                     view.overlay(
                         Image(day.sticker.name)
@@ -77,18 +78,31 @@ struct DayWidgetView: View {
     }
     
     private func getFont() -> Font {
-        if widgetFamily == .systemMedium {
-            return day.fontname == "" ? Font.headline : .custom(day.fontname, size: 16)
-        } else {
+        switch widgetFamily {
+        case .systemLarge, .systemExtraLarge:
+            return day.fontname == "" ? Font.title : .custom(day.fontname, size: 26)
+        case .systemMedium:
+            return day.fontname == "" ? Font.headline : .custom(day.fontname, size: 22)
+        default:
             return day.fontname == "" ? Font.caption : .custom(day.fontname, size: 16)
         }
     }
     
     private func getTextFrameWidth() -> CGFloat {
-        if widgetFamily == .systemMedium {
+        switch widgetFamily {
+        case .systemMedium, .systemLarge, .systemExtraLarge:
             return 300
-        } else {
+        default:
             return 160
+        }
+    }
+    
+    private func getTextFrameHeight() -> CGFloat {
+        switch widgetFamily {
+        case .systemLarge, .systemExtraLarge:
+            return 300
+        default:
+            return 130
         }
     }
 }

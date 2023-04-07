@@ -18,6 +18,7 @@ struct SnippetsOverview: View {
                     NavigationLink("Philosophische Texte", destination: SnippetsView(category: .philosophy))
                     NavigationLink("Lateinische Sprüche", destination: SnippetsView(category: .latin))
                     NavigationLink("Lebensweisheiten", destination: SnippetsView(category: .lifewisdom))
+                    NavigationLink("Happiness", destination: SnippetsView(category: .happiness))
                 }
             }
         }

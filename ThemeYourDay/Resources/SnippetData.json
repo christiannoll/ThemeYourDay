@@ -160,6 +160,60 @@
         "author": "Oscar Wilde",
         "category": "LifeWisdom",
         "textStyle": "Medium"
+    },
+    {
+        "text": "Lebe im Moment und genieße jeden Augenblick.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Mach dir keine Sorgen über die Dinge, die du nicht kontrollieren kannst.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Das Leben ist zu kurz, um unglücklich zu sein.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Medium"
+    },
+    {
+        "text": "Lass los, was dich belastet, und konzentriere dich auf das, was dich glücklich macht.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Glaube an dich selbst und an deine Fähigkeiten - du bist stärker, als du denkst.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Finde die Schönheit in allem, was du tust, und sei dankbar für das, was du hast.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Das Glück liegt in den kleinen Dingen - sei es ein Lächeln, eine Umarmung oder ein schöner Sonnenuntergang.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Sei freundlich zu dir selbst und zu anderen - es kostet nichts, aber es kann viel bewirken.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Small"
+    },
+    {
+        "text": "Jeder Tag ist eine neue Chance, um das Leben zu genießen und etwas zu erreichen.",
+        "author": "Unknown",
+        "category": "Happiness",
+        "textStyle": "Small"
     }
 ]
 

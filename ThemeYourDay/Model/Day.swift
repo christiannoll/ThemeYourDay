@@ -103,6 +103,7 @@ enum Category: String, Codable, CodingKey {
     case general = "General"
     case animal = "Animal"
     case philosophy = "Philosophy"
+    case happiness = "Happiness"
     case latin = "Latin"
     case lifewisdom = "LifeWisdom"
     case flower = "Flower"

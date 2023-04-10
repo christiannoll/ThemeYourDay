@@ -70,5 +70,29 @@
     {
         "name": "Halloween",
         "category": "General"
+    },
+    {
+        "name": "Heart1",
+        "category": "General"
+    },
+    {
+        "name": "Penguin1",
+        "category": "Animal"
+    },
+    {
+        "name": "Penguin2",
+        "category": "Animal"
+    },
+    {
+        "name": "Penguin3",
+        "category": "Animal"
+    },
+    {
+        "name": "BlueBird",
+        "category": "Animal"
+    },
+    {
+        "name": "RedFlower",
+        "category": "Flower"
     }
 ]

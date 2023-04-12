@@ -94,5 +94,21 @@
     {
         "name": "RedFlower",
         "category": "Flower"
+    },
+    {
+        "name": "Cat2",
+        "category": "Animal"
+    },
+    {
+        "name": "Cat3",
+        "category": "Animal"
+    },
+    {
+        "name": "YellowFlower",
+        "category": "Flower"
+    },
+    {
+        "name": "BlueFlower",
+        "category": "Flower"
     }
 ]

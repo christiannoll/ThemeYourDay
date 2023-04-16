@@ -26,6 +26,8 @@
 		D663B5DE29E5B65F00B6388E /* StickerCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D663B5DD29E5B65F00B6388E /* StickerCategoryView.swift */; };
 		D669016629BE0FB200D8CC1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DDD278261A19C900FD1AA5 /* Assets.xcassets */; };
 		D678ABC728AECBC5003F27B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678ABC628AECBC5003F27B4 /* SettingsView.swift */; };
+		D67F6B4329EBF6DF00F6E24D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D67F6B4529EBF6DF00F6E24D /* Localizable.strings */; };
+		D67F6B4929EBF8FA00F6E24D /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67F6B4829EBF8FA00F6E24D /* LocalizedStrings.swift */; };
 		D6811DA229BBC5D8009A90D4 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6811DA129BBC5D8009A90D4 /* StickerView.swift */; };
 		D6858E5527B29DBB008372AC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6858E5427B29DBB008372AC /* SearchBar.swift */; };
 		D686FE5726C5904A0070D238 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686FE5626C5904A0070D238 /* CarouselView.swift */; };
@@ -117,6 +119,9 @@
 		D65D7A6028BB4FC600717980 /* DayColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayColorView.swift; sourceTree = "<group>"; };
 		D663B5DD29E5B65F00B6388E /* StickerCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCategoryView.swift; sourceTree = "<group>"; };
 		D678ABC628AECBC5003F27B4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D67F6B4429EBF6DF00F6E24D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D67F6B4629EBF6EF00F6E24D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D67F6B4829EBF8FA00F6E24D /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		D6811DA129BBC5D8009A90D4 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		D6858E5427B29DBB008372AC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		D686FE5626C5904A0070D238 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
@@ -221,6 +226,14 @@
 			path = Sticker;
 			sourceTree = "<group>";
 		};
+		D67F6B4729EBF88700F6E24D /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				D67F6B4829EBF8FA00F6E24D /* LocalizedStrings.swift */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
 		D691CF26261B34B0005FAAC5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,9 +249,10 @@
 			isa = PBXGroup;
 			children = (
 				D691CF34261B37D8005FAAC5 /* DayData.json */,
+				D67F6B4529EBF6DF00F6E24D /* Localizable.strings */,
 				D6D48FF12676434800101EC3 /* SettingsData.json */,
-				D646EFAE29C248260058A103 /* StickerData.json */,
 				D6BE7CBA29C365B000FB113E /* SnippetData.json */,
+				D646EFAE29C248260058A103 /* StickerData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -318,14 +332,15 @@
 		D6DDD273261A19C800FD1AA5 /* ThemeYourDay */ = {
 			isa = PBXGroup;
 			children = (
-				D6F6EA6227B6CF44009D89E9 /* ThemeYourDay.entitlements */,
-				D691CF2B261B3521005FAAC5 /* Views */,
-				D691CF27261B34C2005FAAC5 /* Resources */,
-				D691CF26261B34B0005FAAC5 /* Model */,
-				D6DDD274261A19C800FD1AA5 /* ThemeYourDayApp.swift */,
 				D6DDD278261A19C900FD1AA5 /* Assets.xcassets */,
 				D6DDD27D261A19C900FD1AA5 /* Info.plist */,
+				D67F6B4729EBF88700F6E24D /* Language */,
+				D691CF26261B34B0005FAAC5 /* Model */,
 				D6DDD27A261A19C900FD1AA5 /* Preview Content */,
+				D691CF27261B34C2005FAAC5 /* Resources */,
+				D6F6EA6227B6CF44009D89E9 /* ThemeYourDay.entitlements */,
+				D6DDD274261A19C800FD1AA5 /* ThemeYourDayApp.swift */,
+				D691CF2B261B3521005FAAC5 /* Views */,
 			);
 			path = ThemeYourDay;
 			sourceTree = "<group>";
@@ -495,6 +510,7 @@
 				D6D48FF22676434800101EC3 /* SettingsData.json in Resources */,
 				D691CF35261B37D8005FAAC5 /* DayData.json in Resources */,
 				D6DDD27C261A19C900FD1AA5 /* Preview Assets.xcassets in Resources */,
+				D67F6B4329EBF6DF00F6E24D /* Localizable.strings in Resources */,
 				D6BE7CBB29C365B000FB113E /* SnippetData.json in Resources */,
 				D646EFAF29C248260058A103 /* StickerData.json in Resources */,
 				D6DDD279261A19C900FD1AA5 /* Assets.xcassets in Resources */,
@@ -563,6 +579,7 @@
 				D65B03F4298FF831009E6DEB /* AuthorizationManager.swift in Sources */,
 				D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */,
 				D6DDD275261A19C800FD1AA5 /* ThemeYourDayApp.swift in Sources */,
+				D67F6B4929EBF8FA00F6E24D /* LocalizedStrings.swift in Sources */,
 				D602FE11298FC01B00B34277 /* NotificationSettingsViewModel.swift in Sources */,
 				D62979522626256800163ACF /* DayListCell.swift in Sources */,
 				D691CF30261B3728005FAAC5 /* Day.swift in Sources */,
@@ -606,6 +623,18 @@
 			targetProxy = D6DDD28E261A19C900FD1AA5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D67F6B4529EBF6DF00F6E24D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D67F6B4429EBF6DF00F6E24D /* de */,
+				D67F6B4629EBF6EF00F6E24D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D6D58B5027B671A800473B81 /* Debug */ = {

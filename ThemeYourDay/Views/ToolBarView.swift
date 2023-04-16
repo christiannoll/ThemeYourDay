@@ -74,16 +74,16 @@ struct ToolBarView: View {
                 ToolbarItem(placement: .bottomBar) {
                     Menu {
                         Button(action: { tools.settingsVisible.toggle() }) {
-                            Label("Settings", systemImage: "gearshape")
+                            Label(.settings, systemImage: "gearshape")
                         }
                         Button(action: { tools.shareThemeAsImage() }) {
-                            Label("Share", systemImage: "square.and.arrow.up")
+                            Label(.share, systemImage: "square.and.arrow.up")
                         }
                         Button(action: { modelData.applyToToday(modelData.selectedDay) }) {
-                            Label("Apply to today", systemImage: "square.and.arrow.up.on.square")
+                            Label(.applyToToday, systemImage: "square.and.arrow.up.on.square")
                         }
                         Button(action: { tools.saveThemeAsImage() }) {
-                            Label("Save theme", systemImage: "square.and.arrow.down")
+                            Label(.saveTheme, systemImage: "square.and.arrow.down")
                         }
                     } label: { Image(systemName: "ellipsis.circle").foregroundColor(.secondary) }
                 }

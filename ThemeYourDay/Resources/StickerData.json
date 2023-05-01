@@ -110,5 +110,41 @@
     {
         "name": "BlueFlower",
         "category": "Flower"
+    },
+    {
+        "name": "Heart2",
+        "category": "General"
+    },
+    {
+        "name": "Punk",
+        "category": "General"
+    },
+    {
+        "name": "Robot",
+        "category": "General"
+    },
+    {
+        "name": "Soccer",
+        "category": "General"
+    },
+    {
+        "name": "Sun1",
+        "category": "Flower"
+    },
+    {
+        "name": "Boy1",
+        "category": "General"
+    },
+    {
+        "name": "GreenTroll",
+        "category": "General"
+    },
+    {
+        "name": "Face1",
+        "category": "General"
+    },
+    {
+        "name": "PurpleFlower",
+        "category": "Flower"
     }
 ]

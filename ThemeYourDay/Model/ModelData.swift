@@ -2,14 +2,14 @@ import Foundation
 import WidgetKit
 
 final class ModelData: ObservableObject {
-    @Published var days: [Day] = MyData.days.sorted {
+    @Published var days: [Day] = DataFactory.days.sorted {
         $0.id < $1.id
     }
-    @Published var selectedDay = MyData.currentDay()
-    @Published var selectedIndex = MyData.currentIndex()
-    @Published var settings = MyData.settings
-    @Published var stickers = MyData.stickers
-    @Published var snippets = MyData.snippets
+    @Published var selectedDay = DataFactory.currentDay()
+    @Published var selectedIndex = DataFactory.currentIndex()
+    @Published var settings = DataFactory.settings
+    @Published var stickers = DataFactory.stickers
+    @Published var snippets = DataFactory.snippets
         
     func save() {
         syncSelectedDay()
@@ -206,7 +206,7 @@ final class ModelData: ObservableObject {
     
     func findDay(_ date: Date) -> Day? {
         //print(date)
-        if let index = MyData.indexCache[date.noon] {
+        if let index = DataFactory.indexCache[date.noon] {
             return days[index]
         }
         return nil
@@ -325,89 +325,6 @@ func createSnipppets() -> Data? {
     let jsonEncoder = JSONEncoder()
     let jsonResultData = try? jsonEncoder.encode(snippets)
     return jsonResultData
-}
-
-struct MyData {
-    static var settings: Settings = loadSettings()
-    static var days: [Day] = loadDays()
-    static let stickers: [Sticker] = loadStickers()
-    static let snippets: [Snippet] = loadSnippets()
-    static var indexCache : [Date:Int] = [:]
-    
-    static func loadDays() -> [Day] {
-        var loadedDays: [Day] = load("DayData.json", type: .container, createData: createData)
-    
-        let endDate = Date().getNextMonth()?.noon
-        guard var day = Date().getPreviousMonth()?.noon else {
-            return loadedDays
-        }
-        
-        
-        while day != endDate {
-            var loaded = false
-            for loadedDay in loadedDays {
-                if loadedDay.id.hasSame(.day, as: day) {
-                    loaded = true
-                    break
-                }
-            }
-            
-            if !loaded {
-                let newDay = Day(id: day, text: settings.weekdaysText[day.weekday - 1],
-                                 fgColor: settings.weekdaysFgColor[day.weekday - 1],
-                                 bgColor: settings.weekdaysBgColor[day.weekday - 1])
-                loadedDays.insert(newDay, at: 0)
-            }
-            
-            day = day.dayAfter.noon
-        }
-        
-        loadedDays.sort { $0.id < $1.id }
-        
-        for (index, day) in loadedDays.enumerated() {
-            indexCache[day.id.noon] = index
-        }
-        
-        return loadedDays
-    }
-    
-    static func loadSettings() -> Settings {
-        let loadedSettings: Settings = load("SettingsData.json", type: .container, createData: createSettings)
-        return loadedSettings
-    }
-    
-    static func loadStickers() -> [Sticker] {
-        let stickers: [Sticker] = load("StickerData", type: .bundle, createData: createStickers)
-        return stickers
-    }
-    
-    static func loadSnippets() -> [Snippet] {
-        let snippets: [Snippet] = load("SnippetData", type: .bundle, createData: createSnipppets)
-        return snippets
-    }
-    
-    static func currentDay() -> Day {
-        let today = Date().noon
-        for day in days {
-            if day.id.hasSame(.day, as: today) {
-                return day
-            }
-        }
-        let newDay = Day(id: today, text: "Could not find Today!", fgColor: DayColor())
-        return newDay
-    }
-    
-    static func currentIndex() -> Int {
-        let today = Date().noon
-        var index = -1
-        for day in days {
-            index += 1
-            if day.id.hasSame(.day, as: today) {
-                break
-            }
-        }
-        return index
-    }
 }
 
 extension Date {

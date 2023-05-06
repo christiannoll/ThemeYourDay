@@ -13,3 +13,7 @@
 "Small" = "Small";
 "Medium" = "Medium";
 "Large" = "Large";
+"Days" = "Days";
+"Search" = "Search";
+"RemoveThemes" = "Remove themes";
+"ExportThemes" = "Export themes";

@@ -16,5 +16,9 @@ public extension LocalizedStringKey {
     static let small = LocalizedStringKey("Small")
     static let medium = LocalizedStringKey("Medium")
     static let large = LocalizedStringKey("Large")
+    static let days = LocalizedStringKey("Days")
+    static let search = LocalizedStringKey("Search")
+    static let removeThemes = LocalizedStringKey("RemoveThemes")
+    static let exportThemes = LocalizedStringKey("ExportThemes")
 }
 

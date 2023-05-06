@@ -9,7 +9,7 @@ struct SearchBar: View {
             Spacer()
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField("Search", text: $searchText)
+                TextField(.search, text: $searchText)
                     .padding([.top, .bottom, .trailing], 8)
                 .background(Color(.systemGray6))
                 Spacer()

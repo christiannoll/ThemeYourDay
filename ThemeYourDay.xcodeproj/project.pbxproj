@@ -21,6 +21,7 @@
 		D6410ED2297411A900862C9A /* VibrantDayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */; };
 		D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D643E1C926B6EE8D0056908E /* DayView.swift */; };
 		D646EFAF29C248260058A103 /* StickerData.json in Resources */ = {isa = PBXBuildFile; fileRef = D646EFAE29C248260058A103 /* StickerData.json */; };
+		D65268512A10C7CD002DAD50 /* StickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65268502A10C7CD002DAD50 /* StickerHeaderView.swift */; };
 		D65B03F4298FF831009E6DEB /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65B03F3298FF831009E6DEB /* AuthorizationManager.swift */; };
 		D65B03F6299001A4009E6DEB /* SystemSettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65B03F5299001A4009E6DEB /* SystemSettingsOpener.swift */; };
 		D65CFD4C262354A700C75F56 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65CFD4B262354A700C75F56 /* DayList.swift */; };
@@ -116,6 +117,7 @@
 		D6410ED0297411A900862C9A /* VibrantDayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantDayWidgetView.swift; sourceTree = "<group>"; };
 		D643E1C926B6EE8D0056908E /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		D646EFAE29C248260058A103 /* StickerData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StickerData.json; sourceTree = "<group>"; };
+		D65268502A10C7CD002DAD50 /* StickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerHeaderView.swift; sourceTree = "<group>"; };
 		D65B03F3298FF831009E6DEB /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 		D65B03F5299001A4009E6DEB /* SystemSettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsOpener.swift; sourceTree = "<group>"; };
 		D65CFD4B262354A700C75F56 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				D6811DA129BBC5D8009A90D4 /* StickerView.swift */,
 				D663B5DD29E5B65F00B6388E /* StickerCategoryView.swift */,
+				D65268502A10C7CD002DAD50 /* StickerHeaderView.swift */,
 			);
 			path = Sticker;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				D691CF30261B3728005FAAC5 /* Day.swift in Sources */,
 				D6A7470F29C61DC2008DFD7A /* SnippetsOverview.swift in Sources */,
 				D6DF86442674FAB600FA8D31 /* ColorStripView.swift in Sources */,
+				D65268512A10C7CD002DAD50 /* StickerHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,35 +9,36 @@ import SwiftUI
 
 struct StickerCategoryView: View {
     
-    @Binding var category: Category
+    var gridItemLayout = [GridItem(.adaptive(minimum: 50))]
+    @EnvironmentObject var modelData: ModelData
     
-    struct StickerCategory: Identifiable {
-        let id: Category
-        let icon: String
-    }
-    private let stickerCategories: [StickerCategory] = [StickerCategory(id: .animal, icon: "pawprint"),
-                                                        StickerCategory(id: .general, icon: "person"),
-                                                        StickerCategory(id: .flower, icon: "leaf")]
+    let category: Category
     
     var body: some View {
-        HStack(spacing: 12) {
-            ForEach(stickerCategories) { stickerCategory in
-                Button {
-                    category = stickerCategory.id
-                } label: {
-                    Image(systemName: stickerCategory.icon)
-                        .foregroundColor(category == stickerCategory.id ? .white: .secondary)
-                        .frame(width: 30, height: 30)
-                        .background(category == stickerCategory.id ? .gray: .clear)
-                        .clipShape(Circle())
+        ScrollView {
+            LazyVGrid(columns: gridItemLayout, spacing: 12) {
+                ForEach(modelData.stickers, id: \.self) {
+                    let sticker = $0
+                    if sticker.category == category {
+                        Image(sticker.name)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 50)
+                            .onTapGesture {
+                                modelData.selectedDay.sticker.name = sticker.name
+                                modelData.selectedDay.sticker.category = sticker.category
+                                modelData.save()
+                            }
+                    }
                 }
             }
         }
+        .animation(.interactiveSpring(), value: category)
     }
 }
 
 struct StickerCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        StickerCategoryView(category: .constant(.animal))
+        StickerCategoryView(category: .animal)
     }
 }

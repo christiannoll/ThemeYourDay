@@ -349,12 +349,12 @@ extension Date {
 }
 
 extension Date {
-    func getNextMonth() -> Date? {
-        return Calendar.current.date(byAdding: .month, value: 1, to: self)
+    func getNextMonth(offset: Int = 0) -> Date? {
+        return Calendar.current.date(byAdding: .month, value: 1 + offset, to: self)
     }
 
-    func getPreviousMonth() -> Date? {
-        return Calendar.current.date(byAdding: .month, value: -1, to: self)
+    func getPreviousMonth(offset: Int = 0) -> Date? {
+        return Calendar.current.date(byAdding: .month, value: -1 + offset, to: self)
     }
 }
 

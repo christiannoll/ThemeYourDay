@@ -47,13 +47,14 @@ struct ContentView: View {
     @State private var offset: CGSize = .zero
     @State private var stickerViewShown = false
     @State private var snippetViewShown = false
+    @State private var monthOffset: Int = 0
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     private var monthly: DateInterval {
-        let endDate = Date().getNextMonth()
-        let startDate = Date().getPreviousMonth()
+        let endDate = Date().getNextMonth(offset: monthOffset)
+        let startDate = Date().getPreviousMonth(offset: monthOffset)
         return DateInterval(start: startDate!, end: endDate!)
     }
     
@@ -143,7 +144,7 @@ struct ContentView: View {
                 case .dayList:
                     DayList()
                 case .calendar:
-                    CalendarView(interval: monthly) { date in
+                    CalendarView(interval: monthly, nextMonth: incrementMonthOffset, previousMoth: decrementMonthOffset) { date in
                         let day = modelData.findDay(date)
                         Text("30")
                             .hidden()
@@ -205,6 +206,14 @@ struct ContentView: View {
 //                        .background(.background)
 //                }
         }
+    }
+    
+    func incrementMonthOffset() {
+        monthOffset += 1
+    }
+    
+    func decrementMonthOffset() {
+        monthOffset -= 1
     }
     
     func saveThemeInAlbum() {

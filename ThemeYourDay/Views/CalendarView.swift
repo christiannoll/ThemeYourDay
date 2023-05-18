@@ -136,10 +136,17 @@ struct CalendarView<DateView>: View where DateView: View {
     @EnvironmentObject var modelData: ModelData
 
     let interval: DateInterval
+    let nextMonth: () -> Void
+    let previousMoth: () -> Void
     let content: (Date) -> DateView
 
-    init(interval: DateInterval, @ViewBuilder content: @escaping (Date) -> DateView) {
+    init(interval: DateInterval,
+         nextMonth: @escaping () -> Void,
+         previousMoth: @escaping () -> Void,
+         @ViewBuilder content: @escaping (Date) -> DateView) {
         self.interval = interval
+        self.nextMonth = nextMonth
+        self.previousMoth = previousMoth
         self.content = content
     }
 
@@ -161,12 +168,24 @@ struct CalendarView<DateView>: View where DateView: View {
                 }
             }
         }
+        .toolbar {
+            HStack {
+                Button(action: { previousMoth() }) {
+                    Image(systemName: "chevron.left")
+                }.padding(.horizontal, 8)
+                Text(months[1], format: .dateTime.month())
+                Button(action: { nextMonth() }) {
+                    Image(systemName: "chevron.right")
+                }
+            }
+            .padding(.trailing)
+        }
     }
 }
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(interval: .init()) { _ in
+        CalendarView(interval: .init(), nextMonth: {}, previousMoth: {}) { _ in
             Text("30")
                 .padding(8)
                 .background(Color.blue)

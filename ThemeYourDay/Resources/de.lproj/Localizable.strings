@@ -17,3 +17,6 @@
 "Search" = "Suche";
 "RemoveThemes" = "Themes entfernen";
 "ExportThemes" = "Themes exportieren";
+"ThemeTemplate" = "Theme-Vorlage";
+"BackgroundColors" = "Hintergrundfarben";
+"ForegroundColors" = "Vordergrundfarben";

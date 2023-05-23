@@ -20,5 +20,8 @@ public extension LocalizedStringKey {
     static let search = LocalizedStringKey("Search")
     static let removeThemes = LocalizedStringKey("RemoveThemes")
     static let exportThemes = LocalizedStringKey("ExportThemes")
+    static let themeTemplate = LocalizedStringKey("ThemeTemplate")
+    static let backgroundColors = LocalizedStringKey("BackgroundColors")
+    static let foregroundColors = LocalizedStringKey("ForegroundColors")
 }
 

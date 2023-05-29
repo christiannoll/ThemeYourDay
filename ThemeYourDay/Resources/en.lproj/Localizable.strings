@@ -20,3 +20,11 @@
 "ThemeTemplate" = "Theme template";
 "BackgroundColors" = "Background Colors";
 "ForegroundColors" = "Foreground Colors";
+"Texts" = "Texts";
+"Done" = "Done";
+"Notification" = "Notifications";
+"NotificationEnabled" = "Notification enabled";
+"NotificationStatus" = "Notification status";
+"OpenSystemSettings" = "Open system settings";
+"AskUserPermissions" = "Ask user permissions";
+"RemindAt" = "Remind at";

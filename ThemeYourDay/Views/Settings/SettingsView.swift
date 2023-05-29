@@ -11,17 +11,17 @@ struct SettingsView: View {
                 Section(header: Text(.themeTemplate)) {
                     NavigationLink(.backgroundColors, destination: WeekSettingsView(weekSettingsType: .bgcolor))
                     NavigationLink(.foregroundColors, destination: WeekSettingsView(weekSettingsType: .fgcolor))
-                    NavigationLink("Texts", destination: WeekSettingsView(weekSettingsType: .text))
+                    NavigationLink(.texts, destination: WeekSettingsView(weekSettingsType: .text))
                 }
                 NotificationSettingsView()
             }
-            .navigationBarTitle("Settings", displayMode: .automatic)
+            .navigationBarTitle(.settings, displayMode: .automatic)
             .navigationBarItems(
                 trailing: Button {
                     modelData.writeSettings()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text("Done")
+                    Text(.done)
                 }
             )
         }

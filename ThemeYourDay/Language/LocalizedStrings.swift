@@ -23,5 +23,13 @@ public extension LocalizedStringKey {
     static let themeTemplate = LocalizedStringKey("ThemeTemplate")
     static let backgroundColors = LocalizedStringKey("BackgroundColors")
     static let foregroundColors = LocalizedStringKey("ForegroundColors")
+    static let texts = LocalizedStringKey("Texts")
+    static let done = LocalizedStringKey("Done")
+    static let notification = LocalizedStringKey("Notification")
+    static let notificationEnabled = LocalizedStringKey("NotificationEnabled")
+    static let notificationStatus = LocalizedStringKey("NotificationStatus")
+    static let openSystemSettings = LocalizedStringKey("OpenSystemSettings")
+    static let askUserPermissions = LocalizedStringKey("AskUserPermissions")
+    static let remindAt = LocalizedStringKey("RemindAt")
 }
 

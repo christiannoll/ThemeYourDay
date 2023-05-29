@@ -20,3 +20,11 @@
 "ThemeTemplate" = "Theme-Vorlage";
 "BackgroundColors" = "Hintergrundfarben";
 "ForegroundColors" = "Vordergrundfarben";
+"Texts" = "Texte";
+"Done" = "Fertig";
+"Notification" = "Mitteilungen";
+"NotificationEnabled" = "Mittelungen erlauben";
+"NotificationStatus" = "Mitteilungsstatus";
+"OpenSystemSettings" = "Systemeinstellungen öffnen";
+"AskUserPermissions" = "Nach Benutzerberechtigungen fragen";
+"RemindAt" = "Erinnern um";

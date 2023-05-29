@@ -13,9 +13,10 @@ struct NotificationSettingsView: View {
     @StateObject private var viewModel = ViewModel()
     
     var body: some View {
-        Section(header: Text("Notification")) {
+        Section(header: Text(.notification)) {
             HStack {
-                Text("Notification Status:")
+                Text(.notificationStatus)
+                Spacer()
                 Text(viewModel.currentStatus)
                     .font(.headline)
             }
@@ -23,7 +24,7 @@ struct NotificationSettingsView: View {
                 Button {
                     viewModel.askPermissions()
                 } label: {
-                    Text("Ask user permissions")
+                    Text(.askUserPermissions)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
@@ -31,13 +32,13 @@ struct NotificationSettingsView: View {
                 Button {
                     viewModel.openSettings()
                 } label: {
-                    Text("Open system settings")
+                    Text(.openSystemSettings)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }
         Section {
-            Toggle("Notification Enabled:",
+            Toggle(.notificationEnabled,
                    isOn: $modelData.settings.notificationSettings.notificationEnabledByUser)
             .disabled(!viewModel.isEnableNotificationToggleEnabled)
             .onChange(of: modelData.settings.notificationSettings.notificationEnabledByUser) { enabled in
@@ -48,7 +49,7 @@ struct NotificationSettingsView: View {
          
             if modelData.settings.notificationSettings.notificationEnabledByUser {
                 DatePicker(
-                    "Remind at:",
+                    .remindAt,
                     selection: $modelData.settings.notificationSettings.remindAt,
                     displayedComponents: .hourAndMinute
                 )

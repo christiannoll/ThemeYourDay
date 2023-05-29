@@ -28,3 +28,6 @@
 "OpenSystemSettings" = "Systemeinstellungen öffnen";
 "AskUserPermissions" = "Nach Benutzerberechtigungen fragen";
 "RemindAt" = "Erinnern um";
+"Clear" = "Clear";
+"Undo" = "Undo";
+"Redo" = "Redo";

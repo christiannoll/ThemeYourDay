@@ -31,5 +31,8 @@ public extension LocalizedStringKey {
     static let openSystemSettings = LocalizedStringKey("OpenSystemSettings")
     static let askUserPermissions = LocalizedStringKey("AskUserPermissions")
     static let remindAt = LocalizedStringKey("RemindAt")
+    static let clear = LocalizedStringKey("Clear")
+    static let undo = LocalizedStringKey("Undo")
+    static let redo = LocalizedStringKey("Redo")
 }
 

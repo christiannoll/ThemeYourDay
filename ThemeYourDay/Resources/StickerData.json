@@ -146,5 +146,29 @@
     {
         "name": "PurpleFlower",
         "category": "Flower"
+    },
+    {
+        "name": "Shamrock",
+        "category": "Flower"
+    },
+    {
+        "name": "PotPlant1",
+        "category": "Flower"
+    },
+    {
+        "name": "PotPlant2",
+        "category": "Flower"
+    },
+    {
+        "name": "PotPlant3",
+        "category": "Flower"
+    },
+    {
+        "name": "Rose1",
+        "category": "Flower"
+    },
+    {
+        "name": "Rose2",
+        "category": "Flower"
     }
 ]

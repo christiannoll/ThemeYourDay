@@ -170,5 +170,29 @@
     {
         "name": "Rose2",
         "category": "Flower"
+    },
+    {
+        "name": "Cactus1",
+        "category": "Flower"
+    },
+    {
+        "name": "Cactus2",
+        "category": "Flower"
+    },
+    {
+        "name": "Palm1",
+        "category": "Flower"
+    },
+    {
+        "name": "Palm2",
+        "category": "Flower"
+    },
+    {
+        "name": "Fir1",
+        "category": "Flower"
+    },
+    {
+        "name": "Fir2",
+        "category": "Flower"
     }
 ]

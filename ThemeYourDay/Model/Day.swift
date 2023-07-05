@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct Day: Hashable, Codable, Identifiable {
     var id: Date
@@ -14,6 +15,35 @@ struct Day: Hashable, Codable, Identifiable {
     var sticker = Sticker()
     
     static let defaultBgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
+}
+
+@Model
+final class MyDay {
+    var id: Date
+    var text: String
+    var fgColor: DayColor
+    var bgColor: DayColor
+    var fontName: String
+    var starred: Bool
+    var textStyle: TextStyle
+    var textAlignment: MyTextAlignment
+    var hasImage: Bool
+    //var sticker: Sticker
+    
+    static let defaultBgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
+    
+    init(id: Date, text: String, fgColor: DayColor, bgColor: DayColor = defaultBgColor, fontName: String = "", starred: Bool = false, textStyle: TextStyle = TextStyle.largeTitle, textAlignment: MyTextAlignment = MyTextAlignment.center, hasImage: Bool = false/*, sticker: Sticker = Sticker()*/) {
+        self.id = id
+        self.text = text
+        self.fgColor = fgColor
+        self.bgColor = bgColor
+        self.fontName = fontName
+        self.starred = starred
+        self.textStyle = textStyle
+        self.textAlignment = textAlignment
+        self.hasImage = hasImage
+        //self.sticker = sticker
+    }
 }
 
 extension Day {

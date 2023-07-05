@@ -1,4 +1,6 @@
 import SwiftUI
+import SwiftData
+
 
 @main
 struct ThemeYourDayApp: App {
@@ -9,5 +11,7 @@ struct ThemeYourDayApp: App {
             ContentView()
                 .environmentObject(modelData)
         }
+        .modelContainer(appContainer)
     }
 }
+

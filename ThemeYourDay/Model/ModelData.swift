@@ -178,6 +178,18 @@ final class ModelData: ObservableObject {
         selectedDay = day
     }
     
+    func getToday(_ days: [MyDay]) -> MyDay? {
+        let today = Date().noon
+        var toDay: MyDay? = nil
+        for day in days {
+            if day.id.noon == today {
+                toDay = day
+                break
+            }
+        }
+        return toDay
+    }
+    
     func applyToToday(_ day: Day) {
         if let today = findDay(Date().noon) {
             selectDay(today)
@@ -224,6 +236,13 @@ final class ModelData: ObservableObject {
     }
     
     func isToday(day: Day?) -> Bool {
+        guard let day = day else {
+            return false
+        }
+        return day.id == Date().noon
+    }
+    
+    func isToday(day: MyDay?) -> Bool {
         guard let day = day else {
             return false
         }

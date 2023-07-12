@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct DayList: View {
     @EnvironmentObject var modelData: ModelData
@@ -7,11 +8,13 @@ struct DayList: View {
     @State private var query = ""
     @State private var searching = false
     
-    private var filteredDays: [Day] {
-        let result = modelData.days.filter {
+    @Query(sort: [SortDescriptor(\.id)]) private var days: [MyDay]
+    
+    private var filteredDays: [MyDay] {
+        let result = days.filter {
             $0.text.range(of: query, options: .caseInsensitive) != nil
         }
-        return query.isEmpty ? modelData.days : result
+        return query.isEmpty ? days : result
     }
     
     var body: some View {
@@ -24,7 +27,7 @@ struct DayList: View {
                     let day = $0
                     DayListCell(day: day, isToday: modelData.isToday(day: day))
                         .onTapGesture {
-                            modelData.selectDay(day)
+                            //modelData.selectDay(day)
                             self.mode.wrappedValue.dismiss()
                         }
                         .padding(.vertical, 8)
@@ -34,7 +37,7 @@ struct DayList: View {
                 }
                 .scrollContentBackground(.hidden)
                 .onAppear {
-                    proxy.scrollTo(modelData.selectedDay, anchor: .center)
+                    proxy.scrollTo(modelData.getToday(days), anchor: .center)
                 }
                 .onChange(of: query) {newQuery in
                     if newQuery.isEmpty {

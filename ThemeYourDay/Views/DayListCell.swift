@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DayListCell: View {
-    var day: Day
+    var day: MyDay
     var isToday: Bool
     
     var body: some View {
@@ -13,16 +13,16 @@ struct DayListCell: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 9).stroke(.white, lineWidth: isToday ? 1 : 0).padding(.horizontal, 4).padding(6)
                 )
-                .if (!day.sticker.name.isEmpty) { view in
-                    view.overlay(
-                        Image(day.sticker.name)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 40)
-                            .padding(.trailing, 12),
-                        alignment: .bottomTrailing
-                    )
-                }
+//                .if (!day.sticker.name.isEmpty) { view in
+//                    view.overlay(
+//                        Image(day.sticker.name)
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 25, height: 40)
+//                            .padding(.trailing, 12),
+//                        alignment: .bottomTrailing
+//                    )
+//                }
 
             VStack {
                 Text(getTrimmedText(day))
@@ -41,14 +41,14 @@ struct DayListCell: View {
         }
     }
     
-    private func getDate(_ day: Day) -> String {
+    private func getDate(_ day: MyDay) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         let dateString = formatter.string(from: day.id)
         return dateString
     }
     
-    private func getTrimmedText(_ day: Day) -> String {
+    private func getTrimmedText(_ day: MyDay) -> String {
         day.text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .newlines).joined(separator: " ")
     }
     
@@ -62,6 +62,6 @@ struct DayListCell: View {
 
 struct DayListCell_Previews: PreviewProvider {
     static var previews: some View {
-        DayListCell(day: Day(id: Date(), text: "Today", fgColor: DayColor()), isToday: false)
+        DayListCell(day: MyDay(id: Date(), text: "Today", fgColor: DayColor()), isToday: false)
     }
 }

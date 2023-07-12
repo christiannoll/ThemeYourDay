@@ -25,7 +25,7 @@ struct DayView: View {
                     .frame(width: 392, height: getHeight(), alignment: .top)
                     .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                     .modifier(DayViewTextStyle(day: day))
-                    //.modifier(StickerOverlay(day: day))
+                    .modifier(StickerOverlay(day: day))
             } else {
                 TextEditor(text: $day.text)
                     .padding()
@@ -36,8 +36,10 @@ struct DayView: View {
                         focusMode = !focusMode
                     }
                     .focused($focusMode)
-                    .onChange(of: day.text, perform: saveText)
-                    //.modifier(StickerOverlay(day: day))
+                    .onChange(of: day.text) {
+                        //saveText()
+                    }
+                    .modifier(StickerOverlay(day: day))
             }
         }
         .background(.gray)
@@ -118,7 +120,7 @@ struct DayViewTextStyle: ViewModifier {
 struct StickerOverlay: ViewModifier {
     
     @EnvironmentObject var modelData: ModelData
-    var day: Day
+    var day: MyDay
     
     public func body(content: Content) -> some View {
         content
@@ -138,10 +140,11 @@ struct StickerOverlay: ViewModifier {
     }
     
     private func removeSticker() {
-        if modelData.days[modelData.selectedIndex] == day {
-            modelData.selectedDay.sticker.name = ""
-            modelData.save()
-        }
+        modelData.selectedMyDay?.sticker.name = ""
+//        if modelData.days[modelData.selectedIndex] == day {
+//            modelData.selectedDay.sticker.name = ""
+//            modelData.save()
+//        }
     }
 }
 

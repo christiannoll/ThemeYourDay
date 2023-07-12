@@ -28,11 +28,11 @@ final class MyDay {
     var textStyle: TextStyle
     var textAlignment: MyTextAlignment
     var hasImage: Bool
-    //var sticker: Sticker
+    @Relationship(.cascade) var sticker: MySticker
     
     static let defaultBgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
     
-    init(id: Date, text: String, fgColor: DayColor, bgColor: DayColor = defaultBgColor, fontName: String = "", starred: Bool = false, textStyle: TextStyle = TextStyle.largeTitle, textAlignment: MyTextAlignment = MyTextAlignment.center, hasImage: Bool = false/*, sticker: Sticker = Sticker()*/) {
+    init(id: Date, text: String, fgColor: DayColor, bgColor: DayColor = defaultBgColor, fontName: String = "", starred: Bool = false, textStyle: TextStyle = TextStyle.largeTitle, textAlignment: MyTextAlignment = MyTextAlignment.center, hasImage: Bool = false, sticker: MySticker = MySticker()) {
         self.id = id
         self.text = text
         self.fgColor = fgColor
@@ -42,7 +42,7 @@ final class MyDay {
         self.textStyle = textStyle
         self.textAlignment = textAlignment
         self.hasImage = hasImage
-        //self.sticker = sticker
+        self.sticker = sticker
     }
 }
 
@@ -118,6 +118,17 @@ extension Day {
 struct Sticker: Codable, Hashable {
     var name: String = ""
     var category: Category = .general
+}
+
+@Model
+final class MySticker {
+    var name: String
+    var category: Category.RawValue
+    
+    init(name: String = "", category: Category.RawValue = Category.general.rawValue) {
+        self.name = name
+        self.category = category
+    }
 }
 
 struct Snippet: Codable, Hashable {

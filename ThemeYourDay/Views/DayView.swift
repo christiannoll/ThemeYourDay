@@ -4,7 +4,7 @@ struct DayView: View {
     
     @EnvironmentObject var modelData: ModelData
     @FocusState private var focusMode: Bool
-    @Binding var day: Day
+    @Bindable var day: MyDay
     var isSelectedDay: Bool
     var readOnly = false
     
@@ -25,7 +25,7 @@ struct DayView: View {
                     .frame(width: 392, height: getHeight(), alignment: .top)
                     .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                     .modifier(DayViewTextStyle(day: day))
-                    .modifier(StickerOverlay(day: day))
+                    //.modifier(StickerOverlay(day: day))
             } else {
                 TextEditor(text: $day.text)
                     .padding()
@@ -37,7 +37,7 @@ struct DayView: View {
                     }
                     .focused($focusMode)
                     .onChange(of: day.text, perform: saveText)
-                    .modifier(StickerOverlay(day: day))
+                    //.modifier(StickerOverlay(day: day))
             }
         }
         .background(.gray)
@@ -78,18 +78,18 @@ struct DayView: View {
     }
     
     private func saveText(_ text: String) {
-        if modelData.days[modelData.selectedIndex] == day {
-            modelData.selectedDay.text = text
-            //print(text)
-            modelData.save()
-        }
+//        if modelData.days[modelData.selectedIndex] == day {
+//            modelData.selectedDay.text = text
+//            //print(text)
+//            modelData.save()
+//        }
     }
     
     private func removeSticker() {
-        if modelData.days[modelData.selectedIndex] == day {
-            modelData.selectedDay.sticker.name = ""
-            modelData.save()
-        }
+//        if modelData.days[modelData.selectedIndex] == day {
+//            modelData.selectedDay.sticker.name = ""
+//            modelData.save()
+//        }
     }
     
     private func getHeight() -> CGFloat {
@@ -100,7 +100,7 @@ struct DayView: View {
 struct DayViewTextStyle: ViewModifier {
     
     @EnvironmentObject var modelData: ModelData
-    var day: Day
+    var day: MyDay
     
     @ViewBuilder
     public func body(content: Content) -> some View {
@@ -145,9 +145,9 @@ struct StickerOverlay: ViewModifier {
     }
 }
 
-struct DayView_Previews: PreviewProvider {
+/*struct DayView_Previews: PreviewProvider {
     static var previews: some View {
         DayView(day:.constant(Day(id: Date().noon, text: "Today", fgColor: DayColor())), isSelectedDay: false)
             .environmentObject(ModelData())
     }
-}
+}*/

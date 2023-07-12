@@ -238,22 +238,22 @@ struct ContentView: View {
     }
     
     private func saveThemeAsImage(inAlbum: Bool) {
-        let dayView = DayView(day: $modelData.selectedDay, isSelectedDay: true, readOnly: true)
-            .environmentObject(modelData)
-        let renderer = ImageRenderer(content: dayView)
-        renderer.scale = 3
-         
-        if let image = renderer.uiImage {
-            if inAlbum {
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            }
-            else {
-                if let data = image.pngData() {
-                    let filename = FileManager.sharedContainerURL().appendingPathComponent(modelData.getSharedThemeFileName())
-                    try? data.write(to: filename)
-                }
-            }
-        }
+//        let dayView = DayView(day: $modelData.selectedDay, isSelectedDay: true, readOnly: true)
+//            .environmentObject(modelData)
+//        let renderer = ImageRenderer(content: dayView)
+//        renderer.scale = 3
+//         
+//        if let image = renderer.uiImage {
+//            if inAlbum {
+//                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//            }
+//            else {
+//                if let data = image.pngData() {
+//                    let filename = FileManager.sharedContainerURL().appendingPathComponent(modelData.getSharedThemeFileName())
+//                    try? data.write(to: filename)
+//                }
+//            }
+//        }
     }
     
     private func getCalendarBackgroundColor(_ day: Day?) -> Color {

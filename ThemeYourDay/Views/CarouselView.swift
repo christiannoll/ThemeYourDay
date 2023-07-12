@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct CarouselView: View {
     
@@ -7,12 +8,13 @@ struct CarouselView: View {
     @State private var indices:[Int] = []
     @State private var dragAmount = DragState.inactive
     
-    
+    @Query(sort: [SortDescriptor(\.id)]) var days: [MyDay]
+ 
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 ForEach(indices, id: \.self) { (idx) in
-                    DayView(day: $modelData.days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
+                    DayView(day: days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
                         .offset(x: cellOffset(cellLocation(idx), geometry.size, false))
                         .animation(.easeInOut(duration: 0.7), value: dragState.translation)
                         .onTapGesture() {
@@ -23,6 +25,7 @@ struct CarouselView: View {
                         }
                 }
             }.onAppear {
+                modelData.selectedIndex = currentIndex()
                 updateIndices()
             }
             .gesture(
@@ -88,6 +91,18 @@ struct CarouselView: View {
     
     private func updateIndices() {
         indices = Array(modelData.selectedIndex-2...modelData.selectedIndex+2)
+    }
+    
+    private func currentIndex() -> Int {
+        let today = Date().noon
+        var index = -1
+        for day in days {
+            index += 1
+            if day.id.hasSame(.day, as: today) {
+                break
+            }
+        }
+        return index
     }
 }
 

@@ -33,7 +33,7 @@ struct DayWidgetView: View {
                     .frame(width: 170, height: 148))
                 .background(day.bgColor.color)
                 .foregroundColor(day.fgColor.color)
-                .multilineTextAlignment(day.getTextAlignment())
+                //.multilineTextAlignment(day.getTextAlignment())
                 .lineSpacing(4)
                 .lineLimit(day.sticker.name.isEmpty ? 6  : 4)
                 .if (!day.sticker.name.isEmpty) { view in

@@ -23,7 +23,7 @@ final class MyDay {
     var text: String
     var fgColor: DayColor
     var bgColor: DayColor
-    var fontName: String
+    var fontname: String
     var starred: Bool
     var textStyle: TextStyle
     var textAlignment: MyTextAlignment
@@ -37,7 +37,7 @@ final class MyDay {
         self.text = text
         self.fgColor = fgColor
         self.bgColor = bgColor
-        self.fontName = fontName
+        self.fontname = fontName
         self.starred = starred
         self.textStyle = textStyle
         self.textAlignment = textAlignment
@@ -62,6 +62,34 @@ extension Day {
 }
 
 extension Day {
+    func getTextAlignment() -> TextAlignment {
+        switch textAlignment {
+        case .center:
+            return .center
+        case .leading:
+            return .leading
+        case .trailing:
+            return.trailing
+        }
+    }
+}
+
+extension MyDay {
+    func font() -> Font {
+        switch textStyle {
+        case .largeTitle:
+            return .largeTitle
+        case .title:
+            return .title
+        case .title2:
+            return .title2
+        case .title3:
+            return .title3
+        }
+    }
+}
+
+extension MyDay {
     func getTextAlignment() -> TextAlignment {
         switch textAlignment {
         case .center:

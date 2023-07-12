@@ -54,15 +54,16 @@ struct CanvasView: View {
     }
     
     private var textOverlay: some View {
-        let day = modelData.selectedDay
-        return Text(day.text)
-            .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
-            .foregroundColor(day.fgColor.color)
-            .multilineTextAlignment(day.getTextAlignment())
-            .padding(.horizontal, 20)
-            .padding(.vertical, 24)
-            .frame(width: 392, height: getHeight(), alignment: day.getAlignment())
-            .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
+        EmptyView()
+//        let day = modelData.selectedDay
+//        return Text(day.text)
+//            .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
+//            .foregroundColor(day.fgColor.color)
+//            .multilineTextAlignment(day.getTextAlignment())
+//            .padding(.horizontal, 20)
+//            .padding(.vertical, 24)
+//            .frame(width: 392, height: getHeight(), alignment: day.getAlignment())
+//            .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
     }
     
     private func saveImage() {

@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 class Tools: ObservableObject {
     
@@ -51,6 +52,8 @@ struct ContentView: View {
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
+    @Query(sort: [SortDescriptor(\.id)]) private var days: [MyDay]
     
     private var monthly: DateInterval {
         let endDate = Date().getNextMonth(offset: monthOffset)
@@ -145,7 +148,7 @@ struct ContentView: View {
                     DayList()
                 case .calendar:
                     CalendarView(interval: monthly, nextMonth: incrementMonthOffset, previousMoth: decrementMonthOffset) { date in
-                        let day = modelData.findDay(date)
+                        let day = findDay(date)//days.first { $0.id.noon == date.noon }
                         Text("30")
                             .hidden()
                             .padding(8)
@@ -192,6 +195,11 @@ struct ContentView: View {
         .onAppear {
             tools.saveThemeAsImage = saveThemeInAlbum
             tools.shareThemeAsImage = shareTheme
+            
+            for (index, day) in days.enumerated() {
+                DataFactory.indexCache[day.id.noon] = index
+            }
+            
         }
         .sheet(isPresented: $stickerViewShown) {
             StickerView()
@@ -237,6 +245,14 @@ struct ContentView: View {
         ContentView.getHeight(horizontalSizeClass, verticalSizeClass) + 76
     }
     
+    private func findDay(_ date: Date) -> MyDay? {
+        //print(date)
+        if let index = DataFactory.indexCache[date.noon] {
+            return days[index]
+        }
+        return nil
+    }
+    
     private func saveThemeAsImage(inAlbum: Bool) {
 //        let dayView = DayView(day: $modelData.selectedDay, isSelectedDay: true, readOnly: true)
 //            .environmentObject(modelData)
@@ -256,11 +272,11 @@ struct ContentView: View {
 //        }
     }
     
-    private func getCalendarBackgroundColor(_ day: Day?) -> Color {
+    private func getCalendarBackgroundColor(_ day: MyDay?) -> Color {
         day != nil ? day!.bgColor.color : Color.blue
     }
     
-    private func getCalendarForegroundColor(_ day: Day?) -> Color {
+    private func getCalendarForegroundColor(_ day: MyDay?) -> Color {
         day != nil ? day!.fgColor.color : Color.white
     }
 }

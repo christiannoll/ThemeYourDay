@@ -183,6 +183,18 @@ final class ModelData: ObservableObject {
         selectedDay = day
     }
     
+    func selectDay(_ _day: MyDay, days: [MyDay]) {
+        var index = -1
+        for day in days {
+            index += 1
+            if day.id.hasSame(.day, as: _day.id.noon) {
+                selectedIndex = index
+                selectedMyDay = day
+                break
+            }
+        }
+    }
+    
     func getToday(_ days: [MyDay]) -> MyDay? {
         let today = Date().noon
         var toDay: MyDay? = nil

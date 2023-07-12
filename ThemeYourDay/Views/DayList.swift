@@ -27,7 +27,7 @@ struct DayList: View {
                     let day = $0
                     DayListCell(day: day, isToday: modelData.isToday(day: day))
                         .onTapGesture {
-                            //modelData.selectDay(day)
+                            modelData.selectDay(day, days: days)
                             self.mode.wrappedValue.dismiss()
                         }
                         .padding(.vertical, 8)

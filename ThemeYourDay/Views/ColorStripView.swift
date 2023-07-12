@@ -25,8 +25,8 @@ struct ColorStripView: View {
                     }
             }
         }
-        .onChange(of: dayColor) {newValue in
-            saveColorAction(newValue.color, modelData)
+        .onChange(of: dayColor) {
+            saveColorAction(dayColor.color, modelData)
         }
     }
     

@@ -26,6 +26,7 @@ struct CarouselView: View {
                 }
             }.onAppear {
                 modelData.selectedIndex = currentIndex()
+                modelData.selectedMyDay = days[modelData.selectedIndex]
                 updateIndices()
             }
             .gesture(

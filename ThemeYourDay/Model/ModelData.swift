@@ -10,6 +10,7 @@ final class ModelData: ObservableObject {
     @Published var settings = DataFactory.settings
     @Published var stickers = DataFactory.stickers
     @Published var snippets = DataFactory.snippets
+    @Published var selectedMyDay: MyDay? = nil
         
     func save() {
         syncSelectedDay()
@@ -122,24 +123,28 @@ final class ModelData: ObservableObject {
     
     func saveFgColor(r: Double, g: Double, b: Double, a: Double) {
         let color = DayColor(r: r, g: g, b: b, a: a)
-        selectedDay.fgColor = color
-
-        if !settings.fgColors.contains(color) {
-            settings.fgColors.insert(color, at: 0)
-            if settings.fgColors.count > 5 {
-                settings.fgColors = settings.fgColors.dropLast()
+        if let selectedMyDay {
+            selectedMyDay.fgColor = color
+            
+            if !settings.fgColors.contains(color) {
+                settings.fgColors.insert(color, at: 0)
+                if settings.fgColors.count > 5 {
+                    settings.fgColors = settings.fgColors.dropLast()
+                }
             }
         }
     }
     
     func saveBgColor(r: Double, g: Double, b: Double, a: Double) {
         let color = DayColor(r: r, g: g, b: b, a: a)
-        selectedDay.bgColor = color
-        
-        if !settings.bgColors.contains(color) {
-            settings.bgColors.insert(color, at: 0)
-            if settings.bgColors.count > 5 {
-                settings.bgColors = settings.bgColors.dropLast()
+        if let selectedMyDay {
+            selectedMyDay.bgColor = color
+            
+            if !settings.bgColors.contains(color) {
+                settings.bgColors.insert(color, at: 0)
+                if settings.bgColors.count > 5 {
+                    settings.bgColors = settings.bgColors.dropLast()
+                }
             }
         }
     }

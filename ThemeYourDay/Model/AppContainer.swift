@@ -39,6 +39,14 @@ let appContainer: ModelContainer = {
             day = day.dayAfter.noon
         }
         
+        var settingsFetchDescriptor = FetchDescriptor<MySettings>()
+        settingsFetchDescriptor.fetchLimit = 1
+        
+        guard try container.mainContext.fetch(settingsFetchDescriptor).count == 0 else { return container }
+
+        let mySettings = MySettings()
+        container.mainContext.insert(object: mySettings)
+        
         return container
     } catch {
         fatalError("Failed to create container")

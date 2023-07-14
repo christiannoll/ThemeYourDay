@@ -1,10 +1,13 @@
 import SwiftUI
+import SwiftData
 
 struct ColorStripView: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var dayColor: DayColor
     var colors: [DayColor]
     var saveColorAction: (Color, ModelData) -> Void
+    
+    @Query() var settings: [MySettings]
     
     var body: some View {
         HStack {
@@ -24,6 +27,9 @@ struct ColorStripView: View {
                         dayColor = col
                     }
             }
+        }
+        .onAppear {
+            print(settings.count)
         }
         .onChange(of: dayColor) {
             saveColorAction(dayColor.color, modelData)

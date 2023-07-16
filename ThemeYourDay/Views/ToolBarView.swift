@@ -22,9 +22,9 @@ struct ToolBarView: View {
             Spacer()
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: { tools.canvasVisible.toggle()
+                    Button { tools.canvasVisible.toggle()
                         tools.visibleTool = .None
-                    }) {
+                    } label: {
                         Image(systemName: "pencil.tip.crop.circle")
                             .foregroundColor(.secondary)
                     }
@@ -33,11 +33,11 @@ struct ToolBarView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: {
+                    Button {
                         withAnimation {
                             tools.visibleTool = textToolVisible ? .None : .Textformat
                         }
-                    }) {
+                    } label: {
                         Image(systemName: "textformat")
                             .foregroundColor(textToolVisible ? .accentColor : .secondary)
                     }
@@ -46,11 +46,11 @@ struct ToolBarView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: {
+                    Button {
                         withAnimation {
                             tools.visibleTool = foregroundToolVisible ? .None : .Foreground
                         }
-                    }) {
+                    } label: {
                         Image(systemName: "note.text")
                             .foregroundColor(foregroundToolVisible ? .accentColor : .secondary)
                     }
@@ -59,11 +59,11 @@ struct ToolBarView: View {
                     Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button(action: {
+                    Button {
                         withAnimation {
                             tools.visibleTool = backgroundToolVisible ? .None : .Background
                         }
-                    }) {
+                    } label: {
                         Image(systemName: "note")
                             .foregroundColor(backgroundToolVisible ? .accentColor : .secondary)
                     }
@@ -73,16 +73,16 @@ struct ToolBarView: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Menu {
-                        Button(action: { tools.settingsVisible.toggle() }) {
+                        Button { tools.settingsVisible.toggle() } label: {
                             Label(.settings, systemImage: "gearshape")
                         }
-                        Button(action: { tools.shareThemeAsImage() }) {
+                        Button { tools.shareThemeAsImage() } label: {
                             Label(.share, systemImage: "square.and.arrow.up")
                         }
-                        Button(action: { modelData.applyToToday(modelData.selectedDay) }) {
+                        Button { modelData.applyToToday(modelData.selectedDay) } label: {
                             Label(.applyToToday, systemImage: "square.and.arrow.up.on.square")
                         }
-                        Button(action: { tools.saveThemeAsImage() }) {
+                        Button { tools.saveThemeAsImage() } label: {
                             Label(.saveTheme, systemImage: "square.and.arrow.down")
                         }
                     } label: { Image(systemName: "ellipsis.circle").foregroundColor(.secondary) }

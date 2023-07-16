@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ColorStripModelView {
     
-    func saveFgColor(_ fgColor: Color, _ modelData: ModelData) {
+    func saveFgColor(_ fgColor: Color, _ modelData: ModelData, _ settings: MySettings?) {
         let uiColor = UIColor(fgColor)
         
         var red: CGFloat = 0
@@ -11,11 +11,11 @@ struct ColorStripModelView {
         var alpha: CGFloat = 0
 
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        modelData.saveFgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha))
+        modelData.saveFgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), mySettings: settings)
         modelData.save()
     }
     
-    func saveBgColor(_ bgColor: Color, _ modelData: ModelData) {
+    func saveBgColor(_ bgColor: Color, _ modelData: ModelData, _ settings: MySettings?) {
         let uiColor = UIColor(bgColor)
         
         var red: CGFloat = 0
@@ -24,7 +24,7 @@ struct ColorStripModelView {
         var alpha: CGFloat = 0
 
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        modelData.saveBgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha))
+        modelData.saveBgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), mySettings: settings)
         modelData.save()
     }
 }

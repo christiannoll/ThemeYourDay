@@ -54,12 +54,21 @@ struct ContentView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     @Query(sort: [SortDescriptor(\.id)]) private var days: [MyDay]
+    @Query() var settings: [MySettings]
     
     private var monthly: DateInterval {
         let endDate = Date().getNextMonth(offset: monthOffset)
         let startDate = Date().getPreviousMonth(offset: monthOffset)
         return DateInterval(start: startDate!, end: endDate!)
     }
+    
+    var selectedDayBinding: Binding<MyDay> {
+        return Binding(get: {
+            return modelData.selectedMyDay ?? MyDay(id: Date().noon, text: "Error", fgColor: DayColor())
+        }, set: { newValue in
+          modelData.selectedMyDay = newValue
+        })
+      }
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -115,16 +124,20 @@ struct ContentView: View {
                     if tools.visibleTool == .Foreground {
                         VStack {
                             Spacer()
-                            ColorStripView(dayColor: $modelData.selectedDay.fgColor, colors: modelData.settings.fgColors, saveColorAction: colorStripMV.saveFgColor)
-                                .padding()
+                            if let mySettings = settings.first {
+                                ColorStripView(dayColor: selectedDayBinding.fgColor, colors: mySettings.fgColors, saveColorAction: colorStripMV.saveFgColor)
+                                    .padding()
+                            }
                         }
                     }
                 
                     if tools.visibleTool == .Background {
                         VStack {
                             Spacer()
-                            ColorStripView(dayColor: $modelData.selectedDay.bgColor, colors: modelData.settings.bgColors, saveColorAction: colorStripMV.saveBgColor)
-                                .padding()
+                            if let mySettings = settings.first {
+                                ColorStripView(dayColor: selectedDayBinding.bgColor, colors: mySettings.bgColors, saveColorAction: colorStripMV.saveBgColor)
+                                    .padding()
+                            }
                         }
                     }
                 }

@@ -5,7 +5,7 @@ struct ColorStripView: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var dayColor: DayColor
     var colors: [DayColor]
-    var saveColorAction: (Color, ModelData) -> Void
+    var saveColorAction: (Color, ModelData, MySettings?) -> Void
     
     @Query() var settings: [MySettings]
     
@@ -28,11 +28,8 @@ struct ColorStripView: View {
                     }
             }
         }
-        .onAppear {
-            print(settings.count)
-        }
         .onChange(of: dayColor) {
-            saveColorAction(dayColor.color, modelData)
+            saveColorAction(dayColor.color, modelData, settings.first)
         }
     }
     
@@ -46,10 +43,10 @@ struct ColorStripView: View {
 
 struct ColorStripView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorStripView(dayColor: .constant(DayColor()), colors: [DayColor](), saveColorAction:saveColor(_:_:))
+        ColorStripView(dayColor: .constant(DayColor()), colors: [DayColor](), saveColorAction:saveColor(_:_:_:))
             .environmentObject(ModelData())
     }
     
-    static func saveColor(_ color: Color, _ modelData: ModelData) {
+    static func saveColor(_ color: Color, _ modelData: ModelData, _ settings: MySettings?) {
     }
 }

@@ -1,9 +1,12 @@
 import SwiftUI
+import SwiftData
 
 struct ToolBarView: View {
     
     @EnvironmentObject var tools: Tools
     @EnvironmentObject var modelData: ModelData
+    
+    @Query(sort: [SortDescriptor(\.id)]) private var days: [MyDay]
     
     private var textToolVisible: Bool {
         tools.visibleTool == .Textformat
@@ -79,7 +82,7 @@ struct ToolBarView: View {
                         Button { tools.shareThemeAsImage() } label: {
                             Label(.share, systemImage: "square.and.arrow.up")
                         }
-                        Button { modelData.applyToToday(modelData.selectedDay) } label: {
+                        Button { modelData.applyToToday(days) } label: {
                             Label(.applyToToday, systemImage: "square.and.arrow.up.on.square")
                         }
                         Button { tools.saveThemeAsImage() } label: {

@@ -207,6 +207,20 @@ final class ModelData: ObservableObject {
         return toDay
     }
     
+    func applyToToday(_ days: [MyDay]) {
+        if let today = getToday(days), days.count > selectedIndex {
+            let day = days[selectedIndex]
+            today.text = day.text
+            today.fgColor = day.fgColor
+            today.bgColor = day.bgColor
+            today.sticker = day.sticker
+            today.textAlignment = day.textAlignment
+            today.textStyle = day.textStyle
+            today.fontname = day.fontname
+            selectDay(today, days: days)
+        }
+    }
+    
     func applyToToday(_ day: Day) {
         if let today = findDay(Date().noon) {
             selectDay(today)

@@ -75,13 +75,6 @@ struct DayView: View {
         return weekday + " " + dateString
     }
     
-    private func removeSticker() {
-//        if modelData.days[modelData.selectedIndex] == day {
-//            modelData.selectedDay.sticker.name = ""
-//            modelData.save()
-//        }
-    }
-    
     private func getHeight() -> CGFloat {
         ContentView.getHeight(horizontalSizeClass, verticalSizeClass)
     }
@@ -129,10 +122,6 @@ struct StickerOverlay: ViewModifier {
     
     private func removeSticker() {
         modelData.selectedMyDay?.sticker.name = ""
-//        if modelData.days[modelData.selectedIndex] == day {
-//            modelData.selectedDay.sticker.name = ""
-//            modelData.save()
-//        }
     }
 }
 

@@ -33,7 +33,7 @@ let appContainer: ModelContainer = {
                 let newDay = MyDay(id: day, text: settings.weekdaysText[day.weekday - 1],
                                    fgColor: settings.weekdaysFgColor[day.weekday - 1],
                                    bgColor: settings.weekdaysBgColor[day.weekday - 1])
-                container.mainContext.insert(object: newDay)
+                container.mainContext.insert(newDay)
             }
             
             day = day.dayAfter.noon
@@ -45,7 +45,7 @@ let appContainer: ModelContainer = {
         guard try container.mainContext.fetch(settingsFetchDescriptor).count == 0 else { return container }
 
         let mySettings = MySettings()
-        container.mainContext.insert(object: mySettings)
+        container.mainContext.insert(mySettings)
         
         return container
     } catch {

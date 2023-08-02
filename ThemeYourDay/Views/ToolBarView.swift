@@ -6,7 +6,7 @@ struct ToolBarView: View {
     @EnvironmentObject var tools: Tools
     @EnvironmentObject var modelData: ModelData
     
-    @Query(sort: [SortDescriptor(\.id)]) private var days: [MyDay]
+    @Query(sort: [SortDescriptor(\MyDay.id)]) private var days: [MyDay]
     
     private var textToolVisible: Bool {
         tools.visibleTool == .Textformat

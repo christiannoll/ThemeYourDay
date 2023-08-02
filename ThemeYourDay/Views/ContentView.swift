@@ -53,7 +53,7 @@ struct ContentView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
-    @Query(sort: [SortDescriptor(\.id)]) private var days: [MyDay]
+    @Query(sort: [SortDescriptor(\MyDay.id)]) private var days: [MyDay]
     @Query() var settings: [MySettings]
     
     private var monthly: DateInterval {

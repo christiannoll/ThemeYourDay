@@ -36,9 +36,6 @@ struct DayView: View {
                         focusMode = !focusMode
                     }
                     .focused($focusMode)
-                    .onChange(of: day.text) {
-                        //saveText()
-                    }
                     .modifier(StickerOverlay(day: day))
             }
         }
@@ -65,8 +62,7 @@ struct DayView: View {
             .padding(.top, readOnly ? 24 : 28)
             .padding(.trailing, 32)
             .onTapGesture {
-                modelData.selectedDay.starred = !day.starred
-                modelData.save()
+                day.starred.toggle()
             }
     }
     
@@ -77,14 +73,6 @@ struct DayView: View {
         let weekday = formatter.weekdaySymbols[Calendar.current.component(.weekday, from: day.id) - 1]
 
         return weekday + " " + dateString
-    }
-    
-    private func saveText(_ text: String) {
-//        if modelData.days[modelData.selectedIndex] == day {
-//            modelData.selectedDay.text = text
-//            //print(text)
-//            modelData.save()
-//        }
     }
     
     private func removeSticker() {

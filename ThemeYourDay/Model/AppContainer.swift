@@ -11,7 +11,7 @@ import Foundation
 @MainActor
 let appContainer: ModelContainer = {
     do {
-        let container = try ModelContainer(for: [MyDay.self, MySticker.self, MySettings.self])
+        let container = try ModelContainer(for: [MyDay.self, MySticker.self, MySettings.self, MyNotificationSettings.self])
         
         var itemFetchDescriptor = FetchDescriptor<MyDay>()
         

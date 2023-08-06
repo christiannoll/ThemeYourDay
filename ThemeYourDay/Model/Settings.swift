@@ -29,6 +29,17 @@ struct NotificationSettings: Hashable, Codable {
 }
 
 @Model
+final class MyNotificationSettings {
+    var notificationEnabledByUser: Bool
+    var remindAt: Date
+    
+    init(notificationEnabledByUser: Bool, remindAt: Date) {
+        self.notificationEnabledByUser = notificationEnabledByUser
+        self.remindAt = remindAt
+    }
+}
+
+@Model
 final class MySettings {
     
     var fgColors: [DayColor]
@@ -37,6 +48,7 @@ final class MySettings {
     var weekdaysBgColor: [DayColor]
     var weekdaysFgColor: [DayColor]
     var weekdaysText: [String]
+    var notificationSettings: MyNotificationSettings
     
     static let WeekdaysText = Array(["Theme your Sunday", "Theme your Monday", "Theme your Tuesday", "Theme your Wednesday", "Theme your Thursday", "Theme your Friday", "Theme your Saturday"])
     
@@ -53,12 +65,14 @@ final class MySettings {
          textLineSpacing: Int = 10,
          weekdaysBgColor: [DayColor] = Array(repeating: Day.defaultBgColor, count: 7),
          weekdaysFgColor: [DayColor] = Array(repeating: DayColor(), count: 7),
-         weekdaysText: [String] = WeekdaysText) {
+         weekdaysText: [String] = WeekdaysText,
+         notificationSettings: MyNotificationSettings = MyNotificationSettings(notificationEnabledByUser: false, remindAt: Date())) {
         self.fgColors = fgColors
         self.bgColors = bgColors
         self.textLineSpacing = textLineSpacing
         self.weekdaysBgColor = weekdaysBgColor
         self.weekdaysFgColor = weekdaysFgColor
         self.weekdaysText = weekdaysText
+        self.notificationSettings = notificationSettings
     }
 }

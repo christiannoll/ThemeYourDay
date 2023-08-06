@@ -2,8 +2,17 @@ import SwiftUI
 
 struct DayColorView: View {
     
-    @Binding var dayColor: DayColor
+    @State var dayColor: DayColor
     let weekday: String
+    let index: Int
+    let save: (DayColor, Int) -> Void
+    
+    init(dayColor: DayColor, weekday: String, index: Int, save: @escaping (_ dayColor: DayColor, _ index: Int) -> Void) {
+        self._dayColor = State(initialValue: dayColor)
+        self.weekday = weekday
+        self.index = index
+        self.save = save
+    }
     
     var body: some View {
         HStack {
@@ -20,6 +29,9 @@ struct DayColorView: View {
             ColorPicker("Select Text Color", selection: $dayColor.color)
                 .labelsHidden()
                 .padding()
+                .onChange(of: dayColor) {
+                    save(dayColor, index)
+                }
         }
     }
     
@@ -33,6 +45,6 @@ struct DayColorView: View {
 
 struct DayColorView_Previews: PreviewProvider {
     static var previews: some View {
-        DayColorView(dayColor: .constant(Day.defaultBgColor), weekday: "Monday")
+        DayColorView(dayColor: Day.defaultBgColor, weekday: "Monday", index: 0, save: {_,_ in })
     }
 }

@@ -5,10 +5,11 @@
 //  Created by Christian on 01.09.22.
 //
 import SwiftUI
+import SwiftData
 
 struct WeekSettingsView: View {
     
-    @EnvironmentObject var modelData: ModelData
+    @Query() var settings: [MySettings]
     private let weekIndices = [1, 2, 3, 4, 5, 6, 0]
     let weekSettingsType: WeekSettingsType
     
@@ -20,14 +21,16 @@ struct WeekSettingsView: View {
     
     var body: some View {
         Form {
-            ForEach(weekIndices, id: \.self) { idx in
-                switch weekSettingsType {
-                case .fgcolor:
-                    DayColorView(dayColor: $modelData.settings.weekdaysFgColor[idx], weekday: weekdaySymbol(dayIndex: idx))
-                case .bgcolor:
-                    DayColorView(dayColor: $modelData.settings.weekdaysBgColor[idx], weekday: weekdaySymbol(dayIndex: idx))
-                case .text:
-                    DayTextView(dayText: $modelData.settings.weekdaysText[idx], weekday: weekdaySymbol(dayIndex: idx))
+            if let mySettings = settings.first {
+                ForEach(weekIndices, id: \.self) { idx in
+                    switch weekSettingsType {
+                    case .fgcolor:
+                        DayColorView(dayColor: mySettings.weekdaysFgColor[idx], weekday: weekdaySymbol(dayIndex: idx), index: idx, save: saveFgColor)
+                    case .bgcolor:
+                        DayColorView(dayColor: mySettings.weekdaysBgColor[idx], weekday: weekdaySymbol(dayIndex: idx), index: idx, save: saveBgColor)
+                    case .text:
+                        DayTextView(dayText: mySettings.weekdaysText[idx], weekday: weekdaySymbol(dayIndex: idx), index: idx, save: saveWeekdayText)
+                    }
                 }
             }
         }
@@ -36,6 +39,24 @@ struct WeekSettingsView: View {
     
     private func weekdaySymbol(dayIndex: Int) -> String {
         Calendar.current.weekdaySymbols[dayIndex]
+    }
+    
+    private func saveFgColor(dayColor: DayColor, index: Int) {
+        if let mySettings = settings.first {
+            mySettings.weekdaysFgColor[index] = dayColor
+        }
+    }
+    
+    private func saveBgColor(dayColor: DayColor, index: Int) {
+        if let mySettings = settings.first {
+            mySettings.weekdaysBgColor[index] = dayColor
+        }
+    }
+    
+    private func saveWeekdayText(dayText: String, index: Int) {
+        if let mySettings = settings.first {
+            mySettings.weekdaysText[index] = dayText
+        }
     }
     
     private func title() -> String {

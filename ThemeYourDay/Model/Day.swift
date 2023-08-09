@@ -28,7 +28,7 @@ final class MyDay {
     var textStyle: TextStyle
     var textAlignment: MyTextAlignment
     var hasImage: Bool
-    @Relationship(.cascade) var sticker: MySticker
+    @Relationship var sticker: MySticker
     
     static let defaultBgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
     

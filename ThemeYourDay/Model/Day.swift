@@ -115,6 +115,19 @@ extension Day {
     }
 }
 
+extension MyDay {
+    func getAlignment() -> Alignment {
+        switch textAlignment {
+        case .center:
+            return .top
+        case .leading:
+            return .topLeading
+        case .trailing:
+            return .topTrailing
+        }
+    }
+}
+
 struct Sticker: Codable, Hashable {
     var name: String = ""
     var category: Category = .general

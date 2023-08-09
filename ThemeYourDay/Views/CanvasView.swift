@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import PencilKit
 
 struct CanvasView: View {
@@ -6,6 +7,8 @@ struct CanvasView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var canvasView = PKCanvasView()
     @Binding var toolPickerIsActive: Bool
+    
+    @Query() var settings: [MySettings]
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
@@ -39,9 +42,11 @@ struct CanvasView: View {
             }
             .frame(height: 28)
             Spacer()
-            MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: modelData.selectedDay.bgColor.color)
-                .frame(height: getHeight())
-                .overlay(textOverlay.allowsHitTesting(false))
+            if let day = modelData.selectedMyDay {
+                MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: day.bgColor.color)
+                    .frame(height: getHeight())
+                    .overlay(textOverlay.allowsHitTesting(false))
+            }
         }
         .onAppear { loadImage() }
         .background(.gray)
@@ -53,17 +58,18 @@ struct CanvasView: View {
         ContentView.getHeight(horizontalSizeClass, verticalSizeClass)
     }
     
+    @ViewBuilder
     private var textOverlay: some View {
-        EmptyView()
-//        let day = modelData.selectedDay
-//        return Text(day.text)
-//            .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
-//            .foregroundColor(day.fgColor.color)
-//            .multilineTextAlignment(day.getTextAlignment())
-//            .padding(.horizontal, 20)
-//            .padding(.vertical, 24)
-//            .frame(width: 392, height: getHeight(), alignment: day.getAlignment())
-//            .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
+        if let day = modelData.selectedMyDay, let mySettings = settings.first {
+            Text(day.text)
+                .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
+                .foregroundColor(day.fgColor.color)
+                .multilineTextAlignment(day.getTextAlignment())
+                .padding(.horizontal, 20)
+                .padding(.vertical, 24)
+                .frame(width: 392, height: getHeight(), alignment: day.getAlignment())
+                .lineSpacing(CGFloat(mySettings.textLineSpacing))
+        }
     }
     
     private func saveImage() {

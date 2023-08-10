@@ -82,10 +82,9 @@ struct CanvasView: View {
         if canvasView.drawing.bounds.isEmpty == false {
             let imgRect = CGRect(x: 0, y: 0, width: canvasView.bounds.width, height: canvasView.bounds.height)
             let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
-            if let data = image.pngData() {
+            if let data = image.pngData(), let day = modelData.selectedMyDay {
                 modelData.savePngImageOfSelectedDay(data: data)
-                modelData.selectedDay.hasImage = true
-                modelData.save()
+                day.hasImage = true
             }
         }
     }

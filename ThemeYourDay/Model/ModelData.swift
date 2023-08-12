@@ -281,7 +281,10 @@ final class ModelData: ObservableObject {
     }
     
     func getSharedThemeFileName() -> String {
-        let dateStr = selectedDay.id.formatted(.iso8601.day().month().year())
+        guard let selectedMyDay else {
+            return "Error"
+        }
+        let dateStr = selectedMyDay.id.formatted(.iso8601.day().month().year())
         let fileName = dateStr + "-Day.png"
         return fileName
     }
@@ -302,13 +305,19 @@ final class ModelData: ObservableObject {
     }
     
     private func getImageFilenameOfSelectedDay() -> URL {
-        let filename = selectedDay.id.formatted(.iso8601) + ".img"
+        guard let selectedMyDay else {
+            return FileManager.sharedContainerURL().appendingPathComponent("Error")
+        }
+        let filename = selectedMyDay.id.formatted(.iso8601) + ".img"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }
     
     private func getPngImageFilenameOfSelectedDay() -> URL {
-        let filename = selectedDay.id.formatted(.iso8601) + ".png"
+        guard let selectedMyDay else {
+            return FileManager.sharedContainerURL().appendingPathComponent("Error")
+        }
+        let filename = selectedMyDay.id.formatted(.iso8601) + ".png"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }

@@ -14,7 +14,7 @@ struct TextAlignmentView: View {
                 Image(systemName: "text.alignright").tag(MyTextAlignment.trailing)
             }
             .pickerStyle(.segmented)
-            .onChange(of: modelData.selectedDay.textAlignment) {_ in
+            .onChange(of: modelData.selectedDay.textAlignment) {
                 modelData.save()
             }
         }

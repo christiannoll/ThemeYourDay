@@ -39,8 +39,8 @@ struct DayList: View {
                 .onAppear {
                     proxy.scrollTo(modelData.getToday(days), anchor: .center)
                 }
-                .onChange(of: query) {newQuery in
-                    if newQuery.isEmpty {
+                .onChange(of: query) {
+                    if query.isEmpty {
                         proxy.scrollTo(modelData.selectedDay, anchor: .center)
                     }
                 }

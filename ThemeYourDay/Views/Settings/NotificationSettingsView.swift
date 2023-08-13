@@ -6,11 +6,29 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NotificationSettingsView: View {
     
-    @EnvironmentObject var modelData: ModelData
     @StateObject private var viewModel = ViewModel()
+    
+    @Query() var settings: [MySettings]
+    
+    var enabledBinding: Binding<Bool> {
+        return Binding(get: {
+            return settings.first?.notificationSettings.notificationEnabledByUser ?? false
+        }, set: { newValue in
+            settings.first?.notificationSettings.notificationEnabledByUser = newValue
+        })
+    }
+    
+    var remindAtBinding: Binding<Date> {
+        return Binding(get: {
+            return settings.first?.notificationSettings.remindAt ?? Date()
+        }, set: { newValue in
+            settings.first?.notificationSettings.remindAt = newValue
+        })
+    }
     
     var body: some View {
         Section(header: Text(.notification)) {
@@ -38,24 +56,26 @@ struct NotificationSettingsView: View {
             }
         }
         Section {
-            Toggle(.notificationEnabled,
-                   isOn: $modelData.settings.notificationSettings.notificationEnabledByUser)
-            .disabled(!viewModel.isEnableNotificationToggleEnabled)
-            .onChange(of: modelData.settings.notificationSettings.notificationEnabledByUser) { enabled in
-                if !enabled {
-                    viewModel.cancelNotificationRequest()
-                }
-            }
-         
-            if modelData.settings.notificationSettings.notificationEnabledByUser {
-                DatePicker(
-                    .remindAt,
-                    selection: $modelData.settings.notificationSettings.remindAt,
-                    displayedComponents: .hourAndMinute
-                )
+            if let mySettings = settings.first {
+                Toggle(.notificationEnabled,
+                       isOn: enabledBinding)
                 .disabled(!viewModel.isEnableNotificationToggleEnabled)
-                .onChange(of: modelData.settings.notificationSettings.remindAt) { _ in
-                    viewModel.registerNotificationRequest(modelData: modelData)
+                .onChange(of: mySettings.notificationSettings.notificationEnabledByUser) {
+                    if !mySettings.notificationSettings.notificationEnabledByUser {
+                        viewModel.cancelNotificationRequest()
+                    }
+                }
+                
+                if mySettings.notificationSettings.notificationEnabledByUser {
+                    DatePicker(
+                        .remindAt,
+                        selection: remindAtBinding,
+                        displayedComponents: .hourAndMinute
+                    )
+                    .disabled(!viewModel.isEnableNotificationToggleEnabled)
+                    .onChange(of: mySettings.notificationSettings.remindAt) {
+                        viewModel.registerNotificationRequest(settings: mySettings)
+                    }
                 }
             }
         }

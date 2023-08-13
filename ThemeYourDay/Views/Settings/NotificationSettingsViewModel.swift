@@ -61,8 +61,8 @@ extension NotificationSettingsView {
             settingsOpener.openSettings()
         }
         
-        func registerNotificationRequest(modelData: ModelData) {
-            let date = Calendar.current.dateComponents([.hour, .minute], from: modelData.settings.notificationSettings.remindAt)
+        func registerNotificationRequest(settings: MySettings) {
+            let date = Calendar.current.dateComponents([.hour, .minute], from: settings.notificationSettings.remindAt)
             let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             let content = UNMutableNotificationContent()
             content.title = "Theme your day!"

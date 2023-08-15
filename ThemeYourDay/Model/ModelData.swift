@@ -60,7 +60,6 @@ final class ModelData: ObservableObject {
     
     private func writeJson() {
         writeDayData()
-        writeSettingsData()
     }
     
     private func informWidget() {
@@ -81,17 +80,6 @@ final class ModelData: ObservableObject {
         
         do {
             try JSONEncoder().encode(days).write(to: file, options: .atomic)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    private func writeSettingsData() {
-        let filename = "SettingsData.json"
-        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
-        
-        do {
-            try JSONEncoder().encode(settings).write(to: file, options: .atomic)
         } catch {
             print(error.localizedDescription)
         }

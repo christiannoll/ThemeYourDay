@@ -18,7 +18,6 @@ struct SettingsView: View {
             .navigationBarTitle(.settings, displayMode: .automatic)
             .navigationBarItems(
                 trailing: Button {
-                    modelData.writeSettings()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text(.done)

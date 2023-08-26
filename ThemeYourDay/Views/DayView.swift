@@ -125,9 +125,9 @@ struct StickerOverlay: ViewModifier {
     }
 }
 
-/*struct DayView_Previews: PreviewProvider {
+struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(day:.constant(Day(id: Date().noon, text: "Today", fgColor: DayColor())), isSelectedDay: false)
+        DayView(day: MyDay(id: Date().noon, text: "Today", fgColor: DayColor()), isSelectedDay: false)
             .environmentObject(ModelData())
     }
-}*/
+}

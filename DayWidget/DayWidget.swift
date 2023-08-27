@@ -1,17 +1,19 @@
 import WidgetKit
 import SwiftUI
+import SwiftData
 
 struct Provider: TimelineProvider {
         
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor()))
+        SimpleEntry(date: Date(), currentDay: MyDay(id: Date(), text: "Today", fgColor: DayColor()))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor()))
+        let entry = SimpleEntry(date: Date(), currentDay: MyDay(id: Date(), text: "Today", fgColor: DayColor()))
         completion(entry)
     }
 
+    @MainActor 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
 
@@ -27,23 +29,34 @@ struct Provider: TimelineProvider {
         completion(timeline)
     }
     
-    private func today() -> Day {
-        let loadedDays: [Day] = load("DayData.json", type: .container, createData: createData)
+    @MainActor
+    private func today() -> MyDay {
         let today = Date().noon
         
-        for day in loadedDays {
+        guard let modelContainer = try? ModelContainer(for: MyDay.self, MySticker.self,  MySettings.self, MyNotificationSettings.self) else {
+            return defaultDay(today)
+        }
+        let dayFetchDescriptor = FetchDescriptor<MyDay>()
+        guard let days = try? modelContainer.mainContext.fetch(dayFetchDescriptor) else {
+            return defaultDay(today)
+        }
+        
+        for day in days {
             if day.id.hasSame(.day, as: today) {
                 return day
             }
         }
-        let newDay = Day(id: today, text: "Could not find Today!", fgColor: DayColor())
-        return newDay
+        return defaultDay(today)
+    }
+    
+    private func defaultDay(_ today: Date) -> MyDay {
+        MyDay(id: today, text: "Could not find Today!", fgColor: DayColor())
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     public let date: Date
-    public let currentDay: Day
+    public let currentDay: MyDay
 }
 
 struct DayWidgetEntryView : View {
@@ -89,7 +102,7 @@ struct DayWidget: Widget {
 
 struct DayWidget_Previews: PreviewProvider {
     static var previews: some View {
-        DayWidgetEntryView(entry: SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Theme your day", fgColor: DayColor())))
+        DayWidgetEntryView(entry: SimpleEntry(date: Date(), currentDay: MyDay(id: Date(), text: "Theme your day", fgColor: DayColor())))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

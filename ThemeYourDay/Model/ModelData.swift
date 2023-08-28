@@ -137,18 +137,6 @@ final class ModelData: ObservableObject {
         selectedDay.fontname = font
     }
     
-    func selectNextDay() {
-        selectedIndex += 1
-        selectedDay = days[selectedIndex]
-        save()
-    }
-    
-    func selectDayBefore() {
-        selectedIndex -= 1
-        selectedDay = days[selectedIndex]
-        save()
-    }
-    
     func selectDay(_ date: Date) {
         var index = -1
         for day in days {

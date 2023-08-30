@@ -85,17 +85,6 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func printJson() {
-        let filename = "DayData.json"
-        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
-        do {
-            let input = try String(contentsOf: file)
-            print(input)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
     func removeAllDays() {
         for index in 0..<days.count {
             let newDay = Day(id: days[index].id, text: defaultWeekdayText(days[index].id), fgColor: DayColor())
@@ -131,10 +120,6 @@ final class ModelData: ObservableObject {
                 }
             }
         }
-    }
-    
-    func saveFontname(_ font: String) {
-        selectedDay.fontname = font
     }
     
     func selectDay(_ date: Date) {

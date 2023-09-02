@@ -134,12 +134,6 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func selectDay(_ day: Day) {
-        let index = getSelectedIndex(day)
-        selectedIndex = index
-        selectedDay = day
-    }
-    
     func selectDay(_ _day: MyDay, days: [MyDay]) {
         var index = -1
         for day in days {
@@ -178,40 +172,6 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func applyToToday(_ day: Day) {
-        if let today = findDay(Date().noon) {
-            selectDay(today)
-            selectedDay.text = day.text
-            selectedDay.fgColor = day.fgColor
-            selectedDay.bgColor = day.bgColor
-            selectedDay.sticker = day.sticker
-            selectedDay.textAlignment = day.textAlignment
-            selectedDay.textStyle = day.textStyle
-            selectedDay.fontname = day.fontname
-            save()
-            selectDay(day)
-        }
-    }
-    
-    private func getSelectedIndex(_ searchedDay: Day) -> Int {
-        var index = -1
-        for day in days {
-            index += 1
-            if day.id.hasSame(.day, as: searchedDay.id) {
-                break
-            }
-        }
-        return index
-    }
-    
-    func findDay(_ date: Date) -> Day? {
-        //print(date)
-        if let index = DataFactory.indexCache[date.noon] {
-            return days[index]
-        }
-        return nil
-    }
-    
     func exportAsCsvFile() {
         var csvString = "date,text\n"
         for day in days {
@@ -221,13 +181,6 @@ final class ModelData: ObservableObject {
             }
         }
         writeCsvFile(csvString)
-    }
-    
-    func isToday(day: Day?) -> Bool {
-        guard let day = day else {
-            return false
-        }
-        return day.id == Date().noon
     }
     
     func isToday(day: MyDay?) -> Bool {

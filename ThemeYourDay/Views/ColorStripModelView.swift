@@ -12,7 +12,7 @@ struct ColorStripModelView {
 
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         modelData.saveFgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), mySettings: settings)
-        modelData.save()
+        modelData.informWidget()
     }
     
     func saveBgColor(_ bgColor: Color, _ modelData: ModelData, _ settings: MySettings?) {
@@ -25,6 +25,6 @@ struct ColorStripModelView {
 
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         modelData.saveBgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), mySettings: settings)
-        modelData.save()
+        modelData.informWidget()
     }
 }

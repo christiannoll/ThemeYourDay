@@ -64,11 +64,11 @@ struct DayList: View {
     }
     
     private func removeAllDays() {
-        modelData.removeAllDays()
+        modelData.removeAllDays(days)
     }
     
     private func shareCsvFile() {
-        modelData.exportAsCsvFile()
+        modelData.exportAsCsvFile(days)
         Tools.showShareSheet(fileName: "ExortedDays.csv")
     }
 }

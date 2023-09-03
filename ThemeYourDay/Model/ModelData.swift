@@ -11,12 +11,6 @@ final class ModelData: ObservableObject {
     @Published var stickers = DataFactory.stickers
     @Published var snippets = DataFactory.snippets
     @Published var selectedMyDay: MyDay? = nil
-        
-    func save() {
-        syncSelectedDay()
-        writeJson()
-        informWidget()
-    }
     
     func saveImageOfSelectedDay(imageData: Data) {
         let file = getImageFilenameOfSelectedDay()
@@ -58,39 +52,18 @@ final class ModelData: ObservableObject {
         } catch {}
     }
     
-    private func writeJson() {
-        writeDayData()
-    }
-    
-    private func informWidget() {
+    func informWidget() {
         WidgetCenter.shared.reloadTimelines(ofKind: "de.vnzn.ThemeYourDay.DayWidget")
     }
     
-    private func syncSelectedDay() {
-        for index in 0..<days.count {
-            if days[index].id == selectedDay.id {
-                days[index] = selectedDay
-            }
-        }
-    }
-    
-    private func writeDayData() {
-        let filename = "DayData.json"
-        let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
-        
-        do {
-            try JSONEncoder().encode(days).write(to: file, options: .atomic)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func removeAllDays() {
+    func removeAllDays(_ days: [MyDay]) {
         for index in 0..<days.count {
             let newDay = Day(id: days[index].id, text: defaultWeekdayText(days[index].id), fgColor: DayColor())
-            days[index] = newDay
+            days[index].sticker = MySticker()
+            days[index].bgColor = MyDay.defaultBgColor
+            days[index].fgColor = DayColor()
+            days[index].text = "Theme your day"
         }
-        writeJson()
         informWidget()
     }
     
@@ -172,7 +145,7 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func exportAsCsvFile() {
+    func exportAsCsvFile(_ days: [MyDay]) {
         var csvString = "date,text\n"
         for day in days {
             if day.text != defaultWeekdayText(day.id) {

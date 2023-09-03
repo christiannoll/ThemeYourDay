@@ -32,7 +32,7 @@ struct SnippetsItemView: View {
         .onTapGesture {
             modelData.selectedMyDay?.text = snippet.text
             modelData.selectedMyDay?.textStyle = snippet.textSytle()
-            modelData.save()
+            modelData.informWidget()
         }
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         .listRowSeparator(.hidden)

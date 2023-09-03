@@ -27,7 +27,7 @@ struct StickerCategoryView: View {
                             .onTapGesture {
                                 modelData.selectedMyDay?.sticker.name = sticker.name
                                 modelData.selectedMyDay?.sticker.category = sticker.category.rawValue
-                                modelData.save()
+                                modelData.informWidget()
                             }
                     }
                 }

@@ -103,7 +103,7 @@ struct CanvasView: View {
         if canvasView.drawing.bounds.isEmpty == false {
             modelData.deleteImageOfSelectedDay()
             modelData.selectedDay.hasImage = false
-            modelData.save()
+            modelData.informWidget()
         }
     }
 }

@@ -144,10 +144,10 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func exportAsCsvFile(_ days: [MyDay]) {
+    func exportAsCsvFile(_ days: [MyDay], settings: MySettings) {
         var csvString = "date,text\n"
         for day in days {
-            if day.text != defaultWeekdayText(day.id) {
+            if day.text != defaultWeekdayText(day.id, settings: settings) {
                 let dataString = "\(day.id.description),\(day.text)\n"
                 csvString = csvString.appending(dataString)
             }
@@ -171,7 +171,7 @@ final class ModelData: ObservableObject {
         return fileName
     }
     
-    private func defaultWeekdayText(_ date: Date) -> String {
+    private func defaultWeekdayText(_ date: Date, settings: MySettings) -> String {
         settings.weekdaysText[date.weekday - 1]
     }
     

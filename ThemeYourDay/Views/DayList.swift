@@ -9,6 +9,7 @@ struct DayList: View {
     @State private var searching = false
     
     @Query(sort: [SortDescriptor(\MyDay.id)]) private var days: [MyDay]
+    @Query() var settings: [MySettings]
     
     private var filteredDays: [MyDay] {
         let result = days.filter {
@@ -68,8 +69,10 @@ struct DayList: View {
     }
     
     private func shareCsvFile() {
-        modelData.exportAsCsvFile(days)
-        Tools.showShareSheet(fileName: "ExortedDays.csv")
+        if let mySettings = settings.first {
+            modelData.exportAsCsvFile(days, settings: mySettings)
+            Tools.showShareSheet(fileName: "ExortedDays.csv")
+        }
     }
 }
 

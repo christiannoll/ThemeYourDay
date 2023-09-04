@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct DayView: View {
     
@@ -83,6 +84,7 @@ struct DayView: View {
 struct DayViewTextStyle: ViewModifier {
     
     @EnvironmentObject var modelData: ModelData
+    @Query() var settings: [MySettings]
     var day: MyDay
     
     @ViewBuilder
@@ -94,7 +96,14 @@ struct DayViewTextStyle: ViewModifier {
             .background(day.bgColor.color)
             .foregroundColor(day.fgColor.color)
             .disableAutocorrection(true)
-            .lineSpacing(CGFloat(modelData.settings.textLineSpacing))
+            .lineSpacing(CGFloat(lineSpacing()))
+    }
+    
+    private func lineSpacing() -> Int {
+        if let mySettings = settings.first {
+            return mySettings.textLineSpacing
+        }
+        return 10
     }
 }
 

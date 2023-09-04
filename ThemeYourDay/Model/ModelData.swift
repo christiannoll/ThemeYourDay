@@ -58,7 +58,6 @@ final class ModelData: ObservableObject {
     
     func removeAllDays(_ days: [MyDay]) {
         for index in 0..<days.count {
-            let newDay = Day(id: days[index].id, text: defaultWeekdayText(days[index].id), fgColor: DayColor())
             days[index].sticker = MySticker()
             days[index].bgColor = MyDay.defaultBgColor
             days[index].fgColor = DayColor()

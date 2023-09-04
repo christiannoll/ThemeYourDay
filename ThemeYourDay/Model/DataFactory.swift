@@ -9,46 +9,10 @@ import Foundation
 
 struct DataFactory {
     static var settings: Settings = loadSettings()
-    static var days: [Day] = loadDays()
+    static var days: [Day] = []
     static let stickers: [Sticker] = loadStickers()
     static let snippets: [Snippet] = loadSnippets()
     static var indexCache : [Date:Int] = [:]
-    
-    static func loadDays() -> [Day] {
-        var loadedDays: [Day] = load("DayData.json", type: .container, createData: createData)
-    
-        let endDate = Date().getNextMonth()?.getNextMonth()?.noon
-        guard var day = Date().getPreviousMonth()?.noon else {
-            return loadedDays
-        }
-        
-        while day != endDate {
-            var loaded = false
-            for loadedDay in loadedDays {
-                if loadedDay.id.hasSame(.day, as: day) {
-                    loaded = true
-                    break
-                }
-            }
-            
-            if !loaded {
-                let newDay = Day(id: day, text: settings.weekdaysText[day.weekday - 1],
-                                 fgColor: settings.weekdaysFgColor[day.weekday - 1],
-                                 bgColor: settings.weekdaysBgColor[day.weekday - 1])
-                loadedDays.insert(newDay, at: 0)
-            }
-            
-            day = day.dayAfter.noon
-        }
-        
-        loadedDays.sort { $0.id < $1.id }
-        
-        for (index, day) in loadedDays.enumerated() {
-            indexCache[day.id.noon] = index
-        }
-        
-        return loadedDays
-    }
     
     static func loadSettings() -> Settings {
         let loadedSettings: Settings = load("SettingsData.json", type: .container, createData: createSettings)

@@ -8,16 +8,10 @@
 import Foundation
 
 struct DataFactory {
-    static var settings: Settings = loadSettings()
     static var days: [Day] = []
     static let stickers: [Sticker] = loadStickers()
     static let snippets: [Snippet] = loadSnippets()
     static var indexCache : [Date:Int] = [:]
-    
-    static func loadSettings() -> Settings {
-        let loadedSettings: Settings = load("SettingsData.json", type: .container, createData: createSettings)
-        return loadedSettings
-    }
     
     static func loadStickers() -> [Sticker] {
         let stickers: [Sticker] = load("StickerData", type: .bundle, createData: createStickers)

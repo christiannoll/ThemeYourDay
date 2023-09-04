@@ -7,7 +7,6 @@ final class ModelData: ObservableObject {
     }
     @Published var selectedDay = DataFactory.currentDay()
     @Published var selectedIndex = DataFactory.currentIndex()
-    @Published var settings = DataFactory.settings
     @Published var stickers = DataFactory.stickers
     @Published var snippets = DataFactory.snippets
     @Published var selectedMyDay: MyDay? = nil

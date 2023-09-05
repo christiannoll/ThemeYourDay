@@ -65,7 +65,9 @@ struct DayList: View {
     }
     
     private func removeAllDays() {
-        modelData.removeAllDays(days)
+        if let mySettings = settings.first {
+            modelData.removeAllDays(days, settings: mySettings)
+        }
     }
     
     private func shareCsvFile() {

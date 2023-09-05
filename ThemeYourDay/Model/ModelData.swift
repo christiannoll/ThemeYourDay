@@ -55,12 +55,12 @@ final class ModelData: ObservableObject {
         WidgetCenter.shared.reloadTimelines(ofKind: "de.vnzn.ThemeYourDay.DayWidget")
     }
     
-    func removeAllDays(_ days: [MyDay]) {
+    func removeAllDays(_ days: [MyDay], settings: MySettings) {
         for index in 0..<days.count {
             days[index].sticker = MySticker()
             days[index].bgColor = MyDay.defaultBgColor
             days[index].fgColor = DayColor()
-            days[index].text = "Theme your day"
+            days[index].text = defaultWeekdayText(days[index].id, settings: settings)
         }
         informWidget()
     }

@@ -19,7 +19,7 @@ struct CarouselView: View {
                         .animation(.easeInOut(duration: 0.7), value: dragState.translation)
                         .onTapGesture() {
                             withAnimation {
-                                modelData.selectDay(Date().noon)
+                                modelData.selectDay(Date().noon, days: days)
                                 updateIndices()
                             }
                         }

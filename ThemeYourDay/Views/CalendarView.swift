@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 fileprivate extension DateFormatter {
     static var month: DateFormatter {
@@ -44,6 +45,7 @@ struct WeekView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
     @EnvironmentObject var modelData: ModelData
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Query(sort: [SortDescriptor(\MyDay.id)]) var myDays: [MyDay]
 
     let week: Date
     let content: (Date) -> DateView
@@ -74,7 +76,7 @@ struct WeekView<DateView>: View where DateView: View {
                     }
                 }
                 .onTapGesture {
-                    modelData.selectDay(date)
+                    modelData.selectDay(date, days: myDays)
                     self.mode.wrappedValue.dismiss()
                 }
             }

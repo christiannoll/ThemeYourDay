@@ -2,10 +2,6 @@ import Foundation
 import WidgetKit
 
 final class ModelData: ObservableObject {
-    @Published var days: [Day] = DataFactory.days.sorted {
-        $0.id < $1.id
-    }
-    @Published var selectedDay = DataFactory.currentDay()
     @Published var selectedIndex = DataFactory.currentIndex()
     @Published var stickers = DataFactory.stickers
     @Published var snippets = DataFactory.snippets
@@ -93,13 +89,13 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func selectDay(_ date: Date) {
+    func selectDay(_ date: Date, days: [MyDay]) {
         var index = -1
         for day in days {
             index += 1
             if day.id.hasSame(.day, as: date.noon) {
                 selectedIndex = index
-                selectedDay = day
+                selectedMyDay = day
                 break
             }
         }

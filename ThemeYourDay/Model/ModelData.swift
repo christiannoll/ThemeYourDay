@@ -2,7 +2,7 @@ import Foundation
 import WidgetKit
 
 final class ModelData: ObservableObject {
-    @Published var selectedIndex = DataFactory.currentIndex()
+    @Published var selectedIndex = -1
     @Published var stickers = DataFactory.stickers
     @Published var snippets = DataFactory.snippets
     @Published var selectedMyDay: MyDay? = nil

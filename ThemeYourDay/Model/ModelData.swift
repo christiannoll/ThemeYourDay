@@ -235,20 +235,6 @@ func load<T: Codable>(_ filename: String, type: StorageType, createData: () -> D
     }
 }
 
-func createData() -> Data? {
-    let days = [Day(id: Date().noon, text: Settings.WeekdaysText[Date().weekday - 1], fgColor: DayColor())]
-    let jsonEncoder = JSONEncoder()
-    let jsonResultData = try? jsonEncoder.encode(days)
-    return jsonResultData
-}
-
-func createSettings() -> Data? {
-    let settings = Settings()
-    let jsonEncoder = JSONEncoder()
-    let jsonResultData = try? jsonEncoder.encode(settings)
-    return jsonResultData
-}
-
 func createStickers() -> Data? {
     let stickers = [Sticker()]
     let jsonEncoder = JSONEncoder()

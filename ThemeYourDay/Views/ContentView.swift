@@ -210,7 +210,7 @@ struct ContentView: View {
             tools.shareThemeAsImage = shareTheme
             
             for (index, day) in days.enumerated() {
-                DataFactory.indexCache[day.id.noon] = index
+                ModelData.indexCache[day.id.noon] = index
             }
             
         }
@@ -260,7 +260,7 @@ struct ContentView: View {
     
     private func findDay(_ date: Date) -> MyDay? {
         //print(date)
-        if let index = DataFactory.indexCache[date.noon] {
+        if let index = ModelData.indexCache[date.noon] {
             return days[index]
         }
         return nil

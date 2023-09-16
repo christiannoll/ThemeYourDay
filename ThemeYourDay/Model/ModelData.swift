@@ -3,9 +3,11 @@ import WidgetKit
 
 final class ModelData: ObservableObject {
     @Published var selectedIndex = -1
-    @Published var stickers = DataFactory.stickers
-    @Published var snippets = DataFactory.snippets
+    @Published var stickers = loadStickers()
+    @Published var snippets = loadSnippets()
     @Published var selectedMyDay: MyDay? = nil
+    
+    static var indexCache : [Date:Int] = [:]
     
     func saveImageOfSelectedDay(imageData: Data) {
         let file = getImageFilenameOfSelectedDay()
@@ -201,6 +203,16 @@ final class ModelData: ObservableObject {
     
     func getPngImageFilename(date: Date) -> URL {
         return getPngImageFileUrl(date: date)
+    }
+    
+    private static func loadStickers() -> [Sticker] {
+        let stickers: [Sticker] = load("StickerData", type: .bundle, createData: createStickers)
+        return stickers
+    }
+    
+    private static func loadSnippets() -> [Snippet] {
+        let snippets: [Snippet] = load("SnippetData", type: .bundle, createData: createSnipppets)
+        return snippets
     }
 }
 

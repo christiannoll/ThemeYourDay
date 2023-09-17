@@ -44,8 +44,7 @@ let appContainer: ModelContainer = {
         
         guard try container.mainContext.fetch(settingsFetchDescriptor).count == 0 else { return container }
 
-        let mySettings = Settings()
-        container.mainContext.insert(mySettings)
+        container.mainContext.insert(settings)
         
         return container
     } catch {

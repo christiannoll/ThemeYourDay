@@ -11,7 +11,7 @@ struct ColorStripModelView {
         var alpha: CGFloat = 0
 
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        modelData.saveFgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), mySettings: settings)
+        modelData.saveFgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), settings: settings)
         modelData.informWidget()
     }
     
@@ -24,7 +24,7 @@ struct ColorStripModelView {
         var alpha: CGFloat = 0
 
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        modelData.saveBgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), mySettings: settings)
+        modelData.saveBgColor(r: Double(red), g: Double(green), b: Double(blue), a: Double(alpha), settings: settings)
         modelData.informWidget()
     }
 }

@@ -63,29 +63,29 @@ final class ModelData: ObservableObject {
         informWidget()
     }
     
-    func saveFgColor(r: Double, g: Double, b: Double, a: Double, mySettings: Settings?) {
+    func saveFgColor(r: Double, g: Double, b: Double, a: Double, settings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         if let selectedMyDay {
             selectedMyDay.fgColor = color
             
-            if let mySettings, !mySettings.fgColors.contains(color) {
-                mySettings.fgColors.insert(color, at: 0)
-                if mySettings.fgColors.count > 5 {
-                    mySettings.fgColors = mySettings.fgColors.dropLast()
+            if let settings, !settings.fgColors.contains(color) {
+                settings.fgColors.insert(color, at: 0)
+                if settings.fgColors.count > 5 {
+                    settings.fgColors = settings.fgColors.dropLast()
                 }
             }
         }
     }
     
-    func saveBgColor(r: Double, g: Double, b: Double, a: Double, mySettings: Settings?) {
+    func saveBgColor(r: Double, g: Double, b: Double, a: Double, settings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         if let selectedMyDay {
             selectedMyDay.bgColor = color
             
-            if let mySettings, !mySettings.bgColors.contains(color) {
-                mySettings.bgColors.insert(color, at: 0)
-                if mySettings.bgColors.count > 5 {
-                    mySettings.bgColors = mySettings.bgColors.dropLast()
+            if let settings, !settings.bgColors.contains(color) {
+                settings.bgColors.insert(color, at: 0)
+                if settings.bgColors.count > 5 {
+                    settings.bgColors = settings.bgColors.dropLast()
                 }
             }
         }

@@ -45,7 +45,7 @@ struct WeekView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
     @EnvironmentObject var modelData: ModelData
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @Query(sort: [SortDescriptor(\MyDay.id)]) var myDays: [MyDay]
+    @Query(sort: [SortDescriptor(\Day.id)]) var myDays: [Day]
 
     let week: Date
     let content: (Date) -> DateView

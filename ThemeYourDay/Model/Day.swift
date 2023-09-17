@@ -3,7 +3,7 @@ import SwiftUI
 import SwiftData
 
 @Model
-final class MyDay {
+final class Day {
     var id: Date
     var text: String
     var fgColor: DayColor
@@ -31,7 +31,7 @@ final class MyDay {
     }
 }
 
-extension MyDay {
+extension Day {
     func font() -> Font {
         switch textStyle {
         case .largeTitle:
@@ -46,7 +46,7 @@ extension MyDay {
     }
 }
 
-extension MyDay {
+extension Day {
     func getTextAlignment() -> TextAlignment {
         switch textAlignment {
         case .center:
@@ -59,7 +59,7 @@ extension MyDay {
     }
 }
 
-extension MyDay {
+extension Day {
     func getAlignment() -> Alignment {
         switch textAlignment {
         case .center:

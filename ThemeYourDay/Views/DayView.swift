@@ -5,7 +5,7 @@ struct DayView: View {
     
     @EnvironmentObject var modelData: ModelData
     @FocusState private var focusMode: Bool
-    @Bindable var day: MyDay
+    @Bindable var day: Day
     var isSelectedDay: Bool
     var readOnly = false
     
@@ -85,7 +85,7 @@ struct DayViewTextStyle: ViewModifier {
     
     @EnvironmentObject var modelData: ModelData
     @Query() var settings: [Settings]
-    var day: MyDay
+    var day: Day
     
     @ViewBuilder
     public func body(content: Content) -> some View {
@@ -110,7 +110,7 @@ struct DayViewTextStyle: ViewModifier {
 struct StickerOverlay: ViewModifier {
     
     @EnvironmentObject var modelData: ModelData
-    var day: MyDay
+    var day: Day
     
     public func body(content: Content) -> some View {
         content
@@ -136,7 +136,7 @@ struct StickerOverlay: ViewModifier {
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(day: MyDay(id: Date().noon, text: "Today", fgColor: DayColor()), isSelectedDay: false)
+        DayView(day: Day(id: Date().noon, text: "Today", fgColor: DayColor()), isSelectedDay: false)
             .environmentObject(ModelData())
     }
 }

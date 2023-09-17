@@ -11,9 +11,9 @@ import Foundation
 @MainActor
 let appContainer: ModelContainer = {
     do {
-        let container = try ModelContainer(for: MyDay.self, MySticker.self, Settings.self, NotificationSettings.self)
+        let container = try ModelContainer(for: Day.self, MySticker.self, Settings.self, NotificationSettings.self)
         
-        var itemFetchDescriptor = FetchDescriptor<MyDay>()
+        var itemFetchDescriptor = FetchDescriptor<Day>()
         
         let endDate = Date().getNextMonth()?.getNextMonth()?.noon
         var day = Date().getPreviousMonth()?.noon ?? Date().noon
@@ -30,7 +30,7 @@ let appContainer: ModelContainer = {
             }
             
             if !loaded {
-                let newDay = MyDay(id: day, text: settings.weekdaysText[day.weekday - 1],
+                let newDay = Day(id: day, text: settings.weekdaysText[day.weekday - 1],
                                    fgColor: settings.weekdaysFgColor[day.weekday - 1],
                                    bgColor: settings.weekdaysBgColor[day.weekday - 1])
                 container.mainContext.insert(newDay)

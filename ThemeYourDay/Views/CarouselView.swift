@@ -8,7 +8,7 @@ struct CarouselView: View {
     @State private var indices:[Int] = []
     @State private var dragAmount = DragState.inactive
     
-    @Query(sort: [SortDescriptor(\MyDay.id)]) var days: [MyDay]
+    @Query(sort: [SortDescriptor(\Day.id)]) var days: [Day]
  
     var body: some View {
         GeometryReader { geometry in

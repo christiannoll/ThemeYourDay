@@ -53,7 +53,7 @@ struct ContentView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
-    @Query(sort: [SortDescriptor(\MyDay.id)]) private var days: [MyDay]
+    @Query(sort: [SortDescriptor(\Day.id)]) private var days: [Day]
     @Query() var settings: [Settings]
     
     private var monthly: DateInterval {
@@ -62,9 +62,9 @@ struct ContentView: View {
         return DateInterval(start: startDate!, end: endDate!)
     }
     
-    var selectedDayBinding: Binding<MyDay> {
+    var selectedDayBinding: Binding<Day> {
         return Binding(get: {
-            return modelData.selectedMyDay ?? MyDay(id: Date().noon, text: "Error", fgColor: DayColor())
+            return modelData.selectedMyDay ?? Day(id: Date().noon, text: "Error", fgColor: DayColor())
         }, set: { newValue in
           modelData.selectedMyDay = newValue
         })
@@ -258,7 +258,7 @@ struct ContentView: View {
         ContentView.getHeight(horizontalSizeClass, verticalSizeClass) + 76
     }
     
-    private func findDay(_ date: Date) -> MyDay? {
+    private func findDay(_ date: Date) -> Day? {
         //print(date)
         if let index = ModelData.indexCache[date.noon] {
             return days[index]
@@ -285,11 +285,11 @@ struct ContentView: View {
         }
     }
     
-    private func getCalendarBackgroundColor(_ day: MyDay?) -> Color {
+    private func getCalendarBackgroundColor(_ day: Day?) -> Color {
         day != nil ? day!.bgColor.color : Color.blue
     }
     
-    private func getCalendarForegroundColor(_ day: MyDay?) -> Color {
+    private func getCalendarForegroundColor(_ day: Day?) -> Color {
         day != nil ? day!.fgColor.color : Color.white
     }
 }

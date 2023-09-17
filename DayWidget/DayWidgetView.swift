@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DayWidgetView: View {
     
-    let day: MyDay
+    let day: Day
     @Environment(\.widgetFamily) private var widgetFamily
     
     var body: some View {
@@ -136,6 +136,6 @@ extension View {
 
 struct DayWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        DayWidgetView(day: MyDay(id: Date(), text: "Today", fgColor: DayColor()))
+        DayWidgetView(day: Day(id: Date(), text: "Today", fgColor: DayColor()))
     }
 }

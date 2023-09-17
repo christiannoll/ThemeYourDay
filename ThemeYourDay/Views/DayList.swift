@@ -8,10 +8,10 @@ struct DayList: View {
     @State private var query = ""
     @State private var searching = false
     
-    @Query(sort: [SortDescriptor(\MyDay.id)]) private var days: [MyDay]
+    @Query(sort: [SortDescriptor(\Day.id)]) private var days: [Day]
     @Query() var settings: [Settings]
     
-    private var filteredDays: [MyDay] {
+    private var filteredDays: [Day] {
         let result = days.filter {
             $0.text.range(of: query, options: .caseInsensitive) != nil
         }

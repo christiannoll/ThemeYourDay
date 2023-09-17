@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DayListCell: View {
-    var day: MyDay
+    var day: Day
     var isToday: Bool
     
     var body: some View {
@@ -41,14 +41,14 @@ struct DayListCell: View {
         }
     }
     
-    private func getDate(_ day: MyDay) -> String {
+    private func getDate(_ day: Day) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         let dateString = formatter.string(from: day.id)
         return dateString
     }
     
-    private func getTrimmedText(_ day: MyDay) -> String {
+    private func getTrimmedText(_ day: Day) -> String {
         day.text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .newlines).joined(separator: " ")
     }
     
@@ -62,6 +62,6 @@ struct DayListCell: View {
 
 struct DayListCell_Previews: PreviewProvider {
     static var previews: some View {
-        DayListCell(day: MyDay(id: Date(), text: "Today", fgColor: DayColor()), isToday: false)
+        DayListCell(day: Day(id: Date(), text: "Today", fgColor: DayColor()), isToday: false)
     }
 }

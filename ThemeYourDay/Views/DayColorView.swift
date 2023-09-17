@@ -45,6 +45,6 @@ struct DayColorView: View {
 
 struct DayColorView_Previews: PreviewProvider {
     static var previews: some View {
-        DayColorView(dayColor: MyDay.defaultBgColor, weekday: "Monday", index: 0, save: {_,_ in })
+        DayColorView(dayColor: Day.defaultBgColor, weekday: "Monday", index: 0, save: {_,_ in })
     }
 }

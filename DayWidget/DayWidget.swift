@@ -5,11 +5,11 @@ import SwiftData
 struct Provider: TimelineProvider {
         
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), currentDay: MyDay(id: Date(), text: "Today", fgColor: DayColor()))
+        SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor()))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), currentDay: MyDay(id: Date(), text: "Today", fgColor: DayColor()))
+        let entry = SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor()))
         completion(entry)
     }
 
@@ -30,13 +30,13 @@ struct Provider: TimelineProvider {
     }
     
     @MainActor
-    private func today() -> MyDay {
+    private func today() -> Day {
         let today = Date().noon
         
-        guard let modelContainer = try? ModelContainer(for: MyDay.self, MySticker.self,  Settings.self, NotificationSettings.self) else {
+        guard let modelContainer = try? ModelContainer(for: Day.self, MySticker.self,  Settings.self, NotificationSettings.self) else {
             return defaultDay(today)
         }
-        let dayFetchDescriptor = FetchDescriptor<MyDay>()
+        let dayFetchDescriptor = FetchDescriptor<Day>()
         guard let days = try? modelContainer.mainContext.fetch(dayFetchDescriptor) else {
             return defaultDay(today)
         }
@@ -49,14 +49,14 @@ struct Provider: TimelineProvider {
         return defaultDay(today)
     }
     
-    private func defaultDay(_ today: Date) -> MyDay {
-        MyDay(id: today, text: "Could not find Today!", fgColor: DayColor())
+    private func defaultDay(_ today: Date) -> Day {
+        Day(id: today, text: "Could not find Today!", fgColor: DayColor())
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     public let date: Date
-    public let currentDay: MyDay
+    public let currentDay: Day
 }
 
 struct DayWidgetEntryView : View {
@@ -102,7 +102,7 @@ struct DayWidget: Widget {
 
 struct DayWidget_Previews: PreviewProvider {
     static var previews: some View {
-        DayWidgetEntryView(entry: SimpleEntry(date: Date(), currentDay: MyDay(id: Date(), text: "Theme your day", fgColor: DayColor())))
+        DayWidgetEntryView(entry: SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Theme your day", fgColor: DayColor())))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

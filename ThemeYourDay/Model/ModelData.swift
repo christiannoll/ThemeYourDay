@@ -5,7 +5,7 @@ final class ModelData: ObservableObject {
     @Published var selectedIndex = -1
     @Published var stickers = loadStickers()
     @Published var snippets = loadSnippets()
-    @Published var selectedMyDay: MyDay? = nil
+    @Published var selectedMyDay: Day? = nil
     
     static var indexCache : [Date:Int] = [:]
     
@@ -53,10 +53,10 @@ final class ModelData: ObservableObject {
         WidgetCenter.shared.reloadTimelines(ofKind: "de.vnzn.ThemeYourDay.DayWidget")
     }
     
-    func removeAllDays(_ days: [MyDay], settings: Settings) {
+    func removeAllDays(_ days: [Day], settings: Settings) {
         for index in 0..<days.count {
             days[index].sticker = MySticker()
-            days[index].bgColor = MyDay.defaultBgColor
+            days[index].bgColor = Day.defaultBgColor
             days[index].fgColor = DayColor()
             days[index].text = defaultWeekdayText(days[index].id, settings: settings)
         }
@@ -91,7 +91,7 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func selectDay(_ date: Date, days: [MyDay]) {
+    func selectDay(_ date: Date, days: [Day]) {
         var index = -1
         for day in days {
             index += 1
@@ -103,7 +103,7 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func selectDay(_ _day: MyDay, days: [MyDay]) {
+    func selectDay(_ _day: Day, days: [Day]) {
         var index = -1
         for day in days {
             index += 1
@@ -115,9 +115,9 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func getToday(_ days: [MyDay]) -> MyDay? {
+    func getToday(_ days: [Day]) -> Day? {
         let today = Date().noon
-        var toDay: MyDay? = nil
+        var toDay: Day? = nil
         for day in days {
             if day.id.noon == today {
                 toDay = day
@@ -127,7 +127,7 @@ final class ModelData: ObservableObject {
         return toDay
     }
     
-    func applyToToday(_ days: [MyDay]) {
+    func applyToToday(_ days: [Day]) {
         if let today = getToday(days), days.count > selectedIndex {
             let day = days[selectedIndex]
             today.text = day.text
@@ -141,7 +141,7 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func exportAsCsvFile(_ days: [MyDay], settings: Settings) {
+    func exportAsCsvFile(_ days: [Day], settings: Settings) {
         var csvString = "date,text\n"
         for day in days {
             if day.text != defaultWeekdayText(day.id, settings: settings) {
@@ -152,7 +152,7 @@ final class ModelData: ObservableObject {
         writeCsvFile(csvString)
     }
     
-    func isToday(day: MyDay?) -> Bool {
+    func isToday(day: Day?) -> Bool {
         guard let day = day else {
             return false
         }

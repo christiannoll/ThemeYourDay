@@ -84,7 +84,7 @@ struct DayView: View {
 struct DayViewTextStyle: ViewModifier {
     
     @EnvironmentObject var modelData: ModelData
-    @Query() var settings: [MySettings]
+    @Query() var settings: [Settings]
     var day: MyDay
     
     @ViewBuilder

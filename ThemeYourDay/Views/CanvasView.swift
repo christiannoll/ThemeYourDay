@@ -8,7 +8,7 @@ struct CanvasView: View {
     @State private var canvasView = PKCanvasView()
     @Binding var toolPickerIsActive: Bool
     
-    @Query() var settings: [MySettings]
+    @Query() var settings: [Settings]
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?

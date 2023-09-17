@@ -54,7 +54,7 @@ struct ContentView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     @Query(sort: [SortDescriptor(\MyDay.id)]) private var days: [MyDay]
-    @Query() var settings: [MySettings]
+    @Query() var settings: [Settings]
     
     private var monthly: DateInterval {
         let endDate = Date().getNextMonth(offset: monthOffset)

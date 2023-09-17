@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class MyNotificationSettings {
+final class NotificationSettings {
     var notificationEnabledByUser: Bool
     var remindAt: Date
     
@@ -13,7 +13,7 @@ final class MyNotificationSettings {
 }
 
 @Model
-final class MySettings {
+final class Settings {
     
     var fgColors: [DayColor]
     var bgColors: [DayColor]
@@ -21,7 +21,7 @@ final class MySettings {
     var weekdaysBgColor: [DayColor]
     var weekdaysFgColor: [DayColor]
     var weekdaysText: [String]
-    var notificationSettings: MyNotificationSettings
+    var notificationSettings: NotificationSettings
     
     static let WeekdaysText = Array(["Theme your Sunday", "Theme your Monday", "Theme your Tuesday", "Theme your Wednesday", "Theme your Thursday", "Theme your Friday", "Theme your Saturday"])
     
@@ -39,7 +39,7 @@ final class MySettings {
          weekdaysBgColor: [DayColor] = Array(repeating: MyDay.defaultBgColor, count: 7),
          weekdaysFgColor: [DayColor] = Array(repeating: DayColor(), count: 7),
          weekdaysText: [String] = WeekdaysText,
-         notificationSettings: MyNotificationSettings = MyNotificationSettings(notificationEnabledByUser: false, remindAt: Date())) {
+         notificationSettings: NotificationSettings = NotificationSettings(notificationEnabledByUser: false, remindAt: Date())) {
         self.fgColors = fgColors
         self.bgColors = bgColors
         self.textLineSpacing = textLineSpacing

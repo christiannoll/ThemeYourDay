@@ -33,7 +33,7 @@ struct Provider: TimelineProvider {
     private func today() -> MyDay {
         let today = Date().noon
         
-        guard let modelContainer = try? ModelContainer(for: MyDay.self, MySticker.self,  MySettings.self, MyNotificationSettings.self) else {
+        guard let modelContainer = try? ModelContainer(for: MyDay.self, MySticker.self,  Settings.self, NotificationSettings.self) else {
             return defaultDay(today)
         }
         let dayFetchDescriptor = FetchDescriptor<MyDay>()

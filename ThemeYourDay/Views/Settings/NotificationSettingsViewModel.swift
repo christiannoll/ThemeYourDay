@@ -61,7 +61,7 @@ extension NotificationSettingsView {
             settingsOpener.openSettings()
         }
         
-        func registerNotificationRequest(settings: MySettings) {
+        func registerNotificationRequest(settings: Settings) {
             let date = Calendar.current.dateComponents([.hour, .minute], from: settings.notificationSettings.remindAt)
             let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             let content = UNMutableNotificationContent()

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ColorStripModelView {
     
-    func saveFgColor(_ fgColor: Color, _ modelData: ModelData, _ settings: MySettings?) {
+    func saveFgColor(_ fgColor: Color, _ modelData: ModelData, _ settings: Settings?) {
         let uiColor = UIColor(fgColor)
         
         var red: CGFloat = 0
@@ -15,7 +15,7 @@ struct ColorStripModelView {
         modelData.informWidget()
     }
     
-    func saveBgColor(_ bgColor: Color, _ modelData: ModelData, _ settings: MySettings?) {
+    func saveBgColor(_ bgColor: Color, _ modelData: ModelData, _ settings: Settings?) {
         let uiColor = UIColor(bgColor)
         
         var red: CGFloat = 0

@@ -12,7 +12,7 @@ struct NotificationSettingsView: View {
     
     @StateObject private var viewModel = ViewModel()
     
-    @Query() var settings: [MySettings]
+    @Query() var settings: [Settings]
     
     var enabledBinding: Binding<Bool> {
         return Binding(get: {

@@ -9,7 +9,7 @@ import SwiftData
 
 struct WeekSettingsView: View {
     
-    @Query() var settings: [MySettings]
+    @Query() var settings: [Settings]
     private let weekIndices = [1, 2, 3, 4, 5, 6, 0]
     let weekSettingsType: WeekSettingsType
     

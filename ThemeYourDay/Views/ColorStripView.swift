@@ -5,9 +5,9 @@ struct ColorStripView: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var dayColor: DayColor
     var colors: [DayColor]
-    var saveColorAction: (Color, ModelData, MySettings?) -> Void
+    var saveColorAction: (Color, ModelData, Settings?) -> Void
     
-    @Query() var settings: [MySettings]
+    @Query() var settings: [Settings]
     
     var body: some View {
         HStack {
@@ -47,6 +47,6 @@ struct ColorStripView_Previews: PreviewProvider {
             .environmentObject(ModelData())
     }
     
-    static func saveColor(_ color: Color, _ modelData: ModelData, _ settings: MySettings?) {
+    static func saveColor(_ color: Color, _ modelData: ModelData, _ settings: Settings?) {
     }
 }

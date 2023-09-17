@@ -9,7 +9,7 @@ struct DayList: View {
     @State private var searching = false
     
     @Query(sort: [SortDescriptor(\MyDay.id)]) private var days: [MyDay]
-    @Query() var settings: [MySettings]
+    @Query() var settings: [Settings]
     
     private var filteredDays: [MyDay] {
         let result = days.filter {

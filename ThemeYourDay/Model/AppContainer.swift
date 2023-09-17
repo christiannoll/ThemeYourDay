@@ -11,14 +11,14 @@ import Foundation
 @MainActor
 let appContainer: ModelContainer = {
     do {
-        let container = try ModelContainer(for: MyDay.self, MySticker.self, MySettings.self, MyNotificationSettings.self)
+        let container = try ModelContainer(for: MyDay.self, MySticker.self, Settings.self, NotificationSettings.self)
         
         var itemFetchDescriptor = FetchDescriptor<MyDay>()
         
         let endDate = Date().getNextMonth()?.getNextMonth()?.noon
         var day = Date().getPreviousMonth()?.noon ?? Date().noon
         var loadedDays = try container.mainContext.fetch(itemFetchDescriptor)
-        let settings = MySettings()
+        let settings = Settings()
         
         while day != endDate {
             var loaded = false
@@ -39,12 +39,12 @@ let appContainer: ModelContainer = {
             day = day.dayAfter.noon
         }
         
-        var settingsFetchDescriptor = FetchDescriptor<MySettings>()
+        var settingsFetchDescriptor = FetchDescriptor<Settings>()
         settingsFetchDescriptor.fetchLimit = 1
         
         guard try container.mainContext.fetch(settingsFetchDescriptor).count == 0 else { return container }
 
-        let mySettings = MySettings()
+        let mySettings = Settings()
         container.mainContext.insert(mySettings)
         
         return container

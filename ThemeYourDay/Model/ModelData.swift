@@ -53,7 +53,7 @@ final class ModelData: ObservableObject {
         WidgetCenter.shared.reloadTimelines(ofKind: "de.vnzn.ThemeYourDay.DayWidget")
     }
     
-    func removeAllDays(_ days: [MyDay], settings: MySettings) {
+    func removeAllDays(_ days: [MyDay], settings: Settings) {
         for index in 0..<days.count {
             days[index].sticker = MySticker()
             days[index].bgColor = MyDay.defaultBgColor
@@ -63,7 +63,7 @@ final class ModelData: ObservableObject {
         informWidget()
     }
     
-    func saveFgColor(r: Double, g: Double, b: Double, a: Double, mySettings: MySettings?) {
+    func saveFgColor(r: Double, g: Double, b: Double, a: Double, mySettings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         if let selectedMyDay {
             selectedMyDay.fgColor = color
@@ -77,7 +77,7 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func saveBgColor(r: Double, g: Double, b: Double, a: Double, mySettings: MySettings?) {
+    func saveBgColor(r: Double, g: Double, b: Double, a: Double, mySettings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         if let selectedMyDay {
             selectedMyDay.bgColor = color
@@ -141,7 +141,7 @@ final class ModelData: ObservableObject {
         }
     }
     
-    func exportAsCsvFile(_ days: [MyDay], settings: MySettings) {
+    func exportAsCsvFile(_ days: [MyDay], settings: Settings) {
         var csvString = "date,text\n"
         for day in days {
             if day.text != defaultWeekdayText(day.id, settings: settings) {
@@ -168,7 +168,7 @@ final class ModelData: ObservableObject {
         return fileName
     }
     
-    private func defaultWeekdayText(_ date: Date, settings: MySettings) -> String {
+    private func defaultWeekdayText(_ date: Date, settings: Settings) -> String {
         settings.weekdaysText[date.weekday - 1]
     }
     

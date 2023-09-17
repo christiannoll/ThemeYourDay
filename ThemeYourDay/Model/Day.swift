@@ -2,21 +2,6 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-struct Day: Hashable, Codable, Identifiable {
-    var id: Date
-    var text: String
-    var fgColor: DayColor
-    var bgColor = defaultBgColor
-    var fontname = ""
-    var starred = false
-    var textStyle = TextStyle.largeTitle
-    var textAlignment = MyTextAlignment.center
-    var hasImage = false
-    var sticker = Sticker()
-    
-    static let defaultBgColor = DayColor(r:153/255, g:204/255, b:1.0, a:1.0)
-}
-
 @Model
 final class MyDay {
     var id: Date
@@ -46,34 +31,6 @@ final class MyDay {
     }
 }
 
-extension Day {
-    func font() -> Font {
-        switch textStyle {
-        case .largeTitle:
-            return .largeTitle
-        case .title:
-            return .title
-        case .title2:
-            return .title2
-        case .title3:
-            return .title3
-        }
-    }
-}
-
-extension Day {
-    func getTextAlignment() -> TextAlignment {
-        switch textAlignment {
-        case .center:
-            return .center
-        case .leading:
-            return .leading
-        case .trailing:
-            return.trailing
-        }
-    }
-}
-
 extension MyDay {
     func font() -> Font {
         switch textStyle {
@@ -98,19 +55,6 @@ extension MyDay {
             return .leading
         case .trailing:
             return.trailing
-        }
-    }
-}
-
-extension Day {
-    func getAlignment() -> Alignment {
-        switch textAlignment {
-        case .center:
-            return .top
-        case .leading:
-            return .topLeading
-        case .trailing:
-            return .topTrailing
         }
     }
 }

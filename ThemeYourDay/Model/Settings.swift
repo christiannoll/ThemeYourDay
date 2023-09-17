@@ -7,14 +7,14 @@ struct Settings: Hashable, Codable {
                     DayColor(r: 249/255, g: 226/255, b: 49/255, a: 1.0),
                     DayColor(r: 78/255, g: 122/255, b: 39/255, a: 1.0),
                     DayColor(r: 152/255, g: 42/255, b: 188/255, a: 1.0)]
-    var bgColors = [Day.defaultBgColor,
+    var bgColors = [MyDay.defaultBgColor,
                     DayColor(r: 249/255, g: 226/255, b: 49/255, a: 1.0),
                     DayColor(r: 237/255, g: 35/255, b: 13/255, a: 1.0),
                     DayColor(r: 96/255, g: 216/255, b: 56/255, a: 1.0),
                     DayColor(r: 173/255, g: 173/255, b: 173/255, a: 1.0)]
     var textLineSpacing = 10
     
-    var weekdaysBgColor = Array(repeating: Day.defaultBgColor, count: 7)
+    var weekdaysBgColor = Array(repeating: MyDay.defaultBgColor, count: 7)
     var weekdaysFgColor = Array(repeating: DayColor(), count: 7)
     var weekdaysText = WeekdaysText
     
@@ -57,13 +57,13 @@ final class MySettings {
                                  DayColor(r: 249/255, g: 226/255, b: 49/255, a: 1.0),
                                  DayColor(r: 78/255, g: 122/255, b: 39/255, a: 1.0),
                                  DayColor(r: 152/255, g: 42/255, b: 188/255, a: 1.0)],
-         bgColors: [DayColor] = [Day.defaultBgColor,
+         bgColors: [DayColor] = [MyDay.defaultBgColor,
                                  DayColor(r: 249/255, g: 226/255, b: 49/255, a: 1.0),
                                  DayColor(r: 237/255, g: 35/255, b: 13/255, a: 1.0),
                                  DayColor(r: 96/255, g: 216/255, b: 56/255, a: 1.0),
                                  DayColor(r: 173/255, g: 173/255, b: 173/255, a: 1.0)],
          textLineSpacing: Int = 10,
-         weekdaysBgColor: [DayColor] = Array(repeating: Day.defaultBgColor, count: 7),
+         weekdaysBgColor: [DayColor] = Array(repeating: MyDay.defaultBgColor, count: 7),
          weekdaysFgColor: [DayColor] = Array(repeating: DayColor(), count: 7),
          weekdaysText: [String] = WeekdaysText,
          notificationSettings: MyNotificationSettings = MyNotificationSettings(notificationEnabledByUser: false, remindAt: Date())) {

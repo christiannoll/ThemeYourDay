@@ -18,7 +18,7 @@ let appContainer: ModelContainer = {
         let endDate = Date().getNextMonth()?.getNextMonth()?.noon
         var day = Date().getPreviousMonth()?.noon ?? Date().noon
         var loadedDays = try container.mainContext.fetch(itemFetchDescriptor)
-        let settings = Settings()
+        let settings = MySettings()
         
         while day != endDate {
             var loaded = false

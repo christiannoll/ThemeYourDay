@@ -130,7 +130,7 @@ struct StickerOverlay: ViewModifier {
     }
     
     private func removeSticker() {
-        modelData.selectedMyDay?.sticker.name = ""
+        modelData.selectedDay?.sticker.name = ""
     }
 }
 

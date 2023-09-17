@@ -13,10 +13,10 @@ struct FontSizeView: View {
             }
             .pickerStyle(.segmented)
             .onAppear {
-                style = modelData.selectedMyDay?.textStyle ?? TextStyle.largeTitle
+                style = modelData.selectedDay?.textStyle ?? TextStyle.largeTitle
             }
             .onChange(of: style) {
-                if let selectedDay = modelData.selectedMyDay {
+                if let selectedDay = modelData.selectedDay {
                     selectedDay.textStyle = style
                 }
             }

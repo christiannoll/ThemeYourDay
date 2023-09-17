@@ -42,7 +42,7 @@ struct CanvasView: View {
             }
             .frame(height: 28)
             Spacer()
-            if let day = modelData.selectedMyDay {
+            if let day = modelData.selectedDay {
                 MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: day.bgColor.color)
                     .frame(height: getHeight())
                     .overlay(textOverlay.allowsHitTesting(false))
@@ -60,7 +60,7 @@ struct CanvasView: View {
     
     @ViewBuilder
     private var textOverlay: some View {
-        if let day = modelData.selectedMyDay, let mySettings = settings.first {
+        if let day = modelData.selectedDay, let mySettings = settings.first {
             Text(day.text)
                 .font(day.fontname == "" ? day.font() : .custom(day.fontname, size: 34))
                 .foregroundColor(day.fgColor.color)
@@ -82,7 +82,7 @@ struct CanvasView: View {
         if canvasView.drawing.bounds.isEmpty == false {
             let imgRect = CGRect(x: 0, y: 0, width: canvasView.bounds.width, height: canvasView.bounds.height)
             let image = canvasView.drawing.image(from: imgRect, scale: 1.0)
-            if let data = image.pngData(), let day = modelData.selectedMyDay {
+            if let data = image.pngData(), let day = modelData.selectedDay {
                 modelData.savePngImageOfSelectedDay(data: data)
                 day.hasImage = true
             }
@@ -102,8 +102,8 @@ struct CanvasView: View {
     private func deleteImage() {
         if canvasView.drawing.bounds.isEmpty == false {
             modelData.deleteImageOfSelectedDay()
-            if modelData.selectedMyDay != nil {
-                modelData.selectedMyDay?.hasImage = false
+            if modelData.selectedDay != nil {
+                modelData.selectedDay?.hasImage = false
             }
             modelData.informWidget()
         }

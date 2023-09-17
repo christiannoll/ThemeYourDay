@@ -16,7 +16,7 @@ struct TextAlignmentView: View {
             }
             .pickerStyle(.segmented)
             .onChange(of: alignment) {
-                if let selectedDay = modelData.selectedMyDay {
+                if let selectedDay = modelData.selectedDay {
                     selectedDay.textAlignment = alignment
                 }
             }

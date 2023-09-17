@@ -42,7 +42,7 @@ struct DayList: View {
                 }
                 .onChange(of: query) {
                     if query.isEmpty {
-                        if let selectedDay = modelData.selectedMyDay {
+                        if let selectedDay = modelData.selectedDay {
                             proxy.scrollTo(selectedDay, anchor: .center)
                         }
                     }

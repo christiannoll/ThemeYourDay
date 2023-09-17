@@ -25,9 +25,9 @@ struct CarouselView: View {
                         }
                 }
             }.onAppear {
-                if modelData.selectedMyDay == nil {
+                if modelData.selectedDay == nil {
                     modelData.selectedIndex = currentIndex()
-                    modelData.selectedMyDay = days[modelData.selectedIndex]
+                    modelData.selectedDay = days[modelData.selectedIndex]
                 }
                 updateIndices()
             }
@@ -85,13 +85,13 @@ struct CarouselView: View {
         if drag.predictedEndTranslation.width > dragThreshold || drag.translation.width > dragThreshold {
             //modelData.selectDayBefore()
             modelData.selectedIndex -= 1
-            modelData.selectedMyDay = days[modelData.selectedIndex]
+            modelData.selectedDay = days[modelData.selectedIndex]
             updateIndices()
         }
         else if (drag.predictedEndTranslation.width) < (-1 * dragThreshold) || (drag.translation.width) < (-1 * dragThreshold) {
             //modelData.selectNextDay()
             modelData.selectedIndex += 1
-            modelData.selectedMyDay = days[modelData.selectedIndex]
+            modelData.selectedDay = days[modelData.selectedIndex]
             updateIndices()
         }
     }

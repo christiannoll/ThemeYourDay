@@ -5,7 +5,7 @@ final class ModelData: ObservableObject {
     @Published var selectedIndex = -1
     @Published var stickers = loadStickers()
     @Published var snippets = loadSnippets()
-    @Published var selectedMyDay: Day? = nil
+    @Published var selectedDay: Day? = nil
     
     static var indexCache : [Date:Int] = [:]
     
@@ -65,8 +65,8 @@ final class ModelData: ObservableObject {
     
     func saveFgColor(r: Double, g: Double, b: Double, a: Double, settings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
-        if let selectedMyDay {
-            selectedMyDay.fgColor = color
+        if let selectedDay {
+            selectedDay.fgColor = color
             
             if let settings, !settings.fgColors.contains(color) {
                 settings.fgColors.insert(color, at: 0)
@@ -79,8 +79,8 @@ final class ModelData: ObservableObject {
     
     func saveBgColor(r: Double, g: Double, b: Double, a: Double, settings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
-        if let selectedMyDay {
-            selectedMyDay.bgColor = color
+        if let selectedDay {
+            selectedDay.bgColor = color
             
             if let settings, !settings.bgColors.contains(color) {
                 settings.bgColors.insert(color, at: 0)
@@ -97,7 +97,7 @@ final class ModelData: ObservableObject {
             index += 1
             if day.id.hasSame(.day, as: date.noon) {
                 selectedIndex = index
-                selectedMyDay = day
+                selectedDay = day
                 break
             }
         }
@@ -109,7 +109,7 @@ final class ModelData: ObservableObject {
             index += 1
             if day.id.hasSame(.day, as: _day.id.noon) {
                 selectedIndex = index
-                selectedMyDay = day
+                selectedDay = day
                 break
             }
         }
@@ -160,10 +160,10 @@ final class ModelData: ObservableObject {
     }
     
     func getSharedThemeFileName() -> String {
-        guard let selectedMyDay else {
+        guard let selectedDay else {
             return "Error"
         }
-        let dateStr = selectedMyDay.id.formatted(.iso8601.day().month().year())
+        let dateStr = selectedDay.id.formatted(.iso8601.day().month().year())
         let fileName = dateStr + "-Day.png"
         return fileName
     }
@@ -184,19 +184,19 @@ final class ModelData: ObservableObject {
     }
     
     private func getImageFilenameOfSelectedDay() -> URL {
-        guard let selectedMyDay else {
+        guard let selectedDay else {
             return FileManager.sharedContainerURL().appendingPathComponent("Error")
         }
-        let filename = selectedMyDay.id.formatted(.iso8601) + ".img"
+        let filename = selectedDay.id.formatted(.iso8601) + ".img"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }
     
     private func getPngImageFilenameOfSelectedDay() -> URL {
-        guard let selectedMyDay else {
+        guard let selectedDay else {
             return FileManager.sharedContainerURL().appendingPathComponent("Error")
         }
-        let filename = selectedMyDay.id.formatted(.iso8601) + ".png"
+        let filename = selectedDay.id.formatted(.iso8601) + ".png"
         let file = FileManager.sharedContainerURL().appendingPathComponent(filename)
         return file
     }

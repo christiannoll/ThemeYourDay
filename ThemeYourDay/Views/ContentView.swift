@@ -64,9 +64,9 @@ struct ContentView: View {
     
     var selectedDayBinding: Binding<Day> {
         return Binding(get: {
-            return modelData.selectedMyDay ?? Day(id: Date().noon, text: "Error", fgColor: DayColor())
+            return modelData.selectedDay ?? Day(id: Date().noon, text: "Error", fgColor: DayColor())
         }, set: { newValue in
-          modelData.selectedMyDay = newValue
+          modelData.selectedDay = newValue
         })
       }
     

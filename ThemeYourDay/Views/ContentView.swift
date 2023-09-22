@@ -267,7 +267,7 @@ struct ContentView: View {
     }
     
     private func saveThemeAsImage(inAlbum: Bool) {
-        let dayView = DayView(day: days[modelData.selectedIndex], isSelectedDay: true, readOnly: true)
+        let dayView = DayView(day: days[modelData.selectedIndex], readOnly: true)
             .environmentObject(modelData)
         let renderer = ImageRenderer(content: dayView)
         renderer.scale = 3

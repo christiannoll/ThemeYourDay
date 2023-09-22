@@ -6,7 +6,6 @@ struct CarouselView: View {
     @EnvironmentObject var modelData: ModelData
     @GestureState private var dragState = DragState.inactive
     @State private var indices:[Int] = []
-    @State private var dragAmount = DragState.inactive
     
     @Query(sort: [SortDescriptor(\Day.id)]) var days: [Day]
  
@@ -14,8 +13,8 @@ struct CarouselView: View {
         GeometryReader { geometry in
             ZStack {
                 ForEach(indices, id: \.self) { (idx) in
-                    DayView(day: days[idx], isSelectedDay: cellLocation(idx)==idx ? true : false)
-                        .offset(x: cellOffset(cellLocation(idx), geometry.size, false))
+                    DayView(day: days[idx])
+                        .offset(x: cellOffset(idx, geometry.size, false))
                         .animation(.easeInOut(duration: 0.7), value: dragState.translation)
                         .onTapGesture() {
                             withAnimation {
@@ -60,20 +59,6 @@ struct CarouselView: View {
             let offset = self.dragState.translation.width + (cellDistance * CGFloat(cellPosition - modelData.selectedIndex))
             //print(offset)
             return offset
-        }
-    }
-    
-    private func cellLocation(_ idx: Int) -> Int {
-        
-        if (modelData.selectedIndex == 0) && (idx + 1 == days.count) {
-            // The cell is on the left side
-            return -1
-        } else if (modelData.selectedIndex == days.count - 1) && (idx == 0) {
-            // The cell is on the right side
-            return days.count
-        } else {
-            // The main cell
-            return idx
         }
     }
     

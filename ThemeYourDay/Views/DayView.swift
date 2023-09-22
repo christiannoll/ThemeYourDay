@@ -6,7 +6,6 @@ struct DayView: View {
     @EnvironmentObject var modelData: ModelData
     @FocusState private var focusMode: Bool
     @Bindable var day: Day
-    var isSelectedDay: Bool
     var readOnly = false
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
@@ -136,7 +135,7 @@ struct StickerOverlay: ViewModifier {
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView(day: Day(id: Date().noon, text: "Today", fgColor: DayColor()), isSelectedDay: false)
+        DayView(day: Day(id: Date().noon, text: "Today", fgColor: DayColor()))
             .environmentObject(ModelData())
     }
 }

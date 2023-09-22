@@ -14,6 +14,7 @@ struct SettingsView: View {
                     NavigationLink(.texts, destination: WeekSettingsView(weekSettingsType: .text))
                 }
                 NotificationSettingsView()
+                Text("App-Version: 0.9.0")
             }
             .navigationBarTitle(.settings, displayMode: .automatic)
             .navigationBarItems(

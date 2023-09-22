@@ -83,17 +83,13 @@ struct CarouselView: View {
         let dragThreshold: CGFloat = size.width * 0.6
         
         if drag.predictedEndTranslation.width > dragThreshold || drag.translation.width > dragThreshold {
-            //modelData.selectDayBefore()
             modelData.selectedIndex -= 1
-            modelData.selectedDay = days[modelData.selectedIndex]
-            updateIndices()
         }
         else if (drag.predictedEndTranslation.width) < (-1 * dragThreshold) || (drag.translation.width) < (-1 * dragThreshold) {
-            //modelData.selectNextDay()
             modelData.selectedIndex += 1
-            modelData.selectedDay = days[modelData.selectedIndex]
-            updateIndices()
         }
+        modelData.selectedDay = days[modelData.selectedIndex]
+        updateIndices()
     }
     
     private func updateIndices() {

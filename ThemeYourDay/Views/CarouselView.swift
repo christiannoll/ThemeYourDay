@@ -3,9 +3,12 @@ import SwiftData
 
 struct CarouselView: View {
     
+    private static var defaultAnimation = Animation.smooth
+    
     @EnvironmentObject var modelData: ModelData
     @GestureState private var dragState = DragState.inactive
     @State private var indices:[Int] = []
+    @State private var animation: Animation? = Self.defaultAnimation
     
     @Query(sort: [SortDescriptor(\Day.id)]) var days: [Day]
  
@@ -16,7 +19,7 @@ struct CarouselView: View {
                     let offset = cellOffset(idx, geometry.size, false)
                     DayView(day: days[idx])
                         .offset(x: offset)
-                        .animation(.snappy, value: offset)
+                        .animation(animation, value: offset)
                         .onTapGesture() {
                             withAnimation {
                                 modelData.selectDay(Date().noon, days: days)
@@ -25,6 +28,7 @@ struct CarouselView: View {
                         }
                 }
             }.onAppear {
+                animation = nil
                 if modelData.selectedDay == nil {
                     modelData.selectedIndex = currentIndex()
                     modelData.selectedDay = days[modelData.selectedIndex]
@@ -35,6 +39,11 @@ struct CarouselView: View {
                 DragGesture()
                     .updating($dragState) { drag, state, transaction in
                         state = .dragging(translation: drag.translation)
+                    }
+                    .onChanged { _ in
+                        if animation == nil {
+                            animation = Self.defaultAnimation
+                        }
                     }
                     .onEnded({ gesture in
                         onDragEnded(drag: gesture, geometry.size)
@@ -95,7 +104,7 @@ struct CarouselView: View {
     }
 }
 
-enum DragState {
+enum DragState: Equatable {
     
     case inactive
     case dragging(translation: CGSize)

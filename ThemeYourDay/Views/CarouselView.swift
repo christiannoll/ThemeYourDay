@@ -13,9 +13,10 @@ struct CarouselView: View {
         GeometryReader { geometry in
             ZStack {
                 ForEach(indices, id: \.self) { (idx) in
+                    let offset = cellOffset(idx, geometry.size, false)
                     DayView(day: days[idx])
-                        .offset(x: cellOffset(idx, geometry.size, false))
-                        .animation(.easeInOut(duration: 0.7), value: dragState.translation)
+                        .offset(x: offset)
+                        .animation(.snappy, value: offset)
                         .onTapGesture() {
                             withAnimation {
                                 modelData.selectDay(Date().noon, days: days)

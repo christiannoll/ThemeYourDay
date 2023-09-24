@@ -25,7 +25,7 @@ struct StickerCategoryView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 40, height: 50)
                             .onTapGesture {
-                                modelData.selectedDay?.sticker = MySticker(name: sticker.name, category: sticker.category.rawValue)
+                                modelData.selectedDay?.sticker = Sticker(name: sticker.name, category: sticker.category)
                                 modelData.informWidget()
                             }
                     }

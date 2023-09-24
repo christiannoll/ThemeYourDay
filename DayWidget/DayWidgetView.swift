@@ -50,6 +50,7 @@ struct DayWidgetView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(ContainerRelativeShape().fill(day.bgColor.color))
+        .containerBackground(.red.gradient, for: .widget)
     }
     
     private func formattedDate() -> String {

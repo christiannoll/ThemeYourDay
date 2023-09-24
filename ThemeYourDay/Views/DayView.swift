@@ -34,6 +34,7 @@ struct DayView: View {
                     .modifier(DayViewTextStyle(day: day))
                     .onTapGesture {
                         focusMode = !focusMode
+                        modelData.informWidget()
                     }
                     .focused($focusMode)
                     .modifier(StickerOverlay(day: day))
@@ -43,7 +44,6 @@ struct DayView: View {
         .cornerRadius(25.0)
         .padding()
         .overlay(starOverlay, alignment: .topTrailing)
-        
     }
     
     private func loadPngImage() -> UIImage {

@@ -33,7 +33,7 @@ struct Provider: TimelineProvider {
     private func today() -> Day {
         let today = Date().noon
         
-        guard let modelContainer = try? ModelContainer(for: Day.self, MySticker.self,  Settings.self, NotificationSettings.self) else {
+        guard let modelContainer = try? ModelContainer(for: Day.self, Settings.self, NotificationSettings.self) else {
             return defaultDay(today)
         }
         let dayFetchDescriptor = FetchDescriptor<Day>()
@@ -97,6 +97,7 @@ struct DayWidget: Widget {
                 .accessoryRectangular
             ]
         )
+        .contentMarginsDisabled()
     }
 }
 

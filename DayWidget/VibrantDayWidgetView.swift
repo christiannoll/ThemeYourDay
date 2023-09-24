@@ -14,6 +14,7 @@ struct VibrantDayWidgetView: View {
         Text(day.text)
             .font(.headline)
             .widgetAccentable()
+            .containerBackground(.clear, for: .widget)
     }
 }
 

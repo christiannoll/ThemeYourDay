@@ -28,6 +28,7 @@ struct DayView: View {
                     .modifier(StickerOverlay(day: day))
             } else {
                 TextEditor(text: $day.text)
+                    .scrollDisabled(true)
                     .padding()
                     .frame(height: getHeight())
                     .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))

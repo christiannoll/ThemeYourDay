@@ -88,7 +88,16 @@ struct CarouselView: View {
     }
     
     private func updateIndices() {
-        indices = Array(modelData.selectedIndex-2...modelData.selectedIndex+2)
+        var lowerIndex = modelData.selectedIndex - 2
+        var upperIndex = modelData.selectedIndex + 2
+        if lowerIndex < 0 {
+            lowerIndex += 2
+            upperIndex += 2
+        } else if upperIndex+2 > days.count {
+            lowerIndex -= 2
+            upperIndex -= 2
+        }
+        indices = Array(lowerIndex...upperIndex)
     }
     
     private func currentIndex() -> Int {

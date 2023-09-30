@@ -14,7 +14,7 @@ struct SettingsView: View {
                     NavigationLink(.texts, destination: WeekSettingsView(weekSettingsType: .text))
                 }
                 NotificationSettingsView()
-                Text("App-Version: 0.9.0")
+                Text("App-Version: \(Bundle.main.versionNumberWithBuild ?? "N/A")")
             }
             .navigationBarTitle(.settings, displayMode: .automatic)
             .navigationBarItems(

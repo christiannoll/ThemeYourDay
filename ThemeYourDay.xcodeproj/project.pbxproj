@@ -36,6 +36,7 @@
 		D691CF30261B3728005FAAC5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
 		D691CF35261B37D8005FAAC5 /* DayData.json in Resources */ = {isa = PBXBuildFile; fileRef = D691CF34261B37D8005FAAC5 /* DayData.json */; };
 		D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF39261B399D005FAAC5 /* ModelData.swift */; };
+		D695B9662AC87220007252E1 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D695B9652AC87220007252E1 /* BundleExtension.swift */; };
 		D6A7036127B68450008B0F7B /* DayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7036027B68450008B0F7B /* DayWidgetView.swift */; };
 		D6A7036227B68450008B0F7B /* DayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7036027B68450008B0F7B /* DayWidgetView.swift */; };
 		D6A7036327B687A0008B0F7B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691CF2F261B3728005FAAC5 /* Day.swift */; };
@@ -132,6 +133,7 @@
 		D691CF2F261B3728005FAAC5 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		D691CF34261B37D8005FAAC5 /* DayData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DayData.json; sourceTree = "<group>"; };
 		D691CF39261B399D005FAAC5 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		D695B9652AC87220007252E1 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		D6A7036027B68450008B0F7B /* DayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWidgetView.swift; sourceTree = "<group>"; };
 		D6A7470E29C61DC2008DFD7A /* SnippetsOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetsOverview.swift; sourceTree = "<group>"; };
 		D6B3792226761B4C009D0790 /* ColorStripModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStripModelView.swift; sourceTree = "<group>"; };
@@ -290,6 +292,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D695B9642AC871F7007252E1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D695B9652AC87220007252E1 /* BundleExtension.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		D6D58B4127B671A700473B81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +348,7 @@
 		D6DDD273261A19C800FD1AA5 /* ThemeYourDay */ = {
 			isa = PBXGroup;
 			children = (
+				D695B9642AC871F7007252E1 /* Common */,
 				D6DDD278261A19C900FD1AA5 /* Assets.xcassets */,
 				D6DDD27D261A19C900FD1AA5 /* Info.plist */,
 				D67F6B4729EBF88700F6E24D /* Language */,
@@ -594,6 +605,7 @@
 				D6A7470F29C61DC2008DFD7A /* SnippetsOverview.swift in Sources */,
 				D6DF86442674FAB600FA8D31 /* ColorStripView.swift in Sources */,
 				D65268512A10C7CD002DAD50 /* StickerHeaderView.swift in Sources */,
+				D695B9662AC87220007252E1 /* BundleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,7 +678,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay.DayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -696,7 +708,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay.DayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

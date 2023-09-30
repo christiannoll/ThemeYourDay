@@ -1,5 +1,6 @@
 import Foundation
 import WidgetKit
+import SwiftData
 
 final class ModelData: ObservableObject {
     @Published var selectedIndex = -1
@@ -166,6 +167,33 @@ final class ModelData: ObservableObject {
         let dateStr = selectedDay.id.formatted(.iso8601.day().month().year())
         let fileName = dateStr + "-Day.png"
         return fileName
+    }
+    
+    func insertNewDays(context: ModelContext, days: [Day], settings: Settings, monthOffset: Int) {
+        var nextMonth = Date().noon.getNextMonth()?.noon
+        for _ in 1..<monthOffset {
+            nextMonth = nextMonth?.getNextMonth()?.noon
+        }
+        
+        if let lastDay = days.last {
+            if lastDay.id >= nextMonth! {
+                return
+            }
+            
+            let newEndDate = lastDay.id.getNextMonth()?.noon
+            var endDate = lastDay.id.dayAfter.noon
+            var index = days.count
+            
+            while endDate != newEndDate {
+                let newDay = Day(id: endDate, text: settings.weekdaysText[endDate.weekday - 1],
+                                 fgColor: settings.weekdaysFgColor[endDate.weekday - 1],
+                                 bgColor: settings.weekdaysBgColor[endDate.weekday - 1])
+                context.insert(newDay)
+                Self.indexCache[newDay.id.noon] = index
+                endDate = newDay.id.dayAfter.noon
+                index += 1
+            }
+        }
     }
     
     private func defaultWeekdayText(_ date: Date, settings: Settings) -> String {

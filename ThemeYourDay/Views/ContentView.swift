@@ -42,6 +42,7 @@ struct ContentView: View {
     
     @EnvironmentObject var modelData: ModelData
     @Environment(\.calendar) var calendar
+    @Environment(\.modelContext) private var context
     @State private var path: [Selection] = []
     @StateObject private var tools = Tools(saveTheme: {}, shareTheme: {})
     private var colorStripMV =  ColorStripModelView()
@@ -231,6 +232,9 @@ struct ContentView: View {
     
     func incrementMonthOffset() {
         monthOffset += 1
+        if let mySettings = settings.first {
+            modelData.insertNewDays(context: context, days: days, settings: mySettings, monthOffset: monthOffset)
+        }
     }
     
     func decrementMonthOffset() {

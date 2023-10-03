@@ -46,6 +46,8 @@
 		D6BE420629C3A80C00B32C80 /* SnippetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BE420529C3A80C00B32C80 /* SnippetsView.swift */; };
 		D6BE7CBB29C365B000FB113E /* SnippetData.json in Resources */ = {isa = PBXBuildFile; fileRef = D6BE7CBA29C365B000FB113E /* SnippetData.json */; };
 		D6BF90C928561A5D00B9300E /* TextAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */; };
+		D6D2CD4B2ACC7FA0008ACB14 /* ThemeTodayIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D2CD4A2ACC7FA0008ACB14 /* ThemeTodayIntent.swift */; };
+		D6D2CD4D2ACC82F7008ACB14 /* ThemeYourDayShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D2CD4C2ACC82F7008ACB14 /* ThemeYourDayShortcuts.swift */; };
 		D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D3146328C5178700F765A5 /* DayTextView.swift */; };
 		D6D48FF02676424800101EC3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D48FEF2676424800101EC3 /* Settings.swift */; };
 		D6D48FF22676434800101EC3 /* SettingsData.json in Resources */ = {isa = PBXBuildFile; fileRef = D6D48FF12676434800101EC3 /* SettingsData.json */; };
@@ -141,6 +143,8 @@
 		D6BE420529C3A80C00B32C80 /* SnippetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetsView.swift; sourceTree = "<group>"; };
 		D6BE7CBA29C365B000FB113E /* SnippetData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SnippetData.json; sourceTree = "<group>"; };
 		D6BF90C828561A5D00B9300E /* TextAlignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignmentView.swift; sourceTree = "<group>"; };
+		D6D2CD4A2ACC7FA0008ACB14 /* ThemeTodayIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTodayIntent.swift; sourceTree = "<group>"; };
+		D6D2CD4C2ACC82F7008ACB14 /* ThemeYourDayShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeYourDayShortcuts.swift; sourceTree = "<group>"; };
 		D6D3146328C5178700F765A5 /* DayTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTextView.swift; sourceTree = "<group>"; };
 		D6D48FEF2676424800101EC3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		D6D48FF12676434800101EC3 /* SettingsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SettingsData.json; sourceTree = "<group>"; };
@@ -300,6 +304,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		D6D2CD492ACC7F2D008ACB14 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				D6D2CD4A2ACC7FA0008ACB14 /* ThemeTodayIntent.swift */,
+				D6D2CD4C2ACC82F7008ACB14 /* ThemeYourDayShortcuts.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
 		D6D58B4127B671A700473B81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,9 +361,10 @@
 		D6DDD273261A19C800FD1AA5 /* ThemeYourDay */ = {
 			isa = PBXGroup;
 			children = (
-				D695B9642AC871F7007252E1 /* Common */,
 				D6DDD278261A19C900FD1AA5 /* Assets.xcassets */,
+				D695B9642AC871F7007252E1 /* Common */,
 				D6DDD27D261A19C900FD1AA5 /* Info.plist */,
+				D6D2CD492ACC7F2D008ACB14 /* Intents */,
 				D67F6B4729EBF88700F6E24D /* Language */,
 				D691CF26261B34B0005FAAC5 /* Model */,
 				D6DDD27A261A19C900FD1AA5 /* Preview Content */,
@@ -578,6 +592,7 @@
 				D65D7A6128BB4FC600717980 /* DayColorView.swift in Sources */,
 				D6858E5527B29DBB008372AC /* SearchBar.swift in Sources */,
 				D643E1CA26B6EE8D0056908E /* DayView.swift in Sources */,
+				D6D2CD4B2ACC7FA0008ACB14 /* ThemeTodayIntent.swift in Sources */,
 				D678ABC728AECBC5003F27B4 /* SettingsView.swift in Sources */,
 				D6811DA229BBC5D8009A90D4 /* StickerView.swift in Sources */,
 				D6BE420629C3A80C00B32C80 /* SnippetsView.swift in Sources */,
@@ -591,6 +606,7 @@
 				D6D48FF02676424800101EC3 /* Settings.swift in Sources */,
 				D663B5DE29E5B65F00B6388E /* StickerCategoryView.swift in Sources */,
 				D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */,
+				D6D2CD4D2ACC82F7008ACB14 /* ThemeYourDayShortcuts.swift in Sources */,
 				D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */,
 				D6410ED1297411A900862C9A /* VibrantDayWidgetView.swift in Sources */,
 				D635F5A42A51C4CD00508922 /* AppContainer.swift in Sources */,

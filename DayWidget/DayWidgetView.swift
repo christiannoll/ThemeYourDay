@@ -25,6 +25,7 @@ struct DayWidgetView: View {
                     .padding(.top, 18), alignment: .topTrailing)
             
             Text(day.text)
+                .padding(.top, getTextTopPadding())
                 .padding(.horizontal, 6)
                 .frame(width: getTextFrameWidth(), height: getTextFrameHeight(), alignment: .top)
                 .font(getFont())
@@ -91,19 +92,22 @@ struct DayWidgetView: View {
     
     private func getTextFrameWidth() -> CGFloat {
         switch widgetFamily {
-        case .systemMedium, .systemLarge, .systemExtraLarge:
-            return 300
-        default:
-            return 160
+        case .systemMedium, .systemLarge, .systemExtraLarge: 300
+        default: 160
         }
     }
     
     private func getTextFrameHeight() -> CGFloat {
         switch widgetFamily {
-        case .systemLarge, .systemExtraLarge:
-            return 300
-        default:
-            return 130
+        case .systemLarge, .systemExtraLarge: 300
+        default: 130
+        }
+    }
+    
+    private func getTextTopPadding() -> CGFloat {
+        switch widgetFamily {
+        case .systemLarge, .systemExtraLarge: 20
+        default: 0
         }
     }
 }

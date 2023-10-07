@@ -867,6 +867,7 @@
 				DEVELOPMENT_TEAM = ELG2TXRCNZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ThemeYourDay/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -893,6 +894,7 @@
 				DEVELOPMENT_TEAM = ELG2TXRCNZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ThemeYourDay/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

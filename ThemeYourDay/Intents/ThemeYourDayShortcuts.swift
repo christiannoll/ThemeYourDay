@@ -14,10 +14,10 @@ struct ThemeYourDayShortcuts: AppShortcutsProvider {
         AppShortcut(
           intent: ThemeTodayIntent(),
           phrases: [
-            "Theme today",
+            "Theme Today",
             "\(.applicationName)"
           ],
-          shortTitle: "Theme today",
+          shortTitle: "Theme Today",
           systemImageName: "calendar"
         )
       }

@@ -6,6 +6,7 @@
 //
 
 import AppIntents
+import SwiftData
 
 struct ThemeTodayIntent: AppIntent {
     
@@ -20,9 +21,16 @@ struct ThemeTodayIntent: AppIntent {
         let predicate = #Predicate<Day> { day in
             day.id.noon == today
         }
-        if let day = try? appContainer.mainContext.fetch(.init(predicate: predicate)).first {
+        
+        let itemFetchDescriptor = FetchDescriptor<Day>()
+        let loadedDays = try appContainer.mainContext.fetch(itemFetchDescriptor)
+        if let day = try loadedDays.filter(predicate).first {
             day.text = text
         }
+        
+        /*if let day = try? appContainer.mainContext.fetch(.init(predicate: predicate)).first {
+            day.text = text
+        }*/
         return .result()
     }
 }

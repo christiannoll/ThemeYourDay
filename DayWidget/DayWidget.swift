@@ -5,11 +5,11 @@ import SwiftData
 struct Provider: TimelineProvider {
         
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor()))
+        createSimpleEntry()
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Today", fgColor: DayColor()))
+        let entry = createSimpleEntry()
         completion(entry)
     }
 
@@ -47,6 +47,10 @@ struct Provider: TimelineProvider {
             }
         }
         return defaultDay(today)
+    }
+    
+    private func createSimpleEntry() -> SimpleEntry {
+        SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Theme your day", fgColor: DayColor()))
     }
     
     private func defaultDay(_ today: Date) -> Day {

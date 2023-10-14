@@ -7,6 +7,7 @@
 
 import AppIntents
 import SwiftData
+import WidgetKit
 
 struct ThemeTodayIntent: AppIntent {
     
@@ -27,6 +28,8 @@ struct ThemeTodayIntent: AppIntent {
         if let day = try loadedDays.filter(predicate).first {
             day.text = text
         }
+        
+        WidgetCenter.shared.reloadAllTimelines()
         
         /*if let day = try? appContainer.mainContext.fetch(.init(predicate: predicate)).first {
             day.text = text

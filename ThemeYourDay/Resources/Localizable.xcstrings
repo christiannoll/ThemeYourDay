@@ -59,7 +59,14 @@
       }
     },
     "Cancel" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        }
+      }
     },
     "Clear" : {
       "localizations" : {
@@ -252,10 +259,24 @@
       }
     },
     "Remove" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
     },
     "Remove All Themes?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Themes löschen?"
+          }
+        }
+      }
     },
     "RemoveThemes" : {
       "localizations" : {
@@ -300,7 +321,14 @@
       }
     },
     "Select Text Color" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Textfarbe auswählen"
+          }
+        }
+      }
     },
     "Settings" : {
       "localizations" : {
@@ -334,7 +362,14 @@
       }
     },
     "Text alignment" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Textausrichtung"
+          }
+        }
+      }
     },
     "Texte" : {
 
@@ -375,7 +410,14 @@
       }
     },
     "This will remove all themes and can't be undone." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Aktion löscht alle Themes und kann nicht rückgängig gemacht werden."
+          }
+        }
+      }
     },
     "Undo" : {
       "localizations" : {

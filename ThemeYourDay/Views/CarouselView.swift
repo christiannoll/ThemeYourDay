@@ -5,7 +5,7 @@ struct CarouselView: View {
     
     private static var defaultAnimation = Animation.smooth
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @GestureState private var dragState = DragState.inactive
     @State private var indices:[Int] = []
     @State private var animation: Animation? = Self.defaultAnimation
@@ -133,5 +133,6 @@ enum DragState: Equatable {
 struct CarouselView_Previews: PreviewProvider {
     static var previews: some View {
         CarouselView()
+            .environment(ModelData())
     }
 }

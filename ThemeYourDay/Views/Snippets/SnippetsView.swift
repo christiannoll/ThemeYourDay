@@ -10,7 +10,7 @@ import SwiftUI
 struct SnippetsView: View {
     
     let category: Category
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     
     private var filteredSnippets: [Snippet] {
         let result = modelData.snippets.filter {

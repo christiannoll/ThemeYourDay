@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SnippetsOverview: View {
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     
     var body: some View {
         NavigationStack {

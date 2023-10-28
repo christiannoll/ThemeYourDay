@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FontSizeView: View {
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @State private var style: TextStyle = TextStyle.largeTitle
     
     var body: some View {

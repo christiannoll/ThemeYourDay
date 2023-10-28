@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct ColorStripView: View {
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @Binding var dayColor: DayColor
     var colors: [DayColor]
     var saveColorAction: (Color, ModelData, Settings?) -> Void
@@ -44,7 +44,7 @@ struct ColorStripView: View {
 struct ColorStripView_Previews: PreviewProvider {
     static var previews: some View {
         ColorStripView(dayColor: .constant(DayColor()), colors: [DayColor](), saveColorAction:saveColor(_:_:_:))
-            .environmentObject(ModelData())
+            .environment(ModelData())
     }
     
     static func saveColor(_ color: Color, _ modelData: ModelData, _ settings: Settings?) {

@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct DayList: View {
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var showDeleteAlert = false
     @State private var query = ""
@@ -83,6 +83,6 @@ struct DayList: View {
 struct DayList_Previews: PreviewProvider {
     static var previews: some View {
         DayList()
-            .environmentObject(ModelData())
+            .environment(ModelData())
     }
 }

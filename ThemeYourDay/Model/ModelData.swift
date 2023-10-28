@@ -2,11 +2,12 @@ import Foundation
 import WidgetKit
 import SwiftData
 
-final class ModelData: ObservableObject {
-    @Published var selectedIndex = -1
-    @Published var stickers = loadStickers()
-    @Published var snippets = loadSnippets()
-    @Published var selectedDay: Day? = nil
+@Observable
+final class ModelData {
+    var selectedIndex = -1
+    var stickers = loadStickers()
+    var snippets = loadSnippets()
+    var selectedDay: Day? = nil
     
     static var indexCache : [Date:Int] = [:]
     

@@ -3,7 +3,7 @@ import SwiftData
 
 struct DayView: View {
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @FocusState private var focusMode: Bool
     @Bindable var day: Day
     var readOnly = false
@@ -83,7 +83,7 @@ struct DayView: View {
 
 struct DayViewTextStyle: ViewModifier {
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @Query() var settings: [Settings]
     var day: Day
     
@@ -109,7 +109,7 @@ struct DayViewTextStyle: ViewModifier {
 
 struct StickerOverlay: ViewModifier {
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     var day: Day
     
     public func body(content: Content) -> some View {
@@ -137,6 +137,6 @@ struct StickerOverlay: ViewModifier {
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
         DayView(day: Day(id: Date().noon, text: "Today", fgColor: DayColor()))
-            .environmentObject(ModelData())
+            .environment(ModelData())
     }
 }

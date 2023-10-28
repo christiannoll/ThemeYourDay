@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {

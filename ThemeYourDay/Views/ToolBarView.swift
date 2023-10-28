@@ -4,7 +4,7 @@ import SwiftData
 struct ToolBarView: View {
     
     @EnvironmentObject var tools: Tools
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     
     @Query(sort: [SortDescriptor(\Day.id)]) private var days: [Day]
     

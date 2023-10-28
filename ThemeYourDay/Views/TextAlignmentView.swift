@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TextAlignmentView: View {
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @State private var alignment: MyTextAlignment = MyTextAlignment.center
     
     var body: some View {

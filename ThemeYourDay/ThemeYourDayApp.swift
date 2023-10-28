@@ -4,12 +4,12 @@ import SwiftData
 
 @main
 struct ThemeYourDayApp: App {
-    @StateObject private var modelData = ModelData()
+    @State private var modelData = ModelData()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(modelData)
+                .environment(modelData)
         }
         .modelContainer(appContainer)
     }

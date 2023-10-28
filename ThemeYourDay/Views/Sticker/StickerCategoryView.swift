@@ -10,7 +10,7 @@ import SwiftUI
 struct StickerCategoryView: View {
     
     var gridItemLayout = [GridItem(.adaptive(minimum: 50))]
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     
     let category: Category
     

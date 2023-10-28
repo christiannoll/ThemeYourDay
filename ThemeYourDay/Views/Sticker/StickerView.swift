@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StickerView: View {
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @State private var category: Category = .animal
     
     var body: some View {

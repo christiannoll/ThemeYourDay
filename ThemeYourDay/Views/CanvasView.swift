@@ -4,7 +4,7 @@ import PencilKit
 
 struct CanvasView: View {
     @Environment(\.undoManager) private var undoManager
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @State private var canvasView = PKCanvasView()
     @Binding var toolPickerIsActive: Bool
     

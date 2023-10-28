@@ -40,7 +40,7 @@ struct ContentView: View {
         case calendar
     }
     
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     @Environment(\.calendar) var calendar
     @Environment(\.modelContext) private var context
     @State private var path: [Selection] = []
@@ -213,7 +213,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .environmentObject(modelData)
+            .environment(modelData)
             .onAppear {
                 tools.saveThemeAsImage = saveThemeInAlbum
                 tools.shareThemeAsImage = shareTheme
@@ -281,7 +281,7 @@ struct ContentView: View {
     
     private func saveThemeAsImage(inAlbum: Bool) {
         let dayView = DayView(day: days[modelData.selectedIndex], readOnly: true)
-            .environmentObject(modelData)
+            .environment(modelData)
         let renderer = ImageRenderer(content: dayView)
         renderer.scale = 3
          
@@ -310,7 +310,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(ModelData())
+            .environment(ModelData())
     }
 }
 

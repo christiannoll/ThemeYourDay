@@ -10,7 +10,7 @@ import SwiftUI
 struct SnippetsItemView: View {
     
     let snippet: Snippet
-    @EnvironmentObject var modelData: ModelData
+    @Environment(ModelData.self) var modelData
     
     var body: some View {
         VStack {

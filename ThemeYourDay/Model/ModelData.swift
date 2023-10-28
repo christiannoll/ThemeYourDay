@@ -67,12 +67,14 @@ final class ModelData: ObservableObject {
     func saveFgColor(r: Double, g: Double, b: Double, a: Double, settings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         if let selectedDay {
-            selectedDay.fgColor = color
-            
-            if let settings, !settings.fgColors.contains(color) {
-                settings.fgColors.insert(color, at: 0)
-                if settings.fgColors.count > 5 {
-                    settings.fgColors = settings.fgColors.dropLast()
+            if selectedDay.fgColor != color {
+                selectedDay.fgColor = color
+                
+                if let settings, !settings.fgColors.contains(color) {
+                    settings.fgColors.insert(color, at: 0)
+                    if settings.fgColors.count > 5 {
+                        settings.fgColors = settings.fgColors.dropLast()
+                    }
                 }
             }
         }
@@ -81,12 +83,14 @@ final class ModelData: ObservableObject {
     func saveBgColor(r: Double, g: Double, b: Double, a: Double, settings: Settings?) {
         let color = DayColor(r: r, g: g, b: b, a: a)
         if let selectedDay {
-            selectedDay.bgColor = color
-            
-            if let settings, !settings.bgColors.contains(color) {
-                settings.bgColors.insert(color, at: 0)
-                if settings.bgColors.count > 5 {
-                    settings.bgColors = settings.bgColors.dropLast()
+            if selectedDay.bgColor != color {
+                selectedDay.bgColor = color
+                
+                if let settings, !settings.bgColors.contains(color) {
+                    settings.bgColors.insert(color, at: 0)
+                    if settings.bgColors.count > 5 {
+                        settings.bgColors = settings.bgColors.dropLast()
+                    }
                 }
             }
         }

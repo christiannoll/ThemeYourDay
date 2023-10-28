@@ -78,9 +78,9 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationSplitView(preferredCompactColumn: $preferredColumn) {
+        /*NavigationSplitView(preferredCompactColumn: $preferredColumn) {
             DayList()
-        } detail: {
+        } detail: {*/
             let dragGesture = DragGesture()
                 .onChanged { gesture in
                     if gesture.translation.width < 50 {
@@ -188,12 +188,12 @@ struct ContentView: View {
                     }
                 }
                 .toolbar {
-                    /*ToolbarItem(placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: { path.append(.dayList) }) {
                             Image(systemName: "list.bullet")
                         }.padding()
                         
-                    }*/
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: { path.append(.calendar) }) {
                             Image(systemName: "calendar")
@@ -235,8 +235,8 @@ struct ContentView: View {
                 //                        .background(.background)
                 //                }
             }
-        }
-        .navigationSplitViewStyle(.balanced)
+        /*}
+        .navigationSplitViewStyle(.balanced)*/
     }
     
     func incrementMonthOffset() {

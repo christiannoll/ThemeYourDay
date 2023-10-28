@@ -23,7 +23,7 @@ struct CarouselView: View {
                         .onTapGesture() {
                             withAnimation {
                                 modelData.selectDay(Date().noon, days: days)
-                                //updateIndices()
+                                updateIndices()
                             }
                         }
                 }
@@ -33,11 +33,11 @@ struct CarouselView: View {
                     modelData.selectedIndex = currentIndex()
                     modelData.selectedDay = days[modelData.selectedIndex]
                 }
-                //updateIndices()
-            }
-            .onChange(of: modelData.selectedIndex) {
                 updateIndices()
             }
+            /*.onChange(of: modelData.selectedIndex) {
+                updateIndices()
+            }*/
             .gesture(
                 DragGesture()
                     .updating($dragState) { drag, state, transaction in

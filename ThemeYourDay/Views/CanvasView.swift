@@ -85,6 +85,7 @@ struct CanvasView: View {
             if let data = image.pngData(), let day = modelData.selectedDay {
                 modelData.savePngImageOfSelectedDay(data: data)
                 day.hasImage = true
+                modelData.informWidget()
             }
         }
     }

@@ -1,18 +1,19 @@
 import SwiftUI
 import SwiftData
 
-class Tools: ObservableObject {
+@Observable
+class Tools {
     
     enum ToolType {
         case None, Foreground, Background, Textformat
     }
     
-    @Published var visibleTool = ToolType.None
-    @Published var canvasVisible = false
-    @Published var settingsVisible = false
+    var visibleTool = ToolType.None
+    var canvasVisible = false
+    var settingsVisible = false
     
-    var saveThemeAsImage: () -> Void
-    var shareThemeAsImage: () -> Void
+    var saveThemeAsImage: @MainActor () -> Void
+    var shareThemeAsImage: @MainActor () -> Void
     
     init(saveTheme: @escaping () -> Void, shareTheme: @escaping () -> Void) {
         saveThemeAsImage = saveTheme
@@ -44,7 +45,7 @@ struct ContentView: View {
     @Environment(\.calendar) var calendar
     @Environment(\.modelContext) private var context
     @State private var path: [Selection] = []
-    @StateObject private var tools = Tools(saveTheme: {}, shareTheme: {})
+    @State private var tools = Tools(saveTheme: {}, shareTheme: {})
     private var colorStripMV =  ColorStripModelView()
     @State private var offset: CGSize = .zero
     @State private var stickerViewShown = false
@@ -64,14 +65,6 @@ struct ContentView: View {
         let startDate = Date().getPreviousMonth(offset: monthOffset)
         return DateInterval(start: startDate!, end: endDate!)
     }
-    
-    var selectedDayBinding: Binding<Day> {
-        return Binding(get: {
-            return modelData.selectedDay ?? Day(id: Date().noon, text: "Error", fgColor: DayColor())
-        }, set: { newValue in
-          modelData.selectedDay = newValue
-        })
-      }
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -130,7 +123,7 @@ struct ContentView: View {
                             VStack {
                                 Spacer()
                                 if let mySettings = settings.first {
-                                    ColorStripView(dayColor: selectedDayBinding.fgColor, colors: mySettings.fgColors, saveColorAction: colorStripMV.saveFgColor)
+                                    ColorStripView(isBackground: false, colors: mySettings.fgColors, saveColorAction: colorStripMV.saveFgColor)
                                         .padding()
                                 }
                             }
@@ -140,7 +133,7 @@ struct ContentView: View {
                             VStack {
                                 Spacer()
                                 if let mySettings = settings.first {
-                                    ColorStripView(dayColor: selectedDayBinding.bgColor, colors: mySettings.bgColors, saveColorAction: colorStripMV.saveBgColor)
+                                    ColorStripView(isBackground: true, colors: mySettings.bgColors, saveColorAction: colorStripMV.saveBgColor)
                                         .padding()
                                 }
                             }
@@ -156,7 +149,7 @@ struct ContentView: View {
                     
                     ToolBarView()
                         .ignoresSafeArea()
-                        .environmentObject(tools)
+                        .environment(tools)
                     
                 }
                 .onChange(of: modelData.selectedIndex) {
@@ -250,11 +243,11 @@ struct ContentView: View {
         monthOffset -= 1
     }
     
-    func saveThemeInAlbum() {
+    @MainActor func saveThemeInAlbum() {
         saveThemeAsImage(inAlbum: true)
     }
     
-    func shareTheme() {
+    @MainActor func shareTheme() {
         saveThemeAsImage(inAlbum: false)
         Tools.showShareSheet(fileName: modelData.getSharedThemeFileName())
     }
@@ -279,7 +272,7 @@ struct ContentView: View {
         return nil
     }
     
-    private func saveThemeAsImage(inAlbum: Bool) {
+    @MainActor private func saveThemeAsImage(inAlbum: Bool) {
         let dayView = DayView(day: days[modelData.selectedIndex], readOnly: true)
             .environment(modelData)
         let renderer = ImageRenderer(content: dayView)

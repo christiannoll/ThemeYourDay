@@ -3,7 +3,8 @@ import SwiftData
 
 struct ColorStripView: View {
     @Environment(ModelData.self) var modelData
-    @Binding var dayColor: DayColor
+    @State var dayColor = DayColor()
+    let isBackground: Bool
     var colors: [DayColor]
     var saveColorAction: (Color, ModelData, Settings?) -> Void
     
@@ -24,7 +25,13 @@ struct ColorStripView: View {
                             .stroke(getColor(col), lineWidth: 2)
                     )
                     .onTapGesture {
-                        dayColor = col
+                        if let day = modelData.selectedDay {
+                            if isBackground {
+                                day.bgColor = col
+                            } else {
+                                day.fgColor = col
+                            }
+                        }
                     }
             }
         }
@@ -43,7 +50,7 @@ struct ColorStripView: View {
 
 struct ColorStripView_Previews: PreviewProvider {
     static var previews: some View {
-        ColorStripView(dayColor: .constant(DayColor()), colors: [DayColor](), saveColorAction:saveColor(_:_:_:))
+        ColorStripView(isBackground: true, colors: [DayColor](), saveColorAction:saveColor(_:_:_:))
             .environment(ModelData())
     }
     

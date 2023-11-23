@@ -52,6 +52,10 @@
         "category": "Animal"
     },
     {
+        "name": "HappyDog3",
+        "category": "Animal"
+    },
+    {
         "name": "CuteCat",
         "category": "Animal"
     },
@@ -141,6 +145,10 @@
     },
     {
         "name": "Face1",
+        "category": "General"
+    },
+    {
+        "name": "DancingWoman",
         "category": "General"
     },
     {

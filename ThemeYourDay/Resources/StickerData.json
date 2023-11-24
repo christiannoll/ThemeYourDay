@@ -56,11 +56,19 @@
         "category": "Animal"
     },
     {
+        "name": "HappyDog4",
+        "category": "Animal"
+    },
+    {
         "name": "CuteCat",
         "category": "Animal"
     },
     {
         "name": "BirdWithHat",
+        "category": "Animal"
+    },
+    {
+        "name": "WhiteHorse",
         "category": "Animal"
     },
     {
@@ -108,6 +116,10 @@
         "category": "Animal"
     },
     {
+        "name": "Cat4",
+        "category": "Animal"
+    },
+    {
         "name": "YellowFlower",
         "category": "Flower"
     },
@@ -132,6 +144,18 @@
         "category": "General"
     },
     {
+        "name": "Soccer2",
+        "category": "General"
+    },
+    {
+        "name": "Scater1",
+        "category": "General"
+    },
+    {
+        "name": "Scater2",
+        "category": "General"
+    },
+    {
         "name": "Sun1",
         "category": "Flower"
     },
@@ -149,6 +173,14 @@
     },
     {
         "name": "DancingWoman",
+        "category": "General"
+    },
+    {
+        "name": "DancingWoman2",
+        "category": "General"
+    },
+    {
+        "name": "DancingMan",
         "category": "General"
     },
     {
@@ -193,6 +225,10 @@
     },
     {
         "name": "Palm2",
+        "category": "Flower"
+    },
+    {
+        "name": "Palm3",
         "category": "Flower"
     },
     {

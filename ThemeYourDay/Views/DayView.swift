@@ -33,10 +33,12 @@ struct DayView: View {
                     .frame(height: getHeight())
                     .background(day.hasImage ? Image(uiImage: loadPngImage()) : Image(uiImage: UIImage()))
                     .modifier(DayViewTextStyle(day: day))
-                    .onTapGesture {
-                        focusMode = !focusMode
-                        modelData.informWidget()
-                    }
+                    .highPriorityGesture(
+                        TapGesture().onEnded {
+                            focusMode = !focusMode
+                            modelData.informWidget()
+                        }
+                    )
                     .focused($focusMode)
                     .modifier(StickerOverlay(day: day))
             }

@@ -38,7 +38,9 @@ struct DayList: View {
                 }
                 .scrollContentBackground(.hidden)
                 .onAppear {
-                    proxy.scrollTo(modelData.getToday(days), anchor: .center)
+                    DispatchQueue.main.async {
+                        proxy.scrollTo(modelData.getToday(days), anchor: .center)
+                    }
                 }
                 .onChange(of: query) {
                     if query.isEmpty {

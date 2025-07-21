@@ -3,6 +3,7 @@ import SwiftData
 
 struct ColorStripView: View {
     @Environment(ModelData.self) var modelData
+    @Environment(\.modelContext) private var context
     @State var dayColor = DayColor()
     let isBackground: Bool
     var colors: [DayColor]
@@ -31,12 +32,14 @@ struct ColorStripView: View {
                             } else {
                                 day.fgColor = col
                             }
+                            modelData.save(context)
                         }
                     }
             }
         }
         .onChange(of: dayColor) {
             saveColorAction(dayColor.color, modelData, settings.first)
+            modelData.save(context)
         }
     }
     

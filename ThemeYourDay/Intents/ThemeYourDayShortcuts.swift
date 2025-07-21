@@ -7,8 +7,8 @@
 
 import AppIntents
 
-struct ThemeYourDayShortcuts: AppShortcutsProvider {
- 
+/*struct ThemeYourDayShortcuts: AppShortcutsProvider {
+
     static var appShortcuts: [AppShortcut] {
 
         AppShortcut(
@@ -21,4 +21,4 @@ struct ThemeYourDayShortcuts: AppShortcutsProvider {
           systemImageName: "calendar"
         )
       }
-}
+}*/

@@ -200,7 +200,11 @@ final class ModelData {
             }
         }
     }
-    
+
+    func save(_ context: ModelContext) {
+        try? context.save()
+    }
+
     private func defaultWeekdayText(_ date: Date, settings: Settings) -> String {
         settings.weekdaysText[date.weekday - 1]
     }

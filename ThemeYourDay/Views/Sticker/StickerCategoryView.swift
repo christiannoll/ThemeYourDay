@@ -11,7 +11,8 @@ struct StickerCategoryView: View {
     
     var gridItemLayout = [GridItem(.adaptive(minimum: 50))]
     @Environment(ModelData.self) var modelData
-    
+    @Environment(\.modelContext) private var context
+
     let category: Category
     
     var body: some View {
@@ -27,6 +28,7 @@ struct StickerCategoryView: View {
                             .onTapGesture {
                                 modelData.selectedDay?.sticker = Sticker(name: sticker.name, category: sticker.category)
                                 modelData.informWidget()
+                                modelData.save(context)
                             }
                     }
                 }

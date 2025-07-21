@@ -4,6 +4,7 @@ import SwiftData
 struct DayView: View {
     
     @Environment(ModelData.self) var modelData
+    @Environment(\.modelContext) private var context
     @FocusState private var focusMode: Bool
     @Bindable var day: Day
     var readOnly = false
@@ -66,6 +67,7 @@ struct DayView: View {
             .padding(.trailing, 32)
             .onTapGesture {
                 day.starred.toggle()
+                modelData.save(context)
             }
     }
     

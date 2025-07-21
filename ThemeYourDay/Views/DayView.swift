@@ -42,6 +42,9 @@ struct DayView: View {
                     )
                     .focused($focusMode)
                     .modifier(StickerOverlay(day: day))
+                    .onChange(of: day.text) {
+                        modelData.save(context)
+                    }
             }
         }
         .background(.gray)

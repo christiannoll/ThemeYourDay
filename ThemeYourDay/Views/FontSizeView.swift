@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FontSizeView: View {
     @Environment(ModelData.self) var modelData
+    @Environment(\.modelContext) private var context
     @State private var style: TextStyle = TextStyle.largeTitle
     
     var body: some View {
@@ -18,6 +19,7 @@ struct FontSizeView: View {
             .onChange(of: style) {
                 if let selectedDay = modelData.selectedDay {
                     selectedDay.textStyle = style
+                    modelData.save(context)
                 }
             }
         }

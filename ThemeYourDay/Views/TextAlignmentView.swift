@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TextAlignmentView: View {
     @Environment(ModelData.self) var modelData
+    @Environment(\.modelContext) private var context
     @State private var alignment: MyTextAlignment = MyTextAlignment.center
     
     var body: some View {
@@ -18,6 +19,7 @@ struct TextAlignmentView: View {
             .onChange(of: alignment) {
                 if let selectedDay = modelData.selectedDay {
                     selectedDay.textAlignment = alignment
+                    modelData.save(context)
                 }
             }
         }

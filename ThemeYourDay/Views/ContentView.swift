@@ -267,7 +267,9 @@ struct ContentView: View {
     private func findDay(_ date: Date) -> Day? {
         //print(date)
         if let index = ModelData.indexCache[date.noon] {
-            return days[index]
+            if days.count > index {
+                return days[index]
+            }
         }
         return nil
     }

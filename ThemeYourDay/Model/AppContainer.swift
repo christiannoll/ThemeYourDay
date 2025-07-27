@@ -42,7 +42,21 @@ let appContainer: ModelContainer = {
         var settingsFetchDescriptor = FetchDescriptor<Settings>()
         settingsFetchDescriptor.fetchLimit = 1
         
-        guard try container.mainContext.fetch(settingsFetchDescriptor).count == 0 else { return container }
+        let fetchedSettings = try container.mainContext.fetch(settingsFetchDescriptor)
+
+        if fetchedSettings.count == 1 {
+            for loadedDay in loadedDays {
+                let day = loadedDay.id
+                if day.noon > Date().noon {
+                    if let weekdayBgColor = fetchedSettings.first?.weekdaysBgColor[day.weekday - 1] {
+                        if  weekdayBgColor != Day.defaultBgColor {
+                            loadedDay.bgColor = weekdayBgColor
+                        }
+                    }
+                }
+            }
+            return container
+        }
 
         container.mainContext.insert(settings)
         

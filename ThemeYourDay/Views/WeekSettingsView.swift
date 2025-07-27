@@ -12,7 +12,9 @@ struct WeekSettingsView: View {
     @Query() var settings: [Settings]
     private let weekIndices = [1, 2, 3, 4, 5, 6, 0]
     let weekSettingsType: WeekSettingsType
-    
+    @Environment(ModelData.self) var modelData
+    @Environment(\.modelContext) private var context
+
     enum WeekSettingsType {
         case fgcolor
         case bgcolor
@@ -50,6 +52,7 @@ struct WeekSettingsView: View {
     private func saveBgColor(dayColor: DayColor, index: Int) {
         if let mySettings = settings.first {
             mySettings.weekdaysBgColor[index] = dayColor
+            modelData.save(context)
         }
     }
     

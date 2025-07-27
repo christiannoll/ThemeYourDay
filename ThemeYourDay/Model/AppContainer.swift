@@ -53,6 +53,11 @@ let appContainer: ModelContainer = {
                             loadedDay.bgColor = weekdayBgColor
                         }
                     }
+                    if let weekdayFgColor = fetchedSettings.first?.weekdaysFgColor[day.weekday - 1] {
+                        if  weekdayFgColor != DayColor() {
+                            loadedDay.fgColor = weekdayFgColor
+                        }
+                    }
                 }
             }
             return container

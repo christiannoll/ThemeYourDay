@@ -46,6 +46,7 @@ struct WeekSettingsView: View {
     private func saveFgColor(dayColor: DayColor, index: Int) {
         if let mySettings = settings.first {
             mySettings.weekdaysFgColor[index] = dayColor
+            modelData.save(context)
         }
     }
     

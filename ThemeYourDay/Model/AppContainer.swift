@@ -58,6 +58,11 @@ let appContainer: ModelContainer = {
                             loadedDay.fgColor = weekdayFgColor
                         }
                     }
+                    if let weekdayText = fetchedSettings.first?.weekdaysText[day.weekday - 1] {
+                        if weekdayText != Settings.WeekdaysText[day.weekday - 1] {
+                            loadedDay.text = weekdayText
+                        }
+                    }
                 }
             }
             return container

@@ -60,6 +60,7 @@ struct WeekSettingsView: View {
     private func saveWeekdayText(dayText: String, index: Int) {
         if let mySettings = settings.first {
             mySettings.weekdaysText[index] = dayText
+            modelData.save(context)
         }
     }
     

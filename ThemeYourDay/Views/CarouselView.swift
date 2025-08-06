@@ -17,9 +17,9 @@ struct CarouselView: View {
         ScrollViewReader { value in
             ScrollView(.horizontal, showsIndicators: false) {// geometry in
                 LazyHStack {
-                    ForEach(indices, id: \.self) { (idx) in
+                    ForEach(Array(days.enumerated()), id: \.offset) { idx, day in
                         //let offset = cellOffset(idx, geometry.size, false)
-                        DayView(day: days[idx])
+                        DayView(day: day)
                         //.offset(x: offset)
                         //.animation(animation, value: offset)
                             .frame(width: .screenWidth - 10)
@@ -27,7 +27,7 @@ struct CarouselView: View {
                             .onTapGesture() {
                                 withAnimation {
                                     modelData.selectDay(Date().noon, days: days)
-                                    updateIndices()
+                                    //updateIndices()
                                 }
                             }
                     }.onAppear {
@@ -39,7 +39,7 @@ struct CarouselView: View {
                         modelData.selectedIndex = currentIndex()
                         modelData.selectedDay = days[modelData.selectedIndex]
                     }
-                    updateIndices()
+                    //updateIndices()
                 }
                 .padding(.horizontal, 5)
                 .scrollTargetLayout()

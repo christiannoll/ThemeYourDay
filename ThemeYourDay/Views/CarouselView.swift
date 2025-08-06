@@ -9,49 +9,72 @@ struct CarouselView: View {
     @GestureState private var dragState = DragState.inactive
     @State private var indices:[Int] = []
     @State private var animation: Animation? = Self.defaultAnimation
-    
+    @State private var lastIdent = 0
+
     @Query(sort: [SortDescriptor(\Day.id)]) var days: [Day]
  
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                ForEach(indices, id: \.self) { (idx) in
-                    let offset = cellOffset(idx, geometry.size, false)
-                    DayView(day: days[idx])
-                        .offset(x: offset)
-                        .animation(animation, value: offset)
-                        .onTapGesture() {
-                            withAnimation {
-                                modelData.selectDay(Date().noon, days: days)
-                                updateIndices()
+        ScrollViewReader { value in
+            ScrollView(.horizontal, showsIndicators: false) {// geometry in
+                LazyHStack {
+                    ForEach(indices, id: \.self) { (idx) in
+                        //let offset = cellOffset(idx, geometry.size, false)
+                        DayView(day: days[idx])
+                        //.offset(x: offset)
+                        //.animation(animation, value: offset)
+                            .frame(width: .screenWidth - 10)
+                            .id(idx)
+                            .onTapGesture() {
+                                withAnimation {
+                                    modelData.selectDay(Date().noon, days: days)
+                                    updateIndices()
+                                }
                             }
-                        }
+                    }.onAppear {
+                        value.scrollTo(modelData.selectedIndex)
+                    }
+                }.onAppear {
+                    animation = nil
+                    if modelData.selectedDay == nil {
+                        modelData.selectedIndex = currentIndex()
+                        modelData.selectedDay = days[modelData.selectedIndex]
+                    }
+                    updateIndices()
                 }
-            }.onAppear {
-                animation = nil
-                if modelData.selectedDay == nil {
-                    modelData.selectedIndex = currentIndex()
-                    modelData.selectedDay = days[modelData.selectedIndex]
-                }
-                updateIndices()
+                .padding(.horizontal, 5)
+                .scrollTargetLayout()
+                /*.onChange(of: modelData.selectedIndex) {
+                 updateIndices()
+                 }*/
+                /*.gesture(
+                 DragGesture()
+                 .updating($dragState) { drag, state, transaction in
+                 state = .dragging(translation: drag.translation)
+                 }
+                 .onChanged { _ in
+                 if animation == nil {
+                 animation = Self.defaultAnimation
+                 }
+                 }
+                 .onEnded({ gesture in
+                 onDragEnded(drag: gesture, geometry.size)
+                 })
+                 )*/
             }
-            /*.onChange(of: modelData.selectedIndex) {
-                updateIndices()
-            }*/
-            .gesture(
-                DragGesture()
-                    .updating($dragState) { drag, state, transaction in
-                        state = .dragging(translation: drag.translation)
-                    }
-                    .onChanged { _ in
-                        if animation == nil {
-                            animation = Self.defaultAnimation
-                        }
-                    }
-                    .onEnded({ gesture in
-                        onDragEnded(drag: gesture, geometry.size)
-                    })
-            )
+            .scrollTargetBehavior(.viewAligned)
+            .onScrollTargetVisibilityChange(idType: Int.self) { identifiers in
+                /*if identifiers.isEmpty == false {
+                 if lastIdent > identifiers[0] {
+                 modelData.selectedIndex -= 1
+                 } else {
+                 modelData.selectedIndex += 1
+                 }
+                 print(modelData.selectedIndex)
+                 modelData.selectedDay = days[modelData.selectedIndex]
+                 updateIndices()
+                 lastIdent = identifiers[0]
+                 }*/
+            }
         }
     }
     
@@ -127,6 +150,12 @@ enum DragState: Equatable {
             return translation
         }
         return .zero
+    }
+}
+
+extension CGFloat {
+    static var screenWidth: CGFloat {
+        UIScreen.main.bounds.width
     }
 }
 

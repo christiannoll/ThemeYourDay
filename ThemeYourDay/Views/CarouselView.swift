@@ -2,130 +2,50 @@ import SwiftUI
 import SwiftData
 
 struct CarouselView: View {
-    
-    private static var defaultAnimation = Animation.smooth
-    
-    @Environment(ModelData.self) var modelData
-    @GestureState private var dragState = DragState.inactive
-    @State private var indices:[Int] = []
-    @State private var animation: Animation? = Self.defaultAnimation
-    @State private var lastIdent = 0
 
+    @Environment(ModelData.self) var modelData
     @Query(sort: [SortDescriptor(\Day.id)]) var days: [Day]
  
     var body: some View {
         ScrollViewReader { value in
-            ScrollView(.horizontal, showsIndicators: false) {// geometry in
+            ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(Array(days.enumerated()), id: \.offset) { idx, day in
-                        //let offset = cellOffset(idx, geometry.size, false)
                         DayView(day: day)
-                        //.offset(x: offset)
-                        //.animation(animation, value: offset)
                             .frame(width: .screenWidth - 10)
                             .id(idx)
                             .onTapGesture() {
                                 withAnimation {
-                                    modelData.selectDay(Date().noon, days: days)
-                                    //updateIndices()
+                                    selectToday()
+                                    value.scrollTo(modelData.selectedIndex)
                                 }
                             }
                     }.onAppear {
                         value.scrollTo(modelData.selectedIndex)
                     }
                 }.onAppear {
-                    animation = nil
                     if modelData.selectedDay == nil {
-                        modelData.selectedIndex = currentIndex()
-                        modelData.selectedDay = days[modelData.selectedIndex]
+                        selectToday()
                     }
-                    //updateIndices()
                 }
                 .padding(.horizontal, 5)
                 .scrollTargetLayout()
-                /*.onChange(of: modelData.selectedIndex) {
-                 updateIndices()
-                 }*/
-                /*.gesture(
-                 DragGesture()
-                 .updating($dragState) { drag, state, transaction in
-                 state = .dragging(translation: drag.translation)
-                 }
-                 .onChanged { _ in
-                 if animation == nil {
-                 animation = Self.defaultAnimation
-                 }
-                 }
-                 .onEnded({ gesture in
-                 onDragEnded(drag: gesture, geometry.size)
-                 })
-                 )*/
             }
             .scrollTargetBehavior(.viewAligned)
             .onScrollTargetVisibilityChange(idType: Int.self) { identifiers in
-                /*if identifiers.isEmpty == false {
-                 if lastIdent > identifiers[0] {
-                 modelData.selectedIndex -= 1
-                 } else {
-                 modelData.selectedIndex += 1
-                 }
-                 print(modelData.selectedIndex)
-                 modelData.selectedDay = days[modelData.selectedIndex]
-                 updateIndices()
-                 lastIdent = identifiers[0]
-                 }*/
+                if let currentId = identifiers.first {
+                    modelData.selectedIndex = currentId
+                    modelData.selectedDay = days[modelData.selectedIndex]
+                }
             }
         }
     }
-    
-    private func cellOffset(_ cellPosition: Int, _ size: CGSize, _ isScalable: Bool) -> CGFloat {
-        
-        let cellDistance: CGFloat = (size.width / (isScalable ? 0.87 : 1)) + 20
-        
-        if cellPosition == modelData.selectedIndex {
-            // selected day
-            return self.dragState.translation.width
-        } else if cellPosition < modelData.selectedIndex {
-            // Offset on the left
-            let offset = self.dragState.translation.width - (cellDistance * CGFloat(modelData.selectedIndex - cellPosition))
-            //print(offset)
-            return offset
-        } else {
-            // Offset on the right
-            let offset = self.dragState.translation.width + (cellDistance * CGFloat(cellPosition - modelData.selectedIndex))
-            //print(offset)
-            return offset
-        }
-    }
-    
-    private func onDragEnded(drag: DragGesture.Value, _ size: CGSize) {
-        
-        // The minimum dragging distance needed for changing between the cells
-        let dragThreshold: CGFloat = size.width * 0.6
-        
-        if drag.predictedEndTranslation.width > dragThreshold || drag.translation.width > dragThreshold {
-            modelData.selectedIndex -= 1
-        }
-        else if (drag.predictedEndTranslation.width) < (-1 * dragThreshold) || (drag.translation.width) < (-1 * dragThreshold) {
-            modelData.selectedIndex += 1
-        }
+
+    private func selectToday() {
+        modelData.selectedIndex = currentIndex()
         modelData.selectedDay = days[modelData.selectedIndex]
-        updateIndices()
     }
-    
-    private func updateIndices() {
-        var lowerIndex = modelData.selectedIndex - 2
-        var upperIndex = modelData.selectedIndex + 2
-        if lowerIndex < 0 {
-            lowerIndex += 2
-            upperIndex += 2
-        } else if upperIndex+2 > days.count {
-            lowerIndex -= 2
-            upperIndex -= 2
-        }
-        indices = Array(lowerIndex...upperIndex)
-    }
-    
+
     private func currentIndex() -> Int {
         let today = Date().noon
         var index = -1
@@ -139,29 +59,13 @@ struct CarouselView: View {
     }
 }
 
-enum DragState: Equatable {
-    
-    case inactive
-    case dragging(translation: CGSize)
-    
-    var translation: CGSize {
-        
-        if case let .dragging(translation) = self {
-            return translation
-        }
-        return .zero
-    }
-}
-
 extension CGFloat {
     static var screenWidth: CGFloat {
         UIScreen.main.bounds.width
     }
 }
 
-struct CarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-        CarouselView()
-            .environment(ModelData())
-    }
+#Preview {
+    CarouselView()
+        .environment(ModelData())
 }

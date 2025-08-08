@@ -5,6 +5,7 @@ import PencilKit
 struct CanvasView: View {
     @Environment(\.undoManager) private var undoManager
     @Environment(ModelData.self) var modelData
+    @Environment(\.modelContext) private var context
     @State private var canvasView = PKCanvasView()
     @Binding var toolPickerIsActive: Bool
     
@@ -85,6 +86,7 @@ struct CanvasView: View {
             if let data = image.pngData(), let day = modelData.selectedDay {
                 modelData.savePngImageOfSelectedDay(data: data)
                 day.hasImage = true
+                modelData.save(context)
                 modelData.informWidget()
             }
         }

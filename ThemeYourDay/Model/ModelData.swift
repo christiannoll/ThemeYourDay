@@ -143,6 +143,7 @@ final class ModelData {
             today.textAlignment = day.textAlignment
             today.textStyle = day.textStyle
             today.fontname = day.fontname
+            today.hasImage = day.hasImage
             selectDay(today, days: days)
         }
     }

@@ -2,8 +2,14 @@ import WidgetKit
 import SwiftUI
 import SwiftData
 
-struct Provider: TimelineProvider {
-        
+struct Provider: @MainActor TimelineProvider {
+
+    var modelContainer: ModelContainer?
+
+    init() {
+        modelContainer = try? ModelContainer(for: Day.self, Settings.self, NotificationSettings.self)
+    }
+
     func placeholder(in context: Context) -> SimpleEntry {
         createSimpleEntry()
     }
@@ -32,12 +38,8 @@ struct Provider: TimelineProvider {
     @MainActor
     private func today() -> Day {
         let today = Date().noon
-        
-        guard let modelContainer = try? ModelContainer(for: Day.self, Settings.self, NotificationSettings.self) else {
-            return defaultDay(today)
-        }
         let dayFetchDescriptor = FetchDescriptor<Day>()
-        guard let days = try? modelContainer.mainContext.fetch(dayFetchDescriptor) else {
+        guard let days = try? modelContainer?.mainContext.fetch(dayFetchDescriptor) else {
             return defaultDay(today)
         }
         
@@ -105,9 +107,9 @@ struct DayWidget: Widget {
     }
 }
 
-struct DayWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        DayWidgetEntryView(entry: SimpleEntry(date: Date(), currentDay: Day(id: Date(), text: "Theme your day", fgColor: DayColor())))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
+#Preview(as: .systemSmall) {
+    DayWidget()
+} timeline: {
+    SimpleEntry(date: .now, currentDay: Day(id: Date(), text: "Theme your day", fgColor: DayColor()))
+    SimpleEntry(date: .now, currentDay: Day(id: Date(), text: "Theme your day", fgColor: DayColor()))
 }

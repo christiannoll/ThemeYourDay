@@ -33,9 +33,6 @@ struct ToolBarView: View {
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .bottomBar) {
                     Button {
                         withAnimation {
                             tools.visibleTool = textToolVisible ? .None : .Textformat
@@ -44,9 +41,6 @@ struct ToolBarView: View {
                         Image(systemName: "textformat")
                             .foregroundColor(textToolVisible ? .accentColor : .secondary)
                     }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button {
@@ -59,9 +53,6 @@ struct ToolBarView: View {
                     }
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .bottomBar) {
                     Button {
                         withAnimation {
                             tools.visibleTool = backgroundToolVisible ? .None : .Background
@@ -70,9 +61,6 @@ struct ToolBarView: View {
                         Image(systemName: "note")
                             .foregroundColor(backgroundToolVisible ? .accentColor : .secondary)
                     }
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Spacer()
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Menu {

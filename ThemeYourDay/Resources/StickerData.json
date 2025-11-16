@@ -60,6 +60,10 @@
         "category": "Animal"
     },
     {
+        "name": "HappyDog5",
+        "category": "Animal"
+    },
+    {
         "name": "CuteCat",
         "category": "Animal"
     },
@@ -69,6 +73,10 @@
     },
     {
         "name": "WhiteHorse",
+        "category": "Animal"
+    },
+    {
+        "name": "Rabbit",
         "category": "Animal"
     },
     {

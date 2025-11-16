@@ -64,14 +64,14 @@ struct WeekSettingsView: View {
         }
     }
     
-    private func title() -> String {
+    private func title() -> LocalizedStringKey {
         switch weekSettingsType {
         case .fgcolor:
-            return "Foreground Colors"
+            return .foregroundColors
         case .bgcolor:
-            return "Background Colors"
+            return .backgroundColors
         case .text:
-            return "Texts"
+            return .texts
         }
     }
 }

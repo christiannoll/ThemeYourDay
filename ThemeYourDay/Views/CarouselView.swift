@@ -23,12 +23,12 @@ struct CarouselView: View {
                     }.onAppear {
                         value.scrollTo(modelData.selectedIndex)
                     }
+                    .padding(.horizontal, 5)
                 }.onAppear {
                     if modelData.selectedDay == nil {
                         selectToday()
                     }
                 }
-                .padding(.horizontal, 5)
                 .scrollTargetLayout()
             }
             .scrollTargetBehavior(.viewAligned)

@@ -5,10 +5,24 @@
 
     },
     "30" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30"
+          }
+        }
+      }
     },
     "App-Version: %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Version: %@"
+          }
+        }
+      }
     },
     "ApplyToToday" : {
       "localizations" : {
@@ -372,7 +386,14 @@
       }
     },
     "Texte" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texte"
+          }
+        }
+      }
     },
     "Texts" : {
       "localizations" : {
@@ -385,10 +406,24 @@
       }
     },
     "Theme text" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme text"
+          }
+        }
+      }
     },
     "Theme today intent" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme today intent"
+          }
+        }
+      }
     },
     "ThemeTemplate" : {
       "localizations" : {

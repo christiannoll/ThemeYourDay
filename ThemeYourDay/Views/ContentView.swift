@@ -195,11 +195,19 @@ struct ContentView: View {
                     }
                     ToolbarItemGroup(placement: .keyboard) {
                         HStack(spacing: 20) {
-                            Button(action: { stickerViewShown = true }) {
-                                Image(systemName: "eyes")
+                            Button { stickerViewShown = true
+                            } label: {
+                                HStack {
+                                    Text("Stickers")
+                                    Image(systemName: "eyes")
+                                }
                             }
-                            Button(action: { snippetViewShown = true }) {
-                                Image(systemName: "text.quote")
+                            Button { snippetViewShown = true
+                            } label : {
+                                HStack {
+                                    Text("Snippets")
+                                    Image(systemName: "text.quote")
+                                }
                             }
                         }
                         Spacer()

@@ -112,6 +112,10 @@
         "category": "Animal"
     },
     {
+        "name": "FunnyBird",
+        "category": "Animal"
+    },
+    {
         "name": "RedFlower",
         "category": "Flower"
     },

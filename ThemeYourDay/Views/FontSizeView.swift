@@ -8,9 +8,9 @@ struct FontSizeView: View {
     var body: some View {
         HStack {
             Picker("Font size", selection: $style) {
-                Text(.large).tag(TextStyle.largeTitle)
-                Text(.medium).tag(TextStyle.title)
-                Text(.small).tag(TextStyle.title2)
+                Text("Large").tag(TextStyle.largeTitle)
+                Text("Medium").tag(TextStyle.title)
+                Text("Small").tag(TextStyle.title2)
             }
             .pickerStyle(.segmented)
             .onAppear {

@@ -1,10 +1,3 @@
-//
-//  SystemSettingsOpener.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 05.02.23.
-//
-
 import UIKit
 
 protocol SystemSettingsOpener {

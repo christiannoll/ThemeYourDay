@@ -1,10 +1,3 @@
-//
-//  SnippetsItemView.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 18.03.23.
-//
-
 import SwiftUI
 
 struct SnippetsItemView: View {

@@ -1,10 +1,3 @@
-//
-//  LocalizedStrings.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 16.04.23.
-//
-
 import SwiftUI
 import Foundation
 

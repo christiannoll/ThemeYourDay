@@ -1,10 +1,3 @@
-//
-//  ThemeYourDayUITests.swift
-//  ThemeYourDayUITests
-//
-//  Created by Christian on 04.04.21.
-//
-
 import XCTest
 
 class ThemeYourDayUITests: XCTestCase {

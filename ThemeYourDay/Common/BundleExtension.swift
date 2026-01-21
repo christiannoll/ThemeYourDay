@@ -1,10 +1,3 @@
-//
-//  BundleExtension.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 30.09.23.
-//
-
 import Foundation
 
 public extension Bundle {

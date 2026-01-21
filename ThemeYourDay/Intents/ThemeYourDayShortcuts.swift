@@ -1,10 +1,3 @@
-//
-//  ThemeYourDayShortcuts.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 03.10.23.
-//
-
 import AppIntents
 
 /*struct ThemeYourDayShortcuts: AppShortcutsProvider {

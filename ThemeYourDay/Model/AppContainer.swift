@@ -1,10 +1,3 @@
-//
-//  AppContainer.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 02.07.23.
-//
-
 import SwiftData
 import Foundation
 

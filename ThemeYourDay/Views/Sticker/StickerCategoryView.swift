@@ -1,10 +1,3 @@
-//
-//  StickerCategoryView.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 11.04.23.
-//
-
 import SwiftUI
 
 struct StickerCategoryView: View {

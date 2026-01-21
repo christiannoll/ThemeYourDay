@@ -1,9 +1,3 @@
-//
-//  WeekColorView.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 01.09.22.
-//
 import SwiftUI
 import SwiftData
 

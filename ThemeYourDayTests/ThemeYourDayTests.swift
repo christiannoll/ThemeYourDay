@@ -1,10 +1,3 @@
-//
-//  ThemeYourDayTests.swift
-//  ThemeYourDayTests
-//
-//  Created by Christian on 04.04.21.
-//
-
 import XCTest
 @testable import ThemeYourDay
 

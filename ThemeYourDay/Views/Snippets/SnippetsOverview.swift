@@ -1,10 +1,3 @@
-//
-//  SnippetsOverview.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 18.03.23.
-//
-
 import SwiftUI
 
 struct SnippetsOverview: View {

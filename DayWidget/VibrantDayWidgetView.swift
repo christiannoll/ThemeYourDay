@@ -1,10 +1,3 @@
-//
-//  VibrantDayWidgetView.swift
-//  ThemeYourDay
-//
-//  Created by Christian on 15.01.23.
-//
-
 import SwiftUI
 
 struct VibrantDayWidgetView: View {

@@ -65,10 +65,10 @@ struct ToolBarView: View {
                 ToolbarItem(placement: .bottomBar) {
                     Menu {
                         Button { tools.settingsVisible.toggle() } label: {
-                            Label(.settings, systemImage: "gearshape")
+                            Label("Settings", systemImage: "gearshape")
                         }
                         Button { tools.shareThemeAsImage() } label: {
-                            Label(.share, systemImage: "square.and.arrow.up")
+                            Label("Share", systemImage: "square.and.arrow.up")
                         }
                         Button { modelData.applyToToday(days) } label: {
                             Label(.applyToToday, systemImage: "square.and.arrow.up.on.square")

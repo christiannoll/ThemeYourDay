@@ -16,7 +16,7 @@ struct SettingsView: View {
                 NotificationSettingsView()
                 Text("App-Version: \(Bundle.main.versionNumberWithBuild ?? "N/A")")
             }
-            .navigationBarTitle(.settings, displayMode: .automatic)
+            .navigationBarTitle("Settings", displayMode: .automatic)
             .navigationBarItems(
                 trailing: Button {
                     presentationMode.wrappedValue.dismiss()

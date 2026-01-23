@@ -50,13 +50,13 @@ struct DayList: View {
                     }
                 }
             }
-            .navigationBarTitle(.days, displayMode: .inline)
+            .navigationBarTitle("Days", displayMode: .inline)
             .navigationBarItems(trailing: Menu {
                 Button(action: { showDeleteAlert.toggle()}) {
-                    Label(.removeThemes, systemImage: "trash")
+                    Label("RemoveThemes", systemImage: "trash")
                 }
                 Button(action: { shareCsvFile()}) {
-                    Label(.exportThemes, systemImage: "square.and.arrow.up")
+                    Label("ExportThemes", systemImage: "square.and.arrow.up")
                 }
             } label: { Image(systemName: "ellipsis.circle") })
             .navigationBarItems(trailing: Button(action: { withAnimation {searching.toggle() }} ) {

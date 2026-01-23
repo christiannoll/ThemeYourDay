@@ -102,6 +102,12 @@
             "state" : "translated",
             "value" : "Tage"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days"
+          }
         }
       }
     },

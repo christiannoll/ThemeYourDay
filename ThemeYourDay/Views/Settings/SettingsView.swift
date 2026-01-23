@@ -8,7 +8,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text(.themeTemplate)) {
+                Section(header: Text("ThemeTemplate")) {
                     NavigationLink(.backgroundColors, destination: WeekSettingsView(weekSettingsType: .bgcolor))
                     NavigationLink(.foregroundColors, destination: WeekSettingsView(weekSettingsType: .fgcolor))
                     NavigationLink(.texts, destination: WeekSettingsView(weekSettingsType: .text))

@@ -71,10 +71,10 @@ struct ToolBarView: View {
                             Label("Share", systemImage: "square.and.arrow.up")
                         }
                         Button { modelData.applyToToday(days) } label: {
-                            Label(.applyToToday, systemImage: "square.and.arrow.up.on.square")
+                            Label("ApplyToToday", systemImage: "square.and.arrow.up.on.square")
                         }
                         Button { tools.saveThemeAsImage() } label: {
-                            Label(.saveTheme, systemImage: "square.and.arrow.down")
+                            Label("SaveTheme", systemImage: "square.and.arrow.down")
                         }
                     } label: { Image(systemName: "ellipsis.circle").foregroundColor(.secondary) }
                 }

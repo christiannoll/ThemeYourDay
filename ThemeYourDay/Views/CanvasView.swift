@@ -18,7 +18,7 @@ struct CanvasView: View {
         VStack {
             Spacer()
             HStack() {
-                Button(.done) {
+                Button("Done") {
                     saveImage()
                     savePngImage()
                     toolPickerIsActive.toggle()
@@ -26,16 +26,16 @@ struct CanvasView: View {
                 .foregroundColor(.white)
                 .padding(.leading, 30)
                 Spacer()
-                Button(.clear) {
+                Button("Clear") {
                     deleteImage()
                     canvasView.drawing = PKDrawing()
                 }
                 .foregroundColor(.white)
-                Button(.undo) {
+                Button("Undo") {
                     undoManager?.undo()
                 }
                 .foregroundColor(.white)
-                Button(.redo) {
+                Button("Redo") {
                     undoManager?.redo()
                 }
                 .foregroundColor(.white)

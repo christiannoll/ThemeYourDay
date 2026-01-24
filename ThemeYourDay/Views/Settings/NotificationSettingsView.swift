@@ -24,9 +24,9 @@ struct NotificationSettingsView: View {
     }
     
     var body: some View {
-        Section(header: Text(.notification)) {
+        Section(header: Text("Notification")) {
             HStack {
-                Text(.notificationStatus)
+                Text("NotificationStatus")
                 Spacer()
                 Text(viewModel.currentStatus)
                     .font(.headline)
@@ -35,7 +35,7 @@ struct NotificationSettingsView: View {
                 Button {
                     viewModel.askPermissions()
                 } label: {
-                    Text(.askUserPermissions)
+                    Text("AskUserPermissions")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
@@ -43,14 +43,14 @@ struct NotificationSettingsView: View {
                 Button {
                     viewModel.openSettings()
                 } label: {
-                    Text(.openSystemSettings)
+                    Text("OpenSystemSettings")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }
         Section {
             if let mySettings = settings.first {
-                Toggle(.notificationEnabled,
+                Toggle("NotificationEnabled",
                        isOn: enabledBinding)
                 .disabled(!viewModel.isEnableNotificationToggleEnabled)
                 .onChange(of: mySettings.notificationSettings.notificationEnabledByUser) {
@@ -61,7 +61,7 @@ struct NotificationSettingsView: View {
                 
                 if mySettings.notificationSettings.notificationEnabledByUser {
                     DatePicker(
-                        .remindAt,
+                        "RemindAt",
                         selection: remindAtBinding,
                         displayedComponents: .hourAndMinute
                     )

@@ -21,7 +21,7 @@ struct SettingsView: View {
                 trailing: Button {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text(.done)
+                    Text("Done")
                 }
             )
         }

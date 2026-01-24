@@ -61,11 +61,11 @@ struct WeekSettingsView: View {
     private func title() -> LocalizedStringKey {
         switch weekSettingsType {
         case .fgcolor:
-            return .foregroundColors
+            return "ForegroundColors"
         case .bgcolor:
-            return .backgroundColors
+            return "BackgroundColors"
         case .text:
-            return .texts
+            return "Texts"
         }
     }
 }

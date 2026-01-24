@@ -9,9 +9,9 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section(header: Text("ThemeTemplate")) {
-                    NavigationLink(.backgroundColors, destination: WeekSettingsView(weekSettingsType: .bgcolor))
-                    NavigationLink(.foregroundColors, destination: WeekSettingsView(weekSettingsType: .fgcolor))
-                    NavigationLink(.texts, destination: WeekSettingsView(weekSettingsType: .text))
+                    NavigationLink("BackgroundColors", destination: WeekSettingsView(weekSettingsType: .bgcolor))
+                    NavigationLink("ForegroundColors", destination: WeekSettingsView(weekSettingsType: .fgcolor))
+                    NavigationLink("Texts", destination: WeekSettingsView(weekSettingsType: .text))
                 }
                 NotificationSettingsView()
                 Text("App-Version: \(Bundle.main.versionNumberWithBuild ?? "N/A")")

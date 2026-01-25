@@ -11,12 +11,24 @@
             "state" : "translated",
             "value" : "30"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30"
+          }
         }
       }
     },
     "App-Version: %@" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Version: %@"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App-Version: %@"
@@ -105,7 +117,20 @@
       }
     },
     "day text" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day text"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day text"
+          }
+        }
+      }
     },
     "Days" : {
       "localizations" : {
@@ -156,7 +181,20 @@
       }
     },
     "Font size" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schriftgröße"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font size"
+          }
+        }
+      }
     },
     "ForegroundColors" : {
       "localizations" : {
@@ -175,14 +213,27 @@
       }
     },
     "Happiness" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Happiness"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Happiness"
+          }
+        }
+      }
     },
     "Large" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Großx"
+            "value" : "Groß"
           }
         },
         "en" : {
@@ -194,10 +245,36 @@
       }
     },
     "Lateinische Sprüche" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lateinische Redewendungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latin idioms"
+          }
+        }
+      }
     },
     "Lebensweisheiten" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebensweisheiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Life lessons"
+          }
+        }
+      }
     },
     "Medium" : {
       "localizations" : {
@@ -280,14 +357,27 @@
       }
     },
     "Philosophische Texte" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Philosophische Texte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Philosophical texts"
+          }
+        }
+      }
     },
     "Redo" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wiederholen"
+            "value" : "Redo"
           }
         },
         "en" : {
@@ -321,6 +411,12 @@
             "state" : "translated",
             "value" : "Löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
         }
       }
     },
@@ -330,6 +426,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alle Themes löschen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove all Themes?"
           }
         }
       }
@@ -373,6 +475,12 @@
             "state" : "translated",
             "value" : "Suche"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
         }
       }
     },
@@ -382,6 +490,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Textfarbe auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select text color"
           }
         }
       }
@@ -436,10 +550,36 @@
       }
     },
     "Snippets" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snippets"
+          }
+        }
+      }
     },
     "Stickers" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sticker"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stickers"
+          }
+        }
+      }
     },
     "Text alignment" : {
       "localizations" : {
@@ -447,6 +587,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Textausrichtung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text alignment"
           }
         }
       }
@@ -458,6 +604,12 @@
             "state" : "translated",
             "value" : "Texte"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texts"
+          }
         }
       }
     },
@@ -467,6 +619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Texte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texts"
           }
         }
       }
@@ -478,12 +636,24 @@
             "state" : "translated",
             "value" : "Theme text"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme text"
+          }
         }
       }
     },
     "Theme today intent" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme today intent"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Theme today intent"
@@ -514,6 +684,12 @@
             "state" : "translated",
             "value" : "Diese Aktion löscht alle Themes und kann nicht rückgängig gemacht werden."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will remove all themes and can't be undone."
+          }
         }
       }
     },
@@ -522,7 +698,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rückgängig"
+            "value" : "Undo"
           }
         },
         "en" : {

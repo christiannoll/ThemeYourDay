@@ -25,7 +25,7 @@ struct WeekSettingsView: View {
                     case .bgcolor:
                         DayColorView(dayColor: mySettings.weekdaysBgColor[idx], weekday: weekdaySymbol(dayIndex: idx), index: idx, save: saveBgColor)
                     case .text:
-                        DayTextView(dayText: mySettings.weekdaysText[idx], weekday: weekdaySymbol(dayIndex: idx), index: idx, save: saveWeekdayText)
+                        DayTextView(dayText: String(localized: String.LocalizationValue(mySettings.weekdaysText[idx])), weekday: weekdaySymbol(dayIndex: idx), index: idx, save: saveWeekdayText)
                     }
                 }
             }

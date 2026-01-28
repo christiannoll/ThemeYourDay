@@ -23,7 +23,7 @@ let appContainer: ModelContainer = {
             }
             
             if !loaded {
-                let newDay = Day(id: day, text: settings.weekdaysText[day.weekday - 1],
+                let newDay = Day(id: day, text: String(localized: String.LocalizationValue(settings.weekdaysText[day.weekday - 1])),
                                    fgColor: settings.weekdaysFgColor[day.weekday - 1],
                                    bgColor: settings.weekdaysBgColor[day.weekday - 1])
                 container.mainContext.insert(newDay)

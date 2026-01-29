@@ -13,6 +13,12 @@ fileprivate extension DateFormatter {
         formatter.dateFormat = "MMMM yyyy"
         return formatter
     }
+
+    static var Year: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        return formatter
+    }
 }
 
 fileprivate extension Calendar {
@@ -113,8 +119,7 @@ struct MonthView<DateView>: View where DateView: View {
     }
 
     private var header: some View {
-        let component = calendar.component(.month, from: month)
-        let formatter = component == 1 ? DateFormatter.monthAndYear : .month
+        let formatter = DateFormatter.month
         return Text(formatter.string(from: month))
             .font(.title)
             .padding()
@@ -182,6 +187,8 @@ struct CalendarView<DateView>: View where DateView: View {
             }
             .padding(.trailing)
         }
+        .navigationTitle(DateFormatter.Year.string(from: months.first ?? Date()))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

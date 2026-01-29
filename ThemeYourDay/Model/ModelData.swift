@@ -176,6 +176,9 @@ final class ModelData {
     }
     
     func insertNewDays(context: ModelContext, days: [Day], settings: Settings, monthOffset: Int) {
+        if monthOffset <= 1 {
+            return
+        }
         var nextMonth = Date().noon.getNextMonth()?.noon
         for _ in 1..<monthOffset {
             nextMonth = nextMonth?.getNextMonth()?.noon

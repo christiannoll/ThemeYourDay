@@ -103,7 +103,8 @@ struct ContentView: View {
                         }
                     }
                     .frame(maxHeight: getHeight())
-                    
+                    .padding(.horizontal, 5)
+
                     Spacer()
                     
                     VStack {

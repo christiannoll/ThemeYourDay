@@ -47,6 +47,7 @@ struct CanvasView: View {
                 MyCanvas(canvasView: $canvasView, toolPickerIsActive: $toolPickerIsActive, backgroundColor: day.bgColor.color)
                     .frame(height: getHeight())
                     .overlay(textOverlay.allowsHitTesting(false))
+                    .modifier(StickerOverlay(day: day))
             }
         }
         .onAppear { loadImage() }

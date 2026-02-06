@@ -17,28 +17,48 @@ struct CanvasView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack() {
-                Button("Done") {
+            HStack(spacing: 20) {
+                Button(action: {
                     saveImage()
                     savePngImage()
                     toolPickerIsActive.toggle()
+                }) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 20, height: 20)
                 }
-                .foregroundColor(.white)
+                .accessibilityLabel("Done")
                 .padding(.leading, 30)
                 Spacer()
-                Button("Clear") {
+                Button(action: {
                     deleteImage()
                     canvasView.drawing = PKDrawing()
+                }) {
+                    Image(systemName: "trash.circle.fill")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 20, height: 20)
                 }
-                .foregroundColor(.white)
-                Button("Undo") {
+                .accessibilityLabel("Clear")
+                Button(action: {
                     undoManager?.undo()
+                }) {
+                    Image(systemName: "arrow.uturn.backward.circle.fill")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 20, height: 20)
                 }
-                .foregroundColor(.white)
-                Button("Redo") {
+                .accessibilityLabel("Undo")
+                Button(action: {
                     undoManager?.redo()
+                }) {
+                    Image(systemName: "arrow.uturn.forward.circle.fill")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 20, height: 20)
                 }
-                .foregroundColor(.white)
+                .accessibilityLabel("Redo")
                 .padding(.trailing, 30)
             }
             .frame(height: 28)

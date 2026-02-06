@@ -198,19 +198,25 @@ struct ContentView: View {
                         HStack(spacing: 20) {
                             Button { stickerViewShown = true
                             } label: {
-                                HStack {
-                                    Text("Stickers")
+                                VStack {
                                     Image(systemName: "eyes")
+                                    Text("Stickers")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
                                 }
                             }
                             Button { snippetViewShown = true
                             } label : {
-                                HStack {
-                                    Text("Snippets")
+                                VStack {
                                     Image(systemName: "text.quote")
+                                    Text("Snippets")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
                                 }
                             }
                         }
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 20)
                         Spacer()
                     }
                 }

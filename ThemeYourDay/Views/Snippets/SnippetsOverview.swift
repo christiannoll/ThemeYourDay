@@ -13,7 +13,9 @@ struct SnippetsOverview: View {
                     NavigationLink("Lebensweisheiten", destination: SnippetsView(category: .lifewisdom))
                     NavigationLink("Happiness", destination: SnippetsView(category: .happiness))
                 }
+                .listRowBackground(Color.clear)
             }
+            .padding(.top, 10)
         }
     }
 }

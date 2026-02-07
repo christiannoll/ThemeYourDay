@@ -8,7 +8,8 @@ struct StickerView: View {
     var body: some View {
         VStack(alignment: .leading) {
             StickerHeaderView(category: $category)
-                .padding(8)
+                .padding([.leading, .trailing, .bottom], 8)
+                .padding(.top, 18)
             TabView(selection: $category) {
                 StickerCategoryView(category: .animal)
                     .tag(Category.animal)

@@ -89,9 +89,6 @@ struct ContentView: View {
             
             NavigationStack(path: $path) {
                 VStack {
-                    NavigationLink("", value: Selection.dayList)
-                    NavigationLink("", value: Selection.calendar)
-                    
                     Spacer()
                     
                     VStack {

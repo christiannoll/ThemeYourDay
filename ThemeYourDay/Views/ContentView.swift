@@ -176,7 +176,7 @@ struct ContentView: View {
                                         .foregroundColor(getCalendarForegroundColor(day))
                                 )
                                 .overlay(
-                                    Circle().stroke(.white, lineWidth: modelData.isToday(day: day) ? 1 : 0).padding(4)
+                                    Circle().stroke(getCalendarBackgroundColor(day), lineWidth: modelData.isToday(day: day) ? 1 : 0).padding(-4)
                                 )
                         }
                     }

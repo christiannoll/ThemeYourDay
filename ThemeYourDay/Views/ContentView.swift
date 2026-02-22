@@ -1,39 +1,6 @@
 import SwiftUI
 import SwiftData
 
-@Observable
-class Tools {
-    
-    enum ToolType {
-        case None, Foreground, Background, Textformat
-    }
-    
-    var visibleTool = ToolType.None
-    var canvasVisible = false
-    var settingsVisible = false
-    
-    var saveThemeAsImage: @MainActor () -> Void
-    var shareThemeAsImage: @MainActor () -> Void
-    
-    init(saveTheme: @escaping () -> Void, shareTheme: @escaping () -> Void) {
-        saveThemeAsImage = saveTheme
-        shareThemeAsImage = shareTheme
-    }
-    
-    static func showShareSheet(fileName: String) {
-        let file = FileManager.sharedContainerURL().appendingPathComponent(fileName)
-        let url = NSURL.fileURL(withPath: file.path)
-        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        let keyWindow = UIApplication.shared.connectedScenes
-                .filter({$0.activationState == .foregroundActive})
-                .map({$0 as? UIWindowScene})
-                .compactMap({$0})
-                .first?.windows
-                .filter({$0.isKeyWindow}).first
-        keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
-    }
-}
-
 struct ContentView: View {
     
     private enum Selection {
@@ -71,177 +38,167 @@ struct ContentView: View {
     }
     
     var body: some View {
-        /*NavigationSplitView(preferredCompactColumn: $preferredColumn) {
-            DayList()
-        } detail: {*/
-            let dragGesture = DragGesture()
-                .onChanged { gesture in
-                    if gesture.translation.width < 50 {
-                        offset = gesture.translation
-                    }
+        let dragGesture = DragGesture()
+            .onChanged { gesture in
+                if gesture.translation.width < 50 {
+                    offset = gesture.translation
                 }
-                .onEnded { _ in
-                    if abs(offset.height) > 100 {
-                        tools.visibleTool = .None
-                    }
-                    offset = .zero
+            }
+            .onEnded { _ in
+                if abs(offset.height) > 100 {
+                    tools.visibleTool = .None
                 }
-            
-            NavigationStack(path: $path) {
-                VStack {
-                    Spacer()
-                    
-                    VStack {
-                        if tools.canvasVisible {
-                            CanvasView(toolPickerIsActive: $tools.canvasVisible)
-                        }
-                        else {
-                            CarouselView()
-                        }
-                    }
-                    .frame(maxHeight: getHeight())
-                    .padding(.horizontal, 5)
+                offset = .zero
+            }
 
+        NavigationStack(path: $path) {
+            VStack {
+                Spacer()
+
+                VStack {
+                    if tools.canvasVisible {
+                        CanvasView(toolPickerIsActive: $tools.canvasVisible)
+                    }
+                    else {
+                        CarouselView()
+                    }
+                }
+                .frame(maxHeight: getHeight())
+                .padding(.horizontal, 5)
+
+                Spacer()
+
+                VStack {
+                    if tools.visibleTool == .Textformat {
+                        VStack {
+                            Spacer()
+                            TextAlignmentView()
+                                .padding([.leading, .trailing], 30)
+                                .padding(.bottom, 15)
+                            FontSizeView()
+                                .padding([.leading, .trailing], 30)
+                                .padding(.bottom, 15)
+                        }
+                    }
+
+                    if tools.visibleTool == .Foreground {
+                        VStack {
+                            Spacer()
+                            if let mySettings = settings.first {
+                                ColorStripView(isBackground: false, colors: mySettings.fgColors, saveColorAction: colorStripMV.saveFgColor)
+                                    .padding()
+                            }
+                        }
+                    }
+
+                    if tools.visibleTool == .Background {
+                        VStack {
+                            Spacer()
+                            if let mySettings = settings.first {
+                                ColorStripView(isBackground: true, colors: mySettings.bgColors, saveColorAction: colorStripMV.saveBgColor)
+                                    .padding()
+                            }
+                        }
+                    }
+                }
+                .offset(y: offset.height)
+                .animation(.interactiveSpring(), value: offset)
+                .simultaneousGesture(dragGesture)
+                .sheet(isPresented: $tools.settingsVisible,
+                       onDismiss: {  },
+                       content: { SettingsView() })
+                .frame(maxHeight: 80)
+
+                ToolBarView()
+                    .ignoresSafeArea()
+                    .environment(tools)
+
+            }
+            .onChange(of: modelData.selectedIndex) {
+                preferredColumn =
+                NavigationSplitViewColumn.detail
+            }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .navigationDestination(for: Selection.self) { selection in
+                switch selection {
+                case .dayList:
+                    DayList()
+                case .calendar:
+                    CalendarView(interval: monthly, nextMonth: incrementMonthOffset, previousMoth: decrementMonthOffset) { date in
+                        let day = findDay(date)
+                        Text("30")
+                            .hidden()
+                            .padding(8)
+                            .background(getCalendarBackgroundColor(day))
+                            .clipShape(Circle())
+                            .padding(.vertical, 4)
+                            .overlay(
+                                Text(String(self.calendar.component(.day, from: date)))
+                                    .foregroundColor(getCalendarForegroundColor(day))
+                            )
+                            .overlay(
+                                Circle().stroke(getCalendarBackgroundColor(day), lineWidth: modelData.isToday(day: day) ? 1 : 0).padding(-4)
+                            )
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { path.append(.dayList) }) {
+                        Image(systemName: "list.bullet")
+                    }.padding()
+
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { path.append(.calendar) }) {
+                        Image(systemName: "calendar")
+                    }.padding()
+
+                }
+                ToolbarItemGroup(placement: .keyboard) {
+                    HStack(spacing: 20) {
+                        Button { stickerViewShown = true
+                        } label: {
+                            VStack {
+                                Image(systemName: "eyes")
+                                Text("Stickers")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        Button { snippetViewShown = true
+                        } label : {
+                            VStack {
+                                Image(systemName: "text.quote")
+                                Text("Snippets")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 20)
                     Spacer()
-                    
-                    VStack {
-                        if tools.visibleTool == .Textformat {
-                            VStack {
-                                Spacer()
-                                TextAlignmentView()
-                                    .padding([.leading, .trailing], 30)
-                                    .padding(.bottom, 15)
-                                FontSizeView()
-                                    .padding([.leading, .trailing], 30)
-                                    .padding(.bottom, 15)
-                            }
-                        }
-                        
-                        if tools.visibleTool == .Foreground {
-                            VStack {
-                                Spacer()
-                                if let mySettings = settings.first {
-                                    ColorStripView(isBackground: false, colors: mySettings.fgColors, saveColorAction: colorStripMV.saveFgColor)
-                                        .padding()
-                                }
-                            }
-                        }
-                        
-                        if tools.visibleTool == .Background {
-                            VStack {
-                                Spacer()
-                                if let mySettings = settings.first {
-                                    ColorStripView(isBackground: true, colors: mySettings.bgColors, saveColorAction: colorStripMV.saveBgColor)
-                                        .padding()
-                                }
-                            }
-                        }
-                    }
-                    .offset(y: offset.height)
-                    .animation(.interactiveSpring(), value: offset)
-                    .simultaneousGesture(dragGesture)
-                    .sheet(isPresented: $tools.settingsVisible,
-                           onDismiss: {  },
-                           content: { SettingsView() })
-                    .frame(maxHeight: 80)
-                    
-                    ToolBarView()
-                        .ignoresSafeArea()
-                        .environment(tools)
-                    
-                }
-                .onChange(of: modelData.selectedIndex) {
-                    preferredColumn =
-                        NavigationSplitViewColumn.detail
-                }
-                .ignoresSafeArea(.keyboard, edges: .bottom)
-                .navigationDestination(for: Selection.self) { selection in
-                    switch selection {
-                    case .dayList:
-                        DayList()
-                    case .calendar:
-                        CalendarView(interval: monthly, nextMonth: incrementMonthOffset, previousMoth: decrementMonthOffset) { date in
-                            let day = findDay(date)//days.first { $0.id.noon == date.noon }
-                            Text("30")
-                                .hidden()
-                                .padding(8)
-                                .background(getCalendarBackgroundColor(day))
-                                .clipShape(Circle())
-                                .padding(.vertical, 4)
-                                .overlay(
-                                    Text(String(self.calendar.component(.day, from: date)))
-                                        .foregroundColor(getCalendarForegroundColor(day))
-                                )
-                                .overlay(
-                                    Circle().stroke(getCalendarBackgroundColor(day), lineWidth: modelData.isToday(day: day) ? 1 : 0).padding(-4)
-                                )
-                        }
-                    }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: { path.append(.dayList) }) {
-                            Image(systemName: "list.bullet")
-                        }.padding()
-                        
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: { path.append(.calendar) }) {
-                            Image(systemName: "calendar")
-                        }.padding()
-                        
-                    }
-                    ToolbarItemGroup(placement: .keyboard) {
-                        HStack(spacing: 20) {
-                            Button { stickerViewShown = true
-                            } label: {
-                                VStack {
-                                    Image(systemName: "eyes")
-                                    Text("Stickers")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                            Button { snippetViewShown = true
-                            } label : {
-                                VStack {
-                                    Image(systemName: "text.quote")
-                                    Text("Snippets")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                        }
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 20)
-                        Spacer()
-                    }
                 }
             }
-            .environment(modelData)
-            .onAppear {
-                tools.saveThemeAsImage = saveThemeInAlbum
-                tools.shareThemeAsImage = shareTheme
-                
-                for (index, day) in days.enumerated() {
-                    ModelData.indexCache[day.id.noon] = index
-                }
+        }
+        .environment(modelData)
+        .onAppear {
+            tools.saveThemeAsImage = saveThemeInAlbum
+            tools.shareThemeAsImage = shareTheme
+
+            for (index, day) in days.enumerated() {
+                ModelData.indexCache[day.id.noon] = index
             }
-            .sheet(isPresented: $stickerViewShown) {
-                StickerView()
-                    .presentationDetents([.fraction(0.3), .medium])
-            }
-            .sheet(isPresented: $snippetViewShown) {
-                SnippetsOverview()
-                    .presentationDetents([.fraction(0.3), .medium])
-                //                .safeAreaInset(edge: .bottom, alignment: .center, spacing: 0) {
-                //                    Color.clear
-                //                        .frame(height: 10)
-                //                        .background(.background)
-                //                }
-            }
-        /*}
-        .navigationSplitViewStyle(.balanced)*/
+        }
+        .sheet(isPresented: $stickerViewShown) {
+            StickerView()
+                .presentationDetents([.fraction(0.3), .medium])
+        }
+        .sheet(isPresented: $snippetViewShown) {
+            SnippetsOverview()
+                .presentationDetents([.fraction(0.3), .medium])
+        }
     }
     
     func incrementMonthOffset() {
@@ -314,10 +271,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environment(ModelData())
-    }
+#Preview {
+    ContentView()
+        .environment(ModelData())
 }
 

@@ -10,6 +10,7 @@
 		D602C66227F88E70005A1E11 /* FontSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602C66127F88E70005A1E11 /* FontSizeView.swift */; };
 		D602FE0F298FBDD800B34277 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602FE0E298FBDD800B34277 /* NotificationSettingsView.swift */; };
 		D602FE11298FC01B00B34277 /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602FE10298FC01B00B34277 /* NotificationSettingsViewModel.swift */; };
+		D6043C362F4B954800CE6DD3 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6043C352F4B954400CE6DD3 /* Tools.swift */; };
 		D6104845280206840020D7BA /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6104844280206840020D7BA /* CanvasView.swift */; };
 		D61B2D7D29C5A58F009AA4ED /* SnippetsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B2D7C29C5A58F009AA4ED /* SnippetsItemView.swift */; };
 		D62979522626256800163ACF /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62979512626256800163ACF /* DayListCell.swift */; };
@@ -112,6 +113,7 @@
 		D602C66127F88E70005A1E11 /* FontSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizeView.swift; sourceTree = "<group>"; };
 		D602FE0E298FBDD800B34277 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		D602FE10298FC01B00B34277 /* NotificationSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewModel.swift; sourceTree = "<group>"; };
+		D6043C352F4B954400CE6DD3 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		D6104844280206840020D7BA /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		D61B2D7C29C5A58F009AA4ED /* SnippetsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetsItemView.swift; sourceTree = "<group>"; };
 		D62979512626256800163ACF /* DayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		D691CF2B261B3521005FAAC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6043C352F4B954400CE6DD3 /* Tools.swift */,
 				D63EE6F9262B05DB008699DF /* CalendarView.swift */,
 				D6104844280206840020D7BA /* CanvasView.swift */,
 				D686FE5626C5904A0070D238 /* CarouselView.swift */,
@@ -597,6 +600,7 @@
 				D6BF90C928561A5D00B9300E /* TextAlignmentView.swift in Sources */,
 				D6DDD277261A19C800FD1AA5 /* ContentView.swift in Sources */,
 				D63EE6FA262B05DB008699DF /* CalendarView.swift in Sources */,
+				D6043C362F4B954800CE6DD3 /* Tools.swift in Sources */,
 				D6D48FF02676424800101EC3 /* Settings.swift in Sources */,
 				D663B5DE29E5B65F00B6388E /* StickerCategoryView.swift in Sources */,
 				D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */,

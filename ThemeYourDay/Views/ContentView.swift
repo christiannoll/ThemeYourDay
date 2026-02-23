@@ -263,11 +263,11 @@ struct ContentView: View {
     }
     
     private func getCalendarBackgroundColor(_ day: Day?) -> Color {
-        day != nil ? day!.bgColor.color : Color.blue
+        day?.bgColor.color ?? Color.blue
     }
     
     private func getCalendarForegroundColor(_ day: Day?) -> Color {
-        day != nil ? day!.fgColor.color : Color.white
+        day?.fgColor.color ?? Color.white
     }
 }
 

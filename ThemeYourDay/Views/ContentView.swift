@@ -103,7 +103,7 @@ struct ContentView: View {
                 .sheet(isPresented: $tools.settingsVisible,
                        onDismiss: {  },
                        content: { SettingsView() })
-                .frame(maxHeight: 80)
+                .frame(maxHeight: isLandscape ? 0 : 80)
 
                 ToolBarView()
                     .ignoresSafeArea()
@@ -196,7 +196,11 @@ struct ContentView: View {
                 .presentationDetents([.fraction(0.3), .medium])
         }
     }
-    
+
+    var isLandscape: Bool {
+        verticalSizeClass == .compact
+    }
+
     func incrementMonthOffset() {
         monthOffset += 1
         if let mySettings = settings.first {
@@ -218,17 +222,18 @@ struct ContentView: View {
     }
     
     static func getHeight(_ horizontalSizeClass: UserInterfaceSizeClass?,
-                          _ verticalSizeClass: UserInterfaceSizeClass?) -> CGFloat {
+                   _ verticalSizeClass: UserInterfaceSizeClass?,
+                   _ landscape: Bool) -> CGFloat {
         if verticalSizeClass == .regular && horizontalSizeClass == .regular {
             return 500
         }
-        return 300
+        return landscape ? 200 : 300
     }
     
     private func getHeight() -> CGFloat {
-        ContentView.getHeight(horizontalSizeClass, verticalSizeClass) + 76
+        ContentView.getHeight(horizontalSizeClass, verticalSizeClass, isLandscape) + 76
     }
-    
+
     private func findDay(_ date: Date) -> Day? {
         if let index = ModelData.indexCache[date.noon] {
             if days.count > index {

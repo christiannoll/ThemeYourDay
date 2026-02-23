@@ -52,7 +52,11 @@ struct DayView: View {
         .padding()
         .overlay(starOverlay, alignment: .topTrailing)
     }
-    
+
+    var isLandscape: Bool {
+        verticalSizeClass == .compact
+    }
+
     private func loadPngImage() -> UIImage {
         do {
             let data = try Data(contentsOf: modelData.getPngImageFilename(date: day.id), options: [.mappedIfSafe, .uncached])
@@ -84,7 +88,7 @@ struct DayView: View {
     }
     
     private func getHeight() -> CGFloat {
-        ContentView.getHeight(horizontalSizeClass, verticalSizeClass)
+        ContentView.getHeight(horizontalSizeClass, verticalSizeClass, isLandscape)
     }
 }
 

@@ -5,14 +5,16 @@ struct CarouselView: View {
 
     @Environment(ModelData.self) var modelData
     @Query(sort: [SortDescriptor(\Day.id)]) var days: [Day]
- 
+
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+
     var body: some View {
         ScrollViewReader { value in
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(Array(days.enumerated()), id: \.offset) { idx, day in
                         DayView(day: day)
-                            .frame(width: .screenWidth - 10)
+                            .frame(width: .screenWidth - (isLandscape ? 140 : 10))
                             .id(idx)
                             .onTapGesture() {
                                 withAnimation {
@@ -38,6 +40,10 @@ struct CarouselView: View {
                 }
             }
         }
+    }
+
+    var isLandscape: Bool {
+        verticalSizeClass == .compact
     }
 
     private func selectToday() {

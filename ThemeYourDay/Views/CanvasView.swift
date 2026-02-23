@@ -75,9 +75,13 @@ struct CanvasView: View {
         .cornerRadius(25) 
         .padding()
     }
-    
+
+    var isLandscape: Bool {
+        verticalSizeClass == .compact
+    }
+
     private func getHeight() -> CGFloat {
-        ContentView.getHeight(horizontalSizeClass, verticalSizeClass)
+        ContentView.getHeight(horizontalSizeClass, verticalSizeClass, isLandscape)
     }
     
     @ViewBuilder

@@ -33,10 +33,6 @@ struct ContentView: View {
         return DateInterval(start: startDate!, end: endDate!)
     }
     
-    init() {
-        UITextView.appearance().backgroundColor = .clear
-    }
-    
     var body: some View {
         let dragGesture = DragGesture()
             .onChanged { gesture in
@@ -234,7 +230,6 @@ struct ContentView: View {
     }
     
     private func findDay(_ date: Date) -> Day? {
-        //print(date)
         if let index = ModelData.indexCache[date.noon] {
             if days.count > index {
                 return days[index]

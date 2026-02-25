@@ -21,9 +21,7 @@ struct ContentView: View {
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-    
-    @State private var preferredColumn = NavigationSplitViewColumn.detail
-    
+
     @Query(sort: [SortDescriptor(\Day.id)]) private var days: [Day]
     @Query() var settings: [Settings]
     
@@ -109,10 +107,6 @@ struct ContentView: View {
                     .ignoresSafeArea()
                     .environment(tools)
 
-            }
-            .onChange(of: modelData.selectedIndex) {
-                preferredColumn =
-                NavigationSplitViewColumn.detail
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationDestination(for: Selection.self) { selection in
@@ -227,7 +221,7 @@ struct ContentView: View {
         if verticalSizeClass == .regular && horizontalSizeClass == .regular {
             return 500
         }
-        return landscape ? 200 : 300
+        return landscape ? 180 : 300
     }
     
     private func getHeight() -> CGFloat {

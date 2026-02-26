@@ -28,8 +28,6 @@ struct StickerHeaderView: View {
     }
 }
 
-struct StickerHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        StickerHeaderView(category: .constant(.animal))
-    }
+#Preview {
+    StickerHeaderView(category: .constant(.animal))
 }

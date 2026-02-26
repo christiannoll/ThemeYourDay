@@ -70,8 +70,6 @@ struct WeekSettingsView: View {
     }
 }
 
-struct WeekColorView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeekSettingsView(weekSettingsType: .bgcolor)
-    }
+#Preview {
+    WeekSettingsView(weekSettingsType: .bgcolor)
 }

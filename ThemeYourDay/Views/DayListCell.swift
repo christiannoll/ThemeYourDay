@@ -60,8 +60,6 @@ struct DayListCell: View {
     }
 }
 
-struct DayListCell_Previews: PreviewProvider {
-    static var previews: some View {
-        DayListCell(day: Day(id: Date(), text: "Today", fgColor: DayColor()), isToday: false)
-    }
+#Preview {
+    DayListCell(day: Day(id: Date(), text: "Today", fgColor: DayColor()), isToday: false)
 }

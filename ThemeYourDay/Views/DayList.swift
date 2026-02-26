@@ -78,9 +78,7 @@ struct DayList: View {
     }
 }
 
-struct DayList_Previews: PreviewProvider {
-    static var previews: some View {
-        DayList()
-            .environment(ModelData())
-    }
+#Preview {
+    DayList()
+        .environment(ModelData())
 }

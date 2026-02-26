@@ -26,8 +26,6 @@ struct FontSizeView: View {
     }
 }
 
-struct FontSizeView_Previews: PreviewProvider {
-    static var previews: some View {
-        FontSizeView()
-    }
+#Preview {
+    FontSizeView()
 }

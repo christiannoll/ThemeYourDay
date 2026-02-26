@@ -20,8 +20,6 @@ struct SnippetsOverview: View {
     }
 }
 
-struct SnippetsOverview_Previews: PreviewProvider {
-    static var previews: some View {
-        SnippetsOverview()
-    }
+#Preview {
+    SnippetsOverview()
 }

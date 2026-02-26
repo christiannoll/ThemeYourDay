@@ -26,8 +26,6 @@ struct TextAlignmentView: View {
     }
 }
 
-struct TextAlignmentView_Previews: PreviewProvider {
-    static var previews: some View {
-        TextAlignmentView()
-    }
+#Preview {
+    TextAlignmentView()
 }

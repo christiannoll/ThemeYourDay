@@ -51,12 +51,7 @@ struct ColorStripView: View {
     }
 }
 
-struct ColorStripView_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorStripView(isBackground: true, colors: [DayColor](), saveColorAction:saveColor(_:_:_:))
-            .environment(ModelData())
-    }
-    
-    static func saveColor(_ color: Color, _ modelData: ModelData, _ settings: Settings?) {
-    }
+#Preview {
+    ColorStripView(isBackground: true, colors: [DayColor](), saveColorAction: {_,_,_ in })
+        .environment(ModelData())
 }

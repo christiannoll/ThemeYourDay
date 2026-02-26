@@ -167,8 +167,6 @@ private extension MyCanvas {
     }
 }
 
-struct CanvasView_Previews: PreviewProvider {
-    static var previews: some View {
-        CanvasView(toolPickerIsActive: .constant(true))
-    }
+#Preview {
+    CanvasView(toolPickerIsActive: .constant(true))
 }

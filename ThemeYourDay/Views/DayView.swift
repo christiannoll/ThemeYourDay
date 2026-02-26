@@ -145,9 +145,7 @@ struct StickerOverlay: ViewModifier {
     }
 }
 
-struct DayView_Previews: PreviewProvider {
-    static var previews: some View {
-        DayView(day: Day(id: Date().noon, text: "Today", fgColor: DayColor()))
-            .environment(ModelData())
-    }
+#Preview {
+    DayView(day: Day(id: Date().noon, text: "Today", fgColor: DayColor()))
+        .environment(ModelData())
 }

@@ -24,8 +24,6 @@ struct StickerView: View {
     }
 }
 
-struct StickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        StickerView()
-    }
+#Preview {
+    StickerView()
 }

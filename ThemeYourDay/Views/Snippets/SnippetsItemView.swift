@@ -32,8 +32,6 @@ struct SnippetsItemView: View {
     }
 }
 
-struct SnippetsItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        SnippetsItemView(snippet: Snippet())
-    }
+#Preview {
+    SnippetsItemView(snippet: Snippet())
 }

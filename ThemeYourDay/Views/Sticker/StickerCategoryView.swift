@@ -31,8 +31,6 @@ struct StickerCategoryView: View {
     }
 }
 
-struct StickerCategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        StickerCategoryView(category: .animal)
-    }
+#Preview {
+    StickerCategoryView(category: .animal)
 }

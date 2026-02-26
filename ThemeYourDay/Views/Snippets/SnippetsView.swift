@@ -25,8 +25,6 @@ struct SnippetsView: View {
     }
 }
 
-struct SnippetView_Previews: PreviewProvider {
-    static var previews: some View {
-        SnippetsView(category: .philosophy)
-    }
+#Preview {
+    SnippetsView(category: .philosophy)
 }

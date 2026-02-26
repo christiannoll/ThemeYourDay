@@ -28,8 +28,6 @@ struct DayTextView: View {
     }
 }
 
-struct DayTextView_Previews: PreviewProvider {
-    static var previews: some View {
-        DayTextView(dayText: "New Day", weekday: "Monday", index: 0, save: {_,_ in })
-    }
+#Preview {
+    DayTextView(dayText: "New Day", weekday: "Monday", index: 0, save: {_,_ in })
 }

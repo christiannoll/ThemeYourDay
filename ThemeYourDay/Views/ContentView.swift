@@ -134,13 +134,13 @@ struct ContentView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button(action: { path.append(.dayList) }) {
                         Image(systemName: "list.bullet")
                     }.padding()
 
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button(action: { path.append(.calendar) }) {
                         Image(systemName: "calendar")
                     }.padding()

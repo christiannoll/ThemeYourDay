@@ -102,11 +102,12 @@ struct ContentView: View {
                        onDismiss: {  },
                        content: { SettingsView() })
                 .frame(maxHeight: isLandscape ? 0 : 80)
-
+            }
+            .safeAreaInset(edge: .bottom) {
                 ToolBarView()
-                    .ignoresSafeArea()
                     .environment(tools)
-
+                    .padding(12)
+                    .glassEffect(.regular.interactive())
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationDestination(for: Selection.self) { selection in

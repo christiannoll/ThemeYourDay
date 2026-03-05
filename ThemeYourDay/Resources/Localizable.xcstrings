@@ -34,7 +34,14 @@
       }
     },
     "Appearance" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erscheinungsbild"
+          }
+        }
+      }
     },
     "ApplyToToday" : {
       "localizations" : {
@@ -116,6 +123,23 @@
         }
       }
     },
+    "Dark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
     "day text" : {
       "localizations" : {
         "de" : {
@@ -149,7 +173,20 @@
       }
     },
     "Design" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erscheinungsbild"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
     },
     "Done" : {
       "localizations" : {
@@ -279,6 +316,23 @@
         }
       }
     },
+    "Light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hell"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
     "Medium" : {
       "localizations" : {
         "de" : {
@@ -296,7 +350,14 @@
       }
     },
     "menu" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "menu"
+          }
+        }
+      }
     },
     "Notification" : {
       "localizations" : {
@@ -583,6 +644,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stickers"
+          }
+        }
+      }
+    },
+    "System" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
           }
         }
       }

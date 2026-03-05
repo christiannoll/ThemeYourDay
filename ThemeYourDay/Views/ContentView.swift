@@ -22,6 +22,9 @@ struct ContentView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
+    @AppStorage("appearance") private var appearance: Appearance = .system
+    @Environment(\.colorScheme) private var systemColorScheme
+
     @Query(sort: [SortDescriptor(\Day.id)]) private var days: [Day]
     @Query() var settings: [Settings]
     
@@ -100,7 +103,10 @@ struct ContentView: View {
                 .simultaneousGesture(dragGesture)
                 .sheet(isPresented: $tools.settingsVisible,
                        onDismiss: {  },
-                       content: { SettingsView() })
+                       content: {
+                    SettingsView()
+                        .preferredColorScheme(appearance.resolved(with: systemColorScheme))
+                })
                 .frame(maxHeight: isLandscape ? 0 : 80)
             }
             .safeAreaInset(edge: .bottom) {

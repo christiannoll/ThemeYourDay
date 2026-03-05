@@ -13,6 +13,9 @@ struct SettingsView: View {
                     NavigationLink("ForegroundColors", destination: WeekSettingsView(weekSettingsType: .fgcolor))
                     NavigationLink("Texts", destination: WeekSettingsView(weekSettingsType: .text))
                 }
+                Section("Design") {
+                    AppearancePicker()
+                }
                 NotificationSettingsView()
                 Text("App-Version: \(Bundle.main.versionNumberWithBuild ?? "N/A")")
             }

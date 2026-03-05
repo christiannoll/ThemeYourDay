@@ -33,6 +33,9 @@
         }
       }
     },
+    "Appearance" : {
+
+    },
     "ApplyToToday" : {
       "localizations" : {
         "de" : {
@@ -144,6 +147,9 @@
           }
         }
       }
+    },
+    "Design" : {
+
     },
     "Done" : {
       "localizations" : {

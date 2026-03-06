@@ -3,7 +3,7 @@ import SwiftData
 
 struct NotificationSettingsView: View {
     
-    @StateObject private var viewModel = ViewModel()
+    @State private var viewModel = ViewModel()
     
     @Query() var settings: [Settings]
     

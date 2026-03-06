@@ -24,50 +24,52 @@ struct NotificationSettingsView: View {
     }
     
     var body: some View {
-        Section(header: Text("Notification")) {
-            HStack {
-                Text("NotificationStatus")
-                Spacer()
-                Text(viewModel.currentStatus)
-                    .font(.headline)
-            }
-            if viewModel.isAskPermissionButtonVisible {
-                Button {
-                    viewModel.askPermissions()
-                } label: {
-                    Text("AskUserPermissions")
-                        .frame(maxWidth: .infinity, alignment: .center)
+        Form {
+            Section(header: Text("Notification")) {
+                HStack {
+                    Text("NotificationStatus")
+                    Spacer()
+                    Text(viewModel.currentStatus)
+                        .font(.headline)
                 }
-            }
-            if viewModel.isOpenSettingsButtonVisible {
-                Button {
-                    viewModel.openSettings()
-                } label: {
-                    Text("OpenSystemSettings")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
-        }
-        Section {
-            if let mySettings = settings.first {
-                Toggle("NotificationEnabled",
-                       isOn: enabledBinding)
-                .disabled(!viewModel.isEnableNotificationToggleEnabled)
-                .onChange(of: mySettings.notificationSettings.notificationEnabledByUser) {
-                    if !mySettings.notificationSettings.notificationEnabledByUser {
-                        viewModel.cancelNotificationRequest()
+                if viewModel.isAskPermissionButtonVisible {
+                    Button {
+                        viewModel.askPermissions()
+                    } label: {
+                        Text("AskUserPermissions")
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
-                
-                if mySettings.notificationSettings.notificationEnabledByUser {
-                    DatePicker(
-                        "RemindAt",
-                        selection: remindAtBinding,
-                        displayedComponents: .hourAndMinute
-                    )
+                if viewModel.isOpenSettingsButtonVisible {
+                    Button {
+                        viewModel.openSettings()
+                    } label: {
+                        Text("OpenSystemSettings")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
+            }
+            Section {
+                if let mySettings = settings.first {
+                    Toggle("NotificationEnabled",
+                           isOn: enabledBinding)
                     .disabled(!viewModel.isEnableNotificationToggleEnabled)
-                    .onChange(of: mySettings.notificationSettings.remindAt) {
-                        viewModel.registerNotificationRequest(settings: mySettings)
+                    .onChange(of: mySettings.notificationSettings.notificationEnabledByUser) {
+                        if !mySettings.notificationSettings.notificationEnabledByUser {
+                            viewModel.cancelNotificationRequest()
+                        }
+                    }
+                    
+                    if mySettings.notificationSettings.notificationEnabledByUser {
+                        DatePicker(
+                            "RemindAt",
+                            selection: remindAtBinding,
+                            displayedComponents: .hourAndMinute
+                        )
+                        .disabled(!viewModel.isEnableNotificationToggleEnabled)
+                        .onChange(of: mySettings.notificationSettings.remindAt) {
+                            viewModel.registerNotificationRequest(settings: mySettings)
+                        }
                     }
                 }
             }

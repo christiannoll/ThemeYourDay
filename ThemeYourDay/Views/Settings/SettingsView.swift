@@ -16,8 +16,10 @@ struct SettingsView: View {
                 Section("Design") {
                     AppearancePicker()
                 }
-                NotificationSettingsView()
-                Text("App-Version: \(Bundle.main.versionNumberWithBuild ?? "N/A")")
+                Section {
+                    NavigationLink("Notification", destination: NotificationSettingsView())
+                }
+                Label("App-Version: \(Bundle.main.versionNumberWithBuild ?? "N/A")", systemImage: "info.circle")
             }
             .navigationBarTitle("Settings", displayMode: .automatic)
             .navigationBarItems(

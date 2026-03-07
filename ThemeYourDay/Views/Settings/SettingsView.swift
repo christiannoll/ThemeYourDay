@@ -8,18 +8,26 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text("ThemeTemplate")) {
-                    NavigationLink("BackgroundColors", destination: WeekSettingsView(weekSettingsType: .bgcolor))
-                    NavigationLink("ForegroundColors", destination: WeekSettingsView(weekSettingsType: .fgcolor))
-                    NavigationLink("Texts", destination: WeekSettingsView(weekSettingsType: .text))
+                Section("App") {
+                    NavigationLink {
+                        ThemeSettingsView()
+                    } label : {
+                        Label("ThemeTemplate", systemImage: "text.square.filled")
+                    }
+                    NavigationLink {
+                        NotificationSettingsView()
+                    } label : {
+                        Label("Notification", systemImage: "bell.badge")
+                    }
+                    NavigationLink {
+                        AppInfoView()
+                    } label : {
+                        Label("Über die App", systemImage: "info.circle")
+                    }
                 }
                 Section("Design") {
                     AppearancePicker()
                 }
-                Section {
-                    NavigationLink("Notification", destination: NotificationSettingsView())
-                }
-                Label("App-Version: \(Bundle.main.versionNumberWithBuild ?? "N/A")", systemImage: "info.circle")
             }
             .navigationBarTitle("Settings", displayMode: .automatic)
             .navigationBarItems(

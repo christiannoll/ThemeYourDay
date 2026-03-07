@@ -17,7 +17,14 @@
         }
       }
     },
+    "App" : {
+
+    },
+    "App Info" : {
+
+    },
     "App-Version: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -895,6 +902,9 @@
           }
         }
       }
+    },
+    "Über die App" : {
+
     },
     "Undo" : {
       "localizations" : {

@@ -12,6 +12,8 @@
 		D602FE11298FC01B00B34277 /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602FE10298FC01B00B34277 /* NotificationSettingsViewModel.swift */; };
 		D6043C362F4B954800CE6DD3 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6043C352F4B954400CE6DD3 /* Tools.swift */; };
 		D6104845280206840020D7BA /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6104844280206840020D7BA /* CanvasView.swift */; };
+		D61937D32F5C677E00013D28 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61937D22F5C677700013D28 /* AppInfoView.swift */; };
+		D61937D52F5C6B3F00013D28 /* ThemeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61937D42F5C6B3400013D28 /* ThemeSettingsView.swift */; };
 		D61B2D7D29C5A58F009AA4ED /* SnippetsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B2D7C29C5A58F009AA4ED /* SnippetsItemView.swift */; };
 		D62979522626256800163ACF /* DayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62979512626256800163ACF /* DayListCell.swift */; };
 		D62A813728C139FB00B5B2B9 /* WeekSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */; };
@@ -117,6 +119,8 @@
 		D602FE10298FC01B00B34277 /* NotificationSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewModel.swift; sourceTree = "<group>"; };
 		D6043C352F4B954400CE6DD3 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		D6104844280206840020D7BA /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		D61937D22F5C677700013D28 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
+		D61937D42F5C6B3400013D28 /* ThemeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsView.swift; sourceTree = "<group>"; };
 		D61B2D7C29C5A58F009AA4ED /* SnippetsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetsItemView.swift; sourceTree = "<group>"; };
 		D62979512626256800163ACF /* DayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayListCell.swift; sourceTree = "<group>"; };
 		D62A813628C139FB00B5B2B9 /* WeekSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSettingsView.swift; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 		D602FE0D298FBD4100B34277 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D61937D42F5C6B3400013D28 /* ThemeSettingsView.swift */,
+				D61937D22F5C677700013D28 /* AppInfoView.swift */,
 				D69F40122F59FA360067A428 /* AppearancePicker.swift */,
 				D69F400E2F59F9A50067A428 /* Appearance.swift */,
 				D678ABC628AECBC5003F27B4 /* SettingsView.swift */,
@@ -588,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D65B03F6299001A4009E6DEB /* SystemSettingsOpener.swift in Sources */,
+				D61937D52F5C6B3F00013D28 /* ThemeSettingsView.swift in Sources */,
 				D62A813728C139FB00B5B2B9 /* WeekSettingsView.swift in Sources */,
 				D6B55A232635A49300BC5556 /* FontPickerView.swift in Sources */,
 				D6E0BC812624AE170063E86A /* ToolBarView.swift in Sources */,
@@ -611,6 +618,7 @@
 				D6D48FF02676424800101EC3 /* Settings.swift in Sources */,
 				D663B5DE29E5B65F00B6388E /* StickerCategoryView.swift in Sources */,
 				D691CF3A261B399D005FAAC5 /* ModelData.swift in Sources */,
+				D61937D32F5C677E00013D28 /* AppInfoView.swift in Sources */,
 				D6D2CD4D2ACC82F7008ACB14 /* ThemeYourDayShortcuts.swift in Sources */,
 				D6D3146428C5178700F765A5 /* DayTextView.swift in Sources */,
 				D6410ED1297411A900862C9A /* VibrantDayWidgetView.swift in Sources */,

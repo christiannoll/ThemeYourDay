@@ -28,6 +28,7 @@
       }
     },
     "App Info" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -669,6 +670,9 @@
         }
       }
     },
+    "Support: www.themeyourday.net" : {
+
+    },
     "System" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -942,6 +946,9 @@
           }
         }
       }
+    },
+    "Version: %@" : {
+
     }
   },
   "version" : "1.0"

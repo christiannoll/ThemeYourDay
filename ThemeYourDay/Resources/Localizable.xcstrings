@@ -24,33 +24,11 @@
             "state" : "translated",
             "value" : "App"
           }
-        }
-      }
-    },
-    "App Info" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Info"
-          }
-        }
-      }
-    },
-    "App-Version: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App-Version: %@"
-          }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App-Version: %@"
+            "value" : "App"
           }
         }
       }
@@ -61,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erscheinungsbild"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
           }
         }
       }
@@ -378,6 +362,12 @@
             "state" : "translated",
             "value" : "menu"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "menu"
+          }
         }
       }
     },
@@ -671,7 +661,20 @@
       }
     },
     "Support: www.themeyourday.net" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support: www.themeyourday.net"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support: www.themeyourday.net"
+          }
+        }
+      }
     },
     "System" : {
       "extractionState" : "manual",
@@ -928,6 +931,12 @@
             "state" : "translated",
             "value" : "Über die App"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About the App"
+          }
         }
       }
     },
@@ -948,7 +957,20 @@
       }
     },
     "Version: %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version: %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version: %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

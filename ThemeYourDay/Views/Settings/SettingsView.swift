@@ -29,7 +29,7 @@ struct SettingsView: View {
                     AppearancePicker()
                 }
             }
-            .navigationBarTitle("Settings", displayMode: .automatic)
+            .navigationTitle("Settings")
             .navigationBarItems(
                 trailing: Button {
                     presentationMode.wrappedValue.dismiss()

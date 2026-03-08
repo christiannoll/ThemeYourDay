@@ -9,6 +9,6 @@ struct ThemeSettingsView: View {
                 NavigationLink("Texts", destination: WeekSettingsView(weekSettingsType: .text))
             }
         }
-        .navigationBarTitle("ThemeTemplate")
+        .navigationTitle("ThemeTemplate")
     }
 }

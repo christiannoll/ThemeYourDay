@@ -18,10 +18,24 @@
       }
     },
     "App" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App"
+          }
+        }
+      }
     },
     "App Info" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Info"
+          }
+        }
+      }
     },
     "App-Version: %@" : {
       "extractionState" : "stale",
@@ -876,13 +890,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Theme-Vorlage"
+            "value" : "Theme-Vorlagen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Theme template"
+            "value" : "Theme templates"
           }
         }
       }
@@ -904,7 +918,14 @@
       }
     },
     "Über die App" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über die App"
+          }
+        }
+      }
     },
     "Undo" : {
       "localizations" : {

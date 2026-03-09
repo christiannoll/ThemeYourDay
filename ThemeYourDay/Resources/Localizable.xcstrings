@@ -194,6 +194,9 @@
         }
       }
     },
+    "Die Nutzung der App ThemeYourDay unterliegt Apples Standard-EULA für Apps. Die in ThemeYourDay bereitgestellten Trinkgelder schalten keine zusätzlichen Inhalte in der App frei." : {
+
+    },
     "Done" : {
       "localizations" : {
         "de" : {
@@ -444,6 +447,9 @@
           }
         }
       }
+    },
+    "Nutzungsbedingungen" : {
+
     },
     "OpenSystemSettings" : {
       "localizations" : {

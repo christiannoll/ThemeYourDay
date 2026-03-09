@@ -20,6 +20,12 @@ struct AppInfoView: View {
                     Label("Impressum", systemImage: "scroll")
                         .foregroundStyle(.foreground)
                 }
+                NavigationLink {
+                    TermsOfUseView()
+                } label : {
+                    Label("Nutzungsbedingungen", systemImage: "checkmark.shield")
+                        .foregroundStyle(.foreground)
+                }
             }
         }
         .navigationTitle("App")

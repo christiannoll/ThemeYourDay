@@ -13,16 +13,19 @@ struct SettingsView: View {
                         ThemeSettingsView()
                     } label : {
                         Label("ThemeTemplate", systemImage: "text.square.filled")
+                            .foregroundStyle(.foreground)
                     }
                     NavigationLink {
                         NotificationSettingsView()
                     } label : {
                         Label("Notification", systemImage: "bell.badge")
+                            .foregroundStyle(.foreground)
                     }
                     NavigationLink {
                         AppInfoView()
                     } label : {
                         Label("Über die App", systemImage: "info.circle")
+                            .foregroundStyle(.foreground)
                     }
                 }
                 Section("Design") {

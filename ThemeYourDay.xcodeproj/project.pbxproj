@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -182,6 +182,10 @@
 		D6F6EA6327B6D0E9009D89E9 /* DayWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D671407C2F5F35F000D52848 /* Legal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Legal; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		D6D58B3D27B671A700473B81 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -278,6 +282,7 @@
 		D691CF2B261B3521005FAAC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D671407C2F5F35F000D52848 /* Legal */,
 				D6043C352F4B954400CE6DD3 /* Tools.swift */,
 				D63EE6F9262B05DB008699DF /* CalendarView.swift */,
 				D6104844280206840020D7BA /* CanvasView.swift */,
@@ -441,6 +446,9 @@
 			);
 			dependencies = (
 				D6D58B4D27B671A800473B81 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D671407C2F5F35F000D52848 /* Legal */,
 			);
 			name = ThemeYourDay;
 			productName = ThemeYourDay;

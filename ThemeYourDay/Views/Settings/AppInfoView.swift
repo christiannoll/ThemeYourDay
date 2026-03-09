@@ -14,6 +14,12 @@ struct AppInfoView: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                NavigationLink {
+                    ImprintView()
+                } label : {
+                    Label("Impressum", systemImage: "scroll")
+                        .foregroundStyle(.foreground)
+                }
             }
         }
         .navigationTitle("App")

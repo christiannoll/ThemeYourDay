@@ -30,7 +30,8 @@ struct WeekSettingsView: View {
                 }
             }
         }
-        .navigationBarTitle(title(), displayMode: .inline)
+        .navigationTitle(title())
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func weekdaySymbol(dayIndex: Int) -> String {

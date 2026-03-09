@@ -211,7 +211,20 @@
       }
     },
     "Email: webmaster (at) vnzn (punkt) de\nGitHub: [christiannoll](https://github.com/christiannoll/vnzn)\nMastodon: [@vnzn@mas.to](https://mas.to/@vnzn)" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email: webmaster (at) vnzn (punkt) de\nGitHub: [christiannoll](https://github.com/christiannoll/vnzn)\nMastodon: [@vnzn@mas.to](https://mas.to/@vnzn)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email: webmaster (at) vnzn (punkt) de\nGitHub: [christiannoll](https://github.com/christiannoll/vnzn)\nMastodon: [@vnzn@mas.to](https://mas.to/@vnzn)"
+          }
+        }
+      }
     },
     "ExportThemes" : {
       "localizations" : {
@@ -278,7 +291,14 @@
       }
     },
     "Impressum" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impressum"
+          }
+        }
+      }
     },
     "Large" : {
       "localizations" : {
@@ -963,7 +983,20 @@
       }
     },
     "v.n.z.n (Christian Noll)\nBautzner Straße 7b\n24837 Schleswig" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "v.n.z.n (Christian Noll)\nBautzner Straße 7b\n24837 Schleswig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "v.n.z.n (Christian Noll)\nBautzner Straße 7b\n24837 Schleswig"
+          }
+        }
+      }
     },
     "Version: %@" : {
       "localizations" : {

@@ -146,6 +146,9 @@
         }
       }
     },
+    "Datenschutzerklärung" : {
+
+    },
     "day text" : {
       "localizations" : {
         "de" : {
@@ -193,6 +196,9 @@
           }
         }
       }
+    },
+    "Die App ThemeYourDay sammelt oder verarbeitet keine persönlichen Daten seiner Benutzer." : {
+
     },
     "Die Nutzung der App ThemeYourDay unterliegt Apples Standard-EULA für Apps. Die in ThemeYourDay bereitgestellten Trinkgelder schalten keine zusätzlichen Inhalte in der App frei." : {
 

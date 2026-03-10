@@ -26,6 +26,12 @@ struct AppInfoView: View {
                     Label("Nutzungsbedingungen", systemImage: "checkmark.shield")
                         .foregroundStyle(.foreground)
                 }
+                NavigationLink {
+                    PrivacyView()
+                } label : {
+                    Label("Datenschutzerklärung", systemImage: "lock")
+                        .foregroundStyle(.foreground)
+                }
             }
         }
         .navigationTitle("App")

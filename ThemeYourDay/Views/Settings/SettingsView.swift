@@ -33,13 +33,13 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .navigationBarItems(
-                trailing: Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text("Done")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done", systemImage: "xmark") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
-            )
+            }
         }
     }
 }

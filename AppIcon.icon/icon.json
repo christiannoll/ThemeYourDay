@@ -4,8 +4,8 @@
     {
       "layers" : [
         {
-          "image-name" : "AppIconDark.png",
-          "name" : "AppIconDark"
+          "image-name" : "AppIconVerlauf.png",
+          "name" : "AppIconVerlauf"
         }
       ],
       "shadow" : {

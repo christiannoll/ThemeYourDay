@@ -147,7 +147,20 @@
       }
     },
     "Datenschutzerklärung" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzerklärung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
     },
     "day text" : {
       "localizations" : {
@@ -198,10 +211,36 @@
       }
     },
     "Die App ThemeYourDay sammelt oder verarbeitet keine persönlichen Daten seiner Benutzer." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die App ThemeYourDay sammelt oder verarbeitet keine persönlichen Daten seiner Benutzer."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ThemeYourDay app does not collect or process any personal data of its users."
+          }
+        }
+      }
     },
     "Die Nutzung der App ThemeYourDay unterliegt Apples Standard-EULA für Apps. Die in ThemeYourDay bereitgestellten Trinkgelder schalten keine zusätzlichen Inhalte in der App frei." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Nutzung der App ThemeYourDay unterliegt Apples Standard-EULA für Apps. Die in ThemeYourDay bereitgestellten Trinkgelder schalten keine zusätzlichen Inhalte in der App frei."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use of the ThemeYourDay app is subject to Apple's standard EULA for apps. Tips provided in ThemeYourDay do not unlock any additional content within the app."
+          }
+        }
+      }
     },
     "Done" : {
       "localizations" : {
@@ -305,6 +344,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impressum"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
           }
         }
       }
@@ -455,7 +500,20 @@
       }
     },
     "Nutzungsbedingungen" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        }
+      }
     },
     "OpenSystemSettings" : {
       "localizations" : {

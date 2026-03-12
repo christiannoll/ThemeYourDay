@@ -37,7 +37,6 @@ struct NotificationSettingsView: View {
                         viewModel.askPermissions()
                     } label: {
                         Text("AskUserPermissions")
-                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 if viewModel.isOpenSettingsButtonVisible {
@@ -45,7 +44,6 @@ struct NotificationSettingsView: View {
                         viewModel.openSettings()
                     } label: {
                         Text("OpenSystemSettings")
-                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
             }

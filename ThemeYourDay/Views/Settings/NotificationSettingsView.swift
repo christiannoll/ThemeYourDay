@@ -29,7 +29,7 @@ struct NotificationSettingsView: View {
                 HStack {
                     Text("NotificationStatus")
                     Spacer()
-                    Text(viewModel.currentStatus)
+                    Text(String(localized: String.LocalizationValue(viewModel.currentStatus)))
                         .font(.headline)
                 }
                 if viewModel.isAskPermissionButtonVisible {

@@ -81,6 +81,23 @@
         }
       }
     },
+    "Authorized" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zugelassen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authorized"
+          }
+        }
+      }
+    },
     "BackgroundColors" : {
       "localizations" : {
         "de" : {
@@ -194,6 +211,23 @@
         }
       }
     },
+    "Denied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgelehnt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denied"
+          }
+        }
+      }
+    },
     "Design" : {
       "localizations" : {
         "de" : {
@@ -270,6 +304,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Email: webmaster (at) vnzn (punkt) de\nGitHub: [christiannoll](https://github.com/christiannoll/vnzn)\nMastodon: [@vnzn@mas.to](https://mas.to/@vnzn)"
+          }
+        }
+      }
+    },
+    "Ephemeral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temporal"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ephemeral"
           }
         }
       }
@@ -451,6 +502,23 @@
         }
       }
     },
+    "Not Determined" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbestimmt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Determined"
+          }
+        }
+      }
+    },
     "Notification" : {
       "localizations" : {
         "de" : {
@@ -543,6 +611,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Philosophical texts"
+          }
+        }
+      }
+    },
+    "Provisional" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorläufig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provisional"
           }
         }
       }
@@ -1048,6 +1133,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Undo"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
           }
         }
       }

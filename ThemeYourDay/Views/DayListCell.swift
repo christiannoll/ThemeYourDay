@@ -25,11 +25,11 @@ struct DayListCell: View {
                 }
 
             VStack {
-                Text(getTrimmedText())
+                Text(trimmedText)
                     .foregroundColor(day.fgColor.color)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .lineLimit(1)
-                Text(getDate())
+                Text(formattedDate)
                     .foregroundColor(day.bgColor.invert())
             }
             .padding()
@@ -41,14 +41,14 @@ struct DayListCell: View {
         }
     }
     
-    private func getDate() -> String {
+    private var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         let dateString = formatter.string(from: day.id)
         return dateString
     }
     
-    private func getTrimmedText() -> String {
+    private var trimmedText: String {
         day.text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: .newlines).joined(separator: " ")
     }
     

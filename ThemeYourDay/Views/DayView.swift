@@ -15,7 +15,7 @@ struct DayView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text(getDate())
+            Text(formattedDate)
                 .background(.gray)
                 .foregroundColor(.white)
             Spacer()
@@ -78,7 +78,7 @@ struct DayView: View {
             }
     }
     
-    private func getDate() -> String {
+    private var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         let dateString = formatter.string(from: day.id)

@@ -22,7 +22,7 @@ struct DayColorView: View {
                 .padding(3)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(getColor(dayColor), lineWidth: 2)
+                        .stroke(strokeColor, lineWidth: 2)
                 )
             Text(weekday)
             Spacer()
@@ -35,11 +35,11 @@ struct DayColorView: View {
         }
     }
     
-    private func getColor( _ color: DayColor) -> Color {
-        if color.color == .white {
+    private var strokeColor: Color {
+        if dayColor.color == .white {
             return .gray
         }
-        return color.color
+        return dayColor.color
     }
 }
 

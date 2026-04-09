@@ -252,7 +252,11 @@ final class ModelData {
     }
     
     private static func loadSnippets() -> [Snippet] {
-        let snippets: [Snippet] = load("SnippetData", type: .bundle, createData: createSnipppets)
+        var fileName = "SnippetData"
+        if Locale.isEnglish {
+            fileName += "En"
+        }
+        let snippets: [Snippet] = load(fileName, type: .bundle, createData: createSnipppets)
         return snippets
     }
 }

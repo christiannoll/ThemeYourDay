@@ -12,6 +12,7 @@
 		D602FE11298FC01B00B34277 /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602FE10298FC01B00B34277 /* NotificationSettingsViewModel.swift */; };
 		D6043C362F4B954800CE6DD3 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6043C352F4B954400CE6DD3 /* Tools.swift */; };
 		D6104845280206840020D7BA /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6104844280206840020D7BA /* CanvasView.swift */; };
+		D6126A412F87F2DA0087436A /* SnippetDataEn.json in Resources */ = {isa = PBXBuildFile; fileRef = D6126A402F87F2DA0087436A /* SnippetDataEn.json */; };
 		D61937D32F5C677E00013D28 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61937D22F5C677700013D28 /* AppInfoView.swift */; };
 		D61937D52F5C6B3F00013D28 /* ThemeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61937D42F5C6B3400013D28 /* ThemeSettingsView.swift */; };
 		D61B2D7D29C5A58F009AA4ED /* SnippetsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B2D7C29C5A58F009AA4ED /* SnippetsItemView.swift */; };
@@ -119,6 +120,7 @@
 		D602FE10298FC01B00B34277 /* NotificationSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewModel.swift; sourceTree = "<group>"; };
 		D6043C352F4B954400CE6DD3 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		D6104844280206840020D7BA /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		D6126A402F87F2DA0087436A /* SnippetDataEn.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SnippetDataEn.json; sourceTree = "<group>"; };
 		D61937D22F5C677700013D28 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		D61937D42F5C6B3400013D28 /* ThemeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsView.swift; sourceTree = "<group>"; };
 		D61B2D7C29C5A58F009AA4ED /* SnippetsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetsItemView.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D6126A3A2F87F0DF0087436A /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
 		D671407C2F5F35F000D52848 /* Legal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Legal; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -270,6 +273,7 @@
 		D691CF27261B34C2005FAAC5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D6126A402F87F2DA0087436A /* SnippetDataEn.json */,
 				D691CF34261B37D8005FAAC5 /* DayData.json */,
 				D6463A832AD2A4B5002CD67F /* Localizable.xcstrings */,
 				D6D48FF12676434800101EC3 /* SettingsData.json */,
@@ -373,6 +377,7 @@
 		D6DDD273261A19C800FD1AA5 /* ThemeYourDay */ = {
 			isa = PBXGroup;
 			children = (
+				D6126A3A2F87F0DF0087436A /* Extensions */,
 				D6DDD278261A19C900FD1AA5 /* Assets.xcassets */,
 				D695B9642AC871F7007252E1 /* Common */,
 				D6DDD27D261A19C900FD1AA5 /* Info.plist */,
@@ -428,6 +433,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				D6126A3A2F87F0DF0087436A /* Extensions */,
+			);
 			name = DayWidgetExtension;
 			productName = DayWidgetExtension;
 			productReference = D6D58B4027B671A700473B81 /* DayWidgetExtension.appex */;
@@ -448,6 +456,7 @@
 				D6D58B4D27B671A800473B81 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				D6126A3A2F87F0DF0087436A /* Extensions */,
 				D671407C2F5F35F000D52848 /* Legal */,
 			);
 			name = ThemeYourDay;
@@ -554,6 +563,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6126A412F87F2DA0087436A /* SnippetDataEn.json in Resources */,
 				D6D48FF22676434800101EC3 /* SettingsData.json in Resources */,
 				D691CF35261B37D8005FAAC5 /* DayData.json in Resources */,
 				D6463A842AD2A4B5002CD67F /* Localizable.xcstrings in Resources */,

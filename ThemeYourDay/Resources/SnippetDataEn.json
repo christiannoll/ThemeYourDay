@@ -1,219 +1,218 @@
 [
     {
-        "text": "Das Glück deines Lebens hängt von der Beschaffenheit deiner Gedanken ab.",
+        "text": "The happiness of your life depends on the quality of your thoughts.",
         "author": "Marcus Aurelius",
         "category": "Philosophy",
         "textStyle": "Small"
     },
     {
-        "text": "Nur wer sein Ziel kennt, findet den Weg.",
-        "author": "Laotse",
+        "text": "Only those who know their goal can find the way.",
+        "author": "Laozi",
         "category": "Philosophy",
         "textStyle": "Medium"
     },
     {
-        "text": "Das Schwerste im Leben ist es, nicht zu kämpfen, wenn alles gegen einen kämpft.",
+        "text": "The hardest thing in life is not to fight when everything is fighting against you.",
         "author": "Franz Kafka",
         "category": "Philosophy",
         "textStyle": "Small"
     },
     {
-        "text": "Nichts auf der Welt ist so mächtig wie eine Idee, deren Zeit gekommen ist.",
+        "text": "Nothing in the world is as powerful as an idea whose time has come.",
         "author": "Victor Hugo",
         "category": "Philosophy",
         "textStyle": "Small"
     },
     {
-        "text": "Es ist nicht genug, zu wissen, man muss auch anwenden; es ist nicht genug, zu wollen, man muss auch tun.",
+        "text": "It is not enough to know; one must also apply. It is not enough to will; one must also act.",
         "author": "Johann Wolfgang von Goethe",
         "category": "Philosophy",
         "textStyle": "Small"
     },
     {
-        "text": "Der Mensch ist das Maß aller Dinge.",
+        "text": "Man is the measure of all things.",
         "author": "Protagoras",
         "category": "Philosophy",
         "textStyle": "Small"
     },
     {
-        "text": "Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.",
+        "text": "The limits of my language mean the limits of my world.",
         "author": "Ludwig Wittgenstein",
         "category": "Philosophy",
         "textStyle": "Small"
     },
     {
-        "text": "Der Zweck des Lebens ist es, glücklich zu sein.",
+        "text": "The purpose of life is to be happy.",
         "author": "Dalai Lama",
         "category": "Philosophy",
         "textStyle": "Small"
     },
     {
-        "text": "Carpe Diem - Nutze den Tag!",
-        "author": "Horaz",
+        "text": "Carpe diem - Seize the day!",
+        "author": "Horace",
         "category": "Latin",
         "textStyle": "Medium"
     },
     {
-        "text": "Tempus fugit - Die Zeit flieht!",
+        "text": "Tempus fugit - Time flies!",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Medium"
     },
     {
-        "text": "Ars longa, vita brevis - Die Kunst ist lang, das Leben kurz.",
+        "text": "Ars longa, vita brevis - Art is long, life is short.",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Small"
     },
     {
-        "text": "Memento mori - Bedenke, dass du sterblich bist.",
+        "text": "Memento mori - Remember that you are mortal.",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Medium"
     },
     {
-        "text": "Per aspera ad astra - Durch das Raue zu den Sternen.",
+        "text": "Per aspera ad astra - Through hardships to the stars.",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Small"
     },
     {
-        "text": "Ad astra per aspera - Zu den Sternen durch Schwierigkeiten.",
+        "text": "Ad astra per aspera - To the stars through difficulties.",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Small"
     },
     {
-        "text": "Dum spiro, spero - Solange ich atme, hoffe ich.",
+        "text": "Dum spiro, spero - While I breathe, I hope.",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Medium"
     },
     {
-        "text": "In vino veritas - Im Wein liegt die Wahrheit.",
+        "text": "In vino veritas - In wine, there is truth.",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Medium"
     },
     {
-        "text": "Sic transit gloria mundi - So vergeht der Ruhm der Welt.",
+        "text": "Sic transit gloria mundi - Thus passes the glory of the world.",
         "author": "Unknown",
         "category": "Latin",
         "textStyle": "Small"
     },
     {
-        "text": "Lebe jeden Tag, als wäre es dein letzter.",
+        "text": "Live every day as if it were your last.",
         "author": "Steve Jobs",
         "category": "LifeWisdom",
         "textStyle": "Medium"
     },
     {
-        "text": "Glück entsteht oft durch Aufmerksamkeit in kleinen Dingen, Unglück oft durch Vernachlässigung kleiner Dinge.",
+        "text": "Happiness often arises from attention to small things, unhappiness often from neglecting small things.",
         "author": "Wilhelm Busch",
         "category": "LifeWisdom",
         "textStyle": "Small"
     },
     {
-        "text": "Der Weg ist das Ziel.",
-        "author": "Konfuzius",
+        "text": "The journey is the destination.",
+        "author": "Confucius",
         "category": "LifeWisdom",
         "textStyle": "Medium"
     },
     {
-        "text": "Sei die Veränderung, die du in der Welt sehen möchtest.",
+        "text": "Be the change you wish to see in the world.",
         "author": "Mahatma Gandhi",
         "category": "LifeWisdom",
         "textStyle": "Medium"
     },
     {
-        "text": "Das Geheimnis des Erfolgs liegt darin, dass man dort arbeitet, wo andere aufhören zu träumen.",
+        "text": "The secret of success lies in working where others stop dreaming.",
         "author": "Thomas A. Edison",
         "category": "LifeWisdom",
         "textStyle": "Small"
     },
     {
-        "text": "Alles, was du in deinem Leben erreichen willst, beginnt mit dem Mut, es zu versuchen.",
+        "text": "Everything you want to achieve in life begins with the courage to try.",
         "author": "Mary Kay Ash",
         "category": "LifeWisdom",
         "textStyle": "Medium"
     },
     {
-        "text": "Zufriedenheit ist der Stein der Weisen, der alles in Gold verwandelt, was er berührt.",
+        "text": "Contentment is the philosopher's stone that turns everything it touches into gold.",
         "author": "Benjamin Franklin",
         "category": "LifeWisdom",
         "textStyle": "Medium"
     },
     {
-        "text": "Das Leben besteht nicht darin, gute Karten zu haben, sondern das Beste aus den schlechten Karten zu machen.",
+        "text": "Life is not about having good cards, but about playing a poor hand well.",
         "author": "Robert Louis Stevenson",
         "category": "LifeWisdom",
         "textStyle": "Small"
     },
     {
-        "text": "Sei du selbst; alle anderen sind bereits vergeben.",
+        "text": "Be yourself; everyone else is already taken.",
         "author": "Oscar Wilde",
         "category": "LifeWisdom",
         "textStyle": "Medium"
     },
     {
-        "text": "Lebe im Moment und genieße jeden Augenblick.",
+        "text": "Live in the moment and enjoy every second.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Medium"
     },
     {
-        "text": "Mach dir keine Sorgen über die Dinge, die du nicht kontrollieren kannst.",
+        "text": "Don't worry about things you can't control.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Small"
     },
     {
-        "text": "Das Leben ist zu kurz, um unglücklich zu sein.",
+        "text": "Life is too short to be unhappy.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Medium"
     },
     {
-        "text": "Lass los, was dich belastet, und konzentriere dich auf das, was dich glücklich macht.",
+        "text": "Let go of what weighs you down and focus on what makes you happy.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Small"
     },
     {
-        "text": "Glaube an dich selbst und an deine Fähigkeiten - du bist stärker, als du denkst.",
+        "text": "Believe in yourself and your abilities—you are stronger than you think.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Small"
     },
     {
-        "text": "Finde die Schönheit in allem, was du tust, und sei dankbar für das, was du hast.",
+        "text": "Find beauty in everything you do and be grateful for what you have.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Small"
     },
     {
-        "text": "Das Glück liegt in den kleinen Dingen - sei es ein Lächeln, eine Umarmung oder ein schöner Sonnenuntergang.",
+        "text": "Happiness lies in the little things—be it a smile, a hug, or a beautiful sunset.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Small"
     },
     {
-        "text": "Sei freundlich zu dir selbst und zu anderen - es kostet nichts, aber es kann viel bewirken.",
+        "text": "Be kind to yourself and others—it costs nothing but can mean everything.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Small"
     },
     {
-        "text": "Jeder Tag ist eine neue Chance, um das Leben zu genießen und etwas zu erreichen.",
+        "text": "Every day is a new opportunity to enjoy life and achieve something.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Small"
     },
     {
-        "text": "Glück ist das einzige, das sich verdoppelt, wenn wir es teilen.",
+        "text": "Happiness is the only thing that doubles when shared.",
         "author": "Unknown",
         "category": "Happiness",
         "textStyle": "Medium"
     }
 ]
-

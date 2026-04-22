@@ -3,7 +3,7 @@ import SwiftUI
 struct AppInfoView: View {
     var body: some View {
         Form {
-            Section("Version: \(AppVersionProvider.appVersion())") {
+            Section("Version \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))") {
                 Button {
                 } label: {
                     HStack {
@@ -38,11 +38,12 @@ struct AppInfoView: View {
     }
 }
 
-enum AppVersionProvider {
-    static func appVersion(in bundle: Bundle = .main) -> String {
-        guard let version = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else {
-            fatalError("CFBundleShortVersionString should not be missing from info dictionary")
-        }
-        return version
+extension Bundle {
+    var appVersion: String {
+        infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+    }
+
+    var buildNumber: String {
+        infoDictionary?["CFBundleVersion"] as? String ?? "?"
     }
 }

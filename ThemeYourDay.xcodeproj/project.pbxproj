@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 100;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -103,14 +103,12 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		D6D58B4F27B671A800473B81 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 				D6D58B4E27B671A800473B81 /* DayWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -185,40 +183,40 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D6126A3A2F87F0DF0087436A /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
-		D671407C2F5F35F000D52848 /* Legal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Legal; sourceTree = "<group>"; };
+		D6126A3A2F87F0DF0087436A /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D671407C2F5F35F000D52848 /* Legal */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Legal;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D6D58B3D27B671A700473B81 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D6D58B4527B671A700473B81 /* SwiftUI.framework in Frameworks */,
 				D6D58B4327B671A700473B81 /* WidgetKit.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD26E261A19C800FD1AA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD27F261A19C900FD1AA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD28A261A19C900FD1AA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -431,8 +429,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			fileSystemSynchronizedGroups = (
 				D6126A3A2F87F0DF0087436A /* Extensions */,
 			);
@@ -527,7 +523,6 @@
 				};
 			};
 			buildConfigurationList = D6DDD26C261A19C800FD1AA5 /* Build configuration list for PBXProject "ThemeYourDay" */;
-			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -536,6 +531,7 @@
 				Base,
 			);
 			mainGroup = D6DDD268261A19C800FD1AA5;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = D6DDD272261A19C800FD1AA5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -551,17 +547,14 @@
 /* Begin PBXResourcesBuildPhase section */
 		D6D58B3E27B671A700473B81 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D669016629BE0FB200D8CC1C /* Assets.xcassets in Resources */,
 				D6D58B4A27B671A800473B81 /* Assets.xcassets in Resources */,
 				D6506B8B2F38B334002C4BBB /* AppIcon.icon in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD26F261A19C800FD1AA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D6126A412F87F2DA0087436A /* SnippetDataEn.json in Resources */,
 				D6D48FF22676434800101EC3 /* SettingsData.json in Resources */,
@@ -573,30 +566,24 @@
 				D646EFAF29C248260058A103 /* StickerData.json in Resources */,
 				D6DDD279261A19C900FD1AA5 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD280261A19C900FD1AA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D6506B8D2F38B334002C4BBB /* AppIcon.icon in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD28B261A19C900FD1AA5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D6506B8E2F38B334002C4BBB /* AppIcon.icon in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D6D58B3C27B671A700473B81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D6410ED2297411A900862C9A /* VibrantDayWidgetView.swift in Sources */,
 				D6D58B4827B671A700473B81 /* DayWidget.swift in Sources */,
@@ -605,11 +592,9 @@
 				D6A7036327B687A0008B0F7B /* Day.swift in Sources */,
 				D6F6EA6527B6D484009D89E9 /* Settings.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD26D261A19C800FD1AA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D65B03F6299001A4009E6DEB /* SystemSettingsOpener.swift in Sources */,
 				D61937D52F5C6B3F00013D28 /* ThemeSettingsView.swift in Sources */,
@@ -654,23 +639,18 @@
 				D695B9662AC87220007252E1 /* BundleExtension.swift in Sources */,
 				D69F40132F59FA3E0067A428 /* AppearancePicker.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD27E261A19C900FD1AA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D6DDD287261A19C900FD1AA5 /* ThemeYourDayTests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D6DDD289261A19C900FD1AA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D6DDD292261A19C900FD1AA5 /* ThemeYourDayUITests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -693,7 +673,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		D6D58B5027B671A800473B81 /* Debug */ = {
+		D6D58B5027B671A800473B81 /* Debug configuration for PBXNativeTarget "DayWidgetExtension" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -722,7 +702,7 @@
 			};
 			name = Debug;
 		};
-		D6D58B5127B671A800473B81 /* Release */ = {
+		D6D58B5127B671A800473B81 /* Release configuration for PBXNativeTarget "DayWidgetExtension" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -751,7 +731,7 @@
 			};
 			name = Release;
 		};
-		D6DDD294261A19C900FD1AA5 /* Debug */ = {
+		D6DDD294261A19C900FD1AA5 /* Debug configuration for PBXProject "ThemeYourDay" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -819,7 +799,7 @@
 			};
 			name = Debug;
 		};
-		D6DDD295261A19C900FD1AA5 /* Release */ = {
+		D6DDD295261A19C900FD1AA5 /* Release configuration for PBXProject "ThemeYourDay" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -881,7 +861,7 @@
 			};
 			name = Release;
 		};
-		D6DDD297261A19C900FD1AA5 /* Debug */ = {
+		D6DDD297261A19C900FD1AA5 /* Debug configuration for PBXNativeTarget "ThemeYourDay" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -889,6 +869,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThemeYourDay/ThemeYourDay.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThemeYourDay/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ThemeYourDay/Info.plist;
@@ -898,6 +879,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -907,7 +889,7 @@
 			};
 			name = Debug;
 		};
-		D6DDD298261A19C900FD1AA5 /* Release */ = {
+		D6DDD298261A19C900FD1AA5 /* Release configuration for PBXNativeTarget "ThemeYourDay" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -915,6 +897,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThemeYourDay/ThemeYourDay.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ThemeYourDay/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ThemeYourDay/Info.plist;
@@ -924,6 +907,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -933,11 +917,12 @@
 			};
 			name = Release;
 		};
-		D6DDD29A261A19C900FD1AA5 /* Debug */ = {
+		D6DDD29A261A19C900FD1AA5 /* Debug configuration for PBXNativeTarget "ThemeYourDayTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ThemeYourDayTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -945,6 +930,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -953,11 +939,12 @@
 			};
 			name = Debug;
 		};
-		D6DDD29B261A19C900FD1AA5 /* Release */ = {
+		D6DDD29B261A19C900FD1AA5 /* Release configuration for PBXNativeTarget "ThemeYourDayTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ThemeYourDayTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -965,6 +952,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -973,16 +961,18 @@
 			};
 			name = Release;
 		};
-		D6DDD29D261A19C900FD1AA5 /* Debug */ = {
+		D6DDD29D261A19C900FD1AA5 /* Debug configuration for PBXNativeTarget "ThemeYourDayUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ThemeYourDayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -991,16 +981,18 @@
 			};
 			name = Debug;
 		};
-		D6DDD29E261A19C900FD1AA5 /* Release */ = {
+		D6DDD29E261A19C900FD1AA5 /* Release configuration for PBXNativeTarget "ThemeYourDayUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ThemeYourDayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.vnzn.ThemeYourDayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1015,46 +1007,41 @@
 		D6D58B5227B671A800473B81 /* Build configuration list for PBXNativeTarget "DayWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D6D58B5027B671A800473B81 /* Debug */,
-				D6D58B5127B671A800473B81 /* Release */,
+				D6D58B5027B671A800473B81 /* Debug configuration for PBXNativeTarget "DayWidgetExtension" */,
+				D6D58B5127B671A800473B81 /* Release configuration for PBXNativeTarget "DayWidgetExtension" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D6DDD26C261A19C800FD1AA5 /* Build configuration list for PBXProject "ThemeYourDay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D6DDD294261A19C900FD1AA5 /* Debug */,
-				D6DDD295261A19C900FD1AA5 /* Release */,
+				D6DDD294261A19C900FD1AA5 /* Debug configuration for PBXProject "ThemeYourDay" */,
+				D6DDD295261A19C900FD1AA5 /* Release configuration for PBXProject "ThemeYourDay" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D6DDD296261A19C900FD1AA5 /* Build configuration list for PBXNativeTarget "ThemeYourDay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D6DDD297261A19C900FD1AA5 /* Debug */,
-				D6DDD298261A19C900FD1AA5 /* Release */,
+				D6DDD297261A19C900FD1AA5 /* Debug configuration for PBXNativeTarget "ThemeYourDay" */,
+				D6DDD298261A19C900FD1AA5 /* Release configuration for PBXNativeTarget "ThemeYourDay" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D6DDD299261A19C900FD1AA5 /* Build configuration list for PBXNativeTarget "ThemeYourDayTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D6DDD29A261A19C900FD1AA5 /* Debug */,
-				D6DDD29B261A19C900FD1AA5 /* Release */,
+				D6DDD29A261A19C900FD1AA5 /* Debug configuration for PBXNativeTarget "ThemeYourDayTests" */,
+				D6DDD29B261A19C900FD1AA5 /* Release configuration for PBXNativeTarget "ThemeYourDayTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D6DDD29C261A19C900FD1AA5 /* Build configuration list for PBXNativeTarget "ThemeYourDayUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D6DDD29D261A19C900FD1AA5 /* Debug */,
-				D6DDD29E261A19C900FD1AA5 /* Release */,
+				D6DDD29D261A19C900FD1AA5 /* Debug configuration for PBXNativeTarget "ThemeYourDayUITests" */,
+				D6DDD29E261A19C900FD1AA5 /* Release configuration for PBXNativeTarget "ThemeYourDayUITests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */

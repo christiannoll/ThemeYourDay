@@ -66,6 +66,7 @@ struct NotificationSettingsView: View {
                         )
                         .disabled(!viewModel.isEnableNotificationToggleEnabled)
                         .onChange(of: mySettings.notificationSettings.remindAt) {
+                            viewModel.cancelNotificationRequest()
                             viewModel.registerNotificationRequest(settings: mySettings)
                         }
                     }

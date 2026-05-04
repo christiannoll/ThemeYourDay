@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import PencilKit
+import OSLog
 
 struct CanvasView: View {
     @Environment(\.undoManager) private var undoManager
@@ -122,7 +123,7 @@ struct CanvasView: View {
             do {
                 try canvasView.drawing = PKDrawing(data: imageData)
             } catch {
-                print(error.localizedDescription)
+                Logger().error("\(error.localizedDescription)")
             }
         }
     }

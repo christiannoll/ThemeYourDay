@@ -1,6 +1,7 @@
 import Foundation
 import WidgetKit
 import SwiftData
+import OSLog
 
 @Observable
 final class ModelData {
@@ -17,7 +18,7 @@ final class ModelData {
         do {
             try imageData.write(to: file, options: .atomic)
         } catch {
-            print(error.localizedDescription)
+            Logger().error("\(error.localizedDescription)")
         }
     }
     
@@ -27,7 +28,7 @@ final class ModelData {
         do {
             try data.write(to: file, options: .atomic)
         } catch {
-            print(error.localizedDescription)
+            Logger().error("\(error.localizedDescription)")
         }
     }
     
@@ -220,7 +221,7 @@ final class ModelData {
         do {
             try csvString.write(to: file, atomically: true, encoding: .utf8)
         } catch {
-            print(error.localizedDescription)
+            Logger().error("\(error.localizedDescription)")
         }
     }
     

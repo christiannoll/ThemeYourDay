@@ -1,6 +1,7 @@
 import UIKit
 import SwiftUI
 import UserNotifications
+import OSLog
 
 @Observable class ViewModel {
 
@@ -66,7 +67,7 @@ import UserNotifications
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error {
-                print(error)
+                Logger().error("\(error)")
             }
         }
     }

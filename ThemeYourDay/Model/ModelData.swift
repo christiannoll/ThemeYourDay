@@ -11,14 +11,16 @@ final class ModelData {
     var selectedDay: Day? = nil
     
     static var indexCache : [Date:Int] = [:]
-    
+
+    private let logger = Logger(subsystem: "de.vnzn.ThemeYourDay", category: "ModelData")
+
     func saveImageOfSelectedDay(imageData: Data) {
         let file = getImageFilenameOfSelectedDay()
         
         do {
             try imageData.write(to: file, options: .atomic)
         } catch {
-            Logger().error("\(error.localizedDescription)")
+            logger.error("\(error.localizedDescription)")
         }
     }
     
@@ -28,7 +30,7 @@ final class ModelData {
         do {
             try data.write(to: file, options: .atomic)
         } catch {
-            Logger().error("\(error.localizedDescription)")
+            logger.error("\(error.localizedDescription)")
         }
     }
     
@@ -221,7 +223,7 @@ final class ModelData {
         do {
             try csvString.write(to: file, atomically: true, encoding: .utf8)
         } catch {
-            Logger().error("\(error.localizedDescription)")
+            logger.error("\(error.localizedDescription)")
         }
     }
     

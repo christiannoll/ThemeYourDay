@@ -15,6 +15,8 @@ struct CanvasView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
+    private let logger = Logger(subsystem: "de.vnzn.ThemeYourDay", category: "CanvasView")
+
     var body: some View {
         VStack {
             Spacer()
@@ -123,7 +125,7 @@ struct CanvasView: View {
             do {
                 try canvasView.drawing = PKDrawing(data: imageData)
             } catch {
-                Logger().error("\(error.localizedDescription)")
+                logger.error("\(error.localizedDescription)")
             }
         }
     }

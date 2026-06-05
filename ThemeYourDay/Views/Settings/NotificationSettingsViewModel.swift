@@ -10,6 +10,8 @@ import OSLog
     private let authorizationManager = AuthorizationManager()
     private let settingsOpener: SystemSettingsOpener = UIApplication.shared
 
+    private let logger = Logger(subsystem: "de.vnzn.ThemeYourDay", category: "ViewModel")
+
     init() {
         currentAuthorizationStatus = .notDetermined
         refreshAuthorizationStatus()
@@ -67,7 +69,7 @@ import OSLog
 
         UNUserNotificationCenter.current().add(request) { error in
             if let error {
-                Logger().error("\(error)")
+                self.logger.error("\(error)")
             }
         }
     }

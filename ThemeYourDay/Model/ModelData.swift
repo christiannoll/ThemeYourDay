@@ -207,6 +207,18 @@ final class ModelData {
             }
         }
     }
+    
+    func resetDay(context: ModelContext, day: Day, settings: Settings) {
+        day.text = String(localized: String.LocalizationValue(defaultWeekdayText(day.id, settings: settings)))
+        day.fgColor = settings.weekdaysFgColor[day.id.weekday - 1]
+        day.bgColor = settings.weekdaysBgColor[day.id.weekday - 1]
+        day.textAlignment = .center
+        day.textStyle = .largeTitle
+        day.hasImage = false
+        day.starred = false
+        day.sticker = Sticker()
+        save(context)
+    }
 
     func save(_ context: ModelContext) {
         try? context.save()

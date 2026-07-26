@@ -3,7 +3,9 @@ import SwiftData
 
 struct DayList: View {
     @Environment(ModelData.self) var modelData
+    @Environment(\.modelContext) private var context
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     @State var showDeleteAlert = false
     @State private var query = ""
 
@@ -30,6 +32,14 @@ struct DayList: View {
                     .id(day)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .listRowSeparator(.hidden)
+                    .swipeActions(edge: .trailing) {
+                        Button("Reset", systemImage: "arrow.uturn.backward") {
+                            if let mySettings = settings.first {
+                                modelData.resetDay(context: context, day: day, settings: mySettings)
+                            }
+                        }
+                        .tint(.accentColor)
+                    }
             }
             .scrollContentBackground(.hidden)
             .onAppear {

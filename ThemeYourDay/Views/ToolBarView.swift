@@ -26,7 +26,7 @@ struct ToolBarView: View {
                 tools.visibleTool = .None
             } label: {
                 Image(systemName: "pencil.tip.crop.circle")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
                     .imageScale(.large)
             }
             Button {
@@ -35,7 +35,7 @@ struct ToolBarView: View {
                 }
             } label: {
                 Image(systemName: "textformat")
-                    .foregroundColor(textToolVisible ? .accentColor : .secondary)
+                    .foregroundColor(textToolVisible ? .accentColor : .primary)
                     .imageScale(.large)
             }
             Button {
@@ -44,7 +44,7 @@ struct ToolBarView: View {
                 }
             } label: {
                 Image(systemName: "note.text")
-                    .foregroundColor(foregroundToolVisible ? .accentColor : .secondary)
+                    .foregroundColor(foregroundToolVisible ? .accentColor : .primary)
                     .imageScale(.large)
             }
             Button {
@@ -53,7 +53,7 @@ struct ToolBarView: View {
                 }
             } label: {
                 Image(systemName: "note")
-                    .foregroundColor(backgroundToolVisible ? .accentColor : .secondary)
+                    .foregroundColor(backgroundToolVisible ? .accentColor : .primary)
                     .imageScale(.large)
             }
             Menu {
@@ -71,7 +71,7 @@ struct ToolBarView: View {
                 }
             } label: {
                 Image(systemName: "ellipsis.circle")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
                     .imageScale(.large)
             }
         }
